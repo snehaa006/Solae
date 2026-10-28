@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/design-system", "destination": "/", "permanent": false },
+    { "source": "/design-system.html", "destination": "/", "permanent": false }
+  ]
+}

@@ -229,7 +229,6 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 .mobile-nav.is-open { transform: none; visibility: visible; }
 .mobile-nav nav { display: flex; flex-direction: column; gap: .2rem; }
 .mobile-nav nav a { font-family: var(--font-headline); color: var(--accent); font-size: clamp(2.6rem, 2rem + 4vw, 4rem); text-transform: lowercase; line-height: 1.05; }
-.mobile-nav__stripe { height: 10px; background: var(--stripe-cabana); border-radius: var(--r-pill); margin-top: auto; }
 
 /* ---- 1 · Hero: editorial spread (late checkout) --------------------- */
 .hero { position: relative; padding-top: clamp(.5rem, 1.5vw, 1.5rem); }
@@ -410,7 +409,6 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 .footer__social .icon-btn { color: var(--sand); border-color: rgba(255, 253, 242, .3); }
 .footer__legal { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; border-top: 1px solid rgba(255, 253, 242, .18); padding-top: var(--space-s); margin-top: var(--space-m); font-size: var(--fs-small); opacity: .72; }
 .footer__legal nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-.footer__stripe { height: 12px; background: var(--stripe-cabana); max-width: var(--page-max); margin: var(--space-s) auto 0; border-radius: var(--r-pill); }
 @media (max-width: 860px) { .footer__grid { grid-template-columns: 1fr 1fr; } .footer__news { grid-column: 1 / -1; } }
 
 /* ---- Cart drawer ----------------------------------------------------- */
@@ -422,7 +420,7 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 .drawer__head h2 { font-family: var(--font-headline); font-weight: 400; color: var(--accent); font-size: 2rem; text-transform: lowercase; line-height: 1; }
 .drawer__ship { padding: var(--space-s) var(--space-m); background: var(--surface-warm); font-size: var(--fs-small); }
 .drawer__bar { height: 6px; border-radius: var(--r-pill); background: rgba(7, 73, 74, .12); margin-top: .5rem; overflow: hidden; }
-.drawer__bar i { display: block; height: 100%; width: var(--p, 0%); background: var(--stripe-cabana); transition: width var(--dur-slow) var(--ease-out); }
+.drawer__bar i { display: block; height: 100%; width: var(--p, 0%); background: var(--lagoon); transition: width var(--dur-slow) var(--ease-out); }
 .drawer__items { flex: 1; overflow-y: auto; padding: var(--space-s) var(--space-m); display: grid; gap: var(--space-s); align-content: start; }
 .line { display: grid; grid-template-columns: 4.5rem 1fr auto; gap: .9rem; align-items: center; }
 .line .frame { aspect-ratio: 4 / 5; border-radius: 6px; }
