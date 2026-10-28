@@ -2,7 +2,7 @@
 
 Mock portfolio + store for SOLAE: modest, modern swim sets for teen girls (a one-piece and matching shorts), designed in Saudi Arabia. Colours, logos, story, vision and mission come from the Brand Starter (28 Oct 2026).
 
-- `index.html`: homepage: hero, catalog, lookbook, signatures, and "our story" with her story, the vision and the mission. The hero ends where the chosen logo's sun rises out of the window's edge
+- `index.html`: homepage: hero, catalog, signatures, and "our story" with her story, the vision and the mission. The hero ends where the chosen logo's sun rises out of the window's edge
 - `shop.html`: the shop, as a wide sea chart under the header that works as the category nav. The sea lane writes "Solae" in one dotted line of flowing calligraphy; each category is a small island in and around its loops. Hover an island for what's there, click and the boat sails along the writing. Deep links: `shop.html#swimsuits`, `#signatures`, `#shorts`, `#cover-ups`
 - `product.html?p=<id>`: product page, photos as swipeable postcards (ids: `tidepool`, `cabana`, `shallows`, `off-shoulder`, `flounce`, `boardwalk`, `drift`, `white-one`)
 - `design-system.html` (private, not linked from the store and kept out of search): the three logo options with mock-ups, colour, type, frames, components and where each section comes from
