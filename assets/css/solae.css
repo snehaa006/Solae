@@ -619,23 +619,23 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 /* the chart is the nav: a small strip centred under the header */
 .shop-top { padding-block: var(--space-s) 0; }
 
-/* no frame, no paper: a small strip of sea right on the page. the lane writes "solae" */
+/* no frame, no paper: a wide, short strip of sea across the page. the lane writes "solae" */
 .chart {
   --land: color-mix(in srgb, var(--papaya) 70%, var(--jasmine));
   --shoal: color-mix(in srgb, var(--bg) 80%, var(--lagoon));
   --wood: color-mix(in srgb, var(--brick) 40%, var(--olive));
-  position: relative; width: min(100%, 42rem); margin-inline: auto; aspect-ratio: 1400 / 540; container-type: inline-size;
+  position: relative; width: 100%; margin-inline: auto; aspect-ratio: 1400 / 330; container-type: inline-size;
 }
 .chart__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-/* phones: the strip scrolls sideways, fading at the edges so it reads as more sea */
-@media (max-width: 700px) {
+/* tablets and phones: the strip scrolls sideways, fading at the edges so it reads as more sea */
+@media (max-width: 1000px) {
   .chart-scroll {
     overflow-x: auto; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scrollbar-width: none;
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
     mask-image: linear-gradient(90deg, transparent, #000 var(--gutter), #000 calc(100% - var(--gutter)), transparent);
   }
   .chart-scroll::-webkit-scrollbar { display: none; }
-  .chart { width: 620px; }
+  .chart { width: 1000px; }
 }
 
 .compass { opacity: .7; }
@@ -740,7 +740,7 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 .port {
   position: absolute; translate: -50% -50%; z-index: 2;
   padding: .3em .8em .36em; border: 0; border-radius: 3px; background: var(--deep); color: var(--sand);
-  font-family: var(--font-serif); font-style: italic; font-size: clamp(.84rem, 1.95cqi, 1.3rem); line-height: 1; white-space: nowrap;
+  font-family: var(--font-serif); font-style: italic; font-size: clamp(.8rem, 1.35cqi, 1.15rem); line-height: 1; white-space: nowrap;
   transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast);
 }
 .port::before, .port::after { content: ""; position: absolute; top: .3em; bottom: -.3em; width: .7em; background: color-mix(in srgb, var(--deep) 72%, #000); transition: background var(--dur-fast); }

@@ -3,7 +3,7 @@
 Mock portfolio + store for SOLAE, a swim label by teens, for teens.
 
 - `index.html`: homepage
-- `shop.html`: the shop, as a small sea chart centred under the header that works as the category nav. The sea lane writes "solae" in one dotted line; each category is a small island beside it. Hover an island for what's there, click and the boat sails along the writing. Deep links: `shop.html#swimsuits`, `#signatures`, `#shorts`, `#cover-ups`, `#skirts`
+- `shop.html`: the shop, as a flat sea chart across the full width under the header that works as the category nav. The sea lane writes "solae" in one dotted line; each category is a small island above or below it. Hover an island for what's there, click and the boat sails along the writing. Deep links: `shop.html#swimsuits`, `#signatures`, `#shorts`, `#cover-ups`, `#skirts`
 - `product.html?p=<id>`: product page, photos as swipeable postcards (ids: `tidepool`, `cabana`, `shallows`, `off-shoulder`, `flounce`, `boardwalk`, `drift`, `white-one`, `shoreline`)
 - `design-system.html`: tokens, type, frames, components and where each section comes from
 - `assets/css/tokens.css`: colours, fluid type and spacing, frame masks

@@ -289,44 +289,47 @@ document.querySelectorAll("[data-news]").forEach(f => f.addEventListener("submit
 renderCart();
 
 /* ---- Shop map ------------------------------------------------------------- */
-/* A wide, quiet sea chart (pin: the hand-drawn "solae" chart). The sea lane is
-   the word "solae" written as one dotted line; one small island per category
-   sits around the letters, and the boat sails along the writing to the island
-   you pick. Hovering an island (or its ribbon) shows what lives there.
-   Chart space is 1400 × 540: `at`/`r` shape each island, `sign` places its
+/* A wide, short strip of sea across the page, sized like a nav bar (pin: the
+   hand-drawn "solae" chart). The sea lane is the word "solae" written as one
+   dotted line; one small island per category sits above or below it, and the
+   boat docks on the join between letters, right by each island. Hovering an
+   island (or its ribbon) shows what lives there.
+   Chart space is 1400 × 330: `at`/`r` shape each island, `sign` places its
    ribbon, `dock` is the spot on the lane where the boat ties up. */
 const CHART = {
-  w: 1400, h: 540,
+  w: 1400, h: 330,
   isles: {
-    all:         { at: [100, 455],  r: [72, 30], seed: 9,  sign: [100, 514],  dock: [178, 410],
-                   deco: [["light", 74, 462, .8], ["palm", 124, 466, .7]] },
-    swimsuits:   { at: [330, 108],  r: [66, 28], seed: 4,  sign: [330, 50],   dock: [444, 206],
-                   deco: [["palm", 302, 116, .68], ["umbrella", 340, 122, .75], ["palm", 372, 112, .6]] },
-    signatures:  { at: [764, 100],  r: [62, 27], seed: 12, sign: [764, 44],   dock: [624, 118],
-                   deco: [["palm", 736, 110, .68], ["x", 800, 104, .75]] },
-    shorts:      { at: [705, 462],  r: [74, 30], seed: 21, sign: [705, 516],  dock: [736, 353],
-                   deco: [["palm", 684, 472, .72], ["palm", 728, 468, .6]] },
-    "cover-ups": { at: [1172, 102], r: [68, 28], seed: 15, sign: [1172, 44],  dock: [1090, 228],
-                   deco: [["hut", 1155, 112, .7], ["palm", 1197, 108, .62]] },
-    skirts:      { at: [1324, 410], r: [52, 17], seed: 2,  sign: [1312, 456], dock: [1232, 372],
-                   deco: [["palm", 1326, 414, .55]] },
+    all:         { at: [110, 268],  r: [58, 21], seed: 9,  sign: [110, 312],  dock: [165, 222],
+                   deco: [["light", 86, 274, .62], ["palm", 128, 278, .55]] },
+    swimsuits:   { at: [375, 70],   r: [56, 20], seed: 4,  sign: [375, 24],   dock: [375, 222],
+                   deco: [["palm", 350, 77, .52], ["umbrella", 380, 82, .6], ["palm", 404, 75, .46]] },
+    signatures:  { at: [612, 70],   r: [54, 20], seed: 12, sign: [612, 24],   dock: [630, 222],
+                   deco: [["palm", 590, 77, .52], ["x", 640, 73, .6]] },
+    shorts:      { at: [865, 268],  r: [58, 21], seed: 21, sign: [865, 312],  dock: [865, 222],
+                   deco: [["palm", 846, 277, .55], ["palm", 880, 274, .46]] },
+    "cover-ups": { at: [1115, 70],  r: [56, 20], seed: 15, sign: [1115, 24],  dock: [1115, 222],
+                   deco: [["hut", 1100, 79, .55], ["palm", 1133, 76, .48]] },
+    skirts:      { at: [1328, 270], r: [46, 15], seed: 2,  sign: [1328, 312], dock: [1320, 222],
+                   deco: [["palm", 1330, 274, .45]] },
   },
-  /* "solae" in one stroke, lead-in to swash; the o and the a go up their left side and back, like real cursive */
+  /* "solae" in one stroke, letterforms after Hershey Script 1 (single-stroke cursive, via EMS's SVG fonts):
+     a copperplate s, slanted ovals for the o and a, Hershey's l (loop a little shorter to fit) and e */
   lane: [
-    [178, 410], [222, 326], [252, 254], [270, 202],
-    [286, 218], [302, 268], [302, 318], [282, 348], [255, 356], [235, 346], [232, 330], [247, 326], [264, 346], [300, 362],
-    [340, 352], [370, 322], [384, 284], [395, 240], [416, 214], [446, 206],
-    [416, 214], [395, 240], [384, 284], [398, 334], [432, 354], [466, 336], [481, 284], [471, 230], [449, 208],
-    [458, 226], [482, 233], [516, 224], [552, 206],
-    [590, 172], [624, 118], [642, 74], [630, 50], [606, 64], [594, 128], [596, 250], [604, 328], [628, 354],
-    [662, 350], [690, 326], [701, 288], [712, 240], [740, 208], [768, 205], [788, 214],
-    [768, 205], [740, 208], [712, 240], [701, 288], [708, 334], [736, 353], [766, 338], [782, 298], [790, 250], [792, 212],
-    [790, 262], [792, 330], [810, 355], [845, 346],
-    [882, 318], [926, 290], [960, 262], [972, 232], [956, 208], [930, 214], [908, 262], [905, 320], [925, 352], [958, 357], [998, 334],
-    [1040, 280], [1090, 228], [1140, 250], [1185, 318], [1232, 372],
+    [165, 222], [192, 218], [212, 200], [216, 161.4], [232.2, 134.8], [247.7, 112.2], [254.2, 118.6], [264.6, 134.8], [275.6, 156.2], [279.5, 176.3],
+    [274.3, 194.4], [261.3, 206.1], [244.5, 209.4], [230.2, 204.8], [223.8, 195.7], [227.6, 188.6], [235.4, 192.5], [238, 200.9], [249.7, 211.3], [271.1, 211.9],
+    [335, 216], [375, 222], [415, 218], [440, 204], [463.3, 183.4], [465, 164], [475.8, 141], [493.5, 124.1], [513.2, 118], [493.5, 124.1],
+    [475.8, 141], [465, 164], [463.9, 187], [472.8, 203.8], [489.3, 210], [509.1, 203.8], [526.7, 187], [537.6, 164], [538.7, 141], [529.8, 124.1],
+    [513.2, 118], [504.3, 122.5], [503.6, 130.3], [512.3, 131.6], [525.1, 127.1], [546.4, 125.1], [598, 168], [612, 212], [630, 222], [656, 216],
+    [678, 196], [699.3, 158.8], [719.8, 128.4], [750.4, 94.7], [760.4, 83.3], [770.8, 65.7], [770.8, 54.1], [760.4, 48.2], [740.3, 54.1], [730, 65.7],
+    [719.8, 89], [709.5, 138.7], [709.5, 199.8], [719.8, 210], [730, 210], [800, 214], [865, 222], [920, 216], [936, 200], [954.7, 183.4],
+    [956.6, 164], [967.1, 141], [983.8, 124.1], [1002.3, 118], [1017.5, 124.1], [1024.8, 137.6], [1017.5, 124.1], [1002.3, 118], [983.8, 124.1], [967.1, 141],
+    [956.6, 164], [955.1, 187], [963.1, 203.8], [978.3, 210], [996.8, 203.8], [1013.5, 187], [1024, 164], [1037.9, 118], [1024.6, 164], [1016.7, 197],
+    [1020.8, 208.7], [1032.8, 210], [1080, 218], [1115, 222], [1150, 216], [1178, 196], [1209.8, 189.6], [1230.2, 179.4], [1240.6, 169.2], [1250.6, 148.8],
+    [1250.6, 128.4], [1240.6, 118], [1230.2, 118], [1209.8, 128.4], [1199.6, 148.8], [1199.6, 179.4], [1209.8, 199.8], [1230.2, 210], [1250.6, 210], [1272, 214],
+    [1320, 222],
   ],
-  waves: [[512, 72], [1270, 214], [548, 300], [420, 420], [928, 430], [1150, 492], [210, 254], [960, 120]],
-  sea: [["whale", 486, 478], ["fish", 1010, 484]],
+  waves: [[868, 42], [1290, 70], [300, 296], [610, 290], [1060, 294], [1190, 304]],
+  sea: [["whale", 450, 300, .75], ["fish", 935, 58, .8]],
 };
 const { w: CW, h: CH } = CHART;
 
@@ -413,7 +416,7 @@ function chartSVG() {
       <pattern id="sail-stripe" width="11" height="10" patternUnits="userSpaceOnUse"><rect class="ship__stripe-a" width="11" height="10"/><rect class="ship__stripe-b" width="5.5" height="10"/></pattern>
       <clipPath id="ship-water"><rect x="-66" y="0" width="134" height="14"/></clipPath>
     </defs>
-    <g class="compass" transform="translate(92 118)">
+    <g class="compass" transform="translate(52 78) scale(.66)">
       <circle r="38" class="compass__ring"/><circle r="27" class="compass__ring compass__ring--dash"/>
       <path class="compass__star" d="M0-34L5-5L34 0L5 5L0 34L-5 5L-34 0L-5-5Z"/><path class="compass__north" d="M0-34L5-5L0 0L-5-5Z"/>
       <text y="-46" class="compass__n">N</text>
@@ -431,7 +434,7 @@ function chartSVG() {
     <path class="chart__trail" d="M0 0"/>
     ${isles.map(([id]) => `<circle class="dock" data-dock="${id}" r="5"/>`).join("")}
     <g class="wake"></g>
-    <g class="ship"><g class="ship__tilt"><g class="ship__face"><g class="ship__bob" transform="scale(.85)">${SHIP}</g></g></g></g>
+    <g class="ship"><g class="ship__tilt"><g class="ship__face"><g class="ship__bob" transform="scale(.8)">${SHIP}</g></g></g></g>
   </svg>`;
 }
 
