@@ -618,53 +618,80 @@ if (pdp) {
   const crumbPort = document.querySelector("[data-crumb-port]");
   if (crumbPort) { crumbPort.textContent = port.place; crumbPort.href = `shop.html#${port.id}`; }
 
-  /* the postcards — one per photo, then the letter and the welcome card */
+  /* the postcards — each one follows its pin's layout piece for piece:
+     1 lemon stripe short (stamp), 2 built for warm days (photo), 3 a postcard from summer (letter), 4 caprini (welcome) */
   const shots = p.gallery, alt = i => i ? `another look at ${p.name}` : p.alt;
   const img = (id, i, w = 1100) => `<img src="${PX(id, w)}" alt="${alt(i)}" loading="${i ? "lazy" : "eager"}" style="object-position:${p.pos}">`;
   const look = isSuit ? byId("boardwalk") : byId("tidepool");
-  const sun = '<svg class="post__sun" aria-hidden="true"><use href="#i-sun-solo"/></svg>';
-  const marks = [port, ...PORTS.slice(1).filter(x => x !== port)].slice(0, 3).map((x, i) => `<span class="post__pm post__pm--${i}">${x.place}<small>${pad(4 + i * 7)}.06.26</small></span>`).join("");
-  const facts = [...port.notes, ...(p.stitch ? ["tell us: basting stitch or not?"] : [])];
+  // the note on the photo card holds a sentence or two of the blurb
+  const note = p.blurb.split(/(?<=\.) /).reduce((t, x) => t.length < 70 ? (t ? t + " " : "") + x : t, "");
+  const waves = (n, w) => `<svg class="post__waves" viewBox="0 0 ${w} ${n * 12}" preserveAspectRatio="none" aria-hidden="true">${Array.from({ length: n }, (_, i) => `<path d="M0 ${6 + i * 12}${Array.from({ length: w / 20 }, () => "q5-5 10 0t10 0").join("")}"/>`).join("")}</svg>`;
+  const plane = '<svg class="post__plane" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15.5v-2l-8-5V3.6a1.5 1.5 0 0 0-3 0v4.9l-8 5v2l8-2.5v5.4L8 19.6V21l3.5-1 3.5 1v-1.4L13 18.4V13z"/></svg>';
+  const sparkle = '<path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/>';
   const slides = [
     `<article class="post post--stamp">
-      <div class="post__perf"><div class="post__sheet">
-        <div class="post__row"><span class="post__num">#${pad(n)}</span><span class="t-label">@solae.swim</span></div>
-        <p class="post__name t-fluid" style="--len:${p.short.length}">${p.short}</p>
-        <div class="post__shot">${img(shots[0], 0)}</div>
-        <div class="post__row post__row--foot"><span>${p.name}<b>${inr(p.price)}</b></span><span>drop 01<b>summer 2026</b></span></div>
-      </div></div>
-      <svg class="post__clip" viewBox="0 0 64 72" aria-hidden="true"><path class="post__clip-wire" d="M15 40V12a6 6 0 0 1 12 0V40M37 40V12a6 6 0 0 1 12 0V40"/><path class="post__clip-body" d="M8 34H56L62 68H2Z"/><path class="post__clip-shine" d="M10 40H54"/></svg>
+      <div class="post__perf"><div class="post__panel"></div></div>
+      <i class="post__specks" aria-hidden="true"></i>
+      <svg class="post__ring" viewBox="0 0 200 56" preserveAspectRatio="none" aria-hidden="true"><path d="M30 50C8 46 2 30 14 18S70 2 116 3s80 8 80 24-40 26-96 27c-30 .5-60-2-74-8"/></svg>
+      <span class="post__num">#${pad(n)}</span>
+      <span class="post__handle">@solae.swim</span>
+      <p class="post__title" style="--len:${p.name.length}">${p.name}</p>
+      <div class="post__shot">${img(shots[0], 0)}</div>
+      <p class="post__meta">${p.name}<b>${inr(p.price)}</b></p>
+      <p class="post__date">drop 01 · live now<br>ships across india</p>
+      <svg class="post__clip" viewBox="0 0 100 80" aria-hidden="true"><defs><linearGradient id="clip-metal" x1="0" y1="0" x2="1" y2="1"><stop class="post__clip-hi" offset="0"/><stop class="post__clip-mid" offset=".55"/><stop class="post__clip-lo" offset="1"/></linearGradient></defs><path class="post__clip-wire" d="M30 38 20 9a5 5 0 0 1 9-3l14 32M70 38 80 9a5 5 0 0 0-9-3L57 38"/><path class="post__clip-body" d="M24 34h52l10 36H14z"/><path class="post__clip-fold" d="M24 34h52l2 7H22z"/><path class="post__clip-shine" d="M22 48h56"/></svg>
     </article>`,
     `<article class="post post--photo">
       ${img(shots[1] || shots[0], 1)}
-      <div class="post__mast"><p class="t-label">solae · ${port.place}</p><p class="post__script">${port.line[0]}</p><p class="post__caps">${port.line[1]}</p></div>
-      <div class="post__note">${sun}<p>${p.blurb.split(". ")[0].replace(/\.$/, "")}.</p></div>
+      <p class="post__label">solae · drop 01<br>${port.place}</p>
+      <p class="post__head" style="--len:${port.line[1].length}"><span>${port.line[0]}</span>${port.line[1]}</p>
+      <div class="post__note"><p>${note}</p></div>
+      <svg class="post__shell" viewBox="0 0 100 92" aria-hidden="true"><path class="post__shell-ears" d="M36 72 26 88h48L64 72z"/><path class="post__shell-fan" d="M50 4C24 4 4 26 8 52c2 10 18 22 42 24 24-2 40-14 42-24C96 26 76 4 50 4z"/><path class="post__shell-ribs" d="M50 76V8M50 76 34 10M50 76 66 10M50 76 20 20M50 76 80 20M50 76 11 36M50 76 89 36"/></svg>
     </article>`,
     `<article class="post post--letter">
-      <div class="post__perf"><div class="post__sheet">
-        <div class="post__marks" aria-hidden="true">${marks}</div>
-        <p class="post__from"><span>a postcard from</span>${port.place}</p>
-        <p class="t-label post__ss">solae · drop 01 · ss'26</p>
-        <p class="post__msg">${p.blurb}</p>
-        <p class="post__box"><span class="t-label">postmarked from</span>${PORTS.slice(1).map(x => x.place).join(" · ")}</p>
-      </div></div>
+      <div class="post__card"><div class="post__perf"><div class="post__paper"></div></div>
+        <div class="post__waves-a">${waves(6, 240)}</div>
+        <p class="post__pm post__pm--a"><b>goa</b><span>india</span><span>04.05.26</span></p>
+        <p class="post__pm post__pm--b"><b>gokarna</b><span>karnataka</span><span>18.06.26</span></p>
+        <svg class="post__pm post__pm--c" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57"/><circle cx="60" cy="60" r="51"/>
+          <path id="pm-arc-c" d="M18 62a42 42 0 0 1 84 0" fill="none" stroke="none"/><text class="post__pm-arc"><textPath href="#pm-arc-c" startOffset="50%" text-anchor="middle">PONDICHERRY</textPath></text>
+          <path class="post__pm-icon" d="M55 74 57 52h6l2 22zM56 52h8v-4h-8zM58 48l2-5 2 5M54 74h12"/>
+          <text x="60" y="88" text-anchor="middle" class="post__pm-sm">TAMIL NADU</text><text x="60" y="99" text-anchor="middle" class="post__pm-sm">02.07.26</text></svg>
+        <p class="post__from">a postcard<br>from summer</p>
+        <p class="post__ss">solae ss'26</p>
+        <p class="post__pm post__pm--d"><b>varkala<br>beach</b><span>kerala</span><span>29.06.26</span></p>
+        <svg class="post__palm" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 58c0-14 1-26 4-34"/><path class="post__palm-leaf" d="M34 24C26 16 12 16 4 24c10-4 20-4 30 0zM34 24c6-10 18-12 24-6-8-2-16 0-24 6zM34 24c-2-10 4-18 12-20-6 6-10 12-12 20zM34 24C24 24 16 32 16 40c4-8 10-14 18-16zM34 24c10 0 16 8 16 16-4-8-8-12-16-16z"/></svg>
+        <p class="post__pm post__pm--e"><b>havelock</b><span>andaman ${plane}</span><span>07.07.26</span></p>
+        <p class="post__pm post__pm--f"><span>postmarked from</span><b>goa · gokarna · varkala<br>pondicherry · havelock</b></p>
+        <svg class="post__pm post__pm--g" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37"/><use href="#i-sun-solo" x="22" y="22" width="36" height="36"/></svg>
+      </div>
       <div class="post__strip">
         ${[shots[0], shots[1] || shots[0]].map((id, i) => `<div>${img(id, i + 1, 500)}</div>`).join("")}
         <div><img src="${PX(look.img, 500)}" alt="${look.alt}" loading="lazy" style="object-position:${look.pos}"></div>
       </div>
     </article>`,
     `<article class="post post--brand">
-      <div class="post__stripes"><span class="wordmark">Solae</span><p class="post__tag">made for the sun</p>
-        <svg class="post__paperclip" viewBox="0 0 24 80" aria-hidden="true"><path d="M8 60V14a6 6 0 0 1 12 0v52a10 10 0 0 1-20 0V20"/></svg></div>
+      <div class="post__front">
+        <span class="wordmark">Solae</span>
+        <svg class="post__sparks" viewBox="0 0 100 40" aria-hidden="true"><g transform="translate(14 14) scale(.9)">${sparkle}</g><g transform="translate(66 4) scale(1.05)">${sparkle}</g></svg>
+        <p class="post__tag">made for the sun</p>
+      </div>
+      <svg class="post__paperclip" viewBox="0 0 24 90" aria-hidden="true"><path d="M7 70V14a6.5 6.5 0 0 1 13 0v62a10 10 0 0 1-20 0V22"/></svg>
       <div class="post__back">
-        <div class="post__welcome"><p class="post__caps">welcome to your endless summer</p>
-          <div class="post__stamp stamp-wrap"><div class="stamp"><div class="stamp__inner">${img(shots[0], 2, 300)}<p class="t-label">₹ 26 · india</p></div></div></div></div>
-        <p class="post__lede">some suits slip, ride up or show too much. this one stays put.</p>
-        <div class="post__cols">
-          <ul role="list">${facts.map(x => `<li>${x}</li>`).join("")}</ul>
-          <div class="post__lines"><p>thank you for choosing solae.</p><p>we hope this one comes</p><p>on every trip x</p></div>
+        <p class="post__welcome">welcome to your<br>endless summer</p>
+        <div class="post__seal">${waves(3, 120)}<svg class="post__mark" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="38"/>
+          <path id="pm-arc-w" d="M60 60m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0" fill="none" stroke="none"/><text class="post__mark-arc"><textPath href="#pm-arc-w">SOLAE · DROP 01 · SUMMER 26 ·</textPath></text>
+          <text x="60" y="72" text-anchor="middle" class="post__mark-s">S</text></svg>
+          <div class="post__stamp stamp-wrap"><div class="stamp"><div class="stamp__inner">${img(shots[0], 2, 300)}<span>Solae</span></div></div></div>
         </div>
-        <p class="post__foot"><span>@solae.swim</span><span>${p.type} · ${inr(p.price)}</span></p>
+        <p class="post__lede">some suits slip, ride up or show too much.<br>this one just stays put.</p>
+        <div class="post__copy">
+          <p>the first dip, the first cannonball, the first climb out of the pool when nothing has moved an inch. that's the suit we kept looking for, so we made it.</p>
+          <p>${p.blurb}</p>
+          <p class="post__at">@solae.swim</p>
+        </div>
+        <div class="post__lines"><p>thank you for choosing solae.</p><p>we hope this one comes</p><p>on every trip, to every</p><p>beach, all summer long.</p></div>
+        <p class="post__url">solae · by teens, for teens</p>
       </div>
     </article>`,
   ];
@@ -681,7 +708,6 @@ if (pdp) {
         <div class="stack__dots">${slides.map((_, i) => `<button type="button" data-slide="${i}" aria-label="postcard ${i + 1}"></button>`).join("")}</div>
         <button class="stack__arrow" type="button" data-step="1" aria-label="next postcard">${ICON.next}</button>
       </div>
-      <p class="stack__hint t-hand" aria-hidden="true">swipe the postcards</p>
     </div>
     <div class="buy" data-buy-panel></div>`;
 
