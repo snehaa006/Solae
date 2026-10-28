@@ -9,14 +9,10 @@ const PX = (id, w = 1200) => `https://images.pexels.com/photos/${id}/pexels-phot
 /* ---- Icons ------------------------------------------------------------ */
 const SPRITE = `
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
-  <symbol id="i-sun" viewBox="0 0 170 40">
-    <path fill="currentColor" d="M2 20.6L118 17.6V22.4Z"/>
-    <circle cx="146" cy="20" r="8.5" fill="currentColor"/>
-    <g stroke="currentColor" stroke-width="4.2" stroke-linecap="round"><path d="M146 2.5V7M146 33V37.5M128.5 20H133M159 20H163.5M133.6 7.6L136.8 10.8M155.2 29.2L158.4 32.4M133.6 32.4L136.8 29.2M155.2 10.8L158.4 7.6"/></g>
-  </symbol>
+  <!-- logo 3's sun, one colour, for marquees and small marks -->
   <symbol id="i-sun-solo" viewBox="0 0 40 40">
-    <circle cx="20" cy="20" r="8.5" fill="currentColor"/>
-    <g stroke="currentColor" stroke-width="4.2" stroke-linecap="round"><path d="M20 2.5V7M20 33V37.5M2.5 20H7M33 20H37.5M7.6 7.6L10.8 10.8M29.2 29.2L32.4 32.4M7.6 32.4L10.8 29.2M29.2 10.8L32.4 7.6"/></g>
+    <circle cx="20" cy="20" r="7.4" fill="currentColor"/>
+    <path fill="currentColor" d="M19.0 1.1 19.0 2.1 19.0 3.2 19.1 4.3 19.3 5.3 19.4 6.3 19.4 7.2 19.4 8.1 19.2 9.0 19.0 10.0 18.9 11.0 18.9 11.3 19.0 11.6 19.2 11.9 19.5 12.1 19.9 12.2 20.2 12.2 20.5 12.1 20.8 11.9 21.0 11.6 21.1 11.3 21.2 10.3 21.3 9.2 21.4 8.2 21.3 7.0 21.0 6.0 20.6 4.9 20.1 4.0 19.7 3.1 19.4 2.1 19.4 1.1ZM30.7 8.2 30.2 8.6 29.7 9.1 29.2 9.7 28.8 10.2 28.4 10.7 28.0 11.1 27.6 11.4 27.1 11.7 26.6 12.0 26.0 12.4 25.8 12.7 25.6 13.0 25.6 13.3 25.6 13.7 25.8 14.0 26.0 14.2 26.4 14.4 26.7 14.4 27.0 14.4 27.4 14.2 27.9 13.8 28.4 13.4 28.9 12.9 29.4 12.2 29.8 11.5 30.0 10.8 30.1 10.1 30.3 9.5 30.5 8.9 31.0 8.5ZM38.9 19.0 37.9 19.0 36.8 19.0 35.7 19.1 34.7 19.3 33.7 19.4 32.8 19.4 31.9 19.4 31.0 19.2 30.0 19.0 29.0 18.9 28.7 18.9 28.4 19.0 28.1 19.2 27.9 19.5 27.8 19.9 27.8 20.2 27.9 20.5 28.1 20.8 28.4 21.0 28.7 21.1 29.7 21.2 30.8 21.3 31.8 21.4 33.0 21.3 34.0 21.0 35.1 20.6 36.0 20.1 36.9 19.7 37.9 19.4 38.9 19.4ZM31.8 30.7 31.4 30.2 30.9 29.7 30.3 29.2 29.8 28.8 29.3 28.4 28.9 28.0 28.6 27.6 28.3 27.1 28.0 26.6 27.6 26.0 27.3 25.8 27.0 25.6 26.7 25.6 26.3 25.6 26.0 25.8 25.8 26.0 25.6 26.4 25.6 26.7 25.6 27.0 25.8 27.4 26.2 27.9 26.6 28.4 27.1 28.9 27.8 29.4 28.5 29.8 29.2 30.0 29.9 30.1 30.5 30.3 31.1 30.5 31.5 31.0ZM21.0 38.9 21.0 37.9 21.0 36.8 20.9 35.7 20.7 34.7 20.6 33.7 20.6 32.8 20.6 31.9 20.8 31.0 21.0 30.0 21.1 29.0 21.1 28.7 21.0 28.4 20.8 28.1 20.5 27.9 20.1 27.8 19.8 27.8 19.5 27.9 19.2 28.1 19.0 28.4 18.9 28.7 18.8 29.7 18.7 30.8 18.6 31.8 18.7 33.0 19.0 34.0 19.4 35.1 19.9 36.0 20.3 36.9 20.6 37.9 20.6 38.9ZM9.3 31.8 9.8 31.4 10.3 30.9 10.8 30.3 11.2 29.8 11.6 29.3 12.0 28.9 12.4 28.6 12.9 28.3 13.4 28.0 14.0 27.6 14.2 27.3 14.4 27.0 14.4 26.7 14.4 26.3 14.2 26.0 14.0 25.8 13.6 25.6 13.3 25.6 13.0 25.6 12.6 25.8 12.1 26.2 11.6 26.6 11.1 27.1 10.6 27.8 10.2 28.5 10.0 29.2 9.9 29.9 9.7 30.5 9.5 31.1 9.0 31.5ZM1.1 21.0 2.1 21.0 3.2 21.0 4.3 20.9 5.3 20.7 6.3 20.6 7.2 20.6 8.1 20.6 9.0 20.8 10.0 21.0 11.0 21.1 11.3 21.1 11.6 21.0 11.9 20.8 12.1 20.5 12.2 20.1 12.2 19.8 12.1 19.5 11.9 19.2 11.6 19.0 11.3 18.9 10.3 18.8 9.2 18.7 8.2 18.6 7.0 18.7 6.0 19.0 4.9 19.4 4.0 19.9 3.1 20.3 2.1 20.6 1.1 20.6ZM8.2 9.3 8.6 9.8 9.1 10.3 9.7 10.8 10.2 11.2 10.7 11.6 11.1 12.0 11.4 12.4 11.7 12.9 12.0 13.4 12.4 14.0 12.7 14.2 13.0 14.4 13.3 14.4 13.7 14.4 14.0 14.2 14.2 14.0 14.4 13.6 14.4 13.3 14.4 13.0 14.2 12.6 13.8 12.1 13.4 11.6 12.9 11.1 12.2 10.6 11.5 10.2 10.8 10.0 10.1 9.9 9.5 9.7 8.9 9.5 8.5 9.0Z"/>
   </symbol>
   <symbol id="i-squiggle" viewBox="0 0 72 16">
     <path d="M2 8Q8 1 14 8T26 8T38 8T50 8T62 8T72 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -51,68 +47,60 @@ const SPRITE = `
 </svg>`;
 
 /* ---- Data --------------------------------------------------------------- */
+/* the Brand Starter's collection colours (swimsuits only), plus white and black */
 const C = {
-  lagoon:  { name: "lagoon",        dot: "#17BEBB" },
-  brick:   { name: "brick",         dot: "#B40421" },
-  jasmine: { name: "jasmine",       dot: "#F8E077" },
-  deep:    { name: "deep teal",     dot: "#07494A" },
+  tropical:{ name: "tropical",      dot: "#17BEBB" },
+  cerulean:{ name: "cerulean",      dot: "#0E79B2" },
   sky:     { name: "blue grey",     dot: "#6699CC" },
-  turf:    { name: "turf",          dot: "#337155" },
-  coral:   { name: "coral",         dot: "#F07167" },
   ocean:   { name: "ocean",         dot: "#0471A6" },
-  hibiscus:{ name: "hibiscus",      dot: "#EC0868" },
+  brick:   { name: "brick",         dot: "#B40421" },
+  turf:    { name: "turf",          dot: "#337155" },
   willow:  { name: "willow",        dot: "#93C186" },
-  marigold:{ name: "marigold",      dot: "#FFAB4C" },
-  lilac:   { name: "lilac",         dot: "#B9A6C9" },
   white:   { name: "white",         dot: "#FFFFFF" },
   black:   { name: "black",         dot: "#1E2626" },
-  sand:    { name: "sand",          dot: "#FFECD1" },
 };
 
 /* Brand notes: plain suits, except the two signatures (off-shoulder, flounce).
    Every suit is double-lined with small removable pads held in by a second layer of fabric. */
 const PRODUCTS = [
-  { id: "tidepool", name: "the tidepool one-piece", short: "tidepool", cat: "swimsuits", type: "scoop-neck one-piece", price: 2799,
+  { id: "tidepool", name: "the tidepool one-piece", short: "tidepool", cat: "swimsuits", type: "scoop-neck one-piece", price: 229,
     img: "31094963", pos: "80% 30%", alt: "a lagoon-blue one-piece swimsuit, worn", gallery: ["31094963", "29957708"],
-    badges: [["new", "sun"]], colors: ["lagoon", "lilac", "brick", "deep"],
+    badges: [["new", "sun"]], colors: ["tropical", "cerulean", "brick", "turf"],
     blurb: "our everyday one-piece. plain, double-lined and scooped just right — with removable pads held in by a second layer of fabric, so nothing shifts when you dive in." },
-  { id: "cabana", name: "the cabana square-neck", short: "cabana", cat: "swimsuits", type: "square-neck one-piece", price: 2599,
+  { id: "cabana", name: "the cabana square-neck", short: "cabana", cat: "swimsuits", type: "square-neck one-piece", price: 219,
     img: "10486115", pos: "50% 30%", alt: "three friends in one-piece swimsuits laughing together on the beach", gallery: ["10486115", "8926078"],
-    badges: [["bestseller", "ink"]], colors: ["sky", "coral", "turf", "jasmine"],
+    badges: [["bestseller", "ink"]], colors: ["sky", "willow", "ocean", "brick"],
     blurb: "a plain square neckline and a low scoop back. small padding, adjustable straps, and nothing that digs in." },
-  { id: "shallows", name: "the shallows racerback", short: "shallows", cat: "swimsuits", type: "racerback one-piece", price: 2699,
+  { id: "shallows", name: "the shallows racerback", short: "shallows", cat: "swimsuits", type: "racerback one-piece", price: 219,
     img: "33265997", pos: "50% 40%", alt: "a group of girls in swimsuits posing on rocks by the sea", gallery: ["33265997", "40471890"],
-    badges: [], colors: ["ocean", "marigold", "black"],
+    badges: [], colors: ["ocean", "turf", "black"],
     blurb: "a plain high neck and a racerback that stays put for laps, cannonballs and climbing out the ladder." },
-  { id: "off-shoulder", name: "the off-shoulder", short: "off-shoulder", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 3199,
+  { id: "off-shoulder", name: "the off-shoulder", short: "off-shoulder", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 259,
     img: "28681540", pos: "50% 30%", alt: "a black off-the-shoulder one-piece, worn standing in the sea", gallery: ["28681540", "28681548"],
-    badges: [["signature 01", "coral"]], colors: ["black", "coral", "ocean"],
+    badges: [["signature 01", "coral"]], colors: ["black", "brick", "cerulean"],
     blurb: "one of our two signature styles. a soft off-the-shoulder neckline with a hidden silicone grip, so it stays exactly where you put it." },
-  { id: "flounce", name: "the flounce", short: "flounce", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 3199,
+  { id: "flounce", name: "the flounce", short: "flounce", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 259,
     img: "4271771", pos: "50% 40%", alt: "a blue-grey one-piece with ruffled flounce straps, laid flat", gallery: ["4271771", "27330805"],
-    badges: [["signature 02", "coral"]], colors: ["sky", "hibiscus", "willow"], stitch: ["basting stitch", "no stitch"],
+    badges: [["signature 02", "coral"]], colors: ["sky", "tropical", "willow"], stitch: ["basting stitch", "no stitch"],
     blurb: "our second signature: soft flounces on the straps, with a basting stitch down the middle. still deciding if it stays — pick the one you'd wear." },
-  { id: "boardwalk", name: "the boardwalk short", short: "boardwalk", cat: "shorts", type: "knee-length short", price: 1499,
+  { id: "boardwalk", name: "the boardwalk short", short: "boardwalk", cat: "shorts", type: "knee-length short", price: 99,
     img: "3998649", pos: "50% 60%", alt: "swim shorts and suits laid out flat on a wooden floor", gallery: ["3998649", "25649794"],
     badges: [["matches every suit", "sun"]], colors: [],
     blurb: "knee-length (or just above), quick-dry and made to match your suit — or keep it classic in white or black." },
-  { id: "drift", name: "the drift cover-up", short: "drift", cat: "cover-ups", type: "cover-up", price: 1999,
+  { id: "drift", name: "the drift cover-up", short: "drift", cat: "cover-ups", type: "cover-up", price: 149,
     img: "35126783", pos: "50% 35%", alt: "a sheer yellow cover-up worn on a tropical beach", gallery: ["35126783", "36173873"],
     badges: [["new", "sun"]], colors: [],
     blurb: "a breezy kaftan that comes in a colour to match each suit. throw it on for the walk from the water to lunch." },
-  { id: "white-one", name: "the white one", short: "white one", cat: "cover-ups", type: "cover-up", price: 2199,
+  { id: "white-one", name: "the white one", short: "white one", cat: "cover-ups", type: "cover-up", price: 169,
     img: "15560782", pos: "50% 30%", alt: "a long white lace cover-up worn on a misty beach", gallery: ["15560782", "8371478"],
     badges: [["goes with everything", "ink"]], colors: ["white"],
     blurb: "the one white cover-up in the collection — lace-light and long, made to go over every single suit we make." },
-  { id: "shoreline", name: "the shoreline skirt", short: "shoreline", cat: "skirts", type: "cover-up skirt", price: 1299,
-    img: "7292976", pos: "50% 40%", alt: "a long plain green cover-up skirt worn at the shoreline", gallery: ["7292976", "7292977"],
-    badges: [], colors: ["turf", "sand", "white", "deep"],
-    blurb: "a plain wrap skirt to throw over your suit on the walk to the beach. ties at the side, folds into your tote." },
 ];
 
 const SIZES = ["xs", "s", "m", "l", "xl"];
-const SHIP_FREE = 2999;
-const inr = n => "₹" + n.toLocaleString("en-IN");
+/* prices in saudi riyals; placeholders until the real ones are set */
+const SHIP_FREE = 300;
+const sar = n => "SAR " + n.toLocaleString("en-US");
 const byId = id => PRODUCTS.find(p => p.id === id);
 const dot = k => C[k].dot;
 
@@ -138,9 +126,6 @@ const PORTS = [
   { id: "cover-ups", place: "cover-up cove", label: "cover-ups", line: ["for the", "walk home"],
     def: "a kaftan in every suit colour, plus the white one, which goes with everything.",
     notes: ["matches every suit", "plus the white one", "quick-dry"] },
-  { id: "skirts", place: "skirt sandbar", label: "the skirt", line: ["for the walk", "to the beach"],
-    def: "one plain cover-up skirt to wear over your suit on the walk to the beach.",
-    notes: ["plain, no print", "ties at the side", "folds into your tote"] },
 ];
 const portOf = p => p.sig ? "signatures" : p.cat;
 const portById = id => PORTS.find(x => x.id === id);
@@ -167,7 +152,7 @@ function card(p, i = 0) {
       <div class="card__badges">${badges}</div>
     </div>
     <h3 class="card__name"><a href="product.html?p=${p.id}">${p.name}</a></h3>
-    <p class="card__price">${inr(p.price)}</p>
+    <p class="card__price">${sar(p.price)}</p>
     <div class="swatches" aria-label="${p.colors.length} colours: ${p.colors.map(k => C[k].name).join(", ")}">${sw}</div>
     <button class="btn btn--ghost btn--sm card__add" type="button" data-add="${p.id}" aria-label="add ${p.name} to bag">${ICON.plus}add to bag</button>
   </article>`;
@@ -197,10 +182,10 @@ function renderCart() {
   if (!items) return;
   const left = SHIP_FREE - total;
   document.querySelector("[data-ship-msg]").innerHTML = total === 0
-    ? `spend ${inr(SHIP_FREE)} for free shipping across india`
-    : left > 0 ? `you're <b>${inr(left)}</b> away from free shipping` : `<b>you've unlocked free shipping</b> ☀`;
+    ? `spend ${sar(SHIP_FREE)} for free shipping across saudi arabia`
+    : left > 0 ? `you're <b>${sar(left)}</b> away from free shipping` : `<b>you've unlocked free shipping</b> ☀`;
   document.querySelector("[data-ship-bar]").style.setProperty("--p", Math.min(100, (total / SHIP_FREE) * 100) + "%");
-  document.querySelector("[data-cart-total]").textContent = inr(total);
+  document.querySelector("[data-cart-total]").textContent = sar(total);
   document.querySelector("[data-cart-foot]").hidden = count === 0;
   items.innerHTML = count === 0
     ? `<div class="drawer__empty"><p class="t-hand">nothing yet</p><p>the sun is out though.</p><a class="btn btn--ink btn--sm" href="shop.html">shop drop 01</a></div>`
@@ -212,7 +197,7 @@ function renderCart() {
             <p class="line__meta">${C[l.color].name} · ${l.size.toUpperCase()}${l.extra ? " · " + l.extra : ""}</p>
             <div class="qty"><button type="button" data-qty="-1" data-key="${l.key}" aria-label="decrease">−</button><span>${l.qty}</span><button type="button" data-qty="1" data-key="${l.key}" aria-label="increase">+</button></div>
           </div>
-          <b>${inr(p.price * l.qty)}</b>
+          <b>${sar(p.price * l.qty)}</b>
         </div>`;
       }).join("");
 }
@@ -270,6 +255,8 @@ document.addEventListener("click", e => {
     rail.scrollBy({ left: (t.dataset.dir === "next" ? 1 : -1) * rail.clientWidth * .8, behavior: "smooth" });
   }
   if (t.matches(".checkout")) toast("this is a mock store — checkout comes next ☀");
+  if (t.dataset.logo) setLogo(t.dataset.logo);
+  if (t.matches("[data-logo-lab-off]")) { t.parentElement.hidden = true; store(LOGO_KEY + "-lab", "off"); }
 });
 document.querySelector(".scrim")?.addEventListener("click", () => openPanel(".drawer", false));
 document.addEventListener("keydown", e => { if (e.key === "Escape") { openPanel(".drawer", false); openPanel(".mobile-nav", false); } });
@@ -287,6 +274,32 @@ reveal(document);
 document.querySelectorAll("[data-news]").forEach(f => f.addEventListener("submit", e => { e.preventDefault(); f.reset(); toast("you're on the list — see you on the shore"); }));
 
 renderCart();
+
+/* ---- Logos ------------------------------------------------------------------ */
+/* The Brand Starter's three options (nothing final). The wordmark is the default
+   header logo; the switch in the corner tries the other two there and in the menu.
+   Hide it with ×, bring it back with ?logos in the address. */
+const LOGOS = [
+  { id: "sun",  name: "ghalia's sun",        html: `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="">` },
+  { id: "word", name: "minimal wordmark",    html: `<span class="logo-word">S<i></i>LAE</span>` },
+  { id: "mark", name: "sun symbol and name", html: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>` },
+];
+const LOGO_KEY = "solae-logo";
+const store = (k, v) => { try { return v === undefined ? localStorage.getItem(k) : localStorage.setItem(k, v); } catch { return null; } };
+function setLogo(id) {
+  const logo = LOGOS.find(l => l.id === id) || LOGOS[1];
+  document.querySelectorAll("[data-logo-slot]").forEach(el => { el.innerHTML = logo.html; });
+  document.querySelectorAll("[data-logo]").forEach(b => b.setAttribute("aria-pressed", b.dataset.logo === logo.id));
+  store(LOGO_KEY, logo.id);
+}
+if (new URLSearchParams(location.search).has("logos")) store(LOGO_KEY + "-lab", "on");
+if (document.querySelector("[data-logo-slot]") && store(LOGO_KEY + "-lab") !== "off") {
+  document.body.insertAdjacentHTML("beforeend", `<div class="logo-lab" role="group" aria-label="try a logo in the header">
+    <span>logo</span>${LOGOS.map((l, i) => `<button type="button" data-logo="${l.id}" aria-pressed="false" title="option ${i + 1}: ${l.name}" aria-label="option ${i + 1}: ${l.name}">${i + 1}</button>`).join("")}
+    <button class="logo-lab__x" type="button" data-logo-lab-off title="hide" aria-label="hide the logo switch">×</button>
+  </div>`);
+}
+setLogo(store(LOGO_KEY));
 
 /* ---- Shop map ------------------------------------------------------------- */
 /* A wide strip of sea across the page (pin: the hand-drawn "solae" chart). The
@@ -309,8 +322,6 @@ const CHART = {
                    deco: [["palm", 1301, 136, .56], ["palm", 1333, 132, .48]] },
     "cover-ups": { at: [900, 405],  r: [56, 18], seed: 15, sign: [900, 366],  dock: [955, 327],
                    deco: [["hut", 886, 413, .55], ["palm", 918, 410, .48]] },
-    skirts:      { at: [1336, 305], r: [46, 15], seed: 2,  sign: [1336, 350], dock: [1246, 263],
-                   deco: [["palm", 1338, 309, .45]] },
   },
   /* "Solae" in one stroke: the S from its tail to the hook, a curl down into the o, then "olae";
      the o and the a are gone round once and their joins retraced, like real handwriting */
@@ -341,7 +352,7 @@ const CHART = {
     [1168.8, 328.7], [1189.8, 322.6], [1207.8, 311.5], [1223.8, 296.1], [1232.9, 284.9], [1244.2, 268.1], [1245.8, 263.9],
   ],
   waves: [[110, 390], [560, 412], [640, 60], [1010, 40], [1150, 420], [1240, 60]],
-  sea: [["whale", 640, 400, .8], ["fish", 1180, 392, .85]],
+  sea: [["whale", 640, 400, .8], ["fish", 1180, 392, .85], ["fish", 1318, 300, .8]],
 };
 const { w: CW, h: CH } = CHART;
 
@@ -464,7 +475,7 @@ const isleCard = port => {
     <p class="isle-card__notes">${port.notes.join(" · ")}</p>
     <div class="isle-card__foot">
       <span class="isle-card__thumbs">${items.slice(0, 4).map(p => `<img src="${PX(p.img, 120)}" alt="" style="object-position:${p.pos}">`).join("")}</span>
-      <span>from ${inr(Math.min(...items.map(p => p.price)))}</span>
+      <span>from ${sar(Math.min(...items.map(p => p.price)))}</span>
     </div>`;
 };
 
@@ -649,8 +660,8 @@ if (pdp) {
       <span class="post__handle">@solae.swim</span>
       <p class="post__title" style="--len:${p.name.length}">${p.name}</p>
       <div class="post__shot">${img(shots[0], 0)}</div>
-      <p class="post__meta">${p.name}<b>${inr(p.price)}</b></p>
-      <p class="post__date">drop 01 · live now<br>ships across india</p>
+      <p class="post__meta">${p.name}<b>${sar(p.price)}</b></p>
+      <p class="post__date">drop 01 · live now<br>ships across saudi arabia</p>
       <svg class="post__clip" viewBox="0 0 100 80" aria-hidden="true"><defs><linearGradient id="clip-metal" x1="0" y1="0" x2="1" y2="1"><stop class="post__clip-hi" offset="0"/><stop class="post__clip-mid" offset=".55"/><stop class="post__clip-lo" offset="1"/></linearGradient></defs><path class="post__clip-wire" d="M30 38 20 9a5 5 0 0 1 9-3l14 32M70 38 80 9a5 5 0 0 0-9-3L57 38"/><path class="post__clip-body" d="M24 34h52l10 36H14z"/><path class="post__clip-fold" d="M24 34h52l2 7H22z"/><path class="post__clip-shine" d="M22 48h56"/></svg>
     </article>`,
     `<article class="post post--photo">
@@ -663,18 +674,18 @@ if (pdp) {
     `<article class="post post--letter">
       <div class="post__card"><div class="post__perf"><div class="post__paper"></div></div>
         <div class="post__waves-a">${waves(6, 240)}</div>
-        <p class="post__pm post__pm--a"><b>goa</b><span>india</span><span>04.05.26</span></p>
-        <p class="post__pm post__pm--b"><b>gokarna</b><span>karnataka</span><span>18.06.26</span></p>
+        <p class="post__pm post__pm--a"><b>jeddah</b><span>saudi arabia</span><span>04.05.26</span></p>
+        <p class="post__pm post__pm--b"><b>umluj</b><span>tabuk</span><span>18.06.26</span></p>
         <svg class="post__pm post__pm--c" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57"/><circle cx="60" cy="60" r="51"/>
-          <path id="pm-arc-c" d="M18 62a42 42 0 0 1 84 0" fill="none" stroke="none"/><text class="post__pm-arc"><textPath href="#pm-arc-c" startOffset="50%" text-anchor="middle">PONDICHERRY</textPath></text>
+          <path id="pm-arc-c" d="M18 62a42 42 0 0 1 84 0" fill="none" stroke="none"/><text class="post__pm-arc"><textPath href="#pm-arc-c" startOffset="50%" text-anchor="middle">YANBU</textPath></text>
           <path class="post__pm-icon" d="M55 74 57 52h6l2 22zM56 52h8v-4h-8zM58 48l2-5 2 5M54 74h12"/>
-          <text x="60" y="88" text-anchor="middle" class="post__pm-sm">TAMIL NADU</text><text x="60" y="99" text-anchor="middle" class="post__pm-sm">02.07.26</text></svg>
+          <text x="60" y="88" text-anchor="middle" class="post__pm-sm">MADINAH</text><text x="60" y="99" text-anchor="middle" class="post__pm-sm">02.07.26</text></svg>
         <p class="post__from">a postcard<br>from summer</p>
         <p class="post__ss">solae ss'26</p>
-        <p class="post__pm post__pm--d"><b>varkala<br>beach</b><span>kerala</span><span>29.06.26</span></p>
+        <p class="post__pm post__pm--d"><b>half moon<br>bay</b><span>khobar</span><span>29.06.26</span></p>
         <svg class="post__palm" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 58c0-14 1-26 4-34"/><path class="post__palm-leaf" d="M34 24C26 16 12 16 4 24c10-4 20-4 30 0zM34 24c6-10 18-12 24-6-8-2-16 0-24 6zM34 24c-2-10 4-18 12-20-6 6-10 12-12 20zM34 24C24 24 16 32 16 40c4-8 10-14 18-16zM34 24c10 0 16 8 16 16-4-8-8-12-16-16z"/></svg>
-        <p class="post__pm post__pm--e"><b>havelock</b><span>andaman ${plane}</span><span>07.07.26</span></p>
-        <p class="post__pm post__pm--f"><span>postmarked from</span><b>goa · gokarna · varkala<br>pondicherry · havelock</b></p>
+        <p class="post__pm post__pm--e"><b>farasan</b><span>jazan ${plane}</span><span>07.07.26</span></p>
+        <p class="post__pm post__pm--f"><span>postmarked from</span><b>jeddah · umluj · yanbu<br>half moon bay · farasan</b></p>
         <svg class="post__pm post__pm--g" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37"/><use href="#i-sun-solo" x="22" y="22" width="36" height="36"/></svg>
       </div>
       <div class="post__strip">
@@ -684,7 +695,7 @@ if (pdp) {
     </article>`,
     `<article class="post post--brand">
       <div class="post__front">
-        <span class="wordmark">Solae</span>
+        <span class="logo-mark" aria-hidden="true"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>
         <svg class="post__sparks" viewBox="0 0 100 40" aria-hidden="true"><g transform="translate(14 14) scale(.9)">${sparkle}</g><g transform="translate(66 4) scale(1.05)">${sparkle}</g></svg>
         <p class="post__tag">made for the sun</p>
       </div>
@@ -698,12 +709,12 @@ if (pdp) {
         </div>
         <p class="post__lede">some suits slip, ride up or show too much.<br>this one just stays put.</p>
         <div class="post__copy">
-          <p>the first dip, the first cannonball, the first climb out of the pool when nothing has moved an inch. that's the suit we kept looking for, so we made it.</p>
+          <p>the first dip, the first cannonball, the first climb out of the pool when nothing has moved an inch. that's the suit i kept looking for, so i made it.</p>
           <p>${p.blurb}</p>
           <p class="post__at">@solae.swim</p>
         </div>
         <div class="post__lines"><p>thank you for choosing solae.</p><p>we hope this one comes</p><p>on every trip, to every</p><p>beach, all summer long.</p></div>
-        <p class="post__url">solae · by teens, for teens</p>
+        <p class="post__url">solae · modest swim sets for teen girls</p>
       </div>
     </article>`,
   ];
@@ -737,7 +748,7 @@ if (pdp) {
       <div class="buy__title">
         <p class="t-tag">${p.type} · ${port.place}</p>
         <h1 class="t-headline">${p.name}</h1>
-        <div class="buy__price"><span>${inr(p.price)}</span><span class="stars" aria-label="4.9 out of 5">★★★★★ <span class="t-mute">4.9 · 128 reviews</span></span></div>
+        <div class="buy__price"><span>${sar(p.price)}</span><span class="stars" aria-label="4.9 out of 5">★★★★★ <span class="t-mute">4.9 · 128 reviews</span></span></div>
       </div>
       <p class="t-lead t-soft">${p.blurb}</p>
       <div class="opt">
@@ -769,7 +780,7 @@ if (pdp) {
               ${photo(r, { w: 200, alt: "" })}
               <div>
                 <p class="line__name">${r.name}</p>
-                <p class="line__meta">${inr(r.price)} · ${C[setColor(r, st.opt)].name}</p>
+                <p class="line__meta">${sar(r.price)} · ${C[setColor(r, st.opt)].name}</p>
                 <div class="chips" role="radiogroup" aria-label="${r.name} colour">
                   ${optsFor(r).map(o => `<button type="button" class="chip" role="radio" aria-checked="${st.opt === o}" data-set="${r.id}" data-opt="${o}"><i style="--c:${o === "matching" ? dot(color) : dot(o)}"></i>${o === "matching" ? "match my suit" : o}</button>`).join("")}
                 </div>
@@ -780,11 +791,11 @@ if (pdp) {
         </div>
       </div>` : ""}
       <div class="buy__cta">
-        <button class="btn" type="button" data-buy>add to bag — ${inr(subtotal)}</button>
+        <button class="btn" type="button" data-buy>add to bag — ${sar(subtotal)}</button>
         <button class="icon-btn icon-btn--outline" type="button" aria-label="save to wishlist" style="width:3.4rem;height:3.4rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
       </div>
       <div class="perks">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>free shipping over ${inr(SHIP_FREE)}</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>free shipping over ${sar(SHIP_FREE)}</div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>easy 14-day exchanges</div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c3 3.5 6 6.6 6 10a6 6 0 0 1-12 0c0-3.4 3-6.5 6-10Z"/></svg>chlorine &amp; salt resistant</div>
       </div>
@@ -795,11 +806,10 @@ if (pdp) {
           ${p.stitch ? "<li>flounces on the straps, basting stitch down the middle (or not — your call)</li>" : ""}
           ${p.cat === "shorts" ? "<li>knee-length, or just above — no riding up</li><li>matches every suit, or pick white or black</li>" : ""}
           ${p.cat === "cover-ups" ? "<li>light, quick-dry woven fabric</li><li>made to wear over your suit on the walk home</li>" : ""}
-          ${p.cat === "skirts" ? "<li>plain, no print — light, quick-dry woven fabric</li><li>made to wear over your suit on the walk to the beach</li>" : ""}
-          <li>78% recycled nylon, 22% elastane</li><li>designed by teens in india</li></ul></div></details>
+          <li>78% recycled nylon, 22% elastane</li><li>designed in saudi arabia</li></ul></div></details>
         <details><summary>fit &amp; pads</summary><div>true to size. if you're between sizes, size up for more coverage. the pads are small and slip out through an inner opening — the second fabric layer keeps them flat and in place while you swim.</div></details>
         <details><summary>care</summary><div>rinse in cool fresh water after every swim. hand wash, dry flat in the shade. no tumble dry, no bleach.</div></details>
-        <details><summary>shipping &amp; exchanges</summary><div>ships in 2–4 days across india. free over ${inr(SHIP_FREE)}. unworn pieces with hygiene liner intact can be exchanged within 14 days.</div></details>
+        <details><summary>shipping &amp; exchanges</summary><div>ships in 2–4 days across saudi arabia. free over ${sar(SHIP_FREE)}. unworn pieces with hygiene liner intact can be exchanged within 14 days.</div></details>
       </div>`;
   };
   render();
@@ -829,7 +839,7 @@ if (pdp) {
 
   const pairs = document.querySelector("[data-pairs]");
   if (pairs) {
-    pairs.innerHTML = (isSuit ? ["boardwalk", "drift", "white-one", "shoreline"] : ["tidepool", "cabana", "off-shoulder", "flounce"]).map((id, i) => card(byId(id), i)).join("");
+    pairs.innerHTML = (isSuit ? ["boardwalk", "drift", "white-one", p.sig ? "tidepool" : "off-shoulder"] : ["tidepool", "cabana", "off-shoulder", "flounce"]).map((id, i) => card(byId(id), i)).join("");
     reveal(pairs);
   }
 }

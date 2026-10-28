@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SOLAE — swim, by teens for teens</title>
-  <meta name="description" content="SOLAE is a teen-run swim label: plain, double-lined swimsuits with removable pads, knee-length matching shorts and cover-ups.">
-  <meta name="theme-color" content="#FFFDF2">
+  <title>SOLAE — modest swim sets for teen girls</title>
+  <meta name="description" content="SOLAE makes modest, modern swim sets for teen girls: a double-lined one-piece with matching knee-length shorts, designed for comfort and made for confidence.">
+  <meta name="theme-color" content="#FFF8EE">
+  <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.pexels.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Sour+Gummy:ital,wdth,wght@0,125,900;1,125,900&family=Unbounded:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Poppins:wght@600;700;800&family=Sour+Gummy:ital,wdth,wght@0,125,900;1,125,900&display=swap">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/solae.css">
 </head>
@@ -18,8 +19,8 @@
 
   <div class="announce" aria-label="announcements">
     <div class="announce__track t-label">
-      <span>drop 01 is live <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> free shipping across india over ₹2,999 <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> by teens, for teens <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg></span>
-      <span aria-hidden="true">drop 01 is live <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> free shipping across india over ₹2,999 <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> by teens, for teens <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg></span>
+      <span>drop 01 is live <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> free shipping across saudi arabia over SAR 300 <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> modest, modern swim sets <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg></span>
+      <span aria-hidden="true">drop 01 is live <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> free shipping across saudi arabia over SAR 300 <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> modest, modern swim sets <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg></span>
     </div>
   </div>
 
@@ -29,7 +30,7 @@
         <a href="shop.html">shop</a><a href="#signatures">signatures</a><a href="#lookbook">lookbook</a>
       </nav>
       <button class="icon-btn menu-btn" type="button" data-open-menu aria-label="open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
-      <a class="header__brand" href="index.html" aria-label="SOLAE home"><span class="wordmark">Solae</span></a>
+      <a class="header__brand" href="index.html" aria-label="SOLAE home" data-logo-slot><span class="logo-word">S<i></i>LAE</span></a>
       <div class="header__tools">
         <nav class="nav t-label" aria-label="secondary"><a href="#about">about</a><a href="design-system.html">brand</a></nav>
         <button class="icon-btn hide-sm" type="button" aria-label="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4" stroke-linecap="round"/></svg></button>
@@ -40,13 +41,13 @@
 
   <div class="mobile-nav" aria-label="menu">
     <div style="display:flex;justify-content:space-between;align-items:center">
-      <span class="wordmark" style="font-size:1.6rem">Solae</span>
+      <span class="mobile-nav__brand" aria-hidden="true" data-logo-slot><span class="logo-word">S<i></i>LAE</span></span>
       <button class="icon-btn" type="button" data-close-menu aria-label="close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
     <nav aria-label="mobile">
       <a href="shop.html" data-close-menu>shop</a><a href="#signatures" data-close-menu>signatures</a><a href="#lookbook" data-close-menu>lookbook</a><a href="#about" data-close-menu>about</a>
     </nav>
-    <p class="t-hand">by teens, for teens</p>
+    <p class="t-hand">bright, free &amp; all your own</p>
     <div class="mobile-nav__stripe"></div>
   </div>
 
@@ -54,6 +55,7 @@
 
     <!-- 1 · Hero — editorial spread (pin: "the late checkout") -->
     <section class="hero wrap" aria-labelledby="hero-title">
+      <img class="hero__sun" src="assets/img/logo-sun.svg" alt="" fetchpriority="high">
       <h1 id="hero-title" class="hero__title t-headline t-mega">made for the sun</h1>
       <div class="hero__grid">
         <div class="hero__main">
@@ -61,7 +63,7 @@
           <div class="hero__stamp stamp-wrap" aria-hidden="true">
             <div class="stamp"><div class="stamp__inner">
               <img src="https://images.pexels.com/photos/27330805/pexels-photo-27330805.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
-              <p class="t-label">summer '26 · india</p>
+              <p class="t-label">summer '26 · saudi</p>
             </div></div>
           </div>
           <div class="hero__foot">
@@ -73,7 +75,7 @@
           <p class="t-hand" aria-hidden="true">it's about</p>
           <h2 class="t-headline">the suit you forget you're wearing</h2>
           <div class="frame"><img src="https://images.pexels.com/photos/32181630/pexels-photo-32181630.jpeg?auto=compress&cs=tinysrgb&w=900" alt="a girl in heart sunglasses peeking through a sprinkle-donut pool float"></div>
-          <p>plain, double-lined one-pieces with removable pads, knee-length shorts that match, and cover-ups for the walk home. designed by teens, for teens.</p>
+          <p>modest, modern swim sets for teen girls: a double-lined one-piece and knee-length shorts that match. designed for comfort, made for confidence.</p>
           <div class="hero__ctas">
             <a class="btn" href="shop.html">shop drop 01</a>
             <a class="btn btn--ghost" href="#about">our story</a>
@@ -87,8 +89,8 @@
       <svg class="edge" viewBox="0 0 1440 24" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 24V12C60 0 120 0 180 12S300 24 360 12 480 0 540 12 660 24 720 12 840 0 900 12 1020 24 1080 12 1200 0 1260 12 1380 24 1440 12V24Z"/></svg>
       <div class="band__body">
         <div class="band__track t-wide">
-          <span>removable pads <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> double-lined <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> knee-length shorts <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> matching cover-ups <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> <em>by teens, for teens</em> <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg></span>
-          <span aria-hidden="true">removable pads <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> double-lined <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> knee-length shorts <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> matching cover-ups <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> <em>by teens, for teens</em> <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg></span>
+          <span>removable pads <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> double-lined <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> knee-length shorts <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> matching cover-ups <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg> <em>coverage, comfort &amp; confidence</em> <svg class="sunmark sunmark--solo" aria-hidden="true"><use href="#i-sun-solo"/></svg></span>
+          <span aria-hidden="true">removable pads <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> double-lined <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> knee-length shorts <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> matching cover-ups <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg> <em>coverage, comfort &amp; confidence</em> <svg class="sunmark sunmark--solo"><use href="#i-sun-solo"/></svg></span>
         </div>
       </div>
       <svg class="edge edge--flip" viewBox="0 0 1440 24" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 24V12C60 0 120 0 180 12S300 24 360 12 480 0 540 12 660 24 720 12 840 0 900 12 1020 24 1080 12 1200 0 1260 12 1380 24 1440 12V24Z"/></svg>
@@ -105,13 +107,12 @@
           <path class="swirl" d="M40 100C120 20 170 20 224 38S330 120 400 104 520 22 576 36 700 118 760 100"/>
           <circle class="dot" cx="40" cy="100" r="4"/><circle class="dot" cx="224" cy="38" r="4"/><circle class="dot" cx="400" cy="104" r="4"/><circle class="dot" cx="576" cy="36" r="4"/><circle class="dot" cx="760" cy="100" r="4"/>
         </svg>
-        <button type="button" data-filter="swimsuits" aria-pressed="false" style="left:5%;top:70%">swimsuits</button>
-        <button type="button" data-filter="shorts" aria-pressed="false" style="left:28%;top:28%">matching shorts</button>
-        <button type="button" data-filter="cover-ups" aria-pressed="false" style="left:50%;top:74%">cover-ups</button>
-        <button type="button" data-filter="skirts" aria-pressed="false" style="left:72%;top:26%">the skirt</button>
+        <button type="button" data-filter="swimsuits" aria-pressed="false" style="left:28%;top:28%">swimsuits</button>
+        <button type="button" data-filter="shorts" aria-pressed="false" style="left:50%;top:74%">matching shorts</button>
+        <button type="button" data-filter="cover-ups" aria-pressed="false" style="left:72%;top:26%">cover-ups</button>
         <a href="#signatures" class="sr-only">see the signature styles</a>
       </div>
-      <div class="grid-products" data-products="tidepool,cabana,shallows,off-shoulder,boardwalk,drift,white-one,shoreline"></div>
+      <div class="grid-products" data-products="tidepool,cabana,shallows,off-shoulder,flounce,boardwalk,drift,white-one"></div>
       <div class="catalog__more">
         <p class="t-hand" aria-hidden="true">there's a map for that</p>
         <a class="btn btn--ink" href="shop.html">open the shop map</a>
@@ -140,7 +141,7 @@
           <div class="sheet__notes">
             <div class="note"><b>the short</b><span>knee-length, or just above. match your suit, or keep it white or black.</span></div>
             <div class="note"><b>the cover-up</b><span>a kaftan for every suit, plus the white one that goes with everything.</span></div>
-            <div class="note"><b>the skirt</b><span>plain, ties at the side, made for the walk to the beach.</span></div>
+            <div class="note"><b>the set</b><span>a one-piece and shorts that match: coverage, comfort and confidence in one go.</span></div>
           </div>
           <div class="sheet__end">
             <h3 class="t-headline">no two summers are ever the same</h3>
@@ -177,7 +178,7 @@
         </div>
         <svg class="sig__curve" viewBox="0 0 1200 120" aria-hidden="true">
           <path id="sig-wave" d="M0 70C100 20 200 20 300 70S500 120 600 70 800 20 900 70 1100 120 1200 70" fill="none"/>
-          <text><textPath href="#sig-wave">life's a beach ✶ made for the sun ✶ life's a wave ✶ by teens, for teens ✶ life's a beach ✶ made for the sun ✶</textPath></text>
+          <text><textPath href="#sig-wave">life's a beach ✶ made for the sun ✶ life's a wave ✶ modest by design ✶ life's a beach ✶ made for the sun ✶</textPath></text>
         </svg>
       </div>
       <svg class="edge" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;bottom:-39px;left:0;height:40px"><path fill="currentColor" d="M0 0H1440V18C1380 34 1320 34 1260 18S1140 2 1080 18 960 34 900 18 780 2 720 18 600 34 540 18 420 2 360 18 240 34 180 18 60 2 0 18Z"/></svg>
@@ -189,16 +190,16 @@
       <div class="wrap">
         <article class="postcard reveal">
           <div class="postcard__msg">
-            <p class="t-label t-soft">a note from the founders</p>
+            <p class="t-label t-soft">a note from the founder</p>
             <h2 id="postcard-title" class="t-headline">a postcard from summer</h2>
-            <p>hi from the shore! we started solae because every swimsuit we tried either slipped, showed too much, or didn't match anything. so we made our own — plain, comfy, and matching all the way down to the shorts.</p>
+            <p>hi from the shore! every summer i paired a one-piece with mismatched shorts and wished there was something better. so i made it: matching swim sets with the coverage, comfort and confidence i couldn't find anywhere else.</p>
             <p class="t-hand">wish you were here x</p>
           </div>
           <div class="postcard__side">
             <div class="postcard__stamp stamp-wrap">
               <div class="stamp"><div class="stamp__inner">
                 <img src="https://images.unsplash.com/photo-1468413253725-0d5181091126?auto=format&fit=crop&w=400&q=70" alt="palm trees over a white sand beach" loading="lazy">
-                <p class="t-label">₹ 26 · india</p>
+                <p class="t-label">SAR 3 · saudi</p>
               </div></div>
             </div>
             <svg class="postmark" viewBox="0 0 120 120" aria-hidden="true">
@@ -222,21 +223,49 @@
       <svg class="edge edge--flip edge--bottom" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0H1440V18C1380 34 1320 34 1260 18S1140 2 1080 18 960 34 900 18 780 2 720 18 600 34 540 18 420 2 360 18 240 34 180 18 60 2 0 18Z"/></svg>
     </section>
 
-    <!-- 7 · About us — pin: "SUIT" about rows -->
+    <!-- 7 · Our story — the Brand Starter's story, vision and mission; logo 1 is the sketch it began with.
+         Then the three things we care about (pin: "SUIT" about rows) -->
     <section id="about" class="section about" aria-labelledby="about-title">
       <svg class="about__leaf" style="right:-4rem;top:2rem" aria-hidden="true" viewBox="0 0 300 300"><use href="#i-leaf"/></svg>
       <svg class="about__leaf" style="left:-5rem;bottom:0;transform:scaleX(-1) rotate(20deg)" aria-hidden="true" viewBox="0 0 300 300"><use href="#i-leaf"/></svg>
       <div class="wrap">
         <div class="about__head">
-          <h2 id="about-title" class="t-wide t-wide--xl">about us</h2>
-          <p class="t-script" style="font-size:clamp(1.3rem,1.1rem + .8vw,1.8rem);color:var(--ocean)">three things we care about</p>
+          <h2 id="about-title" class="t-wide t-wide--xl">our story</h2>
+          <p class="t-script" style="font-size:clamp(1.3rem,1.1rem + .8vw,1.8rem);color:var(--stormy)">it started with a sketch of the sun</p>
+        </div>
+        <div class="story">
+          <figure class="story__sketch reveal">
+            <div class="story__card"><img class="logo-sun" src="assets/img/logo-sun.svg" alt="Ghalia's drawing: a half sun with the letters s, o, l, a, e running up its edge and wavy beams" loading="lazy"></div>
+            <figcaption class="t-hand">where it all began</figcaption>
+          </figure>
+          <div class="story__text reveal">
+            <p class="story__lede">solae began with a sketch of the sun i drew in 2024, long before i knew how to make a swimsuit.</p>
+            <p>growing up in saudi arabia, i struggled to find swimwear that felt right for me. most options were either fully covered or not designed with modesty in mind, and very few were both stylish and comfortable. every summer, i found myself pairing a one-piece with mismatched shorts and wishing there was something better.</p>
+            <p>so i decided to create it. solae makes matching swim sets, a one-piece paired with shorts, for girls like me who want coverage, comfort and confidence without giving up on style.</p>
+            <p>the name comes from <i>soleil</i>, the french word for sun. to me, it represents what summer should feel like: bright, free and completely your own.</p>
+            <p class="t-hand" aria-hidden="true">ghalia x</p>
+          </div>
+        </div>
+        <div class="vm">
+          <div class="vm__card vm__card--vision reveal">
+            <img class="vm__mark" src="assets/img/logo-mark.svg" alt="" loading="lazy">
+            <h3 class="t-label">our vision</h3>
+            <p>to become the gulf's most-loved swimwear brand for teen girls, where modesty and style go hand in hand.</p>
+          </div>
+          <div class="vm__card reveal">
+            <h3 class="t-label">our mission</h3>
+            <p>solae creates modest, modern swim sets for teen girls: designed for comfort, made for confidence, and true to who they are.</p>
+          </div>
+        </div>
+        <div class="about__head">
+          <p class="t-script" style="font-size:clamp(1.3rem,1.1rem + .8vw,1.8rem);color:var(--stormy)">three things we care about</p>
         </div>
         <div class="about__rows">
           <div class="about__row reveal">
             <div class="frame-wavy"><img src="https://images.pexels.com/photos/10495658/pexels-photo-10495658.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="friends sitting together on the beach in the shade" loading="lazy"></div>
             <div>
-              <div class="about__label"><svg aria-hidden="true"><use href="#i-squiggle"/></svg><h3>made by teens</h3></div>
-              <p>we're a group of teens who got tired of shopping for swimwear made for someone else. every piece is designed, tested and argued over by us.</p>
+              <div class="about__label"><svg aria-hidden="true"><use href="#i-squiggle"/></svg><h3>modest by design</h3></div>
+              <p>coverage where you want it, without giving up on style. every suit is double-lined and fully opaque when wet, so it stays modest in the water and out of it.</p>
             </div>
           </div>
           <div class="about__row reveal">
@@ -250,7 +279,7 @@
             <div class="frame-wavy"><img src="https://images.pexels.com/photos/5405629/pexels-photo-5405629.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="a tropical swimsuit laid flat with a camera, palm leaf and straw bag" loading="lazy"></div>
             <div>
               <div class="about__label"><svg aria-hidden="true"><use href="#i-squiggle"/></svg><h3>made to match</h3></div>
-              <p>shorts, cover-ups and skirts come in every suit colour — plus white and black for the days you want it simple.</p>
+              <p>every one-piece has shorts to match, knee-length or just above. cover-ups come in every suit colour too, plus white and black for the days you want it simple.</p>
             </div>
           </div>
         </div>
@@ -286,11 +315,11 @@
         </div>
       </div>
       <div class="rail" id="social-rail" style="max-width:var(--page-max);margin-inline:auto">
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/9872701/pexels-photo-9872701.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a sprinkle donut float on a bright pool" loading="lazy"></div><span>@ananya.k</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/3149285/pexels-photo-3149285.jpeg?auto=compress&cs=tinysrgb&w=700" alt="two friends watching the sunset on the beach" loading="lazy"></div><span>@meera.sea</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/24031225/pexels-photo-24031225.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a girl paddling a yellow kayak on calm water" loading="lazy"></div><span>@riya.rides</span></a>
+        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/9872701/pexels-photo-9872701.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a sprinkle donut float on a bright pool" loading="lazy"></div><span>@noura.k</span></a>
+        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/3149285/pexels-photo-3149285.jpeg?auto=compress&cs=tinysrgb&w=700" alt="two friends watching the sunset on the beach" loading="lazy"></div><span>@lama.sea</span></a>
+        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/24031225/pexels-photo-24031225.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a girl paddling a yellow kayak on calm water" loading="lazy"></div><span>@reem.rides</span></a>
         <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/31629322/pexels-photo-31629322.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a pink flamingo float among tropical plants" loading="lazy"></div><span>@solae.swim</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/33265997/pexels-photo-33265997.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a group of girls posing on rocks by the sea" loading="lazy"></div><span>@tara.goes</span></a>
+        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/33265997/pexels-photo-33265997.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a group of girls posing on rocks by the sea" loading="lazy"></div><span>@dana.goes</span></a>
         <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/8926078/pexels-photo-8926078.jpeg?auto=compress&cs=tinysrgb&w=700" alt="two girls running along the shoreline" loading="lazy"></div><span>@solae.swim</span></a>
       </div>
     </section>
@@ -300,7 +329,7 @@
     <div class="footer__card">
       <div class="footer__grid">
         <nav class="footer__links" aria-label="shop">
-          <p class="t-label">shop</p><a href="shop.html#swimsuits">swimsuits</a><a href="shop.html#signatures">signatures</a><a href="shop.html#shorts">matching shorts</a><a href="shop.html#cover-ups">cover-ups</a><a href="shop.html#skirts">the skirt</a>
+          <p class="t-label">shop</p><a href="shop.html#swimsuits">swimsuits</a><a href="shop.html#signatures">signatures</a><a href="shop.html#shorts">matching shorts</a><a href="shop.html#cover-ups">cover-ups</a>
         </nav>
         <nav class="footer__links" aria-label="help">
           <p class="t-label">help</p><a href="#">size guide</a><a href="#">shipping</a><a href="#">exchanges</a><a href="#">contact</a>
@@ -320,11 +349,11 @@
         </div>
       </div>
       <div class="footer__big">
-        <span class="wordmark" aria-hidden="true">Solae</span>
         <span class="t-hand" aria-hidden="true">see you on the shore</span>
+        <img class="logo-sun" src="assets/img/logo-sun.svg" alt="Solae" loading="lazy">
       </div>
       <div class="footer__legal">
-        <span>© 2026 SOLAE · by teens, for teens · photos: pexels &amp; unsplash</span>
+        <span>© 2026 SOLAE · modest swim sets for teen girls · photos: pexels &amp; unsplash</span>
         <nav aria-label="legal"><a href="#">privacy</a><a href="#">terms</a><a href="design-system.html">design system</a></nav>
       </div>
     </div>
@@ -340,7 +369,7 @@
     <div class="drawer__ship"><span data-ship-msg></span><div class="drawer__bar"><i data-ship-bar></i></div></div>
     <div class="drawer__items" data-cart-items></div>
     <div class="drawer__foot" data-cart-foot hidden>
-      <div class="drawer__total"><span>subtotal</span><span data-cart-total>₹0</span></div>
+      <div class="drawer__total"><span>subtotal</span><span data-cart-total>SAR 0</span></div>
       <button class="btn btn--block checkout" type="button">checkout</button>
       <p class="t-small t-mute" style="text-align:center">taxes included · shipping calculated at checkout</p>
     </div>
