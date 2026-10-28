@@ -6,7 +6,7 @@ Mock portfolio + store for SOLAE: modest, modern swim sets for teen girls (a one
 - `shop.html`: the shop, as a wide sea chart under the header that works as the category nav. The sea lane writes "Solae" in one dotted line of flowing calligraphy; each category is a small island in and around its loops. Hover an island for what's there, click and the boat sails along the writing. Deep links: `shop.html#swimsuits`, `#signatures`, `#shorts`, `#cover-ups`
 - `product.html?p=<id>`: product page, photos as swipeable postcards (ids: `tidepool`, `cabana`, `shallows`, `off-shoulder`, `flounce`, `boardwalk`, `drift`, `white-one`)
 - `design-system.html` (private: not linked from the store, and `vercel.json` sends it to the homepage on the live site, so open it locally): the three logo options with mock-ups, colour, type, frames, components and where each section comes from
-- `assets/img/logo-sun.svg`, `logo-mark.svg`, `logo-soft-sun.svg`: logo option 1 (Ghalia's sun), option 3's sun symbol and option 2's soft sun. Option 2's wordmark is live text (`.logo-word`)
+- `assets/img/logo-sun.svg`, `logo-sun-up.svg`, `logo-mark.svg`, `logo-soft-sun.svg`: logo option 1 (Ghalia's sun, and turned upright as a sunrise for the header), option 3's sun symbol and option 2's soft sun. Option 2's wordmark is live text (`.logo-word`)
 - `assets/css/tokens.css`: colours, fluid type and spacing, frame masks
 - `assets/css/solae.css`: base, logos, frames, components, sections
 - `assets/js/solae.js`: product data, ports (categories), catalog filter, bag drawer, shop map, postcard product page

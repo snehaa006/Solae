@@ -219,7 +219,10 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 /* in a bar, option 3 sits side by side instead of stacked */
 :is(.header__brand, .mobile-nav__brand) .logo-mark { grid-auto-flow: column; align-items: center; gap: .6em; font-size: clamp(.85rem, .78rem + .3vw, 1.05rem); }
 :is(.header__brand, .mobile-nav__brand) .logo-mark img { width: 2.9em; height: 2.9em; margin-bottom: 0; }
-:is(.header__brand, .mobile-nav__brand) .logo-sun { width: auto; height: calc(var(--header-h) - .5rem); }
+/* option 1 turns upright in the bar: the half sun sits on the header's bottom edge like a sunrise,
+   big enough to read SOLAE, its longest beams running off the top */
+[data-logo="1"] :is(.header__brand, .mobile-nav__brand) { display: flex; align-items: flex-end; justify-content: center; height: var(--header-h); overflow: hidden; }
+:is(.header__brand, .mobile-nav__brand) .logo-sun-up { width: auto; height: calc(var(--header-h) * 1.5); max-width: none; }
 .header__tools { justify-self: end; display: flex; align-items: center; gap: .15rem; }
 .header__tools .nav { margin-right: 1rem; }
 .menu-btn { display: none; }

@@ -223,13 +223,14 @@ const LOGO_KEY = "solae-logo-option";
 const store = (k, v) => { try { return v === undefined ? localStorage.getItem(k) : localStorage.setItem(k, v); } catch { return null; } };
 const SUN_IMG = `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="">`;
 const MARK_IMG = `<img class="sun-mark" src="assets/img/logo-mark.svg" alt="">`;
-/* full: the whole logo · hero: its sun alone, cut by the window's edge · mark: small, for the vision card */
+/* full: the whole logo · bar: in the header and menu (option 1 turned upright, a sunrise on the header's edge)
+   hero: its sun alone, cut by the window's edge · mark: small, for the vision card */
 const LOGOS = {
-  "1": { name: "ghalia's sun", icon: "assets/img/logo-sun.svg", full: SUN_IMG, hero: SUN_IMG, mark: SUN_IMG,
+  "1": { name: "ghalia's sun", icon: "assets/img/logo-sun.svg", full: SUN_IMG, bar: `<img class="logo-sun-up" src="assets/img/logo-sun-up.svg" alt="">`, hero: SUN_IMG, mark: SUN_IMG,
          story: `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="Ghalia's drawing: a half sun with the letters s, o, l, a, e running up its edge and wavy beams">` },
-  "2": { name: "minimal wordmark", icon: "assets/img/logo-soft-sun.svg", full: `<span class="logo-word">S<i></i>LAE</span>`, hero: `<i class="sun-soft"></i>`, mark: `<i class="sun-soft"></i>`,
+  "2": { name: "minimal wordmark", icon: "assets/img/logo-soft-sun.svg", full: `<span class="logo-word">S<i></i>LAE</span>`, bar: `<span class="logo-word">S<i></i>LAE</span>`, hero: `<i class="sun-soft"></i>`, mark: `<i class="sun-soft"></i>`,
          story: `<span class="logo-word" role="img" aria-label="Solae: the name in spaced capitals with a soft sun for the O">S<i></i>LAE</span>` },
-  "3": { name: "sun symbol and name", icon: "assets/img/logo-mark.svg", full: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>`, hero: MARK_IMG, mark: MARK_IMG,
+  "3": { name: "sun symbol and name", icon: "assets/img/logo-mark.svg", full: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>`, bar: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>`, hero: MARK_IMG, mark: MARK_IMG,
          story: `<span class="logo-mark" role="img" aria-label="Solae: Ghalia's sun as a symbol, with the name underneath"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>` },
 };
 let logoOpt = LOGO_DEFAULT;
