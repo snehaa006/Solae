@@ -62,6 +62,14 @@
   --font-serif:    "Instrument Serif", "Times New Roman", serif;           /* wordmark + captions */
   --font-script:   "Mrs Saint Delafield", "Brush Script MT", cursive;      /* handwritten notes */
   --font-fluid:    "Sour Gummy", "Poppins", "Arial Black", sans-serif;   /* gooey wide display (SKIMS, "your hair is thirsty") */
+  /* postcard type, product page only — each one matched to a postcard pin */
+  --font-post-cond:   "Roboto Serif", Georgia, serif;           /* stamp title (lemon stripe short), wdth 50 */
+  --font-post-mono:   "Space Mono", ui-monospace, monospace;    /* stamp details */
+  --font-post-script: "Pinyon Script", cursive;                /* "built for", "#01" */
+  --font-post-didone: "Bodoni Moda", Didot, serif;             /* "WARM DAYS", postmarks */
+  --font-post-marker: "Shadows Into Light", cursive;           /* "a postcard from summer" */
+  --font-post-hand:   "Cedarville Cursive", cursive;           /* handwritten lines (caprini) */
+  --font-post-grot:   "Archivo", "Inter", sans-serif;           /* "welcome to your endless summer", wdth 75 */
 
   /* Fluid type scale — 360px → 1440px viewport */
   --fs-mega:    clamp(3rem,     1.4rem + 7.1vw,  7.75rem);
