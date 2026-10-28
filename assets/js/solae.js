@@ -308,7 +308,7 @@ const CHART = {
                    deco: [["palm", 684, 472, .72], ["palm", 728, 468, .6]] },
     "cover-ups": { at: [1172, 102], r: [68, 28], seed: 15, sign: [1172, 44],  dock: [1090, 228],
                    deco: [["hut", 1155, 112, .7], ["palm", 1197, 108, .62]] },
-    skirts:      { at: [1324, 410], r: [52, 17], seed: 2,  sign: [1324, 456], dock: [1232, 372],
+    skirts:      { at: [1324, 410], r: [52, 17], seed: 2,  sign: [1312, 456], dock: [1232, 372],
                    deco: [["palm", 1326, 414, .55]] },
   },
   /* "solae" in one stroke, lead-in to swash; the o and the a go up their left side and back, like real cursive */

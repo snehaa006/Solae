@@ -51,15 +51,14 @@
   </div>
 
   <main id="main">
-    <!-- 1 · Shop hero — fluid type (pins: SKIMS, "your hair is thirsty") -->
-    <section class="shop-hero wrap" aria-labelledby="shop-title">
-      <h1 id="shop-title" class="t-fluid">the shop</h1>
-      <p class="shop-hero__intro">the boat sails you there — whatever lives on that island shows up below.</p>
-    </section>
-
-    <!-- 2 · Sea chart + port panel — pin: hand-drawn "solae" chart, ship reference -->
-    <section class="shop" data-shop aria-label="shop by island">
-      <div class="wrap">
+    <!-- Shop: the title and a small sea chart share one short band, so the map works as the category nav
+         (pins: SKIMS / "your hair is thirsty" fluid type, hand-drawn "solae" chart, ship reference) -->
+    <section class="shop" data-shop aria-labelledby="shop-title">
+      <div class="wrap shop-top">
+        <div class="shop-hero">
+          <h1 id="shop-title" class="t-fluid">the shop</h1>
+          <p class="shop-hero__intro">the boat sails you there — whatever lives on that island shows up below.</p>
+        </div>
         <div class="chart-scroll">
           <div class="chart" data-chart></div>
         </div>
