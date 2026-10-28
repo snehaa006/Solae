@@ -4,16 +4,20 @@ Mock portfolio + store for SOLAE: modest, modern swim sets for teen girls (a one
 
 - `index.html`: homepage: hero, catalog, signatures, and "our story" with her story, the vision and the mission. The hero ends where the chosen logo's sun rises out of the window's edge
 - `shop.html`: the shop, as a wide sea chart under the header that works as the category nav. The sea lane writes "Solae" in one dotted line of flowing calligraphy; each category is a small island in and around its loops. Hover an island for what's there, click and the boat sails along the writing. Deep links: `shop.html#swimsuits`, `#signatures`, `#shorts`, `#cover-ups`
-- `product.html?p=<id>`: product page, photos as swipeable postcards (ids: `tidepool`, `cabana`, `shallows`, `off-shoulder`, `flounce`, `boardwalk`, `drift`, `white-one`)
+- `product.html?p=<id>`: product page after k2o: photo and thumbnails, colour and size, the set or just the suit, a facts strip, reviews and pairs well with (ids: `tidepool`, `cabana`, `shallows`, `off-shoulder`, `flounce`, `boardwalk`, `drift`, `white-one`)
 - `design-system.html` (private: not linked from the store, and `vercel.json` sends it to the homepage on the live site, so open it locally): the three logo options with mock-ups, colour, type, frames, components and where each section comes from
 - `assets/img/logo-sun.svg`, `logo-sun-up.svg`, `logo-mark.svg`, `logo-soft-sun.svg`: logo option 1 (Ghalia's sun, and turned upright as a sunrise for the header), option 3's sun symbol and option 2's soft sun. Option 2's wordmark is live text (`.logo-word`)
 - `assets/css/tokens.css`: colours, fluid type and spacing, frame masks
 - `assets/css/solae.css`: base, logos, frames, components, sections
-- `assets/js/solae.js`: product data, ports (categories), catalog filter, bag drawer, shop map, postcard product page
+- `assets/js/solae.js`: logos, product data, product cards, bag drawer, shop map, product page and reviews
 
 ## Logos
 
 None of the three Brand Starter options is final, so the site wears one at a time, everywhere a logo shows (header, menu, the sun at the end of the hero, the story and vision cards, the product welcome card, the footer, the tab icon). The logo bar in the bottom-left corner of every store page switches between them (hide it with ×; add `?logos` to any address to bring it back). Adding `?logo=1`, `?logo=2` or `?logo=3` to an address picks one too. The browser remembers the choice. Everyone else sees `LOGO_DEFAULT` in `assets/js/solae.js` (option 1 for now). The brand page (local only) links to all three.
+
+## Reviews
+
+Each product page has a reviews section. Real reviews go in `REVIEWS` in `assets/js/solae.js` as they come in; until a piece has some, its page says "no reviews yet". Add `&reviews=sample` to a product address (for example `product.html?p=tidepool&reviews=sample`) to preview the layout with made-up reviews, which visitors never see.
 
 ## Prices
 

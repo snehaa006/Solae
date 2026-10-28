@@ -59,35 +59,35 @@ const PRODUCTS = [
   { id: "tidepool", name: "the tidepool one-piece", short: "tidepool", cat: "swimsuits", type: "scoop-neck one-piece", price: 229,
     img: "31094963", pos: "80% 30%", alt: "a lagoon-blue one-piece swimsuit, worn", gallery: ["31094963", "29957708"],
     colors: ["tropical", "cerulean", "brick", "turf"],
-    blurb: "our everyday one-piece. plain, double-lined and scooped just right — with removable pads held in by a second layer of fabric, so nothing shifts when you dive in." },
+    blurb: "our everyday one-piece: plain, double-lined and scooped just right." },
   { id: "cabana", name: "the cabana square-neck", short: "cabana", cat: "swimsuits", type: "square-neck one-piece", price: 219,
     img: "10486115", pos: "50% 30%", alt: "three friends in one-piece swimsuits laughing together on the beach", gallery: ["10486115", "8926078"],
     colors: ["sky", "willow", "ocean", "brick"],
-    blurb: "a plain square neckline and a low scoop back. small padding, adjustable straps, and nothing that digs in." },
+    blurb: "a plain square neck and a low scoop back, with nothing that digs in." },
   { id: "shallows", name: "the shallows racerback", short: "shallows", cat: "swimsuits", type: "racerback one-piece", price: 219,
     img: "33265997", pos: "50% 40%", alt: "a group of girls in swimsuits posing on rocks by the sea", gallery: ["33265997", "40471890"],
     colors: ["ocean", "turf", "black"],
-    blurb: "a plain high neck and a racerback that stays put for laps, cannonballs and climbing out the ladder." },
+    blurb: "a high neck and a racerback that stays put for laps and cannonballs." },
   { id: "off-shoulder", name: "the off-shoulder", short: "off-shoulder", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 259,
     img: "28681540", pos: "50% 30%", alt: "a black off-the-shoulder one-piece, worn standing in the sea", gallery: ["28681540", "28681548"],
     colors: ["black", "brick", "cerulean"],
-    blurb: "one of our two signature styles. a soft off-the-shoulder neckline with a hidden silicone grip, so it stays exactly where you put it." },
+    blurb: "a soft off-the-shoulder neckline with a hidden grip, so it stays where you put it." },
   { id: "flounce", name: "the flounce", short: "flounce", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 259,
     img: "4271771", pos: "50% 40%", alt: "a blue-grey one-piece with ruffled flounce straps, laid flat", gallery: ["4271771", "27330805"],
     colors: ["sky", "tropical", "willow"], stitch: ["basting stitch", "no stitch"],
-    blurb: "our second signature: soft flounces on the straps, with a basting stitch down the middle. still deciding if it stays — pick the one you'd wear." },
+    blurb: "soft flounces on the straps, with or without a basting stitch down the middle." },
   { id: "boardwalk", name: "the boardwalk short", short: "boardwalk", cat: "shorts", type: "knee-length short", price: 99,
     img: "3998649", pos: "50% 60%", alt: "swim shorts and suits laid out flat on a wooden floor", gallery: ["3998649", "25649794"],
     colors: [],
-    blurb: "knee-length (or just above), quick-dry and made to match your suit — or keep it classic in white or black." },
+    blurb: "knee-length and quick-dry, in your suit's colour or in white or black." },
   { id: "drift", name: "the drift cover-up", short: "drift", cat: "cover-ups", type: "cover-up", price: 149,
     img: "35126783", pos: "50% 35%", alt: "a sheer yellow cover-up worn on a tropical beach", gallery: ["35126783", "36173873"],
     colors: [],
-    blurb: "a breezy kaftan that comes in a colour to match each suit. throw it on for the walk from the water to lunch." },
+    blurb: "a breezy kaftan in every suit colour, for the walk from the water to lunch." },
   { id: "white-one", name: "the white one", short: "white one", cat: "cover-ups", type: "cover-up", price: 169,
     img: "15560782", pos: "50% 30%", alt: "a long white lace cover-up worn on a misty beach", gallery: ["15560782", "8371478"],
     colors: ["white"],
-    blurb: "the one white cover-up in the collection — lace-light and long, made to go over every single suit we make." },
+    blurb: "a long, light white cover-up that goes over every suit we make." },
 ];
 
 const SIZES = ["xs", "s", "m", "l", "xl"];
@@ -104,34 +104,23 @@ byId("drift").colors = SUIT_COLORS;
 
 /* Shop map: each category is a place. `notes` define the category in a few words. */
 const PORTS = [
-  { id: "all", place: "solae harbour", label: "everything", line: ["made for", "the sun"],
-    def: "every piece in drop 01, all in one place. pick an island on the map to narrow it down.",
+  { id: "all", place: "solae harbour", label: "everything",
     notes: ["all of drop 01", "start here"] },
-  { id: "swimsuits", place: "swimsuit bay", label: "plain swimsuits", line: ["built for", "warm days"],
-    def: "plain, double-lined one-pieces in solid colours. every suit has small removable pads, held in place by a second layer of fabric.",
+  { id: "swimsuits", place: "swimsuit bay", label: "plain swimsuits",
     notes: ["double-lined", "small removable pads", "held in by a second layer"] },
-  { id: "signatures", place: "signature isle", label: "signature swimsuits", line: ["built for", "warm days"],
-    def: "the only two suits that aren't plain: one off the shoulder, one with flounces. same lining, same pads that stay put.",
+  { id: "signatures", place: "signature isle", label: "signature swimsuits",
     notes: ["off the shoulder", "flounces + basting stitch", "small removable pads"] },
-  { id: "shorts", place: "shorts shore", label: "matching shorts", line: ["made to", "match"],
-    def: "knee-length, or just above. get them in your suit's colour, or keep it simple in white or black.",
+  { id: "shorts", place: "shorts shore", label: "matching shorts",
     notes: ["knee-length or just above", "match your suit", "or white / black"] },
-  { id: "cover-ups", place: "cover-up cove", label: "cover-ups", line: ["for the", "walk home"],
-    def: "a kaftan in every suit colour, plus the white one, which goes with everything.",
+  { id: "cover-ups", place: "cover-up cove", label: "cover-ups",
     notes: ["matches every suit", "plus the white one", "quick-dry"] },
 ];
 const portOf = p => p.sig ? "signatures" : p.cat;
 const portById = id => PORTS.find(x => x.id === id);
 const inPort = id => id === "all" ? PRODUCTS : PRODUCTS.filter(p => portOf(p) === id);
-const pad = n => String(n).padStart(2, "0");
 
 const photo = (p, { w = 900, cls = "frame", id = p.img, alt = p.alt } = {}) =>
   `<div class="${cls}"><img src="${PX(id, w)}" alt="${alt}" loading="lazy" style="object-position:${p.pos}"></div>`;
-
-const ICON = {
-  prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
-  next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
-};
 
 /* product card (ref: k2o): a photo, the name and the price. On hover the second photo
    crossfades in over the whole card with "shop now"; on touch screens the card is simply a link */
@@ -570,11 +559,9 @@ if (shop) {
     panel.innerHTML = `
       <header class="port-head">
         <h2 class="t-label"><span class="sr-only">${port.place}: </span>${port.label} · ${pieces(inPort(id).length)}</h2>
-        <p class="port-head__about">${port.def}</p>
       </header>
       <div class="grid-products">${inPort(id).map(p => card(p)).join("")}</div>
       <div class="port-next">
-        <p class="t-hand" aria-hidden="true">next stop</p>
         <button class="btn btn--ink" type="button" data-port="${next.id}"><svg class="port-next__boat" aria-hidden="true"><use href="#i-boat"/></svg>sail to ${next.place}</button>
       </div>`;
   }
@@ -614,218 +601,135 @@ if (shop) {
   if (portById(start) && start !== "all") setTimeout(() => go(start, { from: "map" }), 450);
 }
 
-/* ---- Product page: postcards ----------------------------------------------- */
+/* ---- Product page (ref: k2o) ------------------------------------------------ */
+/* A big photo with thumbnails; beside it the name, price, colour and size, and one box
+   with the set / just the suit, add to bag and three short folds. Then a facts strip,
+   the reviews and "pairs well with". */
+
+/* Reviews go here as they come in: { "tidepool": [{ name, date: "2026-07-12", rating: 5, text }] }.
+   Until a piece has some, its page says "no reviews yet". ?reviews=sample previews the layout
+   with made-up reviews; visitors never see those. */
+const REVIEWS = {};
+const SAMPLE_REVIEWS = [
+  { name: "noura a.", date: "2026-07-12", rating: 5, text: "finally a suit that stays put when i jump in, and the shorts match perfectly." },
+  { name: "lama k.", date: "2026-07-03", rating: 5, text: "comfortable all day at the beach. i didn't have to keep fixing it." },
+  { name: "reem s.", date: "2026-06-21", rating: 4, text: "love the colour. i sized up for more coverage and it's just right." },
+];
+const FACTS = {
+  swimsuits: ["double-lined", "removable pads", "fully opaque", "chlorine resistant"],
+  shorts: ["knee-length", "quick-dry", "matches every suit", "chlorine resistant"],
+  "cover-ups": ["lightweight", "quick-dry", "goes over every suit", "packs small"],
+};
+const starRow = r => "★★★★★".slice(0, Math.round(r)) + "☆☆☆☆☆".slice(0, 5 - Math.round(r));
+
 const pdp = document.querySelector("[data-pdp]");
 if (pdp) {
-  const p = byId(new URLSearchParams(location.search).get("p")) || PRODUCTS[0];
-  const port = portById(portOf(p)), n = PRODUCTS.indexOf(p) + 1;
-  const isSuit = p.cat === "swimsuits";
-  let color = p.colors[0], size = "m", stitch = p.stitch?.[0] || "";
-  const setRows = isSuit ? [byId("boardwalk"), byId("drift")] : [];
-  const setState = { boardwalk: { on: false, opt: "matching" }, drift: { on: false, opt: "matching" } };
-  // "match my suit" uses the suit's colour when the set piece comes in it
-  const setColor = (r, opt) => opt !== "matching" ? opt : r.colors.includes(color) ? color : r.colors[0];
-  const optsFor = r => r.id === "boardwalk" ? ["matching", "white", "black"] : ["matching"];
+  const params = new URLSearchParams(location.search);
+  const p = byId(params.get("p")) || PRODUCTS[0];
+  const isSuit = p.cat === "swimsuits", shorts = byId("boardwalk");
+  const reviews = REVIEWS[p.id] || (params.get("reviews") === "sample" ? SAMPLE_REVIEWS : []);
+  const avg = reviews.length ? reviews.reduce((n, r) => n + r.rating, 0) / reviews.length : 0;
+  let color = p.colors[0], size = "m", stitch = p.stitch?.[0] || "", shot = 0, set = isSuit;
+  // the matching shorts come in the suit's colour
+  const shortsColor = () => shorts.colors.includes(color) ? color : shorts.colors[0];
   document.title = `${p.name} — SOLAE`;
-  document.querySelector("[data-crumb]") && (document.querySelector("[data-crumb]").textContent = p.name);
-  const crumbPort = document.querySelector("[data-crumb-port]");
-  if (crumbPort) { crumbPort.textContent = port.place; crumbPort.href = `shop.html#${port.id}`; }
-
-  /* the postcards — each one follows its pin's layout piece for piece:
-     1 lemon stripe short (stamp), 2 built for warm days (photo), 3 a postcard from summer (letter), 4 caprini (welcome) */
-  const shots = p.gallery, alt = i => i ? `another look at ${p.name}` : p.alt;
-  const img = (id, i, w = 1100) => `<img src="${PX(id, w)}" alt="${alt(i)}" loading="${i ? "lazy" : "eager"}" style="object-position:${p.pos}">`;
-  const look = isSuit ? byId("boardwalk") : byId("tidepool");
-  // the note on the photo card holds a sentence or two of the blurb
-  const note = p.blurb.split(/(?<=\.) /).reduce((t, x) => t.length < 70 ? (t ? t + " " : "") + x : t, "");
-  const waves = (n, w) => `<svg class="post__waves" viewBox="0 0 ${w} ${n * 12}" preserveAspectRatio="none" aria-hidden="true">${Array.from({ length: n }, (_, i) => `<path d="M0 ${6 + i * 12}${Array.from({ length: w / 20 }, () => "q5-5 10 0t10 0").join("")}"/>`).join("")}</svg>`;
-  const plane = '<svg class="post__plane" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15.5v-2l-8-5V3.6a1.5 1.5 0 0 0-3 0v4.9l-8 5v2l8-2.5v5.4L8 19.6V21l3.5-1 3.5 1v-1.4L13 18.4V13z"/></svg>';
-  const sparkle = '<path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/>';
-  const slides = [
-    `<article class="post post--stamp">
-      <div class="post__perf"><div class="post__panel"></div></div>
-      <i class="post__specks" aria-hidden="true"></i>
-      <svg class="post__ring" viewBox="0 0 200 56" preserveAspectRatio="none" aria-hidden="true"><path d="M30 50C8 46 2 30 14 18S70 2 116 3s80 8 80 24-40 26-96 27c-30 .5-60-2-74-8"/></svg>
-      <span class="post__num">#${pad(n)}</span>
-      <span class="post__handle">@solae.swim</span>
-      <p class="post__title" style="--len:${p.name.length}">${p.name}</p>
-      <div class="post__shot">${img(shots[0], 0)}</div>
-      <p class="post__meta">${p.name}<b>${sar(p.price)}</b></p>
-      <p class="post__date">drop 01 · live now<br>ships across saudi arabia</p>
-      <svg class="post__clip" viewBox="0 0 100 80" aria-hidden="true"><defs><linearGradient id="clip-metal" x1="0" y1="0" x2="1" y2="1"><stop class="post__clip-hi" offset="0"/><stop class="post__clip-mid" offset=".55"/><stop class="post__clip-lo" offset="1"/></linearGradient></defs><path class="post__clip-wire" d="M30 38 20 9a5 5 0 0 1 9-3l14 32M70 38 80 9a5 5 0 0 0-9-3L57 38"/><path class="post__clip-body" d="M24 34h52l10 36H14z"/><path class="post__clip-fold" d="M24 34h52l2 7H22z"/><path class="post__clip-shine" d="M22 48h56"/></svg>
-    </article>`,
-    `<article class="post post--photo">
-      ${img(shots[1] || shots[0], 1)}
-      <p class="post__label">solae · drop 01<br>${port.place}</p>
-      <p class="post__head" style="--len:${port.line[1].length}"><span>${port.line[0]}</span>${port.line[1]}</p>
-      <div class="post__note"><p>${note}</p></div>
-      <svg class="post__shell" viewBox="0 0 100 92" aria-hidden="true"><path class="post__shell-ears" d="M36 72 26 88h48L64 72z"/><path class="post__shell-fan" d="M50 4C24 4 4 26 8 52c2 10 18 22 42 24 24-2 40-14 42-24C96 26 76 4 50 4z"/><path class="post__shell-ribs" d="M50 76V8M50 76 34 10M50 76 66 10M50 76 20 20M50 76 80 20M50 76 11 36M50 76 89 36"/></svg>
-    </article>`,
-    `<article class="post post--letter">
-      <div class="post__card"><div class="post__perf"><div class="post__paper"></div></div>
-        <div class="post__waves-a">${waves(6, 240)}</div>
-        <p class="post__pm post__pm--a"><b>jeddah</b><span>saudi arabia</span><span>04.05.26</span></p>
-        <p class="post__pm post__pm--b"><b>umluj</b><span>tabuk</span><span>18.06.26</span></p>
-        <svg class="post__pm post__pm--c" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="57"/><circle cx="60" cy="60" r="51"/>
-          <path id="pm-arc-c" d="M18 62a42 42 0 0 1 84 0" fill="none" stroke="none"/><text class="post__pm-arc"><textPath href="#pm-arc-c" startOffset="50%" text-anchor="middle">YANBU</textPath></text>
-          <path class="post__pm-icon" d="M55 74 57 52h6l2 22zM56 52h8v-4h-8zM58 48l2-5 2 5M54 74h12"/>
-          <text x="60" y="88" text-anchor="middle" class="post__pm-sm">MADINAH</text><text x="60" y="99" text-anchor="middle" class="post__pm-sm">02.07.26</text></svg>
-        <p class="post__from">a postcard<br>from summer</p>
-        <p class="post__ss">solae ss'26</p>
-        <p class="post__pm post__pm--d"><b>half moon<br>bay</b><span>khobar</span><span>29.06.26</span></p>
-        <svg class="post__palm" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 58c0-14 1-26 4-34"/><path class="post__palm-leaf" d="M34 24C26 16 12 16 4 24c10-4 20-4 30 0zM34 24c6-10 18-12 24-6-8-2-16 0-24 6zM34 24c-2-10 4-18 12-20-6 6-10 12-12 20zM34 24C24 24 16 32 16 40c4-8 10-14 18-16zM34 24c10 0 16 8 16 16-4-8-8-12-16-16z"/></svg>
-        <p class="post__pm post__pm--e"><b>farasan</b><span>jazan ${plane}</span><span>07.07.26</span></p>
-        <p class="post__pm post__pm--f"><span>postmarked from</span><b>jeddah · umluj · yanbu<br>half moon bay · farasan</b></p>
-        <svg class="post__pm post__pm--g" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37"/><use href="#i-sun-solo" x="22" y="22" width="36" height="36"/></svg>
-      </div>
-      <div class="post__strip">
-        ${[shots[0], shots[1] || shots[0]].map((id, i) => `<div>${img(id, i + 1, 500)}</div>`).join("")}
-        <div><img src="${PX(look.img, 500)}" alt="${look.alt}" loading="lazy" style="object-position:${look.pos}"></div>
-      </div>
-    </article>`,
-    `<article class="post post--brand">
-      <div class="post__front">
-        <span class="post__logo" aria-hidden="true" data-logo-slot>${LOGOS[logoOpt].full}</span>
-        <svg class="post__sparks" viewBox="0 0 100 40" aria-hidden="true"><g transform="translate(14 14) scale(.9)">${sparkle}</g><g transform="translate(66 4) scale(1.05)">${sparkle}</g></svg>
-        <p class="post__tag">made for the sun</p>
-      </div>
-      <svg class="post__paperclip" viewBox="0 0 24 90" aria-hidden="true"><path d="M7 70V14a6.5 6.5 0 0 1 13 0v62a10 10 0 0 1-20 0V22"/></svg>
-      <div class="post__back">
-        <p class="post__welcome">welcome to your<br>endless summer</p>
-        <div class="post__seal">${waves(3, 120)}<svg class="post__mark" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="38"/>
-          <path id="pm-arc-w" d="M60 60m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0" fill="none" stroke="none"/><text class="post__mark-arc"><textPath href="#pm-arc-w">SOLAE · DROP 01 · SUMMER 26 ·</textPath></text>
-          <text x="60" y="72" text-anchor="middle" class="post__mark-s">S</text></svg>
-          <div class="post__stamp stamp-wrap"><div class="stamp"><div class="stamp__inner">${img(shots[0], 2, 300)}<span>Solae</span></div></div></div>
-        </div>
-        <p class="post__lede">some suits slip, ride up or show too much.<br>this one just stays put.</p>
-        <div class="post__copy">
-          <p>the first dip, the first cannonball, the first climb out of the pool when nothing has moved an inch. that's the suit i kept looking for, so i made it.</p>
-          <p>${p.blurb}</p>
-          <p class="post__at">@solae.swim</p>
-        </div>
-        <div class="post__lines"><p>thank you for choosing solae.</p><p>we hope this one comes</p><p>on every trip, to every</p><p>beach, all summer long.</p></div>
-        <p class="post__url">solae · modest swim sets for teen girls</p>
-      </div>
-    </article>`,
-  ];
 
   pdp.innerHTML = `
-    <div class="stack">
-      <a class="stack__back" href="shop.html#${port.id}" aria-label="back to ${port.place}">${ICON.prev}</a>
-      <p class="stack__where t-label"><svg aria-hidden="true"><use href="#i-boat"/></svg>${port.place}</p>
-      <div class="posts" tabindex="0" role="region" aria-roledescription="carousel" aria-label="postcards of ${p.name}">
-        ${slides.map((s, i) => `<div class="posts__slide" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${slides.length}">${s}</div>`).join("")}
-      </div>
-      <div class="stack__bar">
-        <button class="stack__arrow" type="button" data-step="-1" aria-label="previous postcard">${ICON.prev}</button>
-        <div class="stack__dots">${slides.map((_, i) => `<button type="button" data-slide="${i}" aria-label="postcard ${i + 1}"></button>`).join("")}</div>
-        <button class="stack__arrow" type="button" data-step="1" aria-label="next postcard">${ICON.next}</button>
-      </div>
+    <div class="pdp__gallery">
+      <div class="pdp__main"><img src="${PX(p.gallery[0], 1200)}" alt="${p.alt}" style="object-position:${p.pos}" data-main></div>
+      ${p.gallery.length > 1 ? `<div class="pdp__thumbs" role="group" aria-label="photos">${p.gallery.map((id, i) => `<button class="pdp__thumb" type="button" data-shot="${i}" aria-pressed="${i === 0}" aria-label="photo ${i + 1}"><img src="${PX(id, 200)}" alt=""></button>`).join("")}</div>` : ""}
     </div>
-    <div class="buy" data-buy-panel></div>`;
+    <div class="pdp__info" data-buy-panel></div>`;
+  const main = pdp.querySelector("[data-main]"), buy = pdp.querySelector("[data-buy-panel]");
 
-  const posts = pdp.querySelector(".posts"), dots = [...pdp.querySelectorAll("[data-slide]")];
-  const current = () => Math.round(posts.scrollLeft / posts.clientWidth);
-  const showDot = () => dots.forEach((d, i) => d.setAttribute("aria-current", i === current()));
-  const slideTo = i => posts.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * posts.clientWidth, behavior: reduceMotion.matches ? "auto" : "smooth" });
-  posts.addEventListener("scroll", () => { cancelAnimationFrame(posts._r); posts._r = requestAnimationFrame(showDot); }, { passive: true });
-  showDot();
-
-  const buy = pdp.querySelector("[data-buy-panel]");
   const render = () => {
-    const subtotal = p.price + setRows.reduce((n, r) => n + (setState[r.id].on ? r.price : 0), 0);
+    const total = p.price + (set ? shorts.price : 0);
     buy.innerHTML = `
-      <div class="buy__title">
-        <p class="t-tag">${p.type} · ${port.place}</p>
-        <h1 class="t-headline">${p.name}</h1>
-        <div class="buy__price"><span>${sar(p.price)}</span><span class="stars" aria-label="4.9 out of 5">★★★★★ <span class="t-mute">4.9 · 128 reviews</span></span></div>
-      </div>
-      <p class="t-lead t-soft">${p.blurb}</p>
-      <div class="opt">
-        <div class="opt__label"><span>colour: <b>${C[color].name}</b></span>${p.colors.length > 8 ? `<span class="t-mute">${p.colors.length} colours</span>` : ""}</div>
+      ${reviews.length ? `<a class="pdp__stars" href="#reviews"><span aria-hidden="true">${starRow(avg)}</span> ${reviews.length} ${reviews.length === 1 ? "review" : "reviews"}</a>` : ""}
+      <h1 class="pdp__name">${p.name}</h1>
+      <p class="pdp__type">${p.type}</p>
+      <p class="pdp__price">${sar(p.price)}</p>
+      <p class="pdp__blurb">${p.blurb}</p>
+      ${p.colors.length > 1 ? `<div class="opt">
+        <div class="opt__label"><span>colour: <b>${C[color].name}</b></span></div>
         <div class="swatches" role="radiogroup" aria-label="colour">
           ${p.colors.map(k => `<button type="button" class="swatch swatch--lg" role="radio" aria-checked="${k === color}" aria-label="${C[k].name}" data-color="${k}" style="--c:${dot(k)}"></button>`).join("")}
         </div>
-      </div>
+      </div>` : ""}
       <div class="opt">
-        <div class="opt__label"><span>size: <b>${size.toUpperCase()}</b></span><button type="button" data-fit>size &amp; fit guide</button></div>
+        <div class="opt__label"><span>size: <b>${size.toUpperCase()}</b></span><button type="button" data-fit>size guide</button></div>
         <div class="sizes" role="radiogroup" aria-label="size">
           ${SIZES.map(s => `<button type="button" class="size" role="radio" aria-checked="${s === size}" data-size="${s}">${s.toUpperCase()}</button>`).join("")}
         </div>
       </div>
-      ${p.stitch ? `
-      <div class="opt">
-        <div class="opt__label"><span>down the middle: <b>${stitch}</b></span><span class="t-mute">help us decide</span></div>
-        <div class="chips" role="radiogroup" aria-label="centre seam">
-          ${p.stitch.map(o => `<button type="button" class="chip" role="radio" aria-checked="${o === stitch}" data-stitch="${o}">${o}</button>`).join("")}
+      ${p.stitch ? `<div class="opt">
+        <div class="opt__label"><span>down the middle: <b>${stitch}</b></span></div>
+        <div class="sizes" role="radiogroup" aria-label="centre seam">
+          ${p.stitch.map(o => `<button type="button" class="size" role="radio" aria-checked="${o === stitch}" data-stitch="${o}">${o}</button>`).join("")}
         </div>
       </div>` : ""}
-      ${setRows.length ? `
-      <div class="opt">
-        <div class="opt__label"><span><b>complete the set</b></span><span class="t-mute">optional</span></div>
-        <div class="set">
-          ${setRows.map(r => {
-            const st = setState[r.id];
-            return `<div class="set__row">
-              ${photo(r, { w: 200, alt: "" })}
-              <div>
-                <p class="line__name">${r.name}</p>
-                <p class="line__meta">${sar(r.price)} · ${C[setColor(r, st.opt)].name}</p>
-                <div class="chips" role="radiogroup" aria-label="${r.name} colour">
-                  ${optsFor(r).map(o => `<button type="button" class="chip" role="radio" aria-checked="${st.opt === o}" data-set="${r.id}" data-opt="${o}"><i style="--c:${o === "matching" ? dot(color) : dot(o)}"></i>${o === "matching" ? "match my suit" : o}</button>`).join("")}
-                </div>
-              </div>
-              <input class="check" type="checkbox" aria-label="add ${r.name}" data-set-on="${r.id}" ${st.on ? "checked" : ""}>
-            </div>`;
-          }).join("")}
+      <div class="pdp__box">
+        ${isSuit ? `
+        <label class="pdp__opt"><input type="radio" name="set" value="set" ${set ? "checked" : ""}><span><b>the set</b><small>with matching shorts in ${C[shortsColor()].name}</small></span><span>${sar(p.price + shorts.price)}</span></label>
+        <label class="pdp__opt"><input type="radio" name="set" value="suit" ${set ? "" : "checked"}><span><b>just the suit</b></span><span>${sar(p.price)}</span></label>` : ""}
+        <div class="pdp__buy"><button class="btn btn--block" type="button" data-buy>add to bag · <span>${sar(total)}</span></button></div>
+        <div class="acc">
+          <details><summary>details</summary><div><ul>
+            ${isSuit ? "<li>double-lined, fully opaque when wet</li><li>small removable pads, held in by a second layer of fabric</li>" : ""}
+            ${p.id === "off-shoulder" ? "<li>hidden silicone grip at the neckline</li>" : ""}
+            ${p.cat === "shorts" ? "<li>knee-length, or just above</li><li>in every suit colour, plus white and black</li>" : ""}
+            ${p.cat === "cover-ups" ? "<li>light, quick-dry woven fabric</li>" : ""}
+            <li>78% recycled nylon, 22% elastane</li></ul></div></details>
+          <details><summary>size &amp; fit</summary><div>true to size. between sizes? size up for more coverage.</div></details>
+          <details><summary>care &amp; shipping</summary><div>rinse after every swim and dry flat in the shade. ships in 2–4 days across saudi arabia, free over ${sar(SHIP_FREE)}.</div></details>
         </div>
-      </div>` : ""}
-      <div class="buy__cta">
-        <button class="btn" type="button" data-buy>add to bag — ${sar(subtotal)}</button>
-        <button class="icon-btn icon-btn--outline" type="button" aria-label="save to wishlist" style="width:3.4rem;height:3.4rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></button>
-      </div>
-      <div class="perks">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>free shipping over ${sar(SHIP_FREE)}</div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>easy 14-day exchanges</div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c3 3.5 6 6.6 6 10a6 6 0 0 1-12 0c0-3.4 3-6.5 6-10Z"/></svg>chlorine &amp; salt resistant</div>
-      </div>
-      <div class="acc">
-        <details open><summary>details</summary><div><ul>
-          ${isSuit ? "<li>double-lined, fully opaque when wet</li><li>small removable pads, held in place by a second layer of fabric</li>" : ""}
-          ${p.id === "off-shoulder" ? "<li>off-the-shoulder neckline with a hidden silicone grip</li>" : ""}
-          ${p.stitch ? "<li>flounces on the straps, basting stitch down the middle (or not — your call)</li>" : ""}
-          ${p.cat === "shorts" ? "<li>knee-length, or just above — no riding up</li><li>matches every suit, or pick white or black</li>" : ""}
-          ${p.cat === "cover-ups" ? "<li>light, quick-dry woven fabric</li><li>made to wear over your suit on the walk home</li>" : ""}
-          <li>78% recycled nylon, 22% elastane</li><li>designed in saudi arabia</li></ul></div></details>
-        <details><summary>fit &amp; pads</summary><div>true to size. if you're between sizes, size up for more coverage. the pads are small and slip out through an inner opening — the second fabric layer keeps them flat and in place while you swim.</div></details>
-        <details><summary>care</summary><div>rinse in cool fresh water after every swim. hand wash, dry flat in the shade. no tumble dry, no bleach.</div></details>
-        <details><summary>shipping &amp; exchanges</summary><div>ships in 2–4 days across saudi arabia. free over ${sar(SHIP_FREE)}. unworn pieces with hygiene liner intact can be exchanged within 14 days.</div></details>
       </div>`;
   };
   render();
 
   pdp.addEventListener("click", e => {
-    const t = e.target.closest("button, input"); if (!t) return;
-    if (t.dataset.step) return slideTo(current() + +t.dataset.step);
-    if (t.dataset.slide) return slideTo(+t.dataset.slide);
+    const t = e.target.closest("button"); if (!t) return;
+    if (t.dataset.shot) {
+      shot = +t.dataset.shot;
+      main.src = PX(p.gallery[shot], 1200);
+      main.alt = shot ? `another look at ${p.name}` : p.alt;
+      pdp.querySelectorAll("[data-shot]").forEach(b => b.setAttribute("aria-pressed", +b.dataset.shot === shot));
+      return;
+    }
     if (t.dataset.color) color = t.dataset.color;
     else if (t.dataset.size) size = t.dataset.size;
     else if (t.dataset.stitch) stitch = t.dataset.stitch;
-    else if (t.dataset.set) { setState[t.dataset.set].opt = t.dataset.opt; setState[t.dataset.set].on = true; }
-    else if (t.dataset.setOn) setState[t.dataset.setOn].on = t.checked;
     else if (t.matches("[data-fit]")) return toast("size guide coming soon — we're measuring everything twice");
     else if (t.matches("[data-buy]")) {
       addToCart(p.id, color, size, stitch);
-      setRows.forEach(r => {
-        const st = setState[r.id]; if (!st.on) return;
-        addToCart(r.id, setColor(r, st.opt), size, st.opt === "matching" ? "matching set" : "");
-      });
+      if (set) addToCart(shorts.id, shortsColor(), size, "matching set");
       return openPanel(".drawer", true);
     } else return;
-    const key = t.dataset.color ? ["color", t.dataset.color] : t.dataset.size ? ["size", t.dataset.size] : t.dataset.stitch ? ["stitch", t.dataset.stitch] : null;
+    const key = t.dataset.color ? ["color", t.dataset.color] : t.dataset.size ? ["size", t.dataset.size] : ["stitch", t.dataset.stitch];
     render();
-    if (key) buy.querySelector(`[data-${key[0]}="${key[1]}"]`)?.focus();
+    buy.querySelector(`[data-${key[0]}="${key[1]}"]`)?.focus();
   });
+  pdp.addEventListener("change", e => { if (e.target.name === "set") { set = e.target.value === "set"; render(); buy.querySelector(`input[value="${e.target.value}"]`)?.focus(); } });
+
+  const strip = document.querySelector("[data-strip]");
+  if (strip) strip.innerHTML = FACTS[p.cat].map(f => `<span>${f}</span>`).join('<svg aria-hidden="true"><use href="#i-sun-solo"/></svg>');
+
+  /* reviews (ref: k2o): a deep teal band with the average, then the list */
+  const rev = document.querySelector("[data-reviews]");
+  if (rev) rev.innerHTML = `
+    <div class="reviews__band"><div class="wrap reviews__head">
+      <h2 id="reviews-title" class="t-wide t-wide--l">reviews</h2>
+      ${reviews.length ? `<p class="reviews__avg">${avg.toFixed(1)}</p><p>average rating</p><p class="reviews__count">based on ${reviews.length} ${reviews.length === 1 ? "review" : "reviews"}</p>`
+        : `<p class="reviews__count">no reviews yet. be the first to tell us how it fits.</p>`}
+      <button class="btn btn--ghost-light" type="button" data-write-review>write a review</button>
+    </div></div>
+    ${reviews.length ? `<div class="wrap reviews__list">${reviews.map(r => `
+      <article class="review">
+        <p class="review__stars" aria-label="${r.rating} out of 5 stars">${starRow(r.rating)}</p>
+        <div class="review__who"><span class="review__avatar" aria-hidden="true">${r.name[0]}</span><p><b>${r.name}</b><small>${new Date(r.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</small></p></div>
+        <p>${r.text}</p>
+      </article>`).join("")}</div>` : ""}`;
+  rev?.addEventListener("click", e => { if (e.target.closest("[data-write-review]")) toast("reviews open once drop 01 ships ☀"); });
 
   const pairs = document.querySelector("[data-pairs]");
   if (pairs) {

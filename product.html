@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.pexels.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Mrs+Saint+Delafield&family=Poppins:wght@600;700;800&family=Sour+Gummy:ital,wdth,wght@0,125,900;1,125,900&family=Roboto+Serif:opsz,wdth,wght@72,50,650&family=Space+Mono:wght@700&family=Pinyon+Script&family=Bodoni+Moda:opsz,wght@28,400&family=Shadows+Into+Light&family=Cedarville+Cursive&family=Archivo:wdth,wght@75,800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Poppins:wght@600;700;800&family=Sour+Gummy:ital,wdth,wght@0,125,900;1,125,900&display=swap">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/solae.css">
 </head>
@@ -50,15 +50,12 @@
     <p class="t-hand">bright, free &amp; all your own</p>
   </div>
 
-  <main id="main" class="wrap">
-    <nav class="crumbs" aria-label="breadcrumb"><a href="index.html">home</a><span aria-hidden="true">/</span><a href="shop.html">shop</a><span aria-hidden="true">/</span><a href="shop.html" data-crumb-port>drop 01</a><span aria-hidden="true">/</span><span aria-current="page" data-crumb>product</span></nav>
-    <section class="pdp" data-pdp aria-label="product"></section>
-
-    <section class="section" aria-labelledby="pair-title">
-      <div class="catalog__head" style="margin-bottom:var(--space-l)">
-        <p class="t-hand" aria-hidden="true" style="color:var(--pop)">complete the look</p>
-        <h2 id="pair-title" class="t-wide t-wide--l">pairs well with</h2>
-      </div>
+  <main id="main">
+    <section class="pdp wrap" data-pdp aria-label="product"></section>
+    <div class="pdp-strip wrap" data-strip></div>
+    <section id="reviews" class="reviews" data-reviews aria-labelledby="reviews-title"></section>
+    <section class="section wrap" aria-labelledby="pair-title">
+      <h2 id="pair-title" class="t-h2 catalog__title">pairs well with</h2>
       <div class="grid-products" data-pairs></div>
     </section>
   </main>
@@ -74,7 +71,7 @@
         </nav>
         <div class="footer__news">
           <h3>letters from the shore</h3>
-          <p>new drops, beach playlists and first dibs on restocks. no spam, promise.</p>
+          <p>new drops and restocks, first.</p>
           <form class="field-pill" data-news>
             <label class="sr-only" for="news-email">email</label>
             <input class="input" id="news-email" type="email" placeholder="enter your email" required>
