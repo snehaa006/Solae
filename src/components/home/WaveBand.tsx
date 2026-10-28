@@ -2,7 +2,7 @@ import { Edge } from "../edges";
 import { SunMark } from "../icons";
 
 const Phrases = () => (
-  <>removable pads <SunMark /> double-lined <SunMark /> knee-length shorts <SunMark /> matching cover-ups <SunMark /> <em>by teens, for teens</em> <SunMark /></>
+  <>removable pads <SunMark /> double-lined <SunMark /> knee-length shorts <SunMark /> matching cover-ups <SunMark /> <em>coverage, comfort &amp; confidence</em> <SunMark /></>
 );
 
 export function WaveBand() {

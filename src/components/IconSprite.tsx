@@ -3,21 +3,10 @@
 export function IconSprite() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
-      <symbol id="i-sun" viewBox="0 0 170 40">
-        <path fill="currentColor" d="M2 20.6L118 17.6V22.4Z" />
-        <circle cx="146" cy="20" r="8.5" fill="currentColor" />
-        <g stroke="currentColor" strokeWidth="4.2" strokeLinecap="round"><path d="M146 2.5V7M146 33V37.5M128.5 20H133M159 20H163.5M133.6 7.6L136.8 10.8M155.2 29.2L158.4 32.4M133.6 32.4L136.8 29.2M155.2 10.8L158.4 7.6" /></g>
-      </symbol>
-      <symbol id="i-sun-solo" viewBox="0 0 40 40">
-        <circle cx="20" cy="20" r="8.5" fill="currentColor" />
-        <g stroke="currentColor" strokeWidth="4.2" strokeLinecap="round"><path d="M20 2.5V7M20 33V37.5M2.5 20H7M33 20H37.5M7.6 7.6L10.8 10.8M29.2 29.2L32.4 32.4M7.6 32.4L10.8 29.2M29.2 10.8L32.4 7.6" /></g>
-      </symbol>
+      {/* a plain sun dot for the scrolling bars and postmarks; it suits every logo option */}
+      <symbol id="i-sun-solo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="currentColor" /></symbol>
       <symbol id="i-squiggle" viewBox="0 0 72 16">
         <path d="M2 8Q8 1 14 8T26 8T38 8T50 8T62 8T72 8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      </symbol>
-      <symbol id="i-wave" viewBox="0 0 220 80">
-        <path d="M10 40Q32 6 55 40T100 40T145 40T190 40" fill="none" stroke="currentColor" strokeWidth="13" strokeLinecap="round" />
-        <path d="M30 66Q52 40 75 66T120 66T165 66T210 66" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" opacity=".7" />
       </symbol>
       <symbol id="i-leaf" viewBox="0 0 300 300">
         <g fill="none" stroke="currentColor" strokeLinecap="round">

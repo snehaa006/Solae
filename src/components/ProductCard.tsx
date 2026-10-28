@@ -1,40 +1,21 @@
 import { Link } from "react-router";
-import { COLORS, dot, type Product } from "../data/catalog";
-import { useCart } from "../context/cart";
-import { useReveal } from "../hooks/useReveal";
-import { inr } from "../lib/format";
-import { PlusIcon } from "./icons";
-import { Photo } from "./Photo";
+import type { Product } from "../data/catalog";
+import { px, sar } from "../lib/format";
 
-const MAX_SW = 6;
-
-interface ProductCardProps {
-  product: Product;
-  /** position in the grid, staggers the reveal */
-  index?: number;
-  hidden?: boolean;
-}
-
-export function ProductCard({ product: p, index = 0, hidden }: ProductCardProps) {
-  const { add } = useCart();
-  const [ref, reveal] = useReveal<HTMLElement>();
+/* product card (ref: k2o): a photo, the name and the price. On hover the second photo
+   crossfades in over the whole card with "shop now"; on touch screens the card is simply a link */
+export function ProductCard({ product: p }: { product: Product }) {
   return (
-    <article ref={ref} className={`card ${reveal}`} data-cat={p.cat} style={{ "--i": index }} hidden={hidden}>
-      <div className="card__media">
-        <Photo product={p} className="frame-wavy" w={700} />
-        <div className="card__badges">
-          {p.badges.map(([t, tone]) => <span key={t} className={`badge badge--${tone}`}>{t}</span>)}
+    <article className="card">
+      <Link className="card__link" to={`/product/${p.id}`}>
+        <div className="card__media"><img src={px(p.img, 700)} alt={p.alt} loading="lazy" style={{ objectPosition: p.pos }} /></div>
+        <h3 className="card__name">{p.name}</h3>
+        <p className="card__price">{sar(p.price)}</p>
+        <div className="card__hover" aria-hidden="true">
+          <img src={px(p.gallery[1] ?? p.img, 700)} alt="" loading="lazy" />
+          <span className="card__cta">shop now</span>
         </div>
-      </div>
-      <h3 className="card__name"><Link to={`/product/${p.id}`}>{p.name}</Link></h3>
-      <p className="card__price">{inr(p.price)}</p>
-      <div className="swatches" aria-label={`${p.colors.length} colours: ${p.colors.map(k => COLORS[k].name).join(", ")}`}>
-        {p.colors.slice(0, MAX_SW).map(k => <span key={k} className="swatch" style={{ "--c": dot(k) }} title={COLORS[k].name} />)}
-        {p.colors.length > MAX_SW && <span className="swatch-more">+{p.colors.length - MAX_SW}</span>}
-      </div>
-      <button className="btn btn--ghost btn--sm card__add" type="button" aria-label={`add ${p.name} to bag`} onClick={() => add(p.id)}>
-        <PlusIcon />add to bag
-      </button>
+      </Link>
     </article>
   );
 }

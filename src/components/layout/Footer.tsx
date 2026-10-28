@@ -2,11 +2,9 @@ import type { FormEvent } from "react";
 import { Link } from "react-router";
 import { useToast } from "../../context/toast";
 import { InstagramIcon, PinterestIcon, SendIcon } from "../icons";
+import { Logo } from "../Logo";
 
-const SHOP_LINKS = [
-  ["swimsuits", "swimsuits"], ["signatures", "signatures"], ["shorts", "matching shorts"],
-  ["cover-ups", "cover-ups"], ["skirts", "the skirt"],
-] as const;
+const SHOP_LINKS = [["swimsuits", "swimsuits"], ["signatures", "signatures"], ["shorts", "matching shorts"], ["cover-ups", "cover-ups"]] as const;
 
 export function Footer() {
   const toast = useToast();
@@ -29,7 +27,7 @@ export function Footer() {
           </nav>
           <div className="footer__news">
             <h3>letters from the shore</h3>
-            <p>new drops, beach playlists and first dibs on restocks. no spam, promise.</p>
+            <p>new drops and restocks, first.</p>
             <form className="field-pill" onSubmit={subscribe}>
               <label className="sr-only" htmlFor="news-email">email</label>
               <input className="input" id="news-email" type="email" placeholder="enter your email" required />
@@ -42,15 +40,14 @@ export function Footer() {
           </div>
         </div>
         <div className="footer__big">
-          <span className="wordmark" aria-hidden="true">Solae</span>
           <span className="t-hand" aria-hidden="true">see you on the shore</span>
+          <div className="footer__logo" aria-hidden="true"><Logo /></div>
         </div>
         <div className="footer__legal">
-          <span>© 2026 SOLAE · by teens, for teens · photos: pexels &amp; unsplash</span>
-          <nav aria-label="legal"><a href="#">privacy</a><a href="#">terms</a><Link to="/design-system">design system</Link></nav>
+          <span>© 2026 SOLAE · modest swim sets for teen girls · photos: pexels &amp; unsplash</span>
+          <nav aria-label="legal"><a href="#">privacy</a><a href="#">terms</a></nav>
         </div>
       </div>
-      <div className="footer__stripe" aria-hidden="true" />
     </footer>
   );
 }

@@ -1,11 +1,11 @@
 /* ==========================================================================
    SOLAE — design system page
-   Scoped under .ds-page so these demo helpers (.note, .row, .demo, …) never
-   leak into the store once the page has been visited.
+   Scoped under .ds-page so these demo helpers (.note, .row, .demo, .tag, …)
+   never leak into the store once the page has been visited.
    ========================================================================== */
 
 .ds-page .ds-hero { padding: var(--space-xl) 0 var(--space-l); display: grid; gap: var(--space-m); }
-.ds-page .ds-hero .wordmark { font-size: clamp(4rem, 2rem + 10vw, 11rem); transform-origin: left; margin-block: 2vw; }
+.ds-page .ds-hero .logo-word { font-size: clamp(2.4rem, 1rem + 6vw, 6.5rem); margin-block: 2vw; justify-self: start; }
 .ds-page .ds-hero__meta { display: flex; flex-wrap: wrap; gap: .5rem; }
 .ds-page .ds-nav { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 .ds-page .ds-nav ol { display: flex; gap: .3rem; overflow-x: auto; padding: .6rem 0; margin: 0; list-style: none; scrollbar-width: none; }
@@ -51,12 +51,12 @@
 .ds-page .shadow-box { aspect-ratio: 3 / 2; background: var(--surface); border-radius: var(--r-md); display: grid; place-items: center; font-size: var(--fs-small); font-weight: 600; }
 .ds-page .demo { background: var(--surface); border-radius: var(--r-lg); padding: var(--space-m); box-shadow: 0 0 0 1px var(--line); display: grid; gap: var(--space-s); align-content: start; }
 .ds-page .demo--sunk { background: var(--surface-sunk); box-shadow: none; }
-.ds-page .demo--ocean { background: var(--ocean); color: var(--sand); box-shadow: none; }
+.ds-page .demo--deep { background: var(--deep); color: var(--sand); box-shadow: none; }
 .ds-page .demo h4 { font-family: var(--font-body); font-weight: 600; text-transform: uppercase; letter-spacing: var(--track-caps); font-size: .8rem; color: var(--ink-mute); }
-.ds-page .demo--ocean h4 { color: var(--papaya); }
+.ds-page .demo--deep h4 { color: var(--sunshine); }
 .ds-page .row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
 .ds-page .note { font-size: var(--fs-small); color: var(--ink-mute); }
-.ds-page .motif-stage { position: relative; height: 9rem; border-radius: var(--r-md); overflow: hidden; background: var(--ocean); color: var(--bg); }
+.ds-page .motif-stage { position: relative; height: 9rem; border-radius: var(--r-md); overflow: hidden; background: var(--stormy); color: var(--bg); }
 .ds-page .motif-stage .edge-torn, .ds-page .motif-stage .edge-wave { position: absolute; left: 0; right: 0; top: -1px; height: 48px; }
 .ds-page .frames-demo { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); gap: var(--space-m); align-items: start; }
 .ds-page .frames-demo figure { display: grid; gap: .7rem; }
@@ -67,6 +67,40 @@
 .ds-page .map td:first-child { font-weight: 600; text-transform: lowercase; white-space: nowrap; }
 .ds-page .voice { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: var(--space-s); }
 .ds-page .voice .demo p { font-size: var(--fs-lead); }
-.ds-page .voice .yes h4 { color: var(--turf); }
-.ds-page .voice .no h4 { color: var(--brick); }
-.ds-page .voice .no p { text-decoration: line-through; text-decoration-color: rgba(180, 4, 33, .5); color: var(--ink-mute); }
+.ds-page .voice .yes h4 { color: var(--lagoon); }
+.ds-page .voice .no h4 { color: var(--coral); }
+.ds-page .voice .no p { text-decoration: line-through; text-decoration-color: rgba(240, 113, 103, .7); color: var(--ink-mute); }
+/* logo options */
+.ds-page .logo-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: var(--space-m); }
+.ds-page .logo-opt { display: grid; gap: .55rem; align-content: start; }
+.ds-page .logo-opt__pair { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: .4rem; }
+.ds-page .logo-opt__tile { display: grid; place-items: center; aspect-ratio: 1; border-radius: var(--r-md); background: var(--white); box-shadow: 0 0 0 1px var(--line); overflow: hidden; }
+.ds-page .logo-opt__tile--dark { background: var(--deep); box-shadow: none; }
+.ds-page .logo-opt__tile .logo-sun { width: 88%; justify-self: end; }
+.ds-page .logo-opt__tile .logo-word { font-size: clamp(.85rem, .7rem + .5vw, 1.05rem); }
+.ds-page .logo-opt__tile .logo-mark { font-size: clamp(.6rem, .5rem + .3vw, .72rem); }
+.ds-page .logo-opt h3 { font-family: var(--font-headline); font-weight: 400; font-size: var(--fs-h2); line-height: 1; color: var(--accent); }
+.ds-page .logo-opt p:not(.t-label) { color: var(--ink-soft); font-size: var(--fs-small); }
+.ds-page .logo-opt .t-label { color: var(--stormy); }
+.ds-page .mix { display: flex; height: 2.4rem; border-radius: var(--r-sm); overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+/* mock-ups: each logo where the brand sheet says it works best */
+.ds-page .mock { display: grid; place-items: center; aspect-ratio: 4 / 3; border-radius: var(--r-md); background: var(--surface-sunk); overflow: hidden; position: relative; }
+.ds-page .mock + .note { margin-top: .5rem; }
+.ds-page .tag { width: 46%; aspect-ratio: 5 / 8; display: grid; justify-items: center; align-content: center; gap: .9rem; padding: 1.6rem .8rem 1rem; background: var(--sand); border-radius: 10px 10px 6px 6px; clip-path: polygon(22% 0, 78% 0, 100% 12%, 100% 100%, 0 100%, 0 12%); box-shadow: var(--shadow-paper); rotate: -6deg; text-align: center; }
+.ds-page .tag::before { content: ""; width: .7rem; height: .7rem; border-radius: 50%; background: var(--surface-sunk); box-shadow: inset 0 0 0 1.5px var(--line-strong); margin-bottom: .2rem; }
+.ds-page .tag .logo-word { font-size: .8rem; }
+.ds-page .tag small { font-size: .62rem; line-height: 1.4; color: var(--ink-soft); }
+.ds-page .fabric { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255, 255, 255, .06) 0 2px, transparent 2px 7px), var(--tropical); }
+.ds-page .fabric img { position: absolute; left: 58%; top: 38%; width: 18%; filter: drop-shadow(0 1px 1px rgba(4, 40, 41, .25)); }
+.ds-page .pfp { display: grid; justify-items: center; gap: .6rem; }
+.ds-page .pfp span { display: grid; place-items: center; width: 7rem; height: 7rem; border-radius: 50%; background: var(--deep); box-shadow: 0 0 0 3px var(--surface-sunk), 0 0 0 5px var(--coral); }
+.ds-page .pfp img { width: 80%; }
+.ds-page .pfp b { font-size: .8rem; }
+.ds-page .box { position: absolute; inset: 14% 10% 18%; overflow: hidden; background: var(--sand); border-radius: 6px; box-shadow: var(--shadow-lift); display: grid; grid-template-columns: 1fr auto; align-items: center; padding-left: 1.2rem; }
+.ds-page .box::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1.2rem; translate: 0 -50%; background: rgba(7, 73, 74, .08); }
+.ds-page .box .logo-sun { height: 100%; width: auto; }
+.ds-page .box p { font-family: var(--font-headline); color: var(--accent); font-size: 1.3rem; line-height: 1; position: relative; z-index: 1; }
+.ds-page .post-sq { position: absolute; inset: 8% 22%; display: grid; align-content: end; padding: .9rem; overflow: hidden; border-radius: 8px; background: var(--deep); color: var(--sand); box-shadow: var(--shadow-lift); }
+.ds-page .post-sq .logo-sun { position: absolute; right: 0; top: 8%; width: 82%; }
+.ds-page .post-sq p { position: relative; font-family: var(--font-headline); font-size: 1.25rem; line-height: .95; }
+.ds-page .post-sq small { position: relative; font-size: .6rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sunshine); margin-top: .35rem; }

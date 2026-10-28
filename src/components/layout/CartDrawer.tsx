@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { byId, COLORS, SHIP_FREE } from "../../data/catalog";
 import { useCart } from "../../context/cart";
 import { useToast } from "../../context/toast";
-import { inr } from "../../lib/format";
+import { sar } from "../../lib/format";
 import { CloseIcon } from "../icons";
 import { Photo } from "../Photo";
 
@@ -15,8 +15,8 @@ export function CartDrawer() {
 
   const left = SHIP_FREE - total;
   const shipMsg = total === 0
-    ? <>spend {inr(SHIP_FREE)} for free shipping across india</>
-    : left > 0 ? <>you're <b>{inr(left)}</b> away from free shipping</> : <><b>you've unlocked free shipping</b> ☀</>;
+    ? <>spend {sar(SHIP_FREE)} for free shipping across saudi arabia</>
+    : left > 0 ? <>you're <b>{sar(left)}</b> away from free shipping</> : <><b>you've unlocked free shipping</b> ☀</>;
 
   return (
     <>
@@ -51,13 +51,13 @@ export function CartDrawer() {
                     <button type="button" aria-label="increase" onClick={() => changeQty(l.key, 1)}>+</button>
                   </div>
                 </div>
-                <b>{inr(p.price * l.qty)}</b>
+                <b>{sar(p.price * l.qty)}</b>
               </div>
             );
           })}
         </div>
         <div className="drawer__foot" hidden={count === 0}>
-          <div className="drawer__total"><span>subtotal</span><span>{inr(total)}</span></div>
+          <div className="drawer__total"><span>subtotal</span><span>{sar(total)}</span></div>
           <button className="btn btn--block checkout" type="button" onClick={() => toast("this is a mock store — checkout comes next ☀")}>checkout</button>
           <p className="t-small t-mute" style={{ textAlign: "center" }}>taxes included · shipping calculated at checkout</p>
         </div>

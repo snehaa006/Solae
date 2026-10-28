@@ -1,7 +1,7 @@
 import { SunMark } from "../icons";
 
 const Phrases = () => (
-  <>drop 01 is live <SunMark /> free shipping across india over ₹2,999 <SunMark /> by teens, for teens <SunMark /></>
+  <>drop 01 is live <SunMark /> free shipping across saudi arabia over SAR 300 <SunMark /> modest, modern swim sets <SunMark /></>
 );
 
 export function AnnounceBar() {

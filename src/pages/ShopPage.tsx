@@ -9,10 +9,10 @@ import { prefersReducedMotion } from "../lib/format";
 const pathOf = (id: PortId) => (id === "all" ? "/shop" : `/shop/${id}`);
 const sailedTo = (id: PortId) => `sailed to ${portById(id).place}: ${inPort(id).length} ${portById(id).label}`;
 
-/* The shop: a small sea chart centred under the header is the category nav; the pieces follow right below
+/* The shop: a wide sea chart under the header is the category nav; the pieces follow right below
    (pins: hand-drawn "solae" chart, ship reference). /shop/<port> deep-links to a category. */
 export function ShopPage() {
-  usePageMeta("The shop — SOLAE", "Shop SOLAE by port: plain swimsuits, the two signatures, matching knee-length shorts, cover-ups and the skirt. Pick an island on the map and the boat sails you there.");
+  usePageMeta("The shop — SOLAE", "Shop SOLAE by port: plain swimsuits, the two signatures, matching knee-length shorts and cover-ups. Pick an island on the map and the boat sails you there.");
   const { port } = useParams();
   const navigate = useNavigate();
   const chart = useRef<SeaChartHandle>(null);
@@ -75,7 +75,7 @@ export function ShopPage() {
         </div>
         <p className="sr-only" role="status">{status}</p>
         <div ref={panel} className="wrap port-panel">
-          {/* keyed by port so the new cards fade in like a fresh page */}
+          {/* keyed by port, so each stop starts with a fresh set of cards */}
           <PortPanel key={here} id={here} onSail={id => go(id)} />
         </div>
       </section>

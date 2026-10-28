@@ -1,4 +1,4 @@
-import { Fragment, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { Fragment, useEffect, useLayoutEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import { Link } from "react-router";
 import { byId } from "../data/catalog";
 import { Edge } from "../components/edges";
@@ -10,10 +10,9 @@ import "../styles/design-system.css";
 
 /* ---- Colour, with contrast worked out live ------------------------------- */
 const PALETTE: Record<string, [name: string, hex: string, source: string][]> = {
-  shore:  [["sand", "FFFDF2", "page"], ["papaya", "FFECD1", "Papaya Whip"], ["shell", "F6EEDF", "sunk surface"], ["jasmine", "F8E077", "Jasmine"], ["marigold", "FFAB4C", "Pantone 14-1050"]],
-  sunset: [["coral", "F07167", "Vibrant Coral"], ["solae-red", "E84A4A", "wordmark"], ["brick", "B40421", "Brick Red"], ["hibiscus", "EC0868", "hot pink"], ["mauve", "9A879D", "dusk"]],
-  ocean:  [["sky", "6699CC", "Blue Grey"], ["ocean", "0471A6", "Bright Teal Blue"], ["lagoon", "17BEBB", "Tropical Teal"], ["cyan", "119DA4", "Dark Cyan"], ["stormy", "196876", "Stormy Teal"], ["deep", "07494A", "Dark Teal"]],
-  palm:   [["willow", "93C186", "Willow Green"], ["turf", "337155", "Turf Green"], ["olive", "545624", "Olive Leaf"], ["charcoal", "414146", "logo plate"]],
+  "main colours": [["deep", "07494A", "Deep Teal · primary"], ["sunshine", "F8E077", "Sunshine · secondary"], ["lagoon", "119DA4", "Lagoon · tertiary"]],
+  "neutral + accents": [["sand", "FFECD1", "Sand · neutral"], ["cream", "FFF8EE", "the page"], ["coral", "F07167", "accent, from the logo letters"], ["stormy", "196876", "Stormy Teal · accent"], ["olive", "545624", "Olive · accent"]],
+  "collection · swimsuits only": [["cerulean", "0E79B2", "collection"], ["sky", "6699CC", "collection"], ["ocean", "0471A6", "collection"], ["tropical", "17BEBB", "collection"], ["brick", "B40421", "collection"], ["turf", "337155", "collection"], ["willow", "93C186", "collection"]],
 };
 const hex2rgb = (h: string) => h.match(/\w\w/g)!.map(x => parseInt(x, 16) / 255);
 const lum = (h: string) => {
@@ -25,23 +24,24 @@ const ratio = (a: string, b: string) => {
   return (x + .05) / (y + .05);
 };
 const textOn = (h: string) => {
-  const onSand = ratio(h, "FFFDF2"), dark = ratio(h, "07494A");
-  return onSand >= 4.5 ? `text on sand ${onSand.toFixed(1)}:1 ✓`
-    : onSand >= 3 ? `large text on sand ${onSand.toFixed(1)}:1`
+  const onCream = ratio(h, "FFF8EE"), dark = ratio(h, "07494A");
+  return onCream >= 4.5 ? `text on cream ${onCream.toFixed(1)}:1 ✓`
+    : onCream >= 3 ? `large text on cream ${onCream.toFixed(1)}:1`
     : `fill only · deep teal text on it ${dark.toFixed(1)}:1`;
 };
 
 const SEMANTIC = [
-  ["--bg", "var(--sand)", "sand", "page background (k2o cream)"],
+  ["--bg", "var(--cream)", "cream", "page background, the brand sheet's paper"],
   ["--surface", "#fff", "white", "cards over photography, inputs"],
   ["--surface-sunk", "var(--shell)", "shell", "about card, tabs track, perks"],
-  ["--surface-warm", "var(--papaya)", "papaya whip", "product tiles, shipping bar"],
-  ["--ink", "var(--deep)", "dark teal", "all body text and headlines"],
+  ["--surface-warm", "var(--sand)", "sand", "signatures section, mission card, shipping bar"],
+  ["--ink", "var(--deep)", "deep teal", "all body text and headlines"],
   ["--ink-soft", "var(--stormy)", "stormy teal", "secondary copy"],
-  ["--ink-mute", "var(--ink-mute)", "#5E7F80", "meta text, captions"],
-  ["--accent", "var(--solae-red)", "solae red", "wordmark, sun-streak, large accents (≥24px)"],
-  ["--action", "var(--brick)", "brick", "primary buttons, announcement pill, badges"],
-  ["--focus", "var(--ocean)", "ocean", "focus rings, input focus"],
+  ["--ink-mute", "var(--ink-mute)", "#4F6F70", "meta text, captions"],
+  ["--accent", "var(--deep)", "deep teal", "headlines, prices"],
+  ["--pop", "var(--coral)", "coral", "handwritten notes, arrows, stamps: decoration only, never text people must read"],
+  ["--action", "var(--stormy)", "stormy teal", "primary buttons. The sheet says Lagoon for buttons, but white on Lagoon is only 3.3:1, so Lagoon stays on links and small details"],
+  ["--focus", "var(--lagoon)", "lagoon", "focus rings, input focus"],
 ] as const;
 
 /* ---- Type & space, measured at the current window width ------------------ */
@@ -50,7 +50,7 @@ const STEPS: [key: string, cls: string, sample: string][] = [
   ["mega", "t-headline", "made for the sun"], ["display", "t-headline", "made for the sun"], ["h1", "t-headline", "the tidepool one-piece"],
   ["h2", "t-h2", "shop drop 01"], ["h3", "t-h3", "letters from the shore"], ["lead", "t-lead", "swimsuits, shorts & cover-ups that match"],
   ["body", "", "removable pads held in by a second layer of fabric."], ["small", "t-small", "swimsuit · 4 colours"], ["eyebrow", "t-eyebrow", "meet drop 01"],
-  ["script", "t-script", "by teens, for teens"], ["hand", "t-hand", "it's about"], ["label", "t-label", "shop · signatures · lookbook"],
+  ["script", "t-script", "made for the sun"], ["hand", "t-hand", "it's about"], ["label", "t-label", "shop · signatures · lookbook"],
 ];
 const fsOf = (k: string) => (k === "mega" ? MEGA : `var(--fs-${k})`);
 const SPACE = ["3xs", "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl"];
@@ -80,24 +80,43 @@ function useMeasured() {
 /* ---- Section patterns ------------------------------------------------------ */
 const PATTERNS = [
   ["announcement", "k2o", "slim bar with tracked caps scrolling between sun marks"],
-  ["header", "the late checkout", "tracked caps nav spread across the top, wordmark centred, sticky with blur"],
-  ["hero", "the late checkout", "a huge red serif headline overlapping a print-framed photo; a side column with a script note, small photo and serif-caps tagline; a postage stamp"],
-  ["wave band", "surf shop + k2o", "an ocean marquee with wavy edges, wide caps, a script accent and sun marks"],
-  ["catalog", "SUIT taplink", "wide caps CATALOG, a dotted swirl map of categories (it filters), wavy-framed product photos, outline pill buttons"],
-  ["lookbook sheet", "the late checkout (lower page)", "a cream sheet floating on sea photography: mixed-size prints, red serif headlines, serif-caps notes, a dotted arrow"],
-  ["signatures", "surf shop", "a pale-blue section, two arched white-border frames offset in height, curved text on a wave"],
-  ["postcard", "a postcard from summer", "a founders' note on a postcard: stamp, postmark, address lines, taped polaroid"],
-  ["about us", "SUIT taplink", "wide caps title, alternating wavy-framed photos, squiggle + italic labels, palm leaf watermark"],
-  ["sun & salt", "sea & soil", "full-bleed water photo, huge spaced wide caps, vertical 'and' around a wave glyph"],
-  ["on the shore", "k2o + surf shop", "staggered soft-framed UGC tiles with handle chips"],
-  ["shop · sea chart", "hand-drawn \"solae\" chart + the ship photo", "a small strip of sea centred under the header, no frame, sized like a nav bar (no page title, the map is the top of the page): the dotted lane writes \"solae\", one small island per category sits beside it with a ribbon name. the map is the only category nav: hover an island for its notes and pieces, click and the striped-sail boat sails the writing, kicking up a stern wave, spray and foam"],
+  ["header", "the late checkout", "tracked caps nav spread across the top, the chosen logo centred, sticky with blur"],
+  ["hero", "the late checkout", "a huge deep teal serif headline overlapping a print-framed photo, ending where the chosen logo's sun rises out of the window's edge; a side column with a short headline, a small photo, one line and two buttons"],
+  ["wave band", "surf shop + k2o", "a sunshine marquee with wavy edges, spaced caps, a script accent and little suns"],
+  ["catalog", "k2o", "one plain line of a heading, four pieces on simple white cards (photo, name, price) with a second photo and a \"shop now\" pill on hover, one button to the shop"],
+  ["signatures", "surf shop", "a sand section, two arched white-border frames offset in height, each with a name and one line"],
+  ["our story", "Brand Starter", "spaced caps title; the chosen logo on a tilted card beside her story; vision (deep teal, with the logo's sun) and mission (sand) cards"],
+  ["shop · sea chart", "hand-drawn \"solae\" chart + the ship photo", "a wide strip of sea under the header, no frame, no page title: the dotted lane writes \"Solae\" in flowing calligraphy (traced from Great Vibes), and one small island per category sits in the open water inside and around its loops, each with a ribbon name. the map is the only category nav: hover an island for its notes and pieces, click and the striped-sail boat sails the writing, kicking up a stern wave, spray and foam"],
   ["shop · port panel", "k2o + SUIT taplink", "one slim centred line under the map (the category, how many pieces, a one-line definition), then the landing page's wavy product cards"],
-  ["product · postcards", "caprini, lemon stripe short, a postcard from summer, built for warm days", "a swipeable stack of postcards right on the page: perforated stamp with a binder clip, full photo with a pinned note, photo strip with postmarks, striped welcome card"],
-  ["footer", "k2o", "rounded deep-teal card, link columns, newsletter pill, oversized wordmark, script sign-off, stripe band"],
+  ["product page", "k2o", "the swipeable postcard stack (stamp, photo card, letter, welcome card); beside it the name, type, price, one line, colour and size, then one bordered box with the set or just the suit, add to bag and three folds · a slim strip of facts · a deep teal reviews band with the average and a plain list · pairs well with"],
+  ["footer", "k2o", "rounded deep-teal card, link columns, newsletter pill, script sign-off, the chosen logo (option 1 rises out of the card's right edge)"],
 ];
 
-const NAV = [["brand", "01 brand"], ["colour", "02 colour"], ["type", "03 type"], ["space", "04 space & shape"], ["motifs", "05 motifs"], ["components", "06 components"], ["sections", "07 section patterns"], ["voice", "08 voice"]];
+const NAV = [["brand", "01 logos"], ["colour", "02 colour"], ["type", "03 type"], ["space", "04 space & shape"], ["motifs", "05 motifs"], ["components", "06 components"], ["sections", "07 section patterns"], ["voice", "08 voice"]];
 const TABS = ["the suit", "the short", "the cover-up"];
+
+/* option 2's wordmark: spaced caps with a soft sun for the O */
+const Word = ({ label, dark }: { label: string; dark?: boolean }) => (
+  <span className={dark ? "logo-word on-dark" : "logo-word"} role="img" aria-label={label}>S<i />LAE</span>
+);
+/* option 3: the sun symbol with the name underneath */
+const Mark = ({ label, dark }: { label: string; dark?: boolean }) => (
+  <span className={dark ? "logo-mark on-dark" : "logo-mark"} role="img" aria-label={label}><img src="/img/logo-mark.svg" alt="" /><span>SOLAE</span></span>
+);
+
+function LogoOption({ n, name, light, dark, children }: { n: number; name: string; light: ReactNode; dark: ReactNode; children: ReactNode }) {
+  return (
+    <article className="logo-opt">
+      <div className="logo-opt__pair">
+        <div className="logo-opt__tile">{light}</div>
+        <div className="logo-opt__tile logo-opt__tile--dark">{dark}</div>
+      </div>
+      <p className="t-label">option {n} of 3</p>
+      <h3>{name}</h3>
+      {children}
+    </article>
+  );
+}
 
 function Section({ id, num, title, intro, last, children }: { id: string; num: string; title: string; intro: ReactNode; last?: boolean; children: ReactNode }) {
   return (
@@ -120,8 +139,20 @@ function Family({ eyebrow, spec, children }: { eyebrow: string; spec: ReactNode;
   );
 }
 
+/* private: the brand page is not linked from the store, and vercel.json sends it home on the live site */
+function useNoIndex() {
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex";
+    document.head.append(meta);
+    return () => meta.remove();
+  }, []);
+}
+
 export function DesignSystemPage() {
   usePageMeta("SOLAE Design System", "Tokens, type, motifs and components for the SOLAE swim storefront.");
+  useNoIndex();
   const [probe, measured] = useMeasured();
   const [tab, setTab] = useState(0);
   const noSubmit = (e: FormEvent) => e.preventDefault();
@@ -135,11 +166,11 @@ export function DesignSystemPage() {
           <p className="t-eyebrow t-soft">design system · v1.0 · october 2026</p>
           <Link className="btn btn--ink btn--sm" to="/">view the mock store</Link>
         </div>
-        <span className="wordmark">Solae</span>
+        <Word label="Solae" />
         <p className="t-headline" style={{ fontSize: "var(--fs-h1)", maxWidth: "16ch" }}>aesthetic, professional, and a little bit sandy.</p>
-        <p className="t-lead t-soft" style={{ maxWidth: "var(--text-max)" }}>The foundations for SOLAE's portfolio and store. The structure comes from k2o (warm cream, rounded cards, pill controls, a wide display face). Body type is SKIMS' Inter. The look comes from the pin boards: an editorial red serif on grainy cream paper (the late checkout), hand-cut wavy photo frames (SUIT), arches and waves (surf shop) and big spaced type over the sea (sea &amp; soil).</p>
+        <p className="t-lead t-soft" style={{ maxWidth: "var(--text-max)" }}>The foundations for SOLAE's portfolio and store. Colours and logos come from the Brand Starter (28 October 2026). The structure comes from k2o (warm cream, rounded cards, pill controls, spaced caps). Body type is SKIMS' Inter. The look comes from the pin boards: an editorial deep teal serif on grainy cream paper (the late checkout), hand-cut wavy photo frames (SUIT), arches and waves (surf shop) and big spaced type over the sea (sea &amp; soil).</p>
         <div className="ds-hero__meta">
-          <span className="badge badge--sun">fluid type</span><span className="badge badge--coral">brand palette</span><span className="badge badge--ink">wcag aa text</span>
+          <span className="badge badge--sun">three logo options</span><span className="badge badge--coral">brand palette</span><span className="badge badge--ink">wcag aa text</span>
         </div>
       </header>
 
@@ -151,21 +182,48 @@ export function DesignSystemPage() {
 
       <main id="main" className="wrap">
 
-        <Section id="brand" num="01" title="brand" intro="The wordmark is a tall, condensed high-contrast serif in Solae Red, taken from the brand sheet. The sun-streak is our answer to k2o's shooting star: a tapering line that ends in a little sun. Use it as a divider, after headings, and as a sign-off.">
-          <div className="ds-grid ds-grid--wide">
-            <div className="demo" style={{ placeItems: "center", minHeight: "14rem" }}><span className="wordmark" style={{ fontSize: "4rem" }}>Solae</span><p className="note">wordmark · on sand</p></div>
-            <div className="demo" style={{ placeItems: "center", minHeight: "14rem", background: "var(--charcoal)", boxShadow: "none" }}><span className="wordmark" style={{ fontSize: "4rem" }}>Solae</span><p className="t-eyebrow" style={{ color: "var(--papaya)", letterSpacing: ".32em" }}>by teens for teens</p></div>
-            <div className="demo" style={{ placeItems: "center", minHeight: "14rem", background: "var(--deep)", boxShadow: "none", color: "var(--jasmine)" }}><Sprite id="i-sun" className="sunmark" style={{ width: "12rem", height: "3rem" }} /><p className="note" style={{ color: "var(--papaya)" }}>sun-streak · divider &amp; sign-off</p></div>
+        <Section id="brand" num="01" title="logos" intro="Three options from the Brand Starter, and nothing is final. The site wears one at a time, everywhere a logo shows: the header and menu, the sun at the end of the hero, the story and vision cards, the product welcome card, the footer and the tab icon. Switch between them with the logo bar in the corner of every store page, or open the store with each link below; your browser remembers the last one you picked. Everyone else sees option 1.">
+          <div className="logo-opts">
+            <LogoOption n={1} name="ghalia's sun"
+              light={<img className="logo-sun" src="/img/logo-sun.svg" alt="option 1, ghalia's sun, on white" />}
+              dark={<img className="logo-sun" src="/img/logo-sun.svg" alt="option 1 on deep teal" />}>
+              <p>Her original drawing, cleaned up: the half sun, the name running up its edge in her colours, and brush-stroke beams. Playful, warm and personal.</p>
+              <p><Link className="link-u" to="/?logo=1">see the site with option 1</Link> · the half sun rises out of the window's edge at the end of "made for the sun", and out of the footer card's edge. In the header it turns upright, a sunrise sitting on the header's bottom edge, so SOLAE reads left to right.</p>
+            </LogoOption>
+            <LogoOption n={2} name="minimal wordmark"
+              light={<Word label="option 2, minimal wordmark, on white" />}
+              dark={<Word label="option 2 on deep teal" dark />}>
+              <p>The name in clean, widely spaced capitals, with the O swapped for a soft sun. Clean, modern and more premium. The sun works on its own as a small symbol.</p>
+              <p><Link className="link-u" to="/?logo=2">see the site with option 2</Link> · the soft sun on its own rises at the end of the headline; the wordmark sits in the header, the story card and the footer.</p>
+            </LogoOption>
+            <LogoOption n={3} name="sun symbol + name"
+              light={<Mark label="option 3, sun symbol and name, on white" />}
+              dark={<Mark label="option 3 on deep teal" dark />}>
+              <p>Ghalia's sun as a symbol of its own, with the name underneath. Friendly and balanced, between playful and premium. The symbol can go on the suit itself.</p>
+              <p><Link className="link-u" to="/?logo=3">see the site with option 3</Link> · half the sun symbol rises at the end of the headline; symbol and name sit in the header, the story card and the footer.</p>
+            </LogoOption>
           </div>
+
+          <p className="ds-sub">in use</p>
+          <div className="ds-grid ds-grid--wide">
+            <div><div className="mock"><div className="tag"><Word label="Solae" /><small>the tidepool one-piece<br />size m · SAR 229</small></div></div><p className="note"><b>hang tag</b> · option 2</p></div>
+            <div><div className="mock"><div className="fabric"><img src="/img/logo-mark.svg" alt="the sun symbol printed on tropical teal swim fabric" /></div></div><p className="note"><b>on the suit</b> · option 3's symbol, the way the Nike tick sits on a shoe</p></div>
+            <div><div className="mock"><div className="pfp"><span><img src="/img/logo-mark.svg" alt="the sun symbol as a round profile picture" /></span><b>@solae.swim</b></div></div><p className="note"><b>profile picture</b> · option 3</p></div>
+            <div><div className="mock"><div className="box"><p>made for<br />the sun</p><img className="logo-sun" src="/img/logo-sun.svg" alt="ghalia's sun on the end of a sand mailer box" /></div></div><p className="note"><b>mailer box</b> · option 1, the sun rising out of the edge</p></div>
+            <div><div className="mock"><div className="post-sq"><img className="logo-sun" src="/img/logo-sun.svg" alt="" /><p>drop 01<br />is live</p><small>swim sets for teen girls</small></div></div><p className="note"><b>social post</b> · option 1 on deep teal</p></div>
+          </div>
+
           <p className="ds-sub">rules</p>
           <table className="tok"><tbody>
-            <tr><td><b>wordmark</b></td><td>Always set in caps, tracked out at .12em and stretched vertically. Solae Red on light backgrounds, Coral on Deep Teal. Never inside a heading.</td></tr>
-            <tr><td><b>tagline</b></td><td>"by teens, for teens" in Instrument Serif italic as a script overlay, or in tracked caps under the wordmark.</td></tr>
-            <tr><td><b>case</b></td><td>Headlines and buttons are lowercase (k2o, late checkout). Section labels (wide display), nav and eyebrows are tracked caps.</td></tr>
+            <tr><td><b>colour</b></td><td>Options 1 and 3 always keep their own colours, on white, sand or Deep Teal. Option 2's letters are Deep Teal on light and Sand on Deep Teal; its sun is always Sunshine.</td></tr>
+            <tr><td><b>size</b></td><td>Option 1 needs room: below about 8rem wide the letters get hard to read, so in the header it's at its limit. Option 2 works from 1rem caps. Option 3's symbol works down to 16px, which is why it's the tab icon.</td></tr>
+            <tr><td><b>space</b></td><td>Leave at least one sun's width of empty space around every logo. Option 1's flat edge can sit right on the edge of a page, card or box: the sun is rising out of it.</td></tr>
+            <tr><td><b>tagline</b></td><td>"made for the sun", in the headline serif or as a handwritten note.</td></tr>
+            <tr><td><b>case</b></td><td>Headlines and buttons are lowercase (k2o, late checkout). Section labels (spaced caps), nav and eyebrows are tracked caps, like the wordmark.</td></tr>
           </tbody></table>
         </Section>
 
-        <Section id="colour" num="02" title="colour" intro="Every hex comes from the brand sheet's two colour drafts. Sand is the page; Deep Teal is the ink. Brights are for illustration, stripes and big moments. Small text only ever uses ink, stormy or brick. The contrast labels below are worked out live in the page.">
+        <Section id="colour" num="02" title="colour" intro="Every hex comes from the Brand Starter: three main colours, a neutral and a few accents. Cream and Sand are the page, Deep Teal is the ink, Sunshine and Lagoon are the brights. The collection colours are for the swimsuits only. Small text only ever uses deep teal or stormy teal. The contrast labels below are worked out live in the page.">
           <div>
             {Object.entries(PALETTE).map(([group, list]) => (
               <Fragment key={group}>
@@ -182,10 +240,16 @@ export function DesignSystemPage() {
             ))}
           </div>
 
+          <p className="ds-sub">how much of each</p>
+          <div className="mix" role="img" aria-label="about 60% sand or white, 25% deep teal, 10% sunshine and lagoon, 5% accents">
+            {[[60, "sand"], [25, "deep"], [5, "sunshine"], [5, "lagoon"], [5, "coral"]].map(([flex, c]) => <i key={c} style={{ flex, background: `var(--${c})` }} />)}
+          </div>
+          <p className="note" style={{ marginTop: ".5rem" }}>About 60% sand or white, 25% deep teal, 10% sunshine and lagoon, 5% accents.</p>
+
           <p className="ds-sub">the cabana stripe</p>
           <div className="ds-grid ds-grid--wide">
-            <div><div className="stripe-demo" /><p className="note" style={{ marginTop: ".5rem" }}><code className="inline">--stripe-cabana</code>: from the brand sheet's stripe page. Use it for footers, progress bars, product tiles and the mobile menu.</p></div>
-            <div><div className="stripe-demo stripe-demo--umb" /><p className="note" style={{ marginTop: ".5rem" }}><code className="inline">--stripe-umbrella</code>: the blue-and-white beach umbrella from the pins, for accents.</p></div>
+            <div><div className="stripe-demo" /><p className="note" style={{ marginTop: ".5rem" }}><code className="inline">--stripe-cabana</code>: the beach-towel stripe, in the brand colours. Kept for packaging and print; the site itself no longer uses it.</p></div>
+            <div><div className="stripe-demo stripe-demo--umb" /><p className="note" style={{ marginTop: ".5rem" }}><code className="inline">--stripe-umbrella</code>: the lagoon-and-cream beach umbrella from the pins, for accents.</p></div>
           </div>
 
           <p className="ds-sub">semantic tokens</p>
@@ -201,22 +265,22 @@ export function DesignSystemPage() {
 
         <Section id="type" num="03" title="type" intro={<>Six roles, each with one job. k2o's <b>Moslin</b> and <b>TT Turns</b> are commercial fonts you have to license, so free Google stand-ins are in place for now. The real names come first in every font stack, so once you license and self-host a font, it takes over automatically. <b>Inter</b> is SKIMS' actual body font, and it's free.</>}>
           <Family eyebrow="editorial headline · from the pins" spec={<p className="fam__spec t-headline">the suit that stays put</p>}>
-            <dt>in use</dt><dd>Gloock 400</dd><dt>token</dt><dd><code className="inline">--font-headline</code></dd><dt>use</dt><dd>hero, product names, section headlines · lowercase · Solae Red</dd>
+            <dt>in use</dt><dd>Gloock 400</dd><dt>token</dt><dd><code className="inline">--font-headline</code></dd><dt>use</dt><dd>hero, product names, section headlines · lowercase · deep teal</dd>
           </Family>
-          <Family eyebrow="wide display · from k2o" spec={<p className="fam__spec t-wide">catalog</p>}>
-            <dt>original</dt><dd>Moslin (licensed)</dd><dt>stand-in</dt><dd>Unbounded 500</dd><dt>token</dt><dd><code className="inline">--font-display</code></dd><dt>use</dt><dd>section labels in caps (CATALOG, ABOUT US), marquees, the sun &amp; salt statement</dd>
+          <Family eyebrow="spaced caps · the wordmark's face" spec={<p className="fam__spec t-wide">catalog</p>}>
+            <dt>in use</dt><dd>Poppins 700–800, tracked out .2em</dd><dt>token</dt><dd><code className="inline">--font-display</code> · <code className="inline">--font-logo</code></dd><dt>use</dt><dd>the SOLAE wordmark, section labels in caps (CATALOG, OUR STORY), marquees, the sun &amp; salt statement</dd>
           </Family>
           <Family eyebrow="body & ui · from SKIMS" spec={<p className="fam__spec" style={{ fontWeight: 600, letterSpacing: "-.02em" }}>swim, shorts &amp; cover-ups that match</p>}>
             <dt>in use</dt><dd>Inter 400–700 (SKIMS' own body face)</dd><dt>k2o equivalent</dt><dd>TT Turns (licensed)</dd><dt>token</dt><dd><code className="inline">--font-body</code></dd><dt>use</dt><dd>body copy, nav in tracked caps, buttons, prices on cards</dd>
           </Family>
-          <Family eyebrow="serif · brand sheet" spec={<p className="fam__spec t-script" style={{ color: "var(--ocean)" }}>in our shop you'll find…</p>}>
-            <dt>in use</dt><dd>Instrument Serif, roman + italic</dd><dt>token</dt><dd><code className="inline">--font-serif</code></dd><dt>use</dt><dd>wordmark, serif-caps taglines, postcard letters, prices</dd>
+          <Family eyebrow="serif · brand sheet" spec={<p className="fam__spec t-script" style={{ color: "var(--stormy)" }}>in our shop you'll find…</p>}>
+            <dt>in use</dt><dd>Instrument Serif, roman + italic</dd><dt>token</dt><dd><code className="inline">--font-serif</code></dd><dt>use</dt><dd>serif-caps taglines, postcard letters, prices</dd>
           </Family>
-          <Family eyebrow="handwriting · from the pins" spec={<p className="fam__spec t-hand" style={{ fontSize: "clamp(3rem,2rem + 4vw,5.5rem)", color: "var(--brick)" }}>scroll down to explore</p>}>
+          <Family eyebrow="handwriting · from the pins" spec={<p className="fam__spec t-hand" style={{ fontSize: "clamp(3rem,2rem + 4vw,5.5rem)", color: "var(--pop)" }}>scroll down to explore</p>}>
             <dt>in use</dt><dd>Mrs Saint Delafield</dd><dt>token</dt><dd><code className="inline">--font-script</code></dd><dt>use</dt><dd>short notes only ("it's about", "scroll down to explore"), 2–5 words, never for anything users must read</dd>
           </Family>
-          <Family eyebrow={'fluid display · from SKIMS + "your hair is thirsty"'} spec={<p className="fam__spec t-fluid" style={{ fontSize: "clamp(2.8rem,2rem + 3.4vw,5rem)", color: "var(--ocean)" }}>the shop</p>}>
-            <dt>in use</dt><dd>Sour Gummy 900 at 125% width, melted by the <code className="inline">#f-fluid</code> SVG filter</dd><dt>token</dt><dd><code className="inline">--font-fluid</code> · <code className="inline">.t-fluid</code></dd><dt>use</dt><dd>the shop title, port names, the product name on the stamp postcard · lowercase · ocean on sand · 2.5rem and up only, the melt gets crunchy below that</dd>
+          <Family eyebrow={'fluid display · from SKIMS + "your hair is thirsty"'} spec={<p className="fam__spec t-fluid" style={{ fontSize: "clamp(2.8rem,2rem + 3.4vw,5rem)", color: "var(--lagoon)" }}>the shop</p>}>
+            <dt>in use</dt><dd>Sour Gummy 900 at 125% width, melted by the <code className="inline">#f-fluid</code> SVG filter</dd><dt>token</dt><dd><code className="inline">--font-fluid</code> · <code className="inline">.t-fluid</code></dd><dt>use</dt><dd>the shop title and port names · lowercase · lagoon on cream · 2.5rem and up only, the melt gets crunchy below that</dd>
           </Family>
 
           <p className="ds-sub">fluid scale · 360px → 1440px · resize the window to watch it change</p>
@@ -278,25 +342,25 @@ export function DesignSystemPage() {
               <p className="note">into and out of photo sections</p></div>
             <div className="demo"><h4>wave edge</h4>
               <div className="motif-stage" style={{ background: "var(--lagoon)" }}><Edge shape="wave" /></div>
-              <p className="note">marquee band, signatures, statement</p></div>
+              <p className="note">marquee band, signatures</p></div>
             <div className="demo" style={{ placeItems: "center" }}><h4 style={{ justifySelf: "start" }}>postage stamp</h4>
-              <div className="stamp-wrap" style={{ width: "8.5rem", color: "var(--brick)", transform: "rotate(4deg)" }}><div className="stamp"><div className="stamp__inner"><img src={px("27330805", 300)} alt="" /><p className="t-label" style={{ fontSize: ".5rem", marginTop: ".3rem" }}>summer '26 · india</p></div></div></div>
+              <div className="stamp-wrap" style={{ width: "8.5rem", color: "var(--pop)", transform: "rotate(4deg)" }}><div className="stamp"><div className="stamp__inner"><img src={px("27330805", 300)} alt="" /><p className="t-label" style={{ fontSize: ".5rem", marginTop: ".3rem" }}>summer '26 · saudi</p></div></div></div>
               <p className="note">one per page section, max</p></div>
-            <div className="demo" style={{ placeItems: "center", color: "var(--willow)" }}><h4 style={{ justifySelf: "start" }}>dotted swirl &amp; leaf</h4>
+            <div className="demo" style={{ placeItems: "center", color: "var(--lagoon)" }}><h4 style={{ justifySelf: "start" }}>dotted swirl &amp; leaf</h4>
               <svg viewBox="0 0 800 140" style={{ width: "100%", height: "5rem" }} aria-hidden="true"><path className="swirl" d="M40 100C120 20 170 20 224 38S330 120 400 104 520 22 576 36 700 118 760 100" /></svg>
               <Sprite id="i-leaf" viewBox="0 0 300 300" style={{ width: "6rem", opacity: .5 }} />
               <p className="note">connect labels (catalog map), decorate quiet sections</p></div>
           </div>
         </Section>
 
-        <Section id="components" num="06" title="components" intro="Controls are pill-shaped and lowercase. Every interactive element has a 44px minimum touch target and a visible Ocean focus ring. Press Tab to check.">
+        <Section id="components" num="06" title="components" intro="Controls are pill-shaped and lowercase. Every interactive element has a 44px minimum touch target and a visible Lagoon focus ring. Press Tab to check.">
           <div className="ds-grid ds-grid--wide">
             <div className="demo"><h4>buttons</h4>
               <div className="row"><button className="btn" type="button">shop drop 01</button><button className="btn btn--ink" type="button">our story</button></div>
               <div className="row"><button className="btn btn--sun" type="button">get early access</button><button className="btn btn--ghost" type="button">follow us</button></div>
               <div className="row"><button className="btn btn--sm" type="button">small</button><a className="link-u" href="#components">shop now</a></div>
-              <p className="note">brick = buy · ink = learn · sun = promo · ghost = secondary</p></div>
-            <div className="demo demo--ocean"><h4>on photography</h4>
+              <p className="note">stormy = buy · ink = learn · sun = promo · ghost = secondary</p></div>
+            <div className="demo demo--deep"><h4>on deep teal</h4>
               <div className="row"><button className="btn" type="button">shop drop 01</button><button className="btn btn--ghost-light" type="button">see the lookbook</button></div>
               <div className="row"><span className="badge badge--sun">new</span><span className="badge badge--coral">signature</span><span className="badge">matches every suit</span><span className="badge badge--ink">bestseller</span></div></div>
             <div className="demo"><h4>tabs</h4>
@@ -309,13 +373,13 @@ export function DesignSystemPage() {
               <div className="row"><button className="icon-btn icon-btn--outline" type="button" aria-label="previous"><PrevIcon /></button><button className="icon-btn icon-btn--outline" type="button" aria-label="next"><NextIcon /></button></div></div>
             <div className="demo"><h4>selectors</h4>
               <div className="swatches">
-                {[["lagoon", "#17BEBB"], ["brick", "#B40421"], ["jasmine", "#F8E077"], ["deep teal", "#07494A"]].map(([name, c], i) => (
+                {[["tropical", "#17BEBB"], ["cerulean", "#0E79B2"], ["brick", "#B40421"], ["willow", "#93C186"]].map(([name, c], i) => (
                   <button key={name} className="swatch swatch--lg" type="button" aria-pressed={i === 0} aria-label={name} style={{ "--c": c }} />
                 ))}
               </div>
               <div className="sizes"><button className="size" type="button">XS</button><button className="size" type="button" aria-checked="true">S</button><button className="size" type="button">M</button><button className="size" type="button">L</button><button className="size" type="button" disabled>XL</button></div>
               <div className="chips"><button className="chip" type="button" aria-checked="true"><i style={{ "--c": "#17BEBB" }} />match my suit</button><button className="chip" type="button"><i style={{ "--c": "#fff" }} />white</button><button className="chip" type="button"><i style={{ "--c": "#1E2626" }} />black</button></div>
-              <p className="note">shorts come matching, white or black (from the brand notes)</p></div>
+              <p className="note">suits come in the collection colours; shorts come matching, white or black</p></div>
             <div className="demo"><h4>product card</h4><div><ProductCard product={byId("tidepool")} /></div></div>
             <div className="demo"><h4>accordion</h4>
               <div className="acc"><details open><summary>fit &amp; pads</summary><div>small removable pads, held in by a second layer of fabric.</div></details><details><summary>care</summary><div>rinse in cool fresh water after every swim.</div></details></div></div>
@@ -342,7 +406,6 @@ export function DesignSystemPage() {
       </main>
 
       <footer className="footer">
-        <div className="footer__stripe" aria-hidden="true" />
         <p className="note" style={{ textAlign: "center", marginTop: "1rem" }}>© 2026 SOLAE · <Link className="link-u" to="/">back to the store</Link></p>
       </footer>
 

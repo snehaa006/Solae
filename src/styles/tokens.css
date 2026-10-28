@@ -1,71 +1,75 @@
 /* ==========================================================================
    SOLAE — design tokens
-   Brand palette from "Color Scheme Draft #1/#2" (brand PDF).
-   Type roles from k2o (wide display + soft grotesk) and SKIMS (condensed caps + Inter).
+   Palette from the Brand Starter (28 Oct 2026): Deep Teal, Sunshine and Lagoon,
+   Sand as the neutral, Coral / Stormy Teal / Olive as small accents.
+   Mix: about 60% sand or white, 25% deep teal, 10% sunshine + lagoon, 5% accents.
+   Type roles from k2o (wide caps + soft grotesk) and SKIMS (Inter).
    ========================================================================== */
 
 :root {
   /* ---- Brand palette (raw) ------------------------------------------- */
-  --sand:          #FFFDF2; /* page — PDF paper cream */
-  --papaya:        #FFECD1; /* Papaya Whip */
-  --shell:         #F6EEDF; /* sunk surface, k2o-style beige card */
-  --jasmine:       #F8E077; /* Jasmine */
-  --marigold:      #FFAB4C; /* Pantone 14-1050 Marigold */
-  --coral:         #F07167; /* Vibrant Coral */
-  --solae-red:     #E84A4A; /* wordmark red */
-  --brick:         #B40421; /* Brick Red */
-  --hibiscus:      #EC0868; /* hot-pink accent */
-  --mauve:         #9A879D; /* dusk mauve */
-  --sky:           #6699CC; /* Blue Grey */
-  --ocean:         #0471A6; /* Bright Teal Blue */
-  --lagoon:        #17BEBB; /* Tropical Teal */
-  --cyan:          #119DA4; /* Dark Cyan */
-  --stormy:        #196876; /* Stormy Teal */
-  --deep:          #07494A; /* Dark Teal */
-  --willow:        #93C186; /* Willow Green */
-  --turf:          #337155; /* Turf Green */
-  --olive:         #545624; /* Olive Leaf */
-  --charcoal:      #414146; /* logo plate */
+  --deep:          #07494A; /* Deep Teal (primary): backgrounds, text, packaging */
+  --sunshine:      #F8E077; /* Sunshine (secondary): the logo, highlights, sale tags */
+  --lagoon:        #119DA4; /* Lagoon (tertiary): links and small details */
+  --sand:          #FFECD1; /* Sand (neutral): light backgrounds, packaging */
+  --coral:         #F07167; /* accent, from the logo letters */
+  --stormy:        #196876; /* Stormy Teal, accent */
+  --olive:         #545624; /* Olive, accent */
+  --cream:         #FFF8EE; /* page: the brand sheet's paper */
+  --shell:         #F6EEDF; /* sunk surface */
   --white:         #FFFFFF;
+  /* collection colours: for the swimsuits (and illustration) only, never UI */
+  --cerulean:      #0E79B2;
+  --sky:           #6699CC;
+  --ocean:         #0471A6;
+  --tropical:      #17BEBB;
+  --brick:         #B40421;
+  --turf:          #337155;
+  --willow:        #93C186;
 
   /* ---- Semantic colour ----------------------------------------------- */
-  --bg:            var(--sand);
+  --bg:            var(--cream);
   --surface:       var(--white);
   --surface-sunk:  var(--shell);
-  --surface-warm:  var(--papaya);
-  --ink:           var(--deep);     /* body text: 9.6:1 on sand */
-  --ink-soft:      var(--stormy);   /* secondary text: 6.4:1 on sand */
-  --ink-mute:      #5E7F80;         /* meta text: 4.6:1 on sand */
+  --surface-warm:  var(--sand);
+  --ink:           var(--deep);     /* body text: 9.8:1 on cream */
+  --ink-soft:      var(--stormy);   /* secondary text: 6.1:1 on cream */
+  --ink-mute:      #4F6F70;         /* meta text: 5.2:1 on cream, 4.7:1 on sand */
   --line:          rgba(7, 73, 74, .14);
   --line-strong:   rgba(7, 73, 74, .32);
-  --accent:        var(--solae-red);/* display accents, large text only */
-  --action:        var(--brick);    /* primary buttons: 7.1:1 with white */
-  --action-hover:  #8F0319;
+  --accent:        var(--deep);     /* headlines and prices */
+  --pop:           var(--coral);    /* handwritten notes, arrows, stamps: decoration only */
+  --action:        var(--stormy);   /* primary buttons: 5.5:1 with sand (white on lagoon is only 3.3:1) */
+  --action-hover:  var(--deep);
   --on-action:     var(--sand);
-  --focus:         var(--ocean);
+  --focus:         var(--lagoon);
 
-  /* The cabana stripe — PDF page 7, used as a brand texture */
+  /* The cabana stripe, re-run in the brand colours */
   --stripe-cabana: repeating-linear-gradient(90deg,
-      var(--cyan) 0 14px,  var(--papaya) 14px 20px, var(--coral) 20px 32px,
-      var(--jasmine) 32px 44px, var(--ocean) 44px 58px, var(--sand) 58px 62px,
-      var(--brick) 62px 70px, var(--willow) 70px 84px, var(--deep) 84px 92px,
-      var(--sky) 92px 104px, var(--lagoon) 104px 118px, var(--turf) 118px 126px);
-  --stripe-cabana-y: repeating-linear-gradient(180deg,
-      var(--cyan) 0 14px,  var(--papaya) 14px 20px, var(--coral) 20px 32px,
-      var(--jasmine) 32px 44px, var(--ocean) 44px 58px, var(--sand) 58px 62px,
-      var(--brick) 62px 70px, var(--willow) 70px 84px, var(--deep) 84px 92px,
-      var(--sky) 92px 104px, var(--lagoon) 104px 118px, var(--turf) 118px 126px);
-  --stripe-umbrella: repeating-linear-gradient(90deg, var(--ocean) 0 22px, var(--sand) 22px 44px);
+      var(--lagoon) 0 14px, var(--sand) 14px 20px, var(--coral) 20px 32px,
+      var(--sunshine) 32px 44px, var(--deep) 44px 58px, var(--cream) 58px 62px,
+      var(--olive) 62px 70px, var(--sunshine) 70px 84px, var(--stormy) 84px 92px,
+      var(--sand) 92px 104px, var(--lagoon) 104px 118px, var(--coral) 118px 126px);
+  --stripe-umbrella: repeating-linear-gradient(90deg, var(--lagoon) 0 22px, var(--cream) 22px 44px);
 
   /* ---- Typography ---------------------------------------------------- */
   /* Licensed originals are listed first; free Google stand-ins render today. */
   --font-headline: "Gloock", "Instrument Serif", Georgia, serif;           /* editorial red serif (pins) */
-  --font-display:  "Moslin", "Unbounded", "Arial Black", sans-serif;       /* k2o wide display */
-  --font-caps:     var(--font-display);                                    /* section labels: CATALOG, ABOUT US */
+  --font-display:  "Poppins", "Moslin", "Arial Black", sans-serif;        /* wide caps, matched to the logo wordmark */
+  --font-caps:     var(--font-display);                                    /* section labels: CATALOG, OUR STORY */
+  --font-logo:     "Poppins", "Avenir Next", sans-serif;                   /* SOLAE wordmark caps */
   --font-body:     "Inter", "TT Turns", system-ui, sans-serif;            /* SKIMS body */
   --font-serif:    "Instrument Serif", "Times New Roman", serif;           /* wordmark + captions */
   --font-script:   "Mrs Saint Delafield", "Brush Script MT", cursive;      /* handwritten notes */
-  --font-fluid:    "Sour Gummy", "Unbounded", "Arial Black", sans-serif;   /* gooey wide display (SKIMS, "your hair is thirsty") */
+  --font-fluid:    "Sour Gummy", "Poppins", "Arial Black", sans-serif;   /* gooey wide display (SKIMS, "your hair is thirsty") */
+  /* postcard type, product page only — each one matched to a postcard pin */
+  --font-post-cond:   "Roboto Serif", Georgia, serif;           /* stamp title (lemon stripe short), wdth 50 */
+  --font-post-mono:   "Space Mono", ui-monospace, monospace;    /* stamp details */
+  --font-post-script: "Pinyon Script", cursive;                /* "built for", "#01" */
+  --font-post-didone: "Bodoni Moda", Didot, serif;             /* "WARM DAYS", postmarks */
+  --font-post-marker: "Shadows Into Light", cursive;           /* "a postcard from summer" */
+  --font-post-hand:   "Cedarville Cursive", cursive;           /* handwritten lines (caprini) */
+  --font-post-grot:   "Archivo", "Inter", sans-serif;           /* "welcome to your endless summer", wdth 75 */
 
   /* Fluid type scale — 360px → 1440px viewport */
   --fs-mega:    clamp(3rem,     1.4rem + 7.1vw,  7.75rem);

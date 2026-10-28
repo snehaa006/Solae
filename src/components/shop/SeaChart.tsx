@@ -1,6 +1,6 @@
 import { useImperativeHandle, useLayoutEffect, useRef, useState, type Ref } from "react";
 import { inPort, PORTS, portById, type PortId } from "../../data/catalog";
-import { inr, pieces, prefersReducedMotion, px } from "../../lib/format";
+import { pieces, prefersReducedMotion, px, sar } from "../../lib/format";
 import { blob, CHART, f1, ISLES, stroke, type Pt } from "./chart";
 import { DecoMark, ShipArt } from "./ChartArt";
 
@@ -56,7 +56,7 @@ function IsleCard({ id }: { id: PortId }) {
         <span className="isle-card__thumbs">
           {items.slice(0, 4).map(p => <img key={p.id} src={px(p.img, 120)} alt="" style={{ objectPosition: p.pos }} />)}
         </span>
-        <span>from {inr(Math.min(...items.map(p => p.price)))}</span>
+        <span>from {sar(Math.min(...items.map(p => p.price)))}</span>
       </div>
     </>
   );
@@ -190,13 +190,13 @@ export function SeaChart({ here, onPick, ref }: SeaChartProps) {
             <pattern id="sail-stripe" width="11" height="10" patternUnits="userSpaceOnUse"><rect className="ship__stripe-a" width="11" height="10" /><rect className="ship__stripe-b" width="5.5" height="10" /></pattern>
             <clipPath id="ship-water"><rect x="-66" y="0" width="134" height="14" /></clipPath>
           </defs>
-          <g className="compass" transform="translate(92 118)">
+          <g className="compass" transform="translate(72 82) scale(.7)">
             <circle r="38" className="compass__ring" /><circle r="27" className="compass__ring compass__ring--dash" />
             <path className="compass__star" d="M0-34L5-5L34 0L5 5L0 34L-5 5L-34 0L-5-5Z" /><path className="compass__north" d="M0-34L5-5L0 0L-5-5Z" />
             <text y="-46" className="compass__n">N</text>
           </g>
           {CHART.waves.map(([x, y]) => <path key={`${x},${y}`} className="m-wave" d={`M${x} ${y}q6-6 12 0t12 0 12 0`} />)}
-          {CHART.sea.map(d => <DecoMark key={d[0]} deco={d} />)}
+          {CHART.sea.map((d, i) => <DecoMark key={i} deco={d} />)}
           {ISLES.map(([id, o]) => (
             <g key={id} className={`isle${here === id ? " is-here" : ""}${hover === id ? " is-hover" : ""}`} onClick={() => onPick(id)} {...hoverProps(id)}>
               <use href={`#isle-${id}`} className="isle__line" style={{ strokeWidth: 38 }} />
@@ -214,7 +214,7 @@ export function SeaChart({ here, onPick, ref }: SeaChartProps) {
           })}
           {/* foam and ripples are added straight to the DOM while sailing and remove themselves when their animation ends */}
           <g ref={wake} className="wake" onAnimationEnd={e => (e.target as Element).parentElement?.remove()} />
-          <g ref={ship} className="ship"><g ref={tiltEl} className="ship__tilt"><g className="ship__face"><g className="ship__bob" transform="scale(.85)"><ShipArt /></g></g></g></g>
+          <g ref={ship} className="ship"><g ref={tiltEl} className="ship__tilt"><g className="ship__face"><g className="ship__bob" transform="scale(.8)"><ShipArt /></g></g></g></g>
         </svg>
 
         {/* the ribbon on each island: just the place name; the hover card says the rest */}

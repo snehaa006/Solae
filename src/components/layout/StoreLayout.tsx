@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
 import { useCart } from "../../context/cart";
+import { LogoLab } from "../Logo";
 import { AnnounceBar } from "./AnnounceBar";
 import { CartDrawer } from "./CartDrawer";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { MobileNav } from "./MobileNav";
 
-/** announcement bar, header, menu, footer and bag around every store page */
+/** announcement bar, header, menu, footer, bag and logo bar around every store page */
 export function StoreLayout() {
   const { isOpen: bagOpen, close: closeBag } = useCart();
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ export function StoreLayout() {
       <Outlet />
       <Footer />
       <CartDrawer />
+      <LogoLab />
     </>
   );
 }

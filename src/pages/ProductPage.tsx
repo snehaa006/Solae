@@ -1,45 +1,44 @@
-import { Link, useParams } from "react-router";
-import { byId, portById, portOf, PRODUCTS, type Product, type ProductId } from "../data/catalog";
-import { BuyPanel } from "../components/product/BuyPanel";
+import { Fragment } from "react";
+import { useParams, useSearchParams } from "react-router";
+import { byId, FACTS, portById, portOf, PRODUCTS, type Product, type ProductId } from "../data/catalog";
+import { REVIEWS, SAMPLE_REVIEWS } from "../data/reviews";
+import { Sprite } from "../components/icons";
 import { Postcards } from "../components/product/Postcards";
+import { ProductInfo } from "../components/product/ProductInfo";
+import { Reviews } from "../components/product/Reviews";
 import { ProductCard } from "../components/ProductCard";
 import { usePageMeta } from "../hooks/usePageMeta";
 
-const PAIR_WITH_SUIT: ProductId[] = ["boardwalk", "drift", "white-one", "shoreline"];
-const PAIR_WITH_PIECE: ProductId[] = ["tidepool", "cabana", "off-shoulder", "flounce"];
+const pairsFor = (p: Product): ProductId[] => p.cat === "swimsuits"
+  ? ["boardwalk", "drift", "white-one", p.sig ? "tidepool" : "off-shoulder"]
+  : ["tidepool", "cabana", "off-shoulder", "flounce"];
 
-/* /product/<id>: photos as swipeable postcards beside the buy panel */
+/* /product/<id> (ref: k2o): the postcard stack beside a minimal panel, then a facts strip,
+   the reviews and "pairs well with". /product/<id>?reviews=sample previews the reviews layout. */
 export function ProductPage() {
   const { id } = useParams();
+  const [params] = useSearchParams();
   const p = byId(id) ?? PRODUCTS[0];
   usePageMeta(`${p.name} — SOLAE`);
-  // a new product starts with fresh choices and the first postcard
-  return <ProductView key={p.id} product={p} />;
-}
-
-function ProductView({ product: p }: { product: Product }) {
+  const reviews = REVIEWS[p.id] ?? (params.get("reviews") === "sample" ? SAMPLE_REVIEWS : []);
+  const rating = reviews.length ? reviews.reduce((n, r) => n + r.rating, 0) / reviews.length : 0;
   const port = portById(portOf(p));
-  const pairs = p.cat === "swimsuits" ? PAIR_WITH_SUIT : PAIR_WITH_PIECE;
-  return (
-    <main id="main" className="wrap">
-      <nav className="crumbs" aria-label="breadcrumb">
-        <Link to="/">home</Link><span aria-hidden="true">/</span>
-        <Link to="/shop">shop</Link><span aria-hidden="true">/</span>
-        <Link to={`/shop/${port.id}`}>{port.place}</Link><span aria-hidden="true">/</span>
-        <span aria-current="page">{p.name}</span>
-      </nav>
-      <section className="pdp" aria-label="product">
-        <Postcards product={p} port={port} />
-        <BuyPanel product={p} port={port} />
-      </section>
 
-      <section className="section" aria-labelledby="pair-title">
-        <div className="catalog__head" style={{ marginBottom: "var(--space-l)" }}>
-          <p className="t-hand" aria-hidden="true" style={{ color: "var(--brick)" }}>complete the look</p>
-          <h2 id="pair-title" className="t-wide t-wide--l">pairs well with</h2>
-        </div>
+  return (
+    <main id="main">
+      {/* keyed by product, so a new piece starts with fresh choices and the first postcard */}
+      <section key={p.id} className="pdp wrap" aria-label="product">
+        <Postcards product={p} port={port} />
+        <ProductInfo product={p} reviewCount={reviews.length} rating={rating} />
+      </section>
+      <div className="pdp-strip wrap">
+        {FACTS[p.cat].map((f, i) => <Fragment key={f}>{i > 0 && <Sprite id="i-sun-solo" />}<span>{f}</span></Fragment>)}
+      </div>
+      <Reviews reviews={reviews} rating={rating} />
+      <section className="section wrap" aria-labelledby="pair-title">
+        <h2 id="pair-title" className="t-h2 catalog__title">pairs well with</h2>
         <div className="grid-products">
-          {pairs.map((pid, i) => <ProductCard key={pid} product={byId(pid)} index={i} />)}
+          {pairsFor(p).map(pid => <ProductCard key={pid} product={byId(pid)} />)}
         </div>
       </section>
     </main>
