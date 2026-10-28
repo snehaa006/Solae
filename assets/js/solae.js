@@ -308,7 +308,7 @@ const CHART = {
                    deco: [["palm", 684, 472, .72], ["palm", 728, 468, .6]] },
     "cover-ups": { at: [1172, 102], r: [68, 28], seed: 15, sign: [1172, 44],  dock: [1090, 228],
                    deco: [["hut", 1155, 112, .7], ["palm", 1197, 108, .62]] },
-    skirts:      { at: [1324, 410], r: [52, 17], seed: 2,  sign: [1324, 456], dock: [1232, 372],
+    skirts:      { at: [1324, 410], r: [52, 17], seed: 2,  sign: [1312, 456], dock: [1232, 372],
                    deco: [["palm", 1326, 414, .55]] },
   },
   /* "solae" in one stroke, lead-in to swash; the o and the a go up their left side and back, like real cursive */
@@ -548,23 +548,12 @@ if (shop) {
   chart.addEventListener("focusin", e => { const t = e.target.closest(".port"); if (t && t.matches(":focus-visible")) showTip(t.dataset.port); });
   chart.addEventListener("focusout", hideTip);
 
-  const postmark = port => `<svg class="port-head__mark" viewBox="0 0 120 120" aria-hidden="true">
-    <circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="40"/>
-    <path id="pm-port" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0" fill="none" stroke="none"/>
-    <text class="port-head__arc"><textPath href="#pm-port">SOLAE · ${port.place.toUpperCase()} · DROP 01 ·</textPath></text>
-    <text x="60" y="68" text-anchor="middle" class="port-head__no">${PORTS.indexOf(port) ? "no. " + pad(PORTS.indexOf(port)) : "home"}</text>
-  </svg>`;
-
   function renderPanel(id) {
     const port = portById(id), n = PORTS.indexOf(port), next = PORTS[n % (PORTS.length - 1) + 1];
     panel.innerHTML = `
       <header class="port-head">
-        <div class="port-head__title">
-          <p class="t-label">${port.label} · ${pieces(inPort(id).length)}</p>
-          <h2 class="t-fluid" id="port-title">${port.place}</h2>
-        </div>
-        <p class="t-lead port-head__about">${port.def}</p>
-        ${postmark(port)}
+        <h2 class="t-label"><span class="sr-only">${port.place}: </span>${port.label} · ${pieces(inPort(id).length)}</h2>
+        <p class="port-head__about">${port.def}</p>
       </header>
       <div class="grid-products">${inPort(id).map(card).join("")}</div>
       <div class="port-next">
