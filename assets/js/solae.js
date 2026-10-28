@@ -215,31 +215,42 @@ function openPanel(sel, open) {
 /* The Brand Starter's three options, nothing final. The site wears one at a time,
    everywhere a logo shows: header, menu, the sun at the end of the hero, the story
    and vision cards, the product welcome card, the footer and the tab icon.
-   Open any page with ?logo=1, ?logo=2 or ?logo=3 to see the site in that option
-   (this browser remembers it); everyone else sees LOGO_DEFAULT. */
+   The bar in the bottom-left corner switches between them (hide it with ×, bring it
+   back with ?logos); ?logo=1, 2 or 3 in the address picks one too. This browser
+   remembers the choice; everyone else sees LOGO_DEFAULT. */
 const LOGO_DEFAULT = "1";
 const LOGO_KEY = "solae-logo-option";
-let logoOpt = LOGO_DEFAULT;
-try {
-  const pick = new URLSearchParams(location.search).get("logo");
-  if (["1", "2", "3"].includes(pick)) localStorage.setItem(LOGO_KEY, pick);
-  logoOpt = localStorage.getItem(LOGO_KEY) || LOGO_DEFAULT;
-} catch {}
-if (!["1", "2", "3"].includes(logoOpt)) logoOpt = LOGO_DEFAULT;
+const store = (k, v) => { try { return v === undefined ? localStorage.getItem(k) : localStorage.setItem(k, v); } catch { return null; } };
 const SUN_IMG = `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="">`;
 const MARK_IMG = `<img class="sun-mark" src="assets/img/logo-mark.svg" alt="">`;
 /* full: the whole logo · hero: its sun alone, cut by the window's edge · mark: small, for the vision card */
-const LOGO = {
-  "1": { icon: "assets/img/logo-sun.svg", full: SUN_IMG, hero: SUN_IMG, mark: SUN_IMG,
+const LOGOS = {
+  "1": { name: "ghalia's sun", icon: "assets/img/logo-sun.svg", full: SUN_IMG, hero: SUN_IMG, mark: SUN_IMG,
          story: `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="Ghalia's drawing: a half sun with the letters s, o, l, a, e running up its edge and wavy beams">` },
-  "2": { icon: "assets/img/logo-soft-sun.svg", full: `<span class="logo-word">S<i></i>LAE</span>`, hero: `<i class="sun-soft"></i>`, mark: `<i class="sun-soft"></i>`,
+  "2": { name: "minimal wordmark", icon: "assets/img/logo-soft-sun.svg", full: `<span class="logo-word">S<i></i>LAE</span>`, hero: `<i class="sun-soft"></i>`, mark: `<i class="sun-soft"></i>`,
          story: `<span class="logo-word" role="img" aria-label="Solae: the name in spaced capitals with a soft sun for the O">S<i></i>LAE</span>` },
-  "3": { icon: "assets/img/logo-mark.svg", full: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>`, hero: MARK_IMG, mark: MARK_IMG,
+  "3": { name: "sun symbol and name", icon: "assets/img/logo-mark.svg", full: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>`, hero: MARK_IMG, mark: MARK_IMG,
          story: `<span class="logo-mark" role="img" aria-label="Solae: Ghalia's sun as a symbol, with the name underneath"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>` },
-}[logoOpt];
-document.documentElement.dataset.logo = logoOpt;
-document.querySelectorAll("[data-logo-slot]").forEach(el => { el.innerHTML = LOGO[el.dataset.logoSlot || "full"]; });
-document.querySelector('link[rel="icon"]')?.setAttribute("href", LOGO.icon);
+};
+let logoOpt = LOGO_DEFAULT;
+function setLogo(opt, remember = false) {
+  logoOpt = LOGOS[opt] ? opt : LOGO_DEFAULT;
+  const set = LOGOS[logoOpt];
+  document.documentElement.dataset.logo = logoOpt;
+  document.querySelectorAll("[data-logo-slot]").forEach(el => { el.innerHTML = set[el.dataset.logoSlot || "full"]; });
+  document.querySelector('link[rel="icon"]')?.setAttribute("href", set.icon);
+  document.querySelectorAll("[data-logo]").forEach(b => b.setAttribute("aria-pressed", b.dataset.logo === logoOpt));
+  if (remember) store(LOGO_KEY, logoOpt);
+}
+const params = new URLSearchParams(location.search);
+if (params.has("logos")) store(LOGO_KEY + "-bar", "on");
+if (document.querySelector("[data-logo-slot]") && store(LOGO_KEY + "-bar") !== "off") {
+  document.body.insertAdjacentHTML("beforeend", `<div class="logo-lab" role="group" aria-label="try a logo">
+    <span>logo</span>${Object.entries(LOGOS).map(([k, l]) => `<button type="button" data-logo="${k}" aria-pressed="false" title="option ${k}: ${l.name}" aria-label="option ${k}: ${l.name}">${k}</button>`).join("")}
+    <button class="logo-lab__x" type="button" data-logo-lab-off title="hide" aria-label="hide the logo bar">×</button>
+  </div>`);
+}
+LOGOS[params.get("logo")] ? setLogo(params.get("logo"), true) : setLogo(store(LOGO_KEY));
 
 /* ---- Page wiring -------------------------------------------------------- */
 document.body.insertAdjacentHTML("afterbegin", SPRITE);
@@ -274,6 +285,8 @@ document.addEventListener("click", e => {
   if (t.matches("[data-open-menu]")) openPanel(".mobile-nav", true);
   if (t.matches("[data-close-menu]")) openPanel(".mobile-nav", false);
   if (t.matches(".checkout")) toast("this is a mock store — checkout comes next ☀");
+  if (t.dataset.logo) setLogo(t.dataset.logo, true);
+  if (t.matches("[data-logo-lab-off]")) { t.parentElement.hidden = true; store(LOGO_KEY + "-bar", "off"); }
 });
 document.querySelector(".scrim")?.addEventListener("click", () => openPanel(".drawer", false));
 document.addEventListener("keydown", e => { if (e.key === "Escape") { openPanel(".drawer", false); openPanel(".mobile-nav", false); } });
@@ -686,7 +699,7 @@ if (pdp) {
     </article>`,
     `<article class="post post--brand">
       <div class="post__front">
-        <span class="post__logo" aria-hidden="true">${LOGO.full}</span>
+        <span class="post__logo" aria-hidden="true" data-logo-slot>${LOGOS[logoOpt].full}</span>
         <svg class="post__sparks" viewBox="0 0 100 40" aria-hidden="true"><g transform="translate(14 14) scale(.9)">${sparkle}</g><g transform="translate(66 4) scale(1.05)">${sparkle}</g></svg>
         <p class="post__tag">made for the sun</p>
       </div>

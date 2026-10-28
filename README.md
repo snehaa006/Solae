@@ -13,7 +13,7 @@ Mock portfolio + store for SOLAE: modest, modern swim sets for teen girls (a one
 
 ## Logos
 
-None of the three Brand Starter options is final, so the site wears one at a time, everywhere a logo shows (header, menu, the sun at the end of the hero, the story and vision cards, the product welcome card, the footer, the tab icon). Add `?logo=1`, `?logo=2` or `?logo=3` to any address to see the site in that option; the browser remembers it. Everyone else sees `LOGO_DEFAULT` in `assets/js/solae.js` (option 1 for now). The private brand page links to all three.
+None of the three Brand Starter options is final, so the site wears one at a time, everywhere a logo shows (header, menu, the sun at the end of the hero, the story and vision cards, the product welcome card, the footer, the tab icon). The logo bar in the bottom-left corner of every store page switches between them (hide it with ×; add `?logos` to any address to bring it back). Adding `?logo=1`, `?logo=2` or `?logo=3` to an address picks one too. The browser remembers the choice. Everyone else sees `LOGO_DEFAULT` in `assets/js/solae.js` (option 1 for now). The private brand page links to all three.
 
 ## Prices
 
