@@ -616,27 +616,17 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 @media (max-width: 480px) { .posts__slide { padding: 4.2rem .75rem 4.6rem; } }
 
 /* ---- 9 · Shop: the sea chart (pin: hand-drawn "solae" chart, ship reference) -- */
-/* one short band: the title on the left, the chart beside it as the category nav */
-.shop-top { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-s) var(--space-l); align-items: center; padding-block: var(--space-m) var(--space-s); }
-.shop-hero { display: grid; gap: .4rem; }
-.shop-hero h1 { font-size: clamp(3.4rem, 1.2rem + 8vw, 9rem); color: var(--ocean); white-space: nowrap; }
-.shop-hero__intro { max-width: 22rem; color: var(--ink-soft); }
-@media (max-width: 1099px) {
-  .shop-top { grid-template-columns: 1fr; }
-  .shop-hero { grid-template-columns: auto minmax(0, 1fr); gap: var(--space-s) var(--space-l); align-items: end; }
-  .shop-hero__intro { justify-self: end; padding-bottom: .9em; }
-}
-@media (max-width: 760px) { .shop-hero { grid-template-columns: 1fr; } .shop-hero__intro { justify-self: start; padding-bottom: 0; } }
+/* the chart is the nav: a small strip centred under the header */
+.shop-top { padding-block: var(--space-s) 0; }
 
 /* no frame, no paper: a small strip of sea right on the page. the lane writes "solae" */
 .chart {
   --land: color-mix(in srgb, var(--papaya) 70%, var(--jasmine));
   --shoal: color-mix(in srgb, var(--bg) 80%, var(--lagoon));
   --wood: color-mix(in srgb, var(--brick) 40%, var(--olive));
-  position: relative; width: min(100%, 42rem); margin-inline: auto 0; aspect-ratio: 1400 / 540; container-type: inline-size;
+  position: relative; width: min(100%, 42rem); margin-inline: auto; aspect-ratio: 1400 / 540; container-type: inline-size;
 }
 .chart__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-@media (max-width: 1099px) { .chart { margin-inline: auto; } }
 /* phones: the strip scrolls sideways, fading at the edges so it reads as more sea */
 @media (max-width: 700px) {
   .chart-scroll {
@@ -780,21 +770,11 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 .isle-card__thumbs img + img { margin-left: -.55rem; }
 
 /* port panel: the island's pieces */
-.port-panel { padding-block: var(--space-l) var(--space-2xl); scroll-margin-top: calc(var(--header-h) + 1rem); }
-.port-head { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) auto; gap: var(--space-s) var(--space-l); align-items: end; padding-bottom: var(--space-l); margin-bottom: var(--space-xl); border-bottom: 1.5px dashed var(--line-strong); animation: port-in var(--dur-slow) var(--ease-out); }
-.port-head__title .t-label { color: var(--brick); }
-.port-head h2 { font-size: clamp(2.8rem, 1.5rem + 5.2vw, 6.6rem); color: var(--ocean); margin-top: .35rem; }
+.port-panel { padding-block: var(--space-m) var(--space-2xl); scroll-margin-top: calc(var(--header-h) + 1rem); }
+/* one slim line under the map: what's on this island, then the pieces */
+.port-head { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: .3rem var(--space-s); padding-bottom: var(--space-s); margin-bottom: var(--space-l); border-bottom: 1.5px dashed var(--line-strong); text-align: center; animation: port-in var(--dur-slow) var(--ease-out); }
+.port-head h2 { color: var(--brick); }
 .port-head__about { color: var(--ink-soft); }
-.port-head__mark { width: clamp(6rem, 5rem + 3vw, 8rem); color: rgba(180, 4, 33, .6); transform: rotate(-10deg); align-self: start; }
-.port-head__mark circle { fill: none; stroke: currentColor; stroke-width: 2.5; }
-.port-head__mark circle + circle { stroke-width: 1.5; }
-.port-head__arc { font-family: var(--font-body); font-weight: 700; font-size: 10px; letter-spacing: 2.4px; fill: currentColor; }
-.port-head__no { font-family: var(--font-serif); font-style: italic; font-size: 20px; fill: currentColor; }
-@media (max-width: 1000px) {
-  .port-head { grid-template-columns: minmax(0, 1fr) auto; }
-  .port-head__about { grid-column: 1 / -1; }
-  .port-head__mark { grid-area: 1 / 2; width: clamp(4.5rem, 3.5rem + 4vw, 6rem); }
-}
 .port-next { display: grid; justify-items: center; gap: .2rem; margin-top: var(--space-xl); text-align: center; }
 .port-next .t-hand { color: var(--brick); transform: rotate(-4deg); }
 .port-next__boat { width: 1.35rem; height: 1.1rem; }

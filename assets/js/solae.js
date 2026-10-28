@@ -548,23 +548,12 @@ if (shop) {
   chart.addEventListener("focusin", e => { const t = e.target.closest(".port"); if (t && t.matches(":focus-visible")) showTip(t.dataset.port); });
   chart.addEventListener("focusout", hideTip);
 
-  const postmark = port => `<svg class="port-head__mark" viewBox="0 0 120 120" aria-hidden="true">
-    <circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="40"/>
-    <path id="pm-port" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0" fill="none" stroke="none"/>
-    <text class="port-head__arc"><textPath href="#pm-port">SOLAE · ${port.place.toUpperCase()} · DROP 01 ·</textPath></text>
-    <text x="60" y="68" text-anchor="middle" class="port-head__no">${PORTS.indexOf(port) ? "no. " + pad(PORTS.indexOf(port)) : "home"}</text>
-  </svg>`;
-
   function renderPanel(id) {
     const port = portById(id), n = PORTS.indexOf(port), next = PORTS[n % (PORTS.length - 1) + 1];
     panel.innerHTML = `
       <header class="port-head">
-        <div class="port-head__title">
-          <p class="t-label">${port.label} · ${pieces(inPort(id).length)}</p>
-          <h2 class="t-fluid" id="port-title">${port.place}</h2>
-        </div>
-        <p class="t-lead port-head__about">${port.def}</p>
-        ${postmark(port)}
+        <h2 class="t-label"><span class="sr-only">${port.place}: </span>${port.label} · ${pieces(inPort(id).length)}</h2>
+        <p class="port-head__about">${port.def}</p>
       </header>
       <div class="grid-products">${inPort(id).map(card).join("")}</div>
       <div class="port-next">
