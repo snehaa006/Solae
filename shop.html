@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>The shop — SOLAE</title>
-  <meta name="description" content="Shop SOLAE by port: plain swimsuits, the two signatures, matching knee-length shorts, cover-ups and the skirt. Pick a place on the map and the boat sails you there.">
+  <meta name="description" content="Shop SOLAE by port: plain swimsuits, the two signatures, matching knee-length shorts, cover-ups and the skirt. Pick an island on the map and the boat sails you there.">
   <meta name="theme-color" content="#FFFDF2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,27 +53,17 @@
   <main id="main">
     <!-- 1 · Shop hero — fluid type (pins: SKIMS, "your hair is thirsty") -->
     <section class="shop-hero wrap" aria-labelledby="shop-title">
-      <div class="shop-hero__title">
-        <p class="t-hand" aria-hidden="true">welcome aboard</p>
-        <h1 id="shop-title" class="t-fluid">the shop</h1>
-      </div>
-      <div class="shop-hero__intro">
-        <p class="t-tag">five ports · nine pieces · one little boat</p>
-        <p>every category is a place on the map. tap a port and the boat sails you there — whatever lives on that island shows up below.</p>
-      </div>
+      <h1 id="shop-title" class="t-fluid">the shop</h1>
+      <p class="shop-hero__intro">the boat sails you there — whatever lives on that island shows up below.</p>
     </section>
 
-    <!-- 2 · Sea chart + port panel — pin: freepik treasure map, ship reference -->
-    <section class="shop" data-shop aria-label="shop by port">
+    <!-- 2 · Sea chart + port panel — pin: hand-drawn "solae" chart, ship reference -->
+    <section class="shop" data-shop aria-label="shop by island">
       <div class="wrap">
         <div class="chart-scroll">
           <div class="chart" data-chart></div>
         </div>
-        <p class="chart-hint t-small t-mute"><svg aria-hidden="true"><use href="#i-boat"/></svg>tap an island or its sign · the boat takes the short way round</p>
       </div>
-      <nav class="ports" aria-label="ports">
-        <div class="wrap ports__inner" data-ports></div>
-      </nav>
       <p class="sr-only" role="status" data-status></p>
       <div class="wrap port-panel" data-panel></div>
     </section>

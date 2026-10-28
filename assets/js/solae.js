@@ -124,8 +124,8 @@ byId("drift").colors = SUIT_COLORS;
 /* Shop map: each category is a place. `notes` define the category in a few words. */
 const PORTS = [
   { id: "all", place: "solae harbour", label: "everything", line: ["made for", "the sun"],
-    def: "every piece in drop 01, sorted by where it lives: plain suits, the two signatures, the shorts and cover-ups that match them, and the skirt.",
-    notes: ["swimsuits", "matching shorts", "cover-ups", "the skirt"] },
+    def: "every piece in drop 01, all in one place. pick an island on the map to narrow it down.",
+    notes: ["all of drop 01", "start here"] },
   { id: "swimsuits", place: "swimsuit bay", label: "plain swimsuits", line: ["built for", "warm days"],
     def: "plain, double-lined one-pieces in solid colours. every suit has small removable pads, held in place by a second layer of fabric.",
     notes: ["double-lined", "small removable pads", "held in by a second layer"] },
@@ -289,28 +289,46 @@ document.querySelectorAll("[data-news]").forEach(f => f.addEventListener("submit
 renderCart();
 
 /* ---- Shop map ------------------------------------------------------------- */
-/* Islands and lines on the page, no frame: contour rings around each island,
-   one dotted sea lane between the docks. Every port is a category; the boat
-   follows the lane, taking the shorter way round.
-   Chart space is 1200 × 640; `at`/`r` shape each island, `label` places its sign. */
+/* A wide, quiet sea chart (pin: the hand-drawn "solae" chart). The sea lane is
+   the word "solae" written as one dotted line; one small island per category
+   sits around the letters, and the boat sails along the writing to the island
+   you pick. Hovering an island (or its ribbon) shows what lives there.
+   Chart space is 1400 × 540: `at`/`r` shape each island, `sign` places its
+   ribbon, `dock` is the spot on the lane where the boat ties up. */
 const CHART = {
+  w: 1400, h: 540,
   isles: {
-    all:          { at: [170, 482],  r: [118, 66],  seed: 9,  label: [170, 380], dock: [326, 472],
-                    deco: [["light", 132, 484], ["palm", 206, 492, .9]] },
-    swimsuits:    { at: [440, 262],  r: [128, 78],  seed: 4,  label: [440, 150], dock: [236, 276],
-                    deco: [["palm", 390, 270], ["umbrella", 452, 292], ["palm", 506, 280, .85]] },
-    signatures:   { at: [780, 156],  r: [98, 52],   seed: 12, label: [780, 58],  dock: [626, 200],
-                    deco: [["palm", 742, 168], ["x", 826, 162]] },
-    shorts:       { at: [1050, 292], r: [76, 104],  seed: 21, label: [1050, 140], dock: [906, 300],
-                    deco: [["pier", 1000, 300], ["palm", 1062, 292, .9]] },
-    "cover-ups":  { at: [690, 438],  r: [100, 54],  seed: 15, label: [690, 336], dock: [690, 566],
-                    deco: [["hut", 668, 448], ["palm", 722, 444, .85]] },
-    skirts:       { at: [1012, 548], r: [70, 27],   seed: 2,  label: [1012, 470], dock: [872, 548],
-                    deco: [["palm", 1014, 546, .8]] },
+    all:         { at: [100, 455],  r: [72, 30], seed: 9,  sign: [100, 514],  dock: [178, 410],
+                   deco: [["light", 74, 462, .8], ["palm", 124, 466, .7]] },
+    swimsuits:   { at: [330, 108],  r: [66, 28], seed: 4,  sign: [330, 50],   dock: [444, 206],
+                   deco: [["palm", 302, 116, .68], ["umbrella", 340, 122, .75], ["palm", 372, 112, .6]] },
+    signatures:  { at: [764, 100],  r: [62, 27], seed: 12, sign: [764, 44],   dock: [624, 118],
+                   deco: [["palm", 736, 110, .68], ["x", 800, 104, .75]] },
+    shorts:      { at: [705, 462],  r: [74, 30], seed: 21, sign: [705, 516],  dock: [736, 353],
+                   deco: [["palm", 684, 472, .72], ["palm", 728, 468, .6]] },
+    "cover-ups": { at: [1172, 102], r: [68, 28], seed: 15, sign: [1172, 44],  dock: [1090, 228],
+                   deco: [["hut", 1155, 112, .7], ["palm", 1197, 108, .62]] },
+    skirts:      { at: [1324, 410], r: [52, 17], seed: 2,  sign: [1324, 456], dock: [1232, 372],
+                   deco: [["palm", 1326, 414, .55]] },
   },
-  lane: [[326, 472], [262, 382], [236, 276], [300, 120], [480, 96], [626, 200], [800, 244], [906, 300], [906, 440], [872, 548], [800, 594], [690, 566], [520, 548]],
-  waves: [[580, 70], [560, 360], [880, 380], [1120, 470], [330, 590], [960, 70], [140, 290]],
+  /* "solae" in one stroke, lead-in to swash; the o and the a go up their left side and back, like real cursive */
+  lane: [
+    [178, 410], [222, 326], [252, 254], [270, 202],
+    [286, 218], [302, 268], [302, 318], [282, 348], [255, 356], [235, 346], [232, 330], [247, 326], [264, 346], [300, 362],
+    [340, 352], [370, 322], [384, 284], [395, 240], [416, 214], [446, 206],
+    [416, 214], [395, 240], [384, 284], [398, 334], [432, 354], [466, 336], [481, 284], [471, 230], [449, 208],
+    [458, 226], [482, 233], [516, 224], [552, 206],
+    [590, 172], [624, 118], [642, 74], [630, 50], [606, 64], [594, 128], [596, 250], [604, 328], [628, 354],
+    [662, 350], [690, 326], [701, 288], [712, 240], [740, 208], [768, 205], [788, 214],
+    [768, 205], [740, 208], [712, 240], [701, 288], [708, 334], [736, 353], [766, 338], [782, 298], [790, 250], [792, 212],
+    [790, 262], [792, 330], [810, 355], [845, 346],
+    [882, 318], [926, 290], [960, 262], [972, 232], [956, 208], [930, 214], [908, 262], [905, 320], [925, 352], [958, 357], [998, 334],
+    [1040, 280], [1090, 228], [1140, 250], [1185, 318], [1232, 372],
+  ],
+  waves: [[512, 72], [1270, 214], [548, 300], [420, 420], [928, 430], [1150, 492], [210, 254], [960, 120]],
+  sea: [["whale", 486, 478], ["fish", 1010, 484]],
 };
+const { w: CW, h: CH } = CHART;
 
 const f1 = n => Math.round(n * 10) / 10;
 /* closed Catmull-Rom curve through points, as cubic Béziers */
@@ -322,6 +340,20 @@ function smooth(pts) {
     d += `C${f1(b[0] + (c[0] - a[0]) / 6)} ${f1(b[1] + (c[1] - a[1]) / 6)} ${f1(c[0] - (e[0] - b[0]) / 6)} ${f1(c[1] - (e[1] - b[1]) / 6)} ${f1(c[0])} ${f1(c[1])}`;
   }
   return d + "Z";
+}
+/* open centripetal Catmull-Rom through points: no overshoot on tight turns, so the letters keep their shape */
+function stroke(pts) {
+  const n = pts.length, ext = (a, b) => [2 * a[0] - b[0], 2 * a[1] - b[1]];
+  const dd = (a, b) => Math.max(1e-3, Math.hypot(b[0] - a[0], b[1] - a[1]) ** .5);
+  let d = `M${pts[0].map(f1).join(" ")}`;
+  for (let i = 0; i < n - 1; i++) {
+    const p0 = i ? pts[i - 1] : ext(pts[0], pts[1]), p1 = pts[i], p2 = pts[i + 1], p3 = i + 2 < n ? pts[i + 2] : ext(p2, p1);
+    const d1 = dd(p0, p1), d2 = dd(p1, p2), d3 = dd(p2, p3);
+    const b1 = [0, 1].map(k => (d1 * d1 * p2[k] - d2 * d2 * p0[k] + (2 * d1 * d1 + 3 * d1 * d2 + d2 * d2) * p1[k]) / (3 * d1 * (d1 + d2)));
+    const b2 = [0, 1].map(k => (d3 * d3 * p1[k] - d2 * d2 * p3[k] + (2 * d3 * d3 + 3 * d3 * d2 + d2 * d2) * p2[k]) / (3 * d3 * (d3 + d2)));
+    d += `C${b1.map(f1).join(" ")} ${b2.map(f1).join(" ")} ${p2.map(f1).join(" ")}`;
+  }
+  return d;
 }
 /* a wobbly island outline, the same every time for a given seed */
 function blob([cx, cy], [rx, ry], seed) {
@@ -343,98 +375,178 @@ const DECO = {
     <rect class="m-lamp" x="-6" y="-50" width="12" height="8"/><path class="m-band" d="M-8-50L0-59L8-50Z"/>`,
   umbrella: `<path class="m-line" d="M0 0V-26"/><path class="m-canopy" d="M-20-24Q0-44 20-24Z"/><path class="m-canopy-stripe" d="M-7-24Q-4-38 0-39Q-1-31 -2-24ZM7-24Q4-38 0-39Q1-31 2-24Z"/>`,
   hut: `<path class="m-hut" d="M-15 0V-17H15V0Z"/><path class="m-door" d="M-4 0V-10H4V0Z"/><path class="m-roof" d="M-20-16L0-32L20-16Z"/><path class="m-line" d="M-12-18L0-28M-4-17L6-26M4-17L12-23"/>`,
-  pier: `<path class="m-pier" d="M0-6H-62V3H0Z"/><path class="m-line" d="M-10-6V3M-20-6V3M-30-6V3M-40-6V3M-50-6V3M-56 3V10M-34 3V10M-12 3V10"/>`,
-  x: `<path class="m-trail" d="M-62 10C-50 22-30 2-14 8"/><path class="m-x" d="M-7-7L7 7M7-7L-7 7"/>`,
+  x: `<path class="m-trail" d="M-50 8C-40 18-24 2-12 7"/><path class="m-x" d="M-6-6L6 6M6-6L-6 6"/>`,
+  whale: `<path class="m-whale" d="M0 0C-1-7 0-13 3-17C-3-19-9-23-11-29C-5-27 0-25 4-21C8-25 14-27 20-29C18-23 12-19 6-17C9-13 10-7 8 0Z"/><path class="m-wave" d="M-16 2q5-5 10 0t10 0 10 0 10 0"/>`,
+  fish: `<path class="m-fish" d="M0 0C6-7 17-7 24 0C17 7 6 7 0 0ZM1 0L-8-6V6Z"/><circle class="m-eye" cx="18" cy="-1" r="1.4"/>`,
 };
 const deco = ([k, x, y, s = 1]) => `<g class="m-${k}" transform="translate(${x} ${y}) scale(${s})">${DECO[k]}</g>`;
 
-/* the boat — bow to the right, waterline at 0 */
-const SHIP = `<g class="ship__art" transform="scale(.74)">
-  <path class="ship__wake" d="M-58 6Q-66 2-74 6M-62 14Q-72 10-82 14"/>
-  <path class="ship__mast" d="M6 -6V-80M-26 -10V-62M30-14L52-28"/>
-  <path class="ship__sail ship__sail--jib" d="M8-74L50-27L20-24Z"/>
-  ${[[6, -72, -50, 13], [6, -48, -22, 17], [-26, -58, -40, 10], [-26, -38, -18, 13]].map(([x, a, b, w]) =>
-    `<path class="ship__sail" d="M${x - w} ${a}Q${x} ${a - 3} ${x + w} ${a}L${x + w + 3} ${b}Q${x} ${b + 7} ${x - w - 3} ${b}Z"/>`).join("")}
-  <path class="ship__band" d="M-11-44Q6-40 23-44L23.6-38Q6-34-11.6-38Z"/>
-  <circle class="ship__sun" cx="6" cy="-30" r="5"/>
-  <path class="ship__flag" d="M6-80L26-75L6-70Z"/><path class="ship__flag ship__flag--2" d="M-26-62L-14-59L-26-56Z"/>
-  <path class="ship__hull" d="M-50-24H-30V-18H46Q42 2 28 8H-36Q-48 2-50-18Z"/>
-  <path class="ship__rail" d="M-48-12H42"/>
-  <g class="ship__port">${[-32, -18, -4, 10, 24].map(x => `<circle cx="${x}" cy="-3" r="2.3"/>`).join("")}</g>
-  <path class="ship__water" d="M-60 10q7-6 14 0t14 0 14 0 14 0 14 0 14 0 14 0 14 0 14 0"/>
-</g>`;
+/* the boat — bow to the right, waterline at 0. Striped sails, a wooden hull, and
+   a curling stern wave + bow spray that only show while it's sailing */
+const SHIP = `<g class="ship__curl">
+    <path class="curl__body" d="M-132 6C-112 4-98-2-88-14C-80-24-74-36-62-40C-50-44-40-38-38-30C-44-35-52-34-55-28C-58-22-54-15-47-15C-44-8-40 0-34 6Z"/>
+    <path class="curl__face" d="M-84 6C-78-4-74-14-68-22C-66-12-60-6-50-4C-46 0-42 4-38 6Z"/>
+    <path class="curl__line" d="M-118 2C-104 0-96-6-90-14M-74-12C-70-4-62 0-54 0"/>
+    <path class="curl__foam" d="M-62-40C-50-44-40-38-38-30C-41-33-44-33-46-31C-47-35-51-37-55-36C-56-39-59-40-62-40Z"/>
+  </g>
+  <path class="ship__mast" d="M-6-18V-90M24-18V-70"/>
+  <path class="ship__rig" d="M-6-90L-44-24M-6-90L44-22M24-70L62-28"/>
+  <path class="ship__jib" d="M25-66L62-28L30-26Z"/>
+  <path class="ship__sail" d="M-28-64Q-6-68 16-64Q20-45 18-26Q-6-20-30-26Q-32-45-28-64Z"/>
+  <path class="ship__sail" d="M-22-86Q-6-89 10-86Q13-77 12-68Q-6-65-24-68Q-25-77-22-86Z"/>
+  <path class="ship__sail" d="M10-62Q24-65 38-62Q41-46 39-30Q24-25 9-30Q7-46 10-62Z"/>
+  <path class="ship__flag" d="M-6-92C-14-95-22-89-32-92L-26-86L-32-81C-22-79-14-85-6-82Z"/>
+  <path class="ship__hull" d="M-50-28H-30V-20H46L62-28C58-10 48 2 34 6H-34C-45 1-50-12-50-28Z"/>
+  <path class="ship__deck" d="M-50-28H-30V-20H-50Z"/>
+  <path class="ship__band" d="M-49-12H54"/>
+  <path class="ship__plank" d="M-46-4H48M-40 2H40"/>
+  <rect class="ship__win" x="-46" y="-26" width="6" height="5" rx="1"/><rect class="ship__win" x="-37" y="-26" width="6" height="5" rx="1"/>
+  ${[-24, -8, 8, 24].map(x => `<circle class="ship__port" cx="${x}" cy="-16" r="2"/>`).join("")}
+  <g clip-path="url(#ship-water)"><path class="ship__water" d="M-90 8${"q6-5 12 0t12 0".repeat(8)}"/></g>
+  <g class="ship__spray"><path d="M64-14q8-8 14-2"/><path d="M66-6q10-4 16 2"/><path d="M62 0q8 0 12 6"/></g>`;
 
 function chartSVG() {
   const isles = Object.entries(CHART.isles);
-  const points = Array.from({ length: 8 }, (_, i) => `<path class="compass__${i % 2 ? "minor" : "major"}" transform="rotate(${i * 45})" d="M0-${i % 2 ? 34 : 54}L${i % 2 ? 5 : 7}-7L0 0L-${i % 2 ? 5 : 7}-7Z"/>`).join("");
-  return `<svg class="chart__svg" viewBox="0 0 1200 640" aria-hidden="true">
-    <defs>${isles.map(([id, o]) => `<path id="isle-${id}" d="${blob(o.at, o.r, o.seed)}"/>`).join("")}</defs>
-    <g class="compass" transform="translate(96 110)">
-      <circle r="62" class="compass__ring"/><circle r="30" class="compass__ring compass__ring--dash"/>
-      ${points}<text y="-70" class="compass__n">N</text>
+  return `<svg class="chart__svg" viewBox="0 0 ${CW} ${CH}" aria-hidden="true">
+    <defs>
+      ${isles.map(([id, o]) => `<path id="isle-${id}" d="${blob(o.at, o.r, o.seed)}"/>`).join("")}
+      <pattern id="sail-stripe" width="11" height="10" patternUnits="userSpaceOnUse"><rect class="ship__stripe-a" width="11" height="10"/><rect class="ship__stripe-b" width="5.5" height="10"/></pattern>
+      <clipPath id="ship-water"><rect x="-66" y="0" width="134" height="14"/></clipPath>
+    </defs>
+    <g class="compass" transform="translate(92 118)">
+      <circle r="38" class="compass__ring"/><circle r="27" class="compass__ring compass__ring--dash"/>
+      <path class="compass__star" d="M0-34L5-5L34 0L5 5L0 34L-5 5L-34 0L-5-5Z"/><path class="compass__north" d="M0-34L5-5L0 0L-5-5Z"/>
+      <text y="-46" class="compass__n">N</text>
     </g>
     ${CHART.waves.map(([x, y]) => `<path class="m-wave" d="M${x} ${y}q6-6 12 0t12 0 12 0"/>`).join("")}
+    ${CHART.sea.map(deco).join("")}
     ${isles.map(([id, o]) => `<g class="isle" data-port="${id}">
-      ${[66, 63, 44, 41, 22, 19].map((w, i) => `<use href="#isle-${id}" class="isle__${i % 2 ? "gap" : "ring isle__ring--" + i / 2}" style="stroke-width:${w}"/>`).join("")}
+      <use href="#isle-${id}" class="isle__line" style="stroke-width:38"/>
+      <use href="#isle-${id}" class="isle__gap" style="stroke-width:35"/>
+      <use href="#isle-${id}" class="isle__shoal" style="stroke-width:20"/>
       <use href="#isle-${id}" class="isle__land"/>
       ${o.deco.map(deco).join("")}
     </g>`).join("")}
-    <path class="chart__lane" d="${smooth(CHART.lane)}"/>
+    <path class="chart__lane" d="${stroke(CHART.lane)}"/>
     <path class="chart__trail" d="M0 0"/>
-    ${isles.map(([id, o]) => `<circle class="dock" data-dock="${id}" cx="${o.dock[0]}" cy="${o.dock[1]}" r="6"/>`).join("")}
-    <g class="ship"><g class="ship__turn"><g class="ship__bob">${SHIP}</g></g></g>
+    ${isles.map(([id]) => `<circle class="dock" data-dock="${id}" r="5"/>`).join("")}
+    <g class="wake"></g>
+    <g class="ship"><g class="ship__tilt"><g class="ship__face"><g class="ship__bob" transform="scale(.85)">${SHIP}</g></g></g></g>
   </svg>`;
 }
 
-const portBtn = (port, i, cls) => `<button class="${cls}" type="button" data-port="${port.id}" aria-pressed="false"${cls === "port" ? ` style="left:${f1(CHART.isles[port.id].label[0] / 12)}%;top:${f1(CHART.isles[port.id].label[1] / 6.4)}%"` : ""}>
-  <span class="port__n" aria-hidden="true">${i ? i : '<svg><use href="#i-boat"/></svg>'}</span>
-  <span class="port__txt"><b>${port.place}</b><small>${port.label} · ${inPort(port.id).length}</small></span>
-</button>`;
+const pc = (v, of) => f1(v / of * 100);
+const pieces = n => `${n} ${n === 1 ? "piece" : "pieces"}`;
+/* the ribbon on each island: just the place name; the hover card says the rest */
+const sign = port => {
+  const [x, y] = CHART.isles[port.id].sign;
+  return `<button class="port" type="button" data-port="${port.id}" aria-pressed="false" style="left:${pc(x, CW)}%;top:${pc(y, CH)}%">
+    ${port.place}<span class="sr-only">: ${port.label}, ${pieces(inPort(port.id).length)}</span></button>`;
+};
+const isleCard = port => {
+  const items = inPort(port.id);
+  return `<p class="isle-card__k">${port.label} · ${pieces(items.length)}</p>
+    <p class="isle-card__notes">${port.notes.join(" · ")}</p>
+    <div class="isle-card__foot">
+      <span class="isle-card__thumbs">${items.slice(0, 4).map(p => `<img src="${PX(p.img, 120)}" alt="" style="object-position:${p.pos}">`).join("")}</span>
+      <span>from ${inr(Math.min(...items.map(p => p.price)))}</span>
+    </div>`;
+};
 
 const shop = document.querySelector("[data-shop]");
 if (shop) {
   const chart = shop.querySelector("[data-chart]"), panel = shop.querySelector("[data-panel]"), status = shop.querySelector("[data-status]");
-  chart.insertAdjacentHTML("afterbegin", chartSVG() + PORTS.map((x, i) => portBtn(x, i, "port")).join(""));
-  const tabs = shop.querySelector("[data-ports]");
-  tabs.innerHTML = PORTS.map((x, i) => portBtn(x, i, "ports__tab")).join("");
-  const scroller = shop.querySelector(".chart-scroll");
-  const lane = chart.querySelector(".chart__lane"), trail = chart.querySelector(".chart__trail");
-  const ship = chart.querySelector(".ship"), turn = chart.querySelector(".ship__turn");
+  chart.insertAdjacentHTML("afterbegin", chartSVG() + PORTS.map(sign).join("") + `<div class="isle-card" aria-hidden="true"></div>`);
+  const scroller = shop.querySelector(".chart-scroll"), tip = chart.querySelector(".isle-card");
+  const lane = chart.querySelector(".chart__lane"), trail = chart.querySelector(".chart__trail"), wake = chart.querySelector(".wake");
+  const ship = chart.querySelector(".ship"), tiltEl = chart.querySelector(".ship__tilt");
 
   /* sample the lane once; the boat moves by index along this table */
   const STEP = 4, total = lane.getTotalLength(), N = Math.round(total / STEP);
-  const lut = Array.from({ length: N }, (_, i) => { const q = lane.getPointAtLength(i / N * total); return [q.x, q.y]; });
-  const pt = f => { const i = ((Math.floor(f) % N) + N) % N, j = (i + 1) % N, k = f - Math.floor(f); return [lut[i][0] + (lut[j][0] - lut[i][0]) * k, lut[i][1] + (lut[j][1] - lut[i][1]) * k]; };
+  const lut = Array.from({ length: N + 1 }, (_, i) => { const q = lane.getPointAtLength(i / N * total); return [q.x, q.y]; });
+  const pt = f => {
+    f = Math.max(0, Math.min(N, f));
+    const i = Math.min(N - 1, Math.floor(f)), k = f - i;
+    return [lut[i][0] + (lut[i + 1][0] - lut[i][0]) * k, lut[i][1] + (lut[i + 1][1] - lut[i][1]) * k];
+  };
   const nearest = ([x, y]) => lut.reduce((b, q, i) => (q[0] - x) ** 2 + (q[1] - y) ** 2 < (lut[b][0] - x) ** 2 + (lut[b][1] - y) ** 2 ? i : b, 0);
   const docks = Object.fromEntries(Object.entries(CHART.isles).map(([id, o]) => [id, nearest(o.dock)]));
+  chart.querySelectorAll(".dock").forEach(c => { const [x, y] = lut[docks[c.dataset.dock]]; c.setAttribute("cx", f1(x)); c.setAttribute("cy", f1(y)); });
 
-  let at = docks.all, facing = 1, raf = 0, here = null, follow = 0;
-  const draw = (f, dir) => {
+  let at = docks.all, tilt = 0, raf = 0, here = null, follow = 0;
+  /* place the boat; it turns to face where it's heading and leans into climbs, levelling out as it docks */
+  const draw = (f, dir, level = 0) => {
     const [x, y] = pt(f), [x2, y2] = pt(f + dir * 3);
-    if (Math.abs(x2 - x) > .4) facing = x2 > x ? 1 : -1;
-    const tilt = Math.max(-16, Math.min(16, Math.atan2(y2 - y, Math.abs(x2 - x) || 1) * 57.3));
+    if (Math.abs(x2 - x) > .4) ship.classList.toggle("is-west", x2 < x);
+    const lean = Math.max(-20, Math.min(20, Math.atan2(y2 - y, Math.abs(x2 - x) || 1) * 57.3)) * level;
+    tilt = level ? tilt + (lean - tilt) * .25 : 0;
     ship.setAttribute("transform", `translate(${f1(x)} ${f1(y)})`);
-    turn.setAttribute("transform", `scale(${facing} 1) rotate(${f1(tilt)})`);
+    tiltEl.setAttribute("transform", `rotate(${f1(ship.classList.contains("is-west") ? -tilt : tilt)})`);
   };
 
+  /* foam: little wave marks peel off both sides of the stern and drift apart */
+  const foam = (f, dir) => {
+    if (wake.childElementCount > 70) return;
+    const [x, y] = pt(f - dir * 11), [x2, y2] = pt(f - dir * 8);
+    const a = f1(Math.atan2(y2 - y, x2 - x) * 57.3);
+    wake.insertAdjacentHTML("beforeend", ["l", "r"].map(s => `<g transform="translate(${f1(x)} ${f1(y)}) rotate(${a})"><path class="foam foam--${s}" d="M-6 0q3-3.5 6 0t6 0"/></g>`).join(""));
+  };
+  const ripple = f => {
+    const [x, y] = pt(f);
+    wake.insertAdjacentHTML("beforeend", [0, 1].map(i => `<g transform="translate(${f1(x)} ${f1(y + 4)})"><ellipse class="ripple" rx="46" ry="11" style="animation-delay:${i * .22}s"/></g>`).join(""));
+  };
+  wake.addEventListener("animationend", e => e.target.parentNode.remove());
+
   function sail(id) {
-    const from = at, to = docks[id], fwd = ((to - from) % N + N) % N, dir = fwd <= N / 2 ? 1 : -1, steps = dir > 0 ? fwd : N - fwd;
-    const dur = reduceMotion.matches || !steps ? 0 : Math.min(950, 300 + steps * STEP * .55);
+    const from = at, to = docks[id], dir = to >= from ? 1 : -1, steps = Math.abs(to - from);
+    const dur = reduceMotion.matches || !steps ? 0 : Math.min(2600, 550 + steps * STEP * .5);
     cancelAnimationFrame(raf);
     chart.classList.toggle("is-sailing", dur > 0);
     const t0 = performance.now();
+    let spawned = from;
     const tick = now => {
-      const k = dur ? Math.min(1, Math.max(0, (now - t0) / dur)) : 1, e = k < .5 ? 4 * k ** 3 : 1 - (-2 * k + 2) ** 3 / 2;
-      at = from + dir * steps * e; draw(at, dir);
+      const k = dur ? Math.min(1, (now - t0) / dur) : 1, e = k < .5 ? 4 * k ** 3 : 1 - (-2 * k + 2) ** 3 / 2;
+      at = from + dir * steps * e;
+      draw(at, dir, Math.min(1, k / .1, (1 - k) / .18));
+      if (dur && Math.abs(at - spawned) * STEP > 18) { foam(at, dir); spawned = at; }
       let d = "";
       for (let s = 0; s <= steps * e; s += 2) d += (s ? "L" : "M") + pt(from + dir * s).map(f1).join(" ");
       trail.setAttribute("d", d + "L" + pt(at).map(f1).join(" "));
       if (k < 1) raf = requestAnimationFrame(tick);
-      else { at = ((to % N) + N) % N; chart.classList.remove("is-sailing"); }
+      else { at = to; chart.classList.remove("is-sailing"); if (dur) ripple(at); }
     };
     raf = requestAnimationFrame(tick);
     return dur;
   }
+
+  /* hover card: what's on the island, without leaving the map */
+  let tipFor = null, tipOff = 0;
+  const showTip = id => {
+    clearTimeout(tipOff);
+    chart.querySelectorAll(".isle").forEach(g => g.classList.toggle("is-hover", g.dataset.port === id));
+    if (tipFor === id) return;
+    tipFor = id;
+    const o = CHART.isles[id], s = chart.clientWidth / CW, below = o.at[1] < CH / 2;
+    tip.innerHTML = isleCard(portById(id));
+    tip.dataset.side = below ? "below" : "above";
+    const x = o.at[0] * s, half = tip.offsetWidth / 2 + 8, left = Math.max(half, Math.min(chart.clientWidth - half, x));
+    tip.style.left = left + "px";
+    tip.style.top = (o.at[1] + (below ? 1 : -1) * (o.r[1] + 24)) * s + "px";
+    tip.style.setProperty("--ax", f1(x - left) + "px");
+    tip.classList.add("is-on");
+  };
+  const hideTip = () => {
+    tipOff = setTimeout(() => {
+      tipFor = null;
+      tip.classList.remove("is-on");
+      chart.querySelectorAll(".isle.is-hover").forEach(g => g.classList.remove("is-hover"));
+    }, 80);
+  };
+  const hoverable = matchMedia("(hover: hover)");
+  chart.addEventListener("pointerover", e => { const t = e.target.closest("[data-port]"); if (t && hoverable.matches) showTip(t.dataset.port); });
+  chart.addEventListener("pointerout", e => { const t = e.target.closest("[data-port]"); if (t && !t.contains(e.relatedTarget)) hideTip(); });
+  chart.addEventListener("focusin", e => { const t = e.target.closest(".port"); if (t && t.matches(":focus-visible")) showTip(t.dataset.port); });
+  chart.addEventListener("focusout", hideTip);
 
   const postmark = port => `<svg class="port-head__mark" viewBox="0 0 120 120" aria-hidden="true">
     <circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="40"/>
@@ -445,23 +557,16 @@ if (shop) {
 
   function renderPanel(id) {
     const port = portById(id), n = PORTS.indexOf(port), next = PORTS[n % (PORTS.length - 1) + 1];
-    const groups = id === "all" ? PORTS.slice(1) : [port];
     panel.innerHTML = `
       <header class="port-head">
         <div class="port-head__title">
-          <p class="t-label">${n ? `port ${pad(n)} of ${pad(PORTS.length - 1)}` : "home port"} · ${port.label} · ${inPort(id).length} pieces</p>
+          <p class="t-label">${port.label} · ${pieces(inPort(id).length)}</p>
           <h2 class="t-fluid" id="port-title">${port.place}</h2>
         </div>
-        <div class="port-head__about">
-          <p class="t-lead">${port.def}</p>
-          <ul class="port-head__notes" role="list">${port.notes.map(x => `<li>${x}</li>`).join("")}</ul>
-        </div>
+        <p class="t-lead port-head__about">${port.def}</p>
         ${postmark(port)}
       </header>
-      ${groups.map(g => `<div class="port-group">
-        ${id === "all" ? `<div class="port-group__head"><h3><span>${pad(PORTS.indexOf(g))}</span> ${g.place} <small>${g.label}</small></h3><button class="link-u" type="button" data-port="${g.id}">sail there</button></div>` : ""}
-        <div class="grid-products">${inPort(g.id).map(card).join("")}</div>
-      </div>`).join("")}
+      <div class="grid-products">${inPort(id).map(card).join("")}</div>
       <div class="port-next">
         <p class="t-hand" aria-hidden="true">next stop</p>
         <button class="btn btn--ink" type="button" data-port="${next.id}"><svg class="port-next__boat" aria-hidden="true"><use href="#i-boat"/></svg>sail to ${next.place}</button>
@@ -469,17 +574,15 @@ if (shop) {
     reveal(panel);
   }
 
-  function go(id, { from = "tab", quiet = false } = {}) {
+  function go(id, { from = "panel", quiet = false } = {}) {
     if (!portById(id)) id = "all";
     if (id === here) return;
     here = id;
-    shop.querySelectorAll(".port, .ports__tab").forEach(b => b.setAttribute("aria-pressed", b.dataset.port === id));
+    chart.querySelectorAll(".port").forEach(b => b.setAttribute("aria-pressed", b.dataset.port === id));
     chart.querySelectorAll(".isle").forEach(g => g.classList.toggle("is-here", g.dataset.port === id));
     chart.querySelectorAll(".dock").forEach(c => c.classList.toggle("is-here", c.dataset.dock === id));
-    const tab = shop.querySelector(`.ports__tab[data-port="${id}"]`);
-    tabs.scrollTo({ left: tab.offsetLeft - (tabs.clientWidth - tab.offsetWidth) / 2, behavior: reduceMotion.matches ? "auto" : "smooth" });
     if (scroller.scrollWidth > scroller.clientWidth) {
-      scroller.scrollTo({ left: CHART.isles[id].dock[0] / 1200 * scroller.scrollWidth - scroller.clientWidth / 2, behavior: reduceMotion.matches ? "auto" : "smooth" });
+      scroller.scrollTo({ left: CHART.isles[id].dock[0] / CW * scroller.scrollWidth - scroller.clientWidth / 2, behavior: reduceMotion.matches ? "auto" : "smooth" });
     }
     const dur = sail(id);
     renderPanel(id);
@@ -495,7 +598,7 @@ if (shop) {
 
   shop.addEventListener("click", e => {
     const t = e.target.closest("[data-port]");
-    if (t) go(t.dataset.port, { from: t.closest(".chart") ? "map" : "tab" });
+    if (t) go(t.dataset.port, { from: t.closest(".chart") ? "map" : "panel" });
   });
   addEventListener("hashchange", () => go(location.hash.slice(1)));
 
