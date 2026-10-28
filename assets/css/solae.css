@@ -664,12 +664,12 @@ a:hover .frame-arch > img { transform: scale(1.04); }
 /* the chart is the nav: a small strip centred under the header */
 .shop-top { padding-block: var(--space-s) 0; }
 
-/* no frame, no paper: a wide, short strip of sea across the page. the lane writes "solae" */
+/* no frame, no paper: a wide strip of sea across the page. the lane writes "Solae" */
 .chart {
   --land: color-mix(in srgb, var(--papaya) 70%, var(--jasmine));
   --shoal: color-mix(in srgb, var(--bg) 80%, var(--lagoon));
   --wood: color-mix(in srgb, var(--brick) 40%, var(--olive));
-  position: relative; width: 100%; margin-inline: auto; aspect-ratio: 1400 / 330; container-type: inline-size;
+  position: relative; width: 100%; margin-inline: auto; aspect-ratio: 1400 / 440; container-type: inline-size;
 }
 .chart__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 /* tablets and phones: the strip scrolls sideways, fading at the edges so it reads as more sea */
