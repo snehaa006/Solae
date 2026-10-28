@@ -134,9 +134,9 @@ const ICON = {
 };
 
 /* product card (ref: k2o): a photo, the name and the price. On hover the second photo
-   fades in with "shop now"; on touch screens the card is simply a link */
-function card(p, i = 0) {
-  return `<article class="card reveal" style="--i:${i}">
+   crossfades in over the whole card with "shop now"; on touch screens the card is simply a link */
+function card(p) {
+  return `<article class="card">
     <a class="card__link" href="product.html?p=${p.id}">
       <div class="card__media"><img src="${PX(p.img, 700)}" alt="${p.alt}" loading="lazy" style="object-position:${p.pos}"></div>
       <h3 class="card__name">${p.name}</h3>
@@ -256,7 +256,7 @@ const reveal = root => root.querySelectorAll(".reveal").forEach(el => io.observe
 
 document.querySelectorAll("[data-products]").forEach(el => {
   const ids = el.dataset.products ? el.dataset.products.split(",") : PRODUCTS.map(p => p.id);
-  el.innerHTML = ids.map((id, i) => card(byId(id), i)).join("");
+  el.innerHTML = ids.map(id => card(byId(id))).join("");
 });
 
 document.addEventListener("click", e => {
@@ -572,12 +572,11 @@ if (shop) {
         <h2 class="t-label"><span class="sr-only">${port.place}: </span>${port.label} · ${pieces(inPort(id).length)}</h2>
         <p class="port-head__about">${port.def}</p>
       </header>
-      <div class="grid-products">${inPort(id).map(card).join("")}</div>
+      <div class="grid-products">${inPort(id).map(p => card(p)).join("")}</div>
       <div class="port-next">
         <p class="t-hand" aria-hidden="true">next stop</p>
         <button class="btn btn--ink" type="button" data-port="${next.id}"><svg class="port-next__boat" aria-hidden="true"><use href="#i-boat"/></svg>sail to ${next.place}</button>
       </div>`;
-    reveal(panel);
   }
 
   function go(id, { from = "panel", quiet = false } = {}) {
@@ -830,7 +829,6 @@ if (pdp) {
 
   const pairs = document.querySelector("[data-pairs]");
   if (pairs) {
-    pairs.innerHTML = (isSuit ? ["boardwalk", "drift", "white-one", p.sig ? "tidepool" : "off-shoulder"] : ["tidepool", "cabana", "off-shoulder", "flounce"]).map((id, i) => card(byId(id), i)).join("");
-    reveal(pairs);
+    pairs.innerHTML = (isSuit ? ["boardwalk", "drift", "white-one", p.sig ? "tidepool" : "off-shoulder"] : ["tidepool", "cabana", "off-shoulder", "flounce"]).map(id => card(byId(id))).join("");
   }
 }
