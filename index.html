@@ -6,7 +6,7 @@
   <title>SOLAE — modest swim sets for teen girls</title>
   <meta name="description" content="SOLAE makes modest, modern swim sets for teen girls: a double-lined one-piece with matching knee-length shorts, designed for comfort and made for confidence.">
   <meta name="theme-color" content="#FFF8EE">
-  <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/logo-sun.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.pexels.com">
@@ -30,9 +30,9 @@
         <a href="shop.html">shop</a><a href="#signatures">signatures</a><a href="#lookbook">lookbook</a>
       </nav>
       <button class="icon-btn menu-btn" type="button" data-open-menu aria-label="open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
-      <a class="header__brand" href="index.html" aria-label="SOLAE home" data-logo-slot><span class="logo-word">S<i></i>LAE</span></a>
+      <a class="header__brand" href="index.html" aria-label="SOLAE home" data-logo-slot><img class="logo-sun" src="assets/img/logo-sun.svg" alt=""></a>
       <div class="header__tools">
-        <nav class="nav t-label" aria-label="secondary"><a href="#about">about</a><a href="design-system.html">brand</a></nav>
+        <nav class="nav t-label" aria-label="secondary"><a href="#about">about</a></nav>
         <button class="icon-btn hide-sm" type="button" aria-label="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4" stroke-linecap="round"/></svg></button>
         <a class="icon-btn" href="#" data-open-cart aria-label="open bag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg><span class="count" data-cart-count>0</span></a>
       </div>
@@ -41,7 +41,7 @@
 
   <div class="mobile-nav" aria-label="menu">
     <div style="display:flex;justify-content:space-between;align-items:center">
-      <span class="mobile-nav__brand" aria-hidden="true" data-logo-slot><span class="logo-word">S<i></i>LAE</span></span>
+      <span class="mobile-nav__brand" aria-hidden="true" data-logo-slot><img class="logo-sun" src="assets/img/logo-sun.svg" alt=""></span>
       <button class="icon-btn" type="button" data-close-menu aria-label="close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
     <nav aria-label="mobile">
@@ -55,7 +55,7 @@
 
     <!-- 1 · Hero — editorial spread (pin: "the late checkout") -->
     <section class="hero wrap" aria-labelledby="hero-title">
-      <img class="hero__sun" src="assets/img/logo-sun.svg" alt="" fetchpriority="high">
+      <div class="hero__sun" aria-hidden="true" data-logo-slot="hero"><img class="logo-sun" src="assets/img/logo-sun.svg" alt="" fetchpriority="high"></div>
       <h1 id="hero-title" class="hero__title t-headline t-mega">made for the sun</h1>
       <div class="hero__grid">
         <div class="hero__main">
@@ -149,7 +149,7 @@
           </div>
         </article>
       </div>
-      <svg class="edge edge--flip edge--bottom" style="color:#DCEAF4" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0H1440V26L1404 18 1376 34 1342 22 1310 37 1276 16 1246 30 1214 21 1180 38 1150 19 1118 32 1088 15 1054 35 1022 24 990 39 958 20 926 31 894 14 862 33 830 22 798 37 766 18 734 30 702 23 670 39 638 17 606 32 574 21 542 36 510 15 478 29 446 24 414 40 382 19 350 31 318 16 286 34 254 22 222 38 190 18 158 30 126 21 94 36 62 17 30 29 0 20Z"/></svg>
+      <svg class="edge edge--flip edge--bottom" style="color:var(--sand)" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0H1440V26L1404 18 1376 34 1342 22 1310 37 1276 16 1246 30 1214 21 1180 38 1150 19 1118 32 1088 15 1054 35 1022 24 990 39 958 20 926 31 894 14 862 33 830 22 798 37 766 18 734 30 702 23 670 39 638 17 606 32 574 21 542 36 510 15 478 29 446 24 414 40 382 19 350 31 318 16 286 34 254 22 222 38 190 18 158 30 126 21 94 36 62 17 30 29 0 20Z"/></svg>
     </section>
 
     <!-- 5 · Signatures — pin: "surf shop" (arches, waves, curved type) -->
@@ -184,46 +184,7 @@
       <svg class="edge" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;bottom:-39px;left:0;height:40px"><path fill="currentColor" d="M0 0H1440V18C1380 34 1320 34 1260 18S1140 2 1080 18 960 34 900 18 780 2 720 18 600 34 540 18 420 2 360 18 240 34 180 18 60 2 0 18Z"/></svg>
     </section>
 
-    <!-- 6 · Postcard -->
-    <section class="postcard-sec" aria-labelledby="postcard-title">
-      <div class="postcard-sec__bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1540206395-68808572332f?auto=format&fit=crop&w=2000&q=70" alt="" loading="lazy"></div>
-      <div class="wrap">
-        <article class="postcard reveal">
-          <div class="postcard__msg">
-            <p class="t-label t-soft">a note from the founder</p>
-            <h2 id="postcard-title" class="t-headline">a postcard from summer</h2>
-            <p>hi from the shore! every summer i paired a one-piece with mismatched shorts and wished there was something better. so i made it: matching swim sets with the coverage, comfort and confidence i couldn't find anywhere else.</p>
-            <p class="t-hand">wish you were here x</p>
-          </div>
-          <div class="postcard__side">
-            <div class="postcard__stamp stamp-wrap">
-              <div class="stamp"><div class="stamp__inner">
-                <img src="https://images.unsplash.com/photo-1468413253725-0d5181091126?auto=format&fit=crop&w=400&q=70" alt="palm trees over a white sand beach" loading="lazy">
-                <p class="t-label">SAR 3 · saudi</p>
-              </div></div>
-            </div>
-            <svg class="postmark" viewBox="0 0 120 120" aria-hidden="true">
-              <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="2.5"/>
-              <circle cx="60" cy="60" r="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              <path id="pm-arc" d="M60 60m-48 0a48 48 0 1 1 96 0a48 48 0 1 1-96 0" fill="none"/>
-              <text font-family="Inter, sans-serif" font-size="10.5" font-weight="700" letter-spacing="3" fill="currentColor"><textPath href="#pm-arc">SOLAE · DROP 01 · SUMMER 2026 ·</textPath></text>
-              <text x="60" y="66" text-anchor="middle" font-family="Instrument Serif, serif" font-style="italic" font-size="20" fill="currentColor">the shore</text>
-            </svg>
-            <div class="postcard__lines"><div>to: you</div><div>the beach, the pool, the boardwalk</div><div>somewhere sunny</div></div>
-            <a class="btn btn--ink" href="#catalog" style="align-self:flex-start">shop drop 01</a>
-          </div>
-          <figure class="postcard__photo polaroid">
-            <span class="tape" aria-hidden="true"></span>
-            <img src="https://images.pexels.com/photos/8926075/pexels-photo-8926075.jpeg?auto=compress&cs=tinysrgb&w=500" alt="two girls smiling together at the beach" loading="lazy">
-            <figcaption>best friends</figcaption>
-          </figure>
-        </article>
-      </div>
-      
-      <svg class="edge edge--flip edge--bottom" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0H1440V18C1380 34 1320 34 1260 18S1140 2 1080 18 960 34 900 18 780 2 720 18 600 34 540 18 420 2 360 18 240 34 180 18 60 2 0 18Z"/></svg>
-    </section>
-
-    <!-- 7 · Our story — the Brand Starter's story, vision and mission; logo 1 is the sketch it began with.
+    <!-- 6 · Our story — the Brand Starter's story, vision and mission, beside the chosen logo.
          Then the three things we care about (pin: "SUIT" about rows) -->
     <section id="about" class="section about" aria-labelledby="about-title">
       <svg class="about__leaf" style="right:-4rem;top:2rem" aria-hidden="true" viewBox="0 0 300 300"><use href="#i-leaf"/></svg>
@@ -235,7 +196,7 @@
         </div>
         <div class="story">
           <figure class="story__sketch reveal">
-            <div class="story__card"><img class="logo-sun" src="assets/img/logo-sun.svg" alt="Ghalia's drawing: a half sun with the letters s, o, l, a, e running up its edge and wavy beams" loading="lazy"></div>
+            <div class="story__card" data-logo-slot="story"><img class="logo-sun" src="assets/img/logo-sun.svg" alt="Ghalia's drawing: a half sun with the letters s, o, l, a, e running up its edge and wavy beams" loading="lazy"></div>
             <figcaption class="t-hand">where it all began</figcaption>
           </figure>
           <div class="story__text reveal">
@@ -248,7 +209,7 @@
         </div>
         <div class="vm">
           <div class="vm__card vm__card--vision reveal">
-            <img class="vm__mark" src="assets/img/logo-mark.svg" alt="" loading="lazy">
+            <span class="vm__mark" aria-hidden="true" data-logo-slot="mark"><img class="logo-sun" src="assets/img/logo-sun.svg" alt=""></span>
             <h3 class="t-label">our vision</h3>
             <p>to become the gulf's most-loved swimwear brand for teen girls, where modesty and style go hand in hand.</p>
           </div>
@@ -286,43 +247,6 @@
       </div>
     </section>
 
-    <!-- 8 · Statement — pin: "sea & soil" -->
-    <section class="statement" aria-labelledby="statement-title">
-      <img src="https://images.pexels.com/photos/35761557/pexels-photo-35761557.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="" loading="lazy">
-      <svg class="edge edge--top" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0H1440V18C1380 34 1320 34 1260 18S1140 2 1080 18 960 34 900 18 780 2 720 18 600 34 540 18 420 2 360 18 240 34 180 18 60 2 0 18Z"/></svg>
-      <div class="statement__word">
-        <h2 id="statement-title" class="sr-only">sun and salt</h2>
-        <span class="t-wide" aria-hidden="true">sun</span>
-        <div class="statement__wave" aria-hidden="true"><span class="t-wide">and</span><svg viewBox="0 0 220 80"><use href="#i-wave"/></svg><span class="t-wide">and</span></div>
-        <span class="t-wide" aria-hidden="true">salt</span>
-        <div class="statement__cta">
-          <p class="t-label">@solae.swim</p>
-          <a class="btn btn--ghost-light btn--sm" href="#">follow along</a>
-        </div>
-      </div>
-      <svg class="edge edge--flip edge--bottom" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0H1440V18C1380 34 1320 34 1260 18S1140 2 1080 18 960 34 900 18 780 2 720 18 600 34 540 18 420 2 360 18 240 34 180 18 60 2 0 18Z"/></svg>
-    </section>
-
-    <section class="social" aria-labelledby="social-title">
-      <div class="wrap social__head">
-        <div>
-          <h2 id="social-title" class="t-wide t-wide--l" style="color:var(--deep)">on the shore</h2>
-          <p class="t-hand">tag us, we repost</p>
-        </div>
-        <div style="display:flex;gap:.4rem">
-          <button class="icon-btn icon-btn--outline" type="button" data-rail="social-rail" data-dir="prev" aria-label="scroll photos left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-          <button class="icon-btn icon-btn--outline" type="button" data-rail="social-rail" data-dir="next" aria-label="scroll photos right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        </div>
-      </div>
-      <div class="rail" id="social-rail" style="max-width:var(--page-max);margin-inline:auto">
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/9872701/pexels-photo-9872701.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a sprinkle donut float on a bright pool" loading="lazy"></div><span>@noura.k</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/3149285/pexels-photo-3149285.jpeg?auto=compress&cs=tinysrgb&w=700" alt="two friends watching the sunset on the beach" loading="lazy"></div><span>@lama.sea</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/24031225/pexels-photo-24031225.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a girl paddling a yellow kayak on calm water" loading="lazy"></div><span>@reem.rides</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/31629322/pexels-photo-31629322.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a pink flamingo float among tropical plants" loading="lazy"></div><span>@solae.swim</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/33265997/pexels-photo-33265997.jpeg?auto=compress&cs=tinysrgb&w=700" alt="a group of girls posing on rocks by the sea" loading="lazy"></div><span>@dana.goes</span></a>
-        <a class="social__tile" href="#"><div class="frame-soft"><img src="https://images.pexels.com/photos/8926078/pexels-photo-8926078.jpeg?auto=compress&cs=tinysrgb&w=700" alt="two girls running along the shoreline" loading="lazy"></div><span>@solae.swim</span></a>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -350,11 +274,11 @@
       </div>
       <div class="footer__big">
         <span class="t-hand" aria-hidden="true">see you on the shore</span>
-        <img class="logo-sun" src="assets/img/logo-sun.svg" alt="Solae" loading="lazy">
+        <div class="footer__logo" aria-hidden="true" data-logo-slot><img class="logo-sun" src="assets/img/logo-sun.svg" alt=""></div>
       </div>
       <div class="footer__legal">
         <span>© 2026 SOLAE · modest swim sets for teen girls · photos: pexels &amp; unsplash</span>
-        <nav aria-label="legal"><a href="#">privacy</a><a href="#">terms</a><a href="design-system.html">design system</a></nav>
+        <nav aria-label="legal"><a href="#">privacy</a><a href="#">terms</a></nav>
       </div>
     </div>
     <div class="footer__stripe" aria-hidden="true"></div>

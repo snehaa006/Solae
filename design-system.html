@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SOLAE Design System</title>
   <meta name="description" content="Tokens, type, motifs and components for the SOLAE swim storefront.">
+  <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Mrs+Saint+Delafield&family=Poppins:wght@600;700;800&family=Sour+Gummy:ital,wdth,wght@0,125,900;1,125,900&display=swap">
@@ -142,7 +143,7 @@
     <section id="brand" class="ds-sec">
       <div class="ds-sec__head">
         <div><p class="num">01</p><h2 class="t-headline t-display">logos</h2></div>
-        <p>Three options from the Brand Starter, and nothing is final. Each one is used on the site where the brand sheet says it works best, so you can see all three at work together. The little switch in the bottom corner of every store page tries any of them in the header.</p>
+        <p>Three options from the Brand Starter, and nothing is final. The site wears one at a time, everywhere a logo shows: the header and menu, the sun at the end of the hero, the story and vision cards, the product welcome card, the footer and the tab icon. Open the store with each link below to compare; your browser remembers the last one you opened. Everyone else sees option 1.</p>
       </div>
       <div class="logo-opts">
         <article class="logo-opt">
@@ -153,7 +154,7 @@
           <p class="t-label">option 1 of 3</p>
           <h3>ghalia's sun</h3>
           <p>Her original drawing, cleaned up: the half sun, the name running up its edge in her colours, and brush-stroke beams. Playful, warm and personal.</p>
-          <p><b>On the site:</b> the homepage banner, rising out of the window's edge at the end of "made for the sun"; beside her story; the footer.</p>
+          <p><a class="link-u" href="index.html?logo=1">see the site with option 1</a> · the half sun rises out of the window's edge at the end of "made for the sun", and out of the footer card's edge.</p>
         </article>
         <article class="logo-opt">
           <div class="logo-opt__pair">
@@ -163,7 +164,7 @@
           <p class="t-label">option 2 of 3</p>
           <h3>minimal wordmark</h3>
           <p>The name in clean, widely spaced capitals, with the O swapped for a soft sun. Clean, modern and more premium. The sun works on its own as a small symbol.</p>
-          <p><b>On the site:</b> the header and the menu (the default), and the hang tag below.</p>
+          <p><a class="link-u" href="index.html?logo=2">see the site with option 2</a> · the soft sun on its own rises at the end of the headline; the wordmark sits in the header, the story card and the footer.</p>
         </article>
         <article class="logo-opt">
           <div class="logo-opt__pair">
@@ -173,7 +174,7 @@
           <p class="t-label">option 3 of 3</p>
           <h3>sun symbol + name</h3>
           <p>Ghalia's sun as a symbol of its own, with the name underneath. Friendly and balanced, between playful and premium. The symbol can go on the suit itself.</p>
-          <p><b>On the site:</b> the browser tab icon, the vision card, the welcome postcard on every product page, and the little suns in the scrolling bars.</p>
+          <p><a class="link-u" href="index.html?logo=3">see the site with option 3</a> · half the sun symbol rises at the end of the headline; symbol and name sit in the header, the story card and the footer.</p>
         </article>
       </div>
 
@@ -189,7 +190,7 @@
       <p class="ds-sub">rules</p>
       <table class="tok"><tbody>
         <tr><td><b>colour</b></td><td>Options 1 and 3 always keep their own colours, on white, sand or Deep Teal. Option 2's letters are Deep Teal on light and Sand on Deep Teal; its sun is always Sunshine.</td></tr>
-        <tr><td><b>size</b></td><td>Option 1 needs room: below about 8rem wide the letters stop reading (try it in the header with the switch). Option 2 works from 1rem caps. Option 3's symbol works down to 16px, which is why it's the tab icon.</td></tr>
+        <tr><td><b>size</b></td><td>Option 1 needs room: below about 8rem wide the letters get hard to read, so in the header it's at its limit. Option 2 works from 1rem caps. Option 3's symbol works down to 16px, which is why it's the tab icon.</td></tr>
         <tr><td><b>space</b></td><td>Leave at least one sun's width of empty space around every logo. Option 1's flat edge can sit right on the edge of a page, card or box: the sun is rising out of it.</td></tr>
         <tr><td><b>tagline</b></td><td>"made for the sun", in the headline serif or as a handwritten note.</td></tr>
         <tr><td><b>case</b></td><td>Headlines and buttons are lowercase (k2o, late checkout). Section labels (spaced caps), nav and eyebrows are tracked caps, like the wordmark.</td></tr>
@@ -321,7 +322,7 @@
           <p class="note">into and out of photo sections</p></div>
         <div class="demo"><h4>wave edge</h4>
           <div class="motif-stage" style="background:var(--lagoon)"><svg class="edge" viewBox="0 0 1440 40" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 0H1440V18C1380 34 1320 34 1260 18S1140 2 1080 18 960 34 900 18 780 2 720 18 600 34 540 18 420 2 360 18 240 34 180 18 60 2 0 18Z"/></svg></div>
-          <p class="note">marquee band, signatures, statement</p></div>
+          <p class="note">marquee band, signatures</p></div>
         <div class="demo" style="place-items:center"><h4 style="justify-self:start">postage stamp</h4>
           <div class="stamp-wrap" style="width:8.5rem;color:var(--pop);transform:rotate(4deg)"><div class="stamp"><div class="stamp__inner"><img src="https://images.pexels.com/photos/27330805/pexels-photo-27330805.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=300" alt=""><p class="t-label" style="font-size:.5rem;margin-top:.3rem">summer '26 · saudi</p></div></div></div>
           <p class="note">one per page section, max</p></div>
@@ -374,20 +375,17 @@
         <thead><tr><th>section</th><th>reference</th><th>what we took</th></tr></thead>
         <tbody>
           <tr><td>announcement</td><td>k2o</td><td>slim bar with tracked caps scrolling between sun marks</td></tr>
-          <tr><td>header</td><td>the late checkout</td><td>tracked caps nav spread across the top, logo option 2 centred, sticky with blur</td></tr>
-          <tr><td>hero</td><td>the late checkout</td><td>a huge deep teal serif headline overlapping a print-framed photo, ending where ghalia's sun (logo option 1) rises out of the window's edge; a side column with a script note, small photo and serif-caps tagline; a postage stamp</td></tr>
+          <tr><td>header</td><td>the late checkout</td><td>tracked caps nav spread across the top, the chosen logo centred, sticky with blur</td></tr>
+          <tr><td>hero</td><td>the late checkout</td><td>a huge deep teal serif headline overlapping a print-framed photo, ending where the chosen logo's sun rises out of the window's edge; a side column with a script note, small photo and serif-caps tagline; a postage stamp</td></tr>
           <tr><td>wave band</td><td>surf shop + k2o</td><td>a sunshine marquee with wavy edges, spaced caps, a script accent and little suns</td></tr>
           <tr><td>catalog</td><td>SUIT taplink</td><td>spaced caps CATALOG, a dotted swirl map of categories (it filters), wavy-framed product photos, outline pill buttons</td></tr>
           <tr><td>lookbook sheet</td><td>the late checkout (lower page)</td><td>a cream sheet floating on sea photography: mixed-size prints, deep teal serif headlines, serif-caps notes, a dotted arrow</td></tr>
           <tr><td>signatures</td><td>surf shop</td><td>a sand section, two arched white-border frames offset in height, curved text on a wave</td></tr>
-          <tr><td>postcard</td><td>a postcard from summer</td><td>a founder's note on a postcard: stamp, postmark, address lines, taped polaroid</td></tr>
-          <tr><td>our story</td><td>Brand Starter + SUIT taplink</td><td>spaced caps title; ghalia's sun on a tilted card beside her story; vision (deep teal, with the sun symbol) and mission (sand) cards; then alternating wavy-framed rows with squiggle + italic labels and a palm leaf watermark</td></tr>
-          <tr><td>sun &amp; salt</td><td>sea &amp; soil</td><td>full-bleed water photo, huge spaced wide caps, vertical 'and' around a wave glyph</td></tr>
-          <tr><td>on the shore</td><td>k2o + surf shop</td><td>staggered soft-framed UGC tiles with handle chips</td></tr>
+          <tr><td>our story</td><td>Brand Starter + SUIT taplink</td><td>spaced caps title; the chosen logo on a tilted card beside her story; vision (deep teal, with the sun symbol) and mission (sand) cards; then alternating wavy-framed rows with squiggle + italic labels and a palm leaf watermark</td></tr>
           <tr><td>shop · sea chart</td><td>hand-drawn "solae" chart + the ship photo</td><td>a wide strip of sea under the header, no frame, no page title: the dotted lane writes "Solae" in flowing calligraphy (traced from Great Vibes), and one small island per category sits in the open water inside and around its loops, each with a ribbon name. the map is the only category nav: hover an island for its notes and pieces, click and the striped-sail boat sails the writing, kicking up a stern wave, spray and foam</td></tr>
           <tr><td>shop · port panel</td><td>k2o + SUIT taplink</td><td>one slim centred line under the map (the category, how many pieces, a one-line definition), then the landing page's wavy product cards</td></tr>
           <tr><td>product · postcards</td><td>lemon stripe short, built for warm days, a postcard from summer, caprini</td><td>a swipeable stack, each card laid out like its pin and set in matching faces (tokens <code class="inline">--font-post-*</code>, loaded on the product page only): scalloped stamp with condensed-serif title, centred photo, mono footer and binder clip · full photo with label, script + didone headline and a pinned note under a shell · photo strip over a perforated postcard with postmarks and marker caps · striped front with paper clip over an airmail back with stamp, postmark, lede, copy and handwritten lines</td></tr>
-          <tr><td>footer</td><td>k2o</td><td>rounded deep-teal card, link columns, newsletter pill, script sign-off, ghalia's sun rising out of the card's right edge, stripe band</td></tr>
+          <tr><td>footer</td><td>k2o</td><td>rounded deep-teal card, link columns, newsletter pill, script sign-off, the chosen logo (option 1 rises out of the card's right edge), stripe band</td></tr>
         </tbody>
       </table></div>
     </section>

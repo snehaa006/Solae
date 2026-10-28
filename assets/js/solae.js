@@ -1,6 +1,6 @@
 /* ==========================================================================
    SOLAE — mock storefront behaviour
-   Product data, catalog filter, cart drawer, rails, shop map, postcard product page.
+   Logos, product data, catalog filter, cart drawer, shop map, postcard product page.
    Photography: Pexels (free licence) — stand-ins until the real shoot.
    ========================================================================== */
 
@@ -9,17 +9,10 @@ const PX = (id, w = 1200) => `https://images.pexels.com/photos/${id}/pexels-phot
 /* ---- Icons ------------------------------------------------------------ */
 const SPRITE = `
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
-  <!-- logo 3's sun, one colour, for marquees and small marks -->
-  <symbol id="i-sun-solo" viewBox="0 0 40 40">
-    <circle cx="20" cy="20" r="7.4" fill="currentColor"/>
-    <path fill="currentColor" d="M19.0 1.1 19.0 2.1 19.0 3.2 19.1 4.3 19.3 5.3 19.4 6.3 19.4 7.2 19.4 8.1 19.2 9.0 19.0 10.0 18.9 11.0 18.9 11.3 19.0 11.6 19.2 11.9 19.5 12.1 19.9 12.2 20.2 12.2 20.5 12.1 20.8 11.9 21.0 11.6 21.1 11.3 21.2 10.3 21.3 9.2 21.4 8.2 21.3 7.0 21.0 6.0 20.6 4.9 20.1 4.0 19.7 3.1 19.4 2.1 19.4 1.1ZM30.7 8.2 30.2 8.6 29.7 9.1 29.2 9.7 28.8 10.2 28.4 10.7 28.0 11.1 27.6 11.4 27.1 11.7 26.6 12.0 26.0 12.4 25.8 12.7 25.6 13.0 25.6 13.3 25.6 13.7 25.8 14.0 26.0 14.2 26.4 14.4 26.7 14.4 27.0 14.4 27.4 14.2 27.9 13.8 28.4 13.4 28.9 12.9 29.4 12.2 29.8 11.5 30.0 10.8 30.1 10.1 30.3 9.5 30.5 8.9 31.0 8.5ZM38.9 19.0 37.9 19.0 36.8 19.0 35.7 19.1 34.7 19.3 33.7 19.4 32.8 19.4 31.9 19.4 31.0 19.2 30.0 19.0 29.0 18.9 28.7 18.9 28.4 19.0 28.1 19.2 27.9 19.5 27.8 19.9 27.8 20.2 27.9 20.5 28.1 20.8 28.4 21.0 28.7 21.1 29.7 21.2 30.8 21.3 31.8 21.4 33.0 21.3 34.0 21.0 35.1 20.6 36.0 20.1 36.9 19.7 37.9 19.4 38.9 19.4ZM31.8 30.7 31.4 30.2 30.9 29.7 30.3 29.2 29.8 28.8 29.3 28.4 28.9 28.0 28.6 27.6 28.3 27.1 28.0 26.6 27.6 26.0 27.3 25.8 27.0 25.6 26.7 25.6 26.3 25.6 26.0 25.8 25.8 26.0 25.6 26.4 25.6 26.7 25.6 27.0 25.8 27.4 26.2 27.9 26.6 28.4 27.1 28.9 27.8 29.4 28.5 29.8 29.2 30.0 29.9 30.1 30.5 30.3 31.1 30.5 31.5 31.0ZM21.0 38.9 21.0 37.9 21.0 36.8 20.9 35.7 20.7 34.7 20.6 33.7 20.6 32.8 20.6 31.9 20.8 31.0 21.0 30.0 21.1 29.0 21.1 28.7 21.0 28.4 20.8 28.1 20.5 27.9 20.1 27.8 19.8 27.8 19.5 27.9 19.2 28.1 19.0 28.4 18.9 28.7 18.8 29.7 18.7 30.8 18.6 31.8 18.7 33.0 19.0 34.0 19.4 35.1 19.9 36.0 20.3 36.9 20.6 37.9 20.6 38.9ZM9.3 31.8 9.8 31.4 10.3 30.9 10.8 30.3 11.2 29.8 11.6 29.3 12.0 28.9 12.4 28.6 12.9 28.3 13.4 28.0 14.0 27.6 14.2 27.3 14.4 27.0 14.4 26.7 14.4 26.3 14.2 26.0 14.0 25.8 13.6 25.6 13.3 25.6 13.0 25.6 12.6 25.8 12.1 26.2 11.6 26.6 11.1 27.1 10.6 27.8 10.2 28.5 10.0 29.2 9.9 29.9 9.7 30.5 9.5 31.1 9.0 31.5ZM1.1 21.0 2.1 21.0 3.2 21.0 4.3 20.9 5.3 20.7 6.3 20.6 7.2 20.6 8.1 20.6 9.0 20.8 10.0 21.0 11.0 21.1 11.3 21.1 11.6 21.0 11.9 20.8 12.1 20.5 12.2 20.1 12.2 19.8 12.1 19.5 11.9 19.2 11.6 19.0 11.3 18.9 10.3 18.8 9.2 18.7 8.2 18.6 7.0 18.7 6.0 19.0 4.9 19.4 4.0 19.9 3.1 20.3 2.1 20.6 1.1 20.6ZM8.2 9.3 8.6 9.8 9.1 10.3 9.7 10.8 10.2 11.2 10.7 11.6 11.1 12.0 11.4 12.4 11.7 12.9 12.0 13.4 12.4 14.0 12.7 14.2 13.0 14.4 13.3 14.4 13.7 14.4 14.0 14.2 14.2 14.0 14.4 13.6 14.4 13.3 14.4 13.0 14.2 12.6 13.8 12.1 13.4 11.6 12.9 11.1 12.2 10.6 11.5 10.2 10.8 10.0 10.1 9.9 9.5 9.7 8.9 9.5 8.5 9.0Z"/>
-  </symbol>
+  <!-- a plain sun dot for the scrolling bars and postmarks; it suits every logo option -->
+  <symbol id="i-sun-solo" viewBox="0 0 40 40"><circle cx="20" cy="20" r="9" fill="currentColor"/></symbol>
   <symbol id="i-squiggle" viewBox="0 0 72 16">
     <path d="M2 8Q8 1 14 8T26 8T38 8T50 8T62 8T72 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </symbol>
-  <symbol id="i-wave" viewBox="0 0 220 80">
-    <path d="M10 40Q32 6 55 40T100 40T145 40T190 40" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round"/>
-    <path d="M30 66Q52 40 75 66T120 66T165 66T210 66" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity=".7"/>
   </symbol>
   <symbol id="i-leaf" viewBox="0 0 300 300">
     <g fill="none" stroke="currentColor" stroke-linecap="round">
@@ -218,6 +211,36 @@ function openPanel(sel, open) {
   if (open) panel.querySelector("button, a")?.focus();
 }
 
+/* ---- Logos ------------------------------------------------------------------ */
+/* The Brand Starter's three options, nothing final. The site wears one at a time,
+   everywhere a logo shows: header, menu, the sun at the end of the hero, the story
+   and vision cards, the product welcome card, the footer and the tab icon.
+   Open any page with ?logo=1, ?logo=2 or ?logo=3 to see the site in that option
+   (this browser remembers it); everyone else sees LOGO_DEFAULT. */
+const LOGO_DEFAULT = "1";
+const LOGO_KEY = "solae-logo-option";
+let logoOpt = LOGO_DEFAULT;
+try {
+  const pick = new URLSearchParams(location.search).get("logo");
+  if (["1", "2", "3"].includes(pick)) localStorage.setItem(LOGO_KEY, pick);
+  logoOpt = localStorage.getItem(LOGO_KEY) || LOGO_DEFAULT;
+} catch {}
+if (!["1", "2", "3"].includes(logoOpt)) logoOpt = LOGO_DEFAULT;
+const SUN_IMG = `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="">`;
+const MARK_IMG = `<img class="sun-mark" src="assets/img/logo-mark.svg" alt="">`;
+/* full: the whole logo · hero: its sun alone, cut by the window's edge · mark: small, for the vision card */
+const LOGO = {
+  "1": { icon: "assets/img/logo-sun.svg", full: SUN_IMG, hero: SUN_IMG, mark: SUN_IMG,
+         story: `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="Ghalia's drawing: a half sun with the letters s, o, l, a, e running up its edge and wavy beams">` },
+  "2": { icon: "assets/img/logo-soft-sun.svg", full: `<span class="logo-word">S<i></i>LAE</span>`, hero: `<i class="sun-soft"></i>`, mark: `<i class="sun-soft"></i>`,
+         story: `<span class="logo-word" role="img" aria-label="Solae: the name in spaced capitals with a soft sun for the O">S<i></i>LAE</span>` },
+  "3": { icon: "assets/img/logo-mark.svg", full: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>`, hero: MARK_IMG, mark: MARK_IMG,
+         story: `<span class="logo-mark" role="img" aria-label="Solae: Ghalia's sun as a symbol, with the name underneath"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>` },
+}[logoOpt];
+document.documentElement.dataset.logo = logoOpt;
+document.querySelectorAll("[data-logo-slot]").forEach(el => { el.innerHTML = LOGO[el.dataset.logoSlot || "full"]; });
+document.querySelector('link[rel="icon"]')?.setAttribute("href", LOGO.icon);
+
 /* ---- Page wiring -------------------------------------------------------- */
 document.body.insertAdjacentHTML("afterbegin", SPRITE);
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
@@ -250,13 +273,7 @@ document.addEventListener("click", e => {
   if (t.matches("[data-close-cart]")) openPanel(".drawer", false);
   if (t.matches("[data-open-menu]")) openPanel(".mobile-nav", true);
   if (t.matches("[data-close-menu]")) openPanel(".mobile-nav", false);
-  if (t.dataset.rail) {
-    const rail = document.getElementById(t.dataset.rail);
-    rail.scrollBy({ left: (t.dataset.dir === "next" ? 1 : -1) * rail.clientWidth * .8, behavior: "smooth" });
-  }
   if (t.matches(".checkout")) toast("this is a mock store — checkout comes next ☀");
-  if (t.dataset.logo) setLogo(t.dataset.logo);
-  if (t.matches("[data-logo-lab-off]")) { t.parentElement.hidden = true; store(LOGO_KEY + "-lab", "off"); }
 });
 document.querySelector(".scrim")?.addEventListener("click", () => openPanel(".drawer", false));
 document.addEventListener("keydown", e => { if (e.key === "Escape") { openPanel(".drawer", false); openPanel(".mobile-nav", false); } });
@@ -274,32 +291,6 @@ reveal(document);
 document.querySelectorAll("[data-news]").forEach(f => f.addEventListener("submit", e => { e.preventDefault(); f.reset(); toast("you're on the list — see you on the shore"); }));
 
 renderCart();
-
-/* ---- Logos ------------------------------------------------------------------ */
-/* The Brand Starter's three options (nothing final). The wordmark is the default
-   header logo; the switch in the corner tries the other two there and in the menu.
-   Hide it with ×, bring it back with ?logos in the address. */
-const LOGOS = [
-  { id: "sun",  name: "ghalia's sun",        html: `<img class="logo-sun" src="assets/img/logo-sun.svg" alt="">` },
-  { id: "word", name: "minimal wordmark",    html: `<span class="logo-word">S<i></i>LAE</span>` },
-  { id: "mark", name: "sun symbol and name", html: `<span class="logo-mark"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>` },
-];
-const LOGO_KEY = "solae-logo";
-const store = (k, v) => { try { return v === undefined ? localStorage.getItem(k) : localStorage.setItem(k, v); } catch { return null; } };
-function setLogo(id) {
-  const logo = LOGOS.find(l => l.id === id) || LOGOS[1];
-  document.querySelectorAll("[data-logo-slot]").forEach(el => { el.innerHTML = logo.html; });
-  document.querySelectorAll("[data-logo]").forEach(b => b.setAttribute("aria-pressed", b.dataset.logo === logo.id));
-  store(LOGO_KEY, logo.id);
-}
-if (new URLSearchParams(location.search).has("logos")) store(LOGO_KEY + "-lab", "on");
-if (document.querySelector("[data-logo-slot]") && store(LOGO_KEY + "-lab") !== "off") {
-  document.body.insertAdjacentHTML("beforeend", `<div class="logo-lab" role="group" aria-label="try a logo in the header">
-    <span>logo</span>${LOGOS.map((l, i) => `<button type="button" data-logo="${l.id}" aria-pressed="false" title="option ${i + 1}: ${l.name}" aria-label="option ${i + 1}: ${l.name}">${i + 1}</button>`).join("")}
-    <button class="logo-lab__x" type="button" data-logo-lab-off title="hide" aria-label="hide the logo switch">×</button>
-  </div>`);
-}
-setLogo(store(LOGO_KEY));
 
 /* ---- Shop map ------------------------------------------------------------- */
 /* A wide strip of sea across the page (pin: the hand-drawn "solae" chart). The
@@ -695,7 +686,7 @@ if (pdp) {
     </article>`,
     `<article class="post post--brand">
       <div class="post__front">
-        <span class="logo-mark" aria-hidden="true"><img src="assets/img/logo-mark.svg" alt=""><span>SOLAE</span></span>
+        <span class="post__logo" aria-hidden="true">${LOGO.full}</span>
         <svg class="post__sparks" viewBox="0 0 100 40" aria-hidden="true"><g transform="translate(14 14) scale(.9)">${sparkle}</g><g transform="translate(66 4) scale(1.05)">${sparkle}</g></svg>
         <p class="post__tag">made for the sun</p>
       </div>
