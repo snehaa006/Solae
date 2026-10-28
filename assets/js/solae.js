@@ -1,6 +1,6 @@
 /* ==========================================================================
    SOLAE — mock storefront behaviour
-   Logos, product data, catalog filter, cart drawer, shop map, postcard product page.
+   Logos, product data, product cards, cart drawer, shop map, postcard product page.
    Photography: Pexels (free licence) — stand-ins until the real shoot.
    ========================================================================== */
 
@@ -58,35 +58,35 @@ const C = {
 const PRODUCTS = [
   { id: "tidepool", name: "the tidepool one-piece", short: "tidepool", cat: "swimsuits", type: "scoop-neck one-piece", price: 229,
     img: "31094963", pos: "80% 30%", alt: "a lagoon-blue one-piece swimsuit, worn", gallery: ["31094963", "29957708"],
-    badges: [["new", "sun"]], colors: ["tropical", "cerulean", "brick", "turf"],
+    colors: ["tropical", "cerulean", "brick", "turf"],
     blurb: "our everyday one-piece. plain, double-lined and scooped just right — with removable pads held in by a second layer of fabric, so nothing shifts when you dive in." },
   { id: "cabana", name: "the cabana square-neck", short: "cabana", cat: "swimsuits", type: "square-neck one-piece", price: 219,
     img: "10486115", pos: "50% 30%", alt: "three friends in one-piece swimsuits laughing together on the beach", gallery: ["10486115", "8926078"],
-    badges: [["bestseller", "ink"]], colors: ["sky", "willow", "ocean", "brick"],
+    colors: ["sky", "willow", "ocean", "brick"],
     blurb: "a plain square neckline and a low scoop back. small padding, adjustable straps, and nothing that digs in." },
   { id: "shallows", name: "the shallows racerback", short: "shallows", cat: "swimsuits", type: "racerback one-piece", price: 219,
     img: "33265997", pos: "50% 40%", alt: "a group of girls in swimsuits posing on rocks by the sea", gallery: ["33265997", "40471890"],
-    badges: [], colors: ["ocean", "turf", "black"],
+    colors: ["ocean", "turf", "black"],
     blurb: "a plain high neck and a racerback that stays put for laps, cannonballs and climbing out the ladder." },
   { id: "off-shoulder", name: "the off-shoulder", short: "off-shoulder", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 259,
     img: "28681540", pos: "50% 30%", alt: "a black off-the-shoulder one-piece, worn standing in the sea", gallery: ["28681540", "28681548"],
-    badges: [["signature 01", "coral"]], colors: ["black", "brick", "cerulean"],
+    colors: ["black", "brick", "cerulean"],
     blurb: "one of our two signature styles. a soft off-the-shoulder neckline with a hidden silicone grip, so it stays exactly where you put it." },
   { id: "flounce", name: "the flounce", short: "flounce", cat: "swimsuits", sig: true, type: "signature swimsuit", price: 259,
     img: "4271771", pos: "50% 40%", alt: "a blue-grey one-piece with ruffled flounce straps, laid flat", gallery: ["4271771", "27330805"],
-    badges: [["signature 02", "coral"]], colors: ["sky", "tropical", "willow"], stitch: ["basting stitch", "no stitch"],
+    colors: ["sky", "tropical", "willow"], stitch: ["basting stitch", "no stitch"],
     blurb: "our second signature: soft flounces on the straps, with a basting stitch down the middle. still deciding if it stays — pick the one you'd wear." },
   { id: "boardwalk", name: "the boardwalk short", short: "boardwalk", cat: "shorts", type: "knee-length short", price: 99,
     img: "3998649", pos: "50% 60%", alt: "swim shorts and suits laid out flat on a wooden floor", gallery: ["3998649", "25649794"],
-    badges: [["matches every suit", "sun"]], colors: [],
+    colors: [],
     blurb: "knee-length (or just above), quick-dry and made to match your suit — or keep it classic in white or black." },
   { id: "drift", name: "the drift cover-up", short: "drift", cat: "cover-ups", type: "cover-up", price: 149,
     img: "35126783", pos: "50% 35%", alt: "a sheer yellow cover-up worn on a tropical beach", gallery: ["35126783", "36173873"],
-    badges: [["new", "sun"]], colors: [],
+    colors: [],
     blurb: "a breezy kaftan that comes in a colour to match each suit. throw it on for the walk from the water to lunch." },
   { id: "white-one", name: "the white one", short: "white one", cat: "cover-ups", type: "cover-up", price: 169,
     img: "15560782", pos: "50% 30%", alt: "a long white lace cover-up worn on a misty beach", gallery: ["15560782", "8371478"],
-    badges: [["goes with everything", "ink"]], colors: ["white"],
+    colors: ["white"],
     blurb: "the one white cover-up in the collection — lace-light and long, made to go over every single suit we make." },
 ];
 
@@ -129,25 +129,20 @@ const photo = (p, { w = 900, cls = "frame", id = p.img, alt = p.alt } = {}) =>
   `<div class="${cls}"><img src="${PX(id, w)}" alt="${alt}" loading="lazy" style="object-position:${p.pos}"></div>`;
 
 const ICON = {
-  plus: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
   prev: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
   next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
 };
 
-const MAX_SW = 6;
+/* product card (ref: k2o): a photo, the name and the price. On hover the second photo
+   fades in with "shop now"; on touch screens the card is simply a link */
 function card(p, i = 0) {
-  const badges = p.badges.map(([t, tone]) => `<span class="badge badge--${tone}">${t}</span>`).join("");
-  const sw = p.colors.slice(0, MAX_SW).map(k => `<span class="swatch" style="--c:${dot(k)}" title="${C[k].name}"></span>`).join("")
-    + (p.colors.length > MAX_SW ? `<span class="swatch-more">+${p.colors.length - MAX_SW}</span>` : "");
-  return `<article class="card reveal" data-cat="${p.cat}" style="--i:${i}">
-    <div class="card__media">
-      ${photo(p, { cls: "frame-wavy", w: 700 })}
-      <div class="card__badges">${badges}</div>
-    </div>
-    <h3 class="card__name"><a href="product.html?p=${p.id}">${p.name}</a></h3>
-    <p class="card__price">${sar(p.price)}</p>
-    <div class="swatches" aria-label="${p.colors.length} colours: ${p.colors.map(k => C[k].name).join(", ")}">${sw}</div>
-    <button class="btn btn--ghost btn--sm card__add" type="button" data-add="${p.id}" aria-label="add ${p.name} to bag">${ICON.plus}add to bag</button>
+  return `<article class="card reveal" style="--i:${i}">
+    <a class="card__link" href="product.html?p=${p.id}">
+      <div class="card__media"><img src="${PX(p.img, 700)}" alt="${p.alt}" loading="lazy" style="object-position:${p.pos}"></div>
+      <h3 class="card__name">${p.name}</h3>
+      <p class="card__price">${sar(p.price)}</p>
+      <div class="card__hover" aria-hidden="true"><img src="${PX(p.gallery[1] || p.img, 700)}" alt="" loading="lazy"><span class="card__cta">shop now</span></div>
+    </a>
   </article>`;
 }
 
@@ -264,18 +259,9 @@ document.querySelectorAll("[data-products]").forEach(el => {
   el.innerHTML = ids.map((id, i) => card(byId(id), i)).join("");
 });
 
-/* Catalog map filter */
-document.querySelectorAll("[data-filter]").forEach(btn => btn.addEventListener("click", () => {
-  const on = btn.getAttribute("aria-pressed") !== "true";
-  document.querySelectorAll("[data-filter]").forEach(b => b.setAttribute("aria-pressed", "false"));
-  btn.setAttribute("aria-pressed", on);
-  document.querySelectorAll("#catalog .card").forEach(c => { c.hidden = on && c.dataset.cat !== btn.dataset.filter; });
-}));
-
 document.addEventListener("click", e => {
   const t = e.target.closest("button, a");
   if (!t) return;
-  if (t.dataset.add) addToCart(t.dataset.add);
   if (t.dataset.qty) {
     const l = cart.find(x => x.key === t.dataset.key);
     l.qty += +t.dataset.qty; if (l.qty <= 0) cart = cart.filter(x => x !== l);
