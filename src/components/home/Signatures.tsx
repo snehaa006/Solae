@@ -34,16 +34,16 @@ function SignatureItem({ s }: { s: Signature }) {
   );
 }
 
-/* ref: the interiors board's "what's trending": a soft blue field, the headline split by a cutout
+/* ref: the interiors board's "what's trending": a lagoon mist field, the headline split by a cutout
    hanging from the top edge (their chandelier, our flounce suit pegged to a washing line), two
    photos in a lace-edged oval and a scalloped frame, then a long italic link */
 export function Signatures() {
   return (
-    <section id="signatures" className="sig field field--blue" aria-labelledby="sig-title">
+    <section id="signatures" className="sig field field--mist" aria-labelledby="sig-title">
       <div className="wrap">
         <h2 id="sig-title" className="sig__title t-headline">
           <em>our</em>
-          <span className="sig__hang" aria-hidden="true"><img src="/img/cutouts/suit-flounce-pink.webp" alt="" /></span>
+          <span className="sig__hang" aria-hidden="true"><img src="/img/cutouts/suit-flounce-coral.webp" alt="" /></span>
           <em>signatures</em>
         </h2>
         <div className="sig__grid">

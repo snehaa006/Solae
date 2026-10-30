@@ -1,25 +1,26 @@
 /* ==========================================================================
    SOLAE — design tokens · v2 "riviera"
-   Three colours and white (30 Oct 2026): blue, yellow and pink, after the
-   client's three main references (the swimwear thank-you card, the interiors
-   site, the beauty site). Each colour has a deep or a soft step; nothing else
-   reaches the UI. The logo artwork and the swimsuit swatches keep their own.
+   Three brand colours and white (30 Oct 2026), all from the Brand Starter
+   (28 Oct 2026): blue (Deep Teal, Lagoon, Stormy Teal), yellow (Sunshine) and
+   pink (Coral), each with a soft tint for whole fields. Olive and Sand stay off
+   the site. Laid out after the client's three main references (the swimwear
+   thank-you card, the interiors site, the beauty site).
    ========================================================================== */
 
 :root {
-  /* ---- The palette ---------------------------------------------------- */
+  /* ---- The palette: Brand Starter hexes ------------------------------- */
   /* blue */
-  --navy:          #1F3B6F; /* ink, buttons, frames, the footer: 11:1 on white */
-  --navy-soft:     #4A6394; /* secondary text on white and butter only */
-  --blue:          #5B8FD0; /* focus rings, small details */
-  --blue-soft:     #A8CAEC; /* fields and cabana stripes */
-  --mist:          #F1F5FB; /* image wells, tracks */
+  --deep:          #07494A; /* Deep Teal (primary): ink, buttons, frames, the footer */
+  --stormy:        #196876; /* Stormy Teal: secondary text on white and sun wash */
+  --lagoon:        #119DA4; /* Lagoon: focus rings, small details */
+  --lagoon-mist:   #B8DDD8; /* Lagoon, 30% into white: fields and cabana stripes */
+  --shell:         #EEF6F6; /* Lagoon, 7% into white: image wells, tracks */
   /* yellow */
-  --yellow:        #F8E077; /* Sunshine, from the Brand Starter: the logo, headlines on navy, stickers */
-  --butter:        #FBEBAA; /* framed cards and blocks */
+  --sunshine:      #F8E077; /* Sunshine: the logo, headlines on Deep Teal, stickers */
+  --sun-wash:      #FBEAA7; /* Sunshine, 60% into white: framed cards and blocks */
   /* pink */
-  --pink:          #F3A6BC; /* the "different" field, the strip, the wave ribbon, tinted cutouts */
-  --pink-deep:     #B54A6B; /* the darkest step of the cutout tint */
+  --coral:         #F07167; /* Coral: the "different" field, the strip, the wave ribbon, tinted cutouts */
+  --coral-deep:    #9E3A33; /* Coral's darkest step, for the cutout tint only */
   /* white */
   --white:         #FFFFFF; /* the page */
   /* collection colours: the swimsuits' swatches only, never UI */
@@ -34,24 +35,24 @@
   /* ---- Semantic colour ----------------------------------------------- */
   --bg:            var(--white);
   --surface:       var(--white);
-  --surface-sunk:  var(--mist);
-  --surface-warm:  var(--butter);
-  --ink:           var(--navy);
-  --ink-soft:      var(--navy-soft);
-  --ink-mute:      #56688A;         /* meta text: 5.6:1 on white */
-  --line:          rgba(31, 59, 111, .16);
-  --line-strong:   rgba(31, 59, 111, .42);
-  --accent:        var(--navy);
-  --pop:           var(--pink);     /* line drawings and stamps: decoration only */
-  --action:        var(--navy);     /* buttons: white on navy */
-  --action-hover:  var(--navy-soft);
+  --surface-sunk:  var(--shell);
+  --surface-warm:  var(--sun-wash);
+  --ink:           var(--deep);     /* 10.2:1 on white, 7:1 on lagoon mist, 8.5:1 on sun wash; 3.5:1 on Coral, so large text only there */
+  --ink-soft:      var(--stormy);   /* 6.4:1 on white */
+  --ink-mute:      #4F6F70;         /* meta text: 5.5:1 on white */
+  --line:          rgba(7, 73, 74, .16);
+  --line-strong:   rgba(7, 73, 74, .42);
+  --accent:        var(--deep);
+  --pop:           var(--coral);    /* line drawings and stamps: decoration only */
+  --action:        var(--deep);     /* buttons: white on Deep Teal */
+  --action-hover:  var(--stormy);
   --on-action:     var(--white);
-  --focus:         var(--blue);
+  --focus:         var(--lagoon);
 
   /* ---- Fields: each section is one flat colour (see .field) ----------- */
   --stripe-w: clamp(2.25rem, 1.4rem + 3.6vw, 5rem);
   /* wide cabana stripes (the swimwear thank-you card) */
-  --stripe-cabana: repeating-linear-gradient(90deg, var(--blue-soft) 0 var(--stripe-w), var(--white) 0 calc(var(--stripe-w) * 2));
+  --stripe-cabana: repeating-linear-gradient(90deg, var(--lagoon-mist) 0 var(--stripe-w), var(--white) 0 calc(var(--stripe-w) * 2));
 
   /* ---- Typography ---------------------------------------------------- */
   --font-headline: "Playfair Display", "Bodoni Moda", Georgia, serif;    /* roman + italic, lowercase */

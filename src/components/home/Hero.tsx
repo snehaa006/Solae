@@ -4,7 +4,7 @@ import { Logo } from "../Logo";
 
 /* ref: the swimwear thank-you card. Two cards over a beach photo: cabana stripes with three tiny
    caps and the headline, the chosen logo's sun rising out of its bottom edge and a retro sticker;
-   then a framed butter card with the handle, a note on tape, one short paragraph and the buttons */
+   then a framed sun wash card with the handle, a note on tape, one short paragraph and the buttons */
 export function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">

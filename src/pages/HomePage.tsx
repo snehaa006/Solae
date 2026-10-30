@@ -19,7 +19,7 @@ export function HomePage() {
   return (
     <main id="main">
       <Hero />
-      <Ticker className="strip" label="about solae" items={STRIP} />
+      <Ticker className="strip ticker--lg" label="about solae" items={STRIP} />
       <Catalog />
       <Signatures />
       <div className="ribbon" aria-hidden="true" />

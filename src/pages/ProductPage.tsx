@@ -33,7 +33,7 @@ export function ProductPage() {
         <Postcards product={p} port={port} />
         <ProductInfo product={p} reviewCount={reviews.length} rating={rating} />
       </section>
-      <Perks className="field--yellow pdp-perks" items={FACTS[p.cat].map((f, i) => [PERK_ICONS[i], f])} />
+      <Perks className="field--sun pdp-perks" items={FACTS[p.cat].map((f, i) => [PERK_ICONS[i], f])} />
       <Reviews reviews={reviews} rating={rating} />
       <section className="section wrap" aria-labelledby="pair-title">
         <SectionHead id="pair-title" label="complete the set" icon="i-shell">pairs <em>well with</em></SectionHead>

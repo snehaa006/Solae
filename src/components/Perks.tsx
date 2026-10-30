@@ -1,7 +1,7 @@
 import { Sprite } from "./icons";
 
 /** round line drawings with a word or two under each, on a pastel strip (ref: the beauty site's benefits row) */
-export function Perks({ items, className = "field--blue" }: { items: [icon: string, label: string][]; className?: string }) {
+export function Perks({ items, className = "field--mist" }: { items: [icon: string, label: string][]; className?: string }) {
   return (
     <div className={`perks field ${className}`}>
       <ul className="wrap perks__list" role="list">

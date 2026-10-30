@@ -12,12 +12,12 @@ function Reveal({ className, children }: { className: string; children: ReactNod
 
 /* the Brand Starter's story, vision and mission. refs: the beauty site's split (a colour block
    beside a big photo), sunseeker's "hi, i'm name", hand-drawn stickers on torn paper, then the
-   thank-you card's framed butter panel */
+   thank-you card's framed sun wash panel */
 export function OurStory() {
   return (
     <section id="about" className="about" aria-labelledby="about-title">
       <div className="story">
-        <div className="story__text field field--yellow">
+        <div className="story__text field field--sun">
           <Reveal className="story__inner">
             <p className="t-label">our story</p>
             <h2 id="about-title" className="story__hi">hi, i'm ghalia</h2>

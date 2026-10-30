@@ -14,9 +14,9 @@ import "../styles/design-system.css";
 
 /* ---- Colour, with contrast worked out live ------------------------------- */
 const PALETTE: Record<string, [name: string, hex: string, source: string][]> = {
-  "blue": [["navy", "1F3B6F", "ink, buttons, frames, the footer"], ["navy-soft", "4A6394", "secondary text on white and butter"], ["blue", "5B8FD0", "focus, small details"], ["blue-soft", "A8CAEC", "fields, cabana stripes"], ["mist", "F1F5FB", "image wells, tracks"]],
-  "yellow": [["yellow", "F8E077", "Sunshine (Brand Starter): the logo, headlines on navy, stickers"], ["butter", "FBEBAA", "framed cards, blocks"]],
-  "pink": [["pink", "F3A6BC", "the different field, the strip, the wave ribbon, cutouts"], ["pink-deep", "B54A6B", "the darkest step of the cutout tint"]],
+  "blue · Brand Starter": [["deep", "07494A", "Deep Teal: ink, buttons, frames, the footer"], ["stormy", "196876", "Stormy Teal: secondary text on white and sun wash"], ["lagoon", "119DA4", "Lagoon: focus, small details"], ["lagoon-mist", "B8DDD8", "Lagoon 30% into white: fields, cabana stripes"], ["shell", "EEF6F6", "Lagoon 7% into white: image wells, tracks"]],
+  "yellow · Brand Starter": [["sunshine", "F8E077", "Sunshine: the logo, headlines on Deep Teal, stickers"], ["sun-wash", "FBEAA7", "Sunshine 60% into white: framed cards, blocks"]],
+  "coral · Brand Starter": [["coral", "F07167", "Coral: the different field, the strip, the wave ribbon, cutouts"], ["coral-deep", "9E3A33", "Coral's darkest step, for the cutout tint"]],
   "white": [["white", "FFFFFF", "the page"]],
   "collection · swimsuit swatches only": [["cerulean", "0E79B2", "collection"], ["sky", "6699CC", "collection"], ["ocean", "0471A6", "collection"], ["tropical", "17BEBB", "collection"], ["brick", "B40421", "collection"], ["turf", "337155", "collection"], ["willow", "93C186", "collection"]],
 };
@@ -30,29 +30,29 @@ const ratio = (a: string, b: string) => {
   return (x + .05) / (y + .05);
 };
 const textOn = (h: string) => {
-  const onWhite = ratio(h, "FFFFFF"), dark = ratio(h, "1F3B6F");
+  const onWhite = ratio(h, "FFFFFF"), dark = ratio(h, "07494A");
   return onWhite >= 4.5 ? `text on white ${onWhite.toFixed(1)}:1 ✓`
     : onWhite >= 3 ? `large text on white ${onWhite.toFixed(1)}:1`
-    : `fill only · navy text on it ${dark.toFixed(1)}:1`;
+    : `fill only · Deep Teal text on it ${dark.toFixed(1)}:1`;
 };
 
 /* the fields, in the order the homepage stacks them */
 const FIELDS: [cls: string, name: string, ink: string, use: string][] = [
-  ["", "white", "navy", "the page: catalog, product, shop"],
-  ["field--pink", "pink", "navy", "the strip, how we're different, the wave ribbon"],
-  ["field--blue", "soft blue", "navy", "signatures, the set, the menu"],
-  ["field--yellow", "butter", "navy", "the story block, framed cards, the product's benefits row"],
-  ["field--navy", "navy", "white + yellow", "the announcement, reviews, the footer"],
+  ["", "white", "Deep Teal", "the page: catalog, product, shop"],
+  ["field--coral", "Coral", "Deep Teal, large text only (3.5:1)", "the strip, how we're different, the wave ribbon"],
+  ["field--mist", "lagoon mist", "Deep Teal", "signatures, the set, the menu"],
+  ["field--sun", "sun wash", "Deep Teal", "the story block, framed cards, the product's benefits row"],
+  ["field--deep", "Deep Teal", "white + Sunshine", "the announcement, reviews, the footer"],
 ];
 
 const SEMANTIC = [
   ["--bg", "var(--white)", "white", "page background"],
-  ["--field", "per section", "one of the fields", "set by .field--blue, --yellow, --pink, --navy; frames read it for their gap"],
-  ["--ink", "var(--navy)", "navy", "body text and headlines (11:1 on white, 5.7:1 on pink, 6.4:1 on soft blue)"],
-  ["--ink-soft", "var(--navy-soft)", "navy-soft", "secondary copy on white and butter; full navy on blue and pink fields"],
-  ["--action", "var(--navy)", "navy", "buttons, with white text"],
-  ["--pop", "var(--pink)", "pink", "line drawings, stamps: decoration only, never text people must read"],
-  ["--focus", "var(--blue)", "blue", "focus rings, input focus"],
+  ["--field", "per section", "one of the fields", "set by .field--mist, --sun, --coral, --deep; frames read it for their gap"],
+  ["--ink", "var(--deep)", "Deep Teal", "body text and headlines (10.2:1 on white, 7:1 on lagoon mist, 8.5:1 on sun wash; large text only on Coral)"],
+  ["--ink-soft", "var(--stormy)", "Stormy Teal", "secondary copy on white and sun wash; Deep Teal on lagoon mist and Coral fields"],
+  ["--action", "var(--deep)", "Deep Teal", "buttons, with white text"],
+  ["--pop", "var(--coral)", "Coral", "line drawings, stamps: decoration only, never text people must read"],
+  ["--focus", "var(--lagoon)", "Lagoon", "focus rings, input focus"],
 ] as const;
 
 /* ---- Type & space, measured at the current window width ------------------ */
@@ -90,20 +90,20 @@ function useMeasured() {
 
 /* ---- Section patterns ------------------------------------------------------ */
 const PATTERNS = [
-  ["announcement", "sunseeker", "a slim navy ticker of tiny typewriter caps between little suns"],
+  ["announcement", "sunseeker", "a slim Deep Teal ticker of tiny typewriter caps between little suns"],
   ["header", "sunseeker", "white with one hairline under it; tiny caps nav either side, the chosen logo centred"],
-  ["hero", "★ swimwear thank-you card", "two cards over a beach photo: cabana stripes with three tiny caps along the top and \"made for the sun\" along the bottom, the logo's sun rising out of its edge and a \"drop 01\" sticker; then a framed butter card with the handle, a script note on tape, one short paragraph, the buttons and three facts; a sunglasses cutout tossed on its corner"],
-  ["strip", "★ beauty site", "a thin pink ticker under the hero (the benefits row lives on the product page only, on butter)"],
+  ["hero", "★ swimwear thank-you card", "two cards over a beach photo: cabana stripes with three tiny caps along the top and \"made for the sun\" along the bottom, the logo's sun rising out of its edge and a \"drop 01\" sticker; then a framed sun wash card with the handle, a script note on tape, one short paragraph, the buttons and three facts; a sunglasses cutout tossed on its corner"],
+  ["strip", "★ beauty site", "a thin coral ticker under the hero (the benefits row lives on the product page only, on sun wash)"],
   ["catalog", "sunseeker", "section head (line sun, label, headline), four framed product cards, one ghost button"],
-  ["signatures", "★ interiors \"what's trending\"", "a soft blue field with big faint waves; the headline split by a cutout hanging from a washing line at the top edge (their chandelier, our flounce suit in pink); the two signatures in a lace-edged oval and a scalloped frame; \"view the signatures ———\""],
-  ["checker ribbon", "★ interiors board", "between the soft blue, pink and mist fields"],
-  ["how we're different", "★ interiors board", "a pink field, four white cards, each with a pink-tinted cutout (their pink engravings), an italic title that trails off and one line"],
-  ["the set", "★ interiors + beauty site", "\"a matching set? it's our whole vibe…\" on soft blue (their \"customization?\" field): the suit and shorts cutouts standing on a butter card with a hairline and rising out of its top, a half-sun \"made to match\" badge"],
-  ["wave ribbon", "★ beauty site", "a pink band of serif phrases running along a wave, laid across the seam between the set and the story"],
-  ["our story", "★ beauty site split + sunseeker", "a butter block (their orange) with \"hi, i'm ghalia\" beside a big photo of two girls; her sketch on a small card at the photo's foot with hand-drawn stickers on torn paper; then vision and mission in the framed butter card"],
+  ["signatures", "★ interiors \"what's trending\"", "a lagoon mist field with big faint waves; the headline split by a cutout hanging from a washing line at the top edge (their chandelier, our flounce suit in coral); the two signatures in a lace-edged oval and a scalloped frame; \"view the signatures ———\""],
+  ["checker ribbon", "★ interiors board", "between the lagoon mist, coral and mist fields"],
+  ["how we're different", "★ interiors board", "a coral field, four white cards, each with a coral-tinted cutout (their pink engravings), an italic title that trails off and one line"],
+  ["the set", "★ interiors + beauty site", "\"a matching set? it's our whole vibe…\" on lagoon mist (their \"customization?\" field): the suit and shorts cutouts standing on a sun wash card with a hairline and rising out of its top, a half-sun \"made to match\" badge"],
+  ["wave ribbon", "★ beauty site", "a coral band of serif phrases running along a wave, laid across the seam between the set and the story"],
+  ["our story", "★ beauty site split + sunseeker", "a sun wash block (their orange) with \"hi, i'm ghalia\" beside a big photo of two girls; her sketch on a small card at the photo's foot with hand-drawn stickers on torn paper; then vision and mission in the framed sun wash card"],
   ["shop · sea chart", "hand-drawn \"solae\" chart", "unchanged: the dotted lane writes \"Solae\", islands are the categories, the boat sails between them"],
-  ["product page", "postcards + beauty site", "the postcard stack beside a quiet panel, the benefits row on butter, a navy reviews field, pairs well with"],
-  ["footer", "beach bar + beauty site", "a full-width navy field: link columns, the newsletter with a tilted pink oval sticker, a script sign-off and the logo rising out of the window's edge"],
+  ["product page", "postcards + beauty site", "the postcard stack beside a quiet panel, the benefits row on sun wash, a Deep Teal reviews field, pairs well with"],
+  ["footer", "beach bar + beauty site", "a full-width Deep Teal field: link columns, the newsletter with a tilted coral oval sticker, a script sign-off and the logo rising out of the window's edge"],
 ];
 
 const NAV = [["brand", "01 logos"], ["colour", "02 colour"], ["type", "03 type"], ["space", "04 space & shape"], ["motifs", "05 motifs"], ["cutouts", "05b cutouts"], ["components", "06 components"], ["sections", "07 section patterns"], ["voice", "08 voice"]];
@@ -182,7 +182,7 @@ export function DesignSystemPage() {
           <h1 className="t-headline">elegant, simple <em>&amp; sunny</em></h1>
           <div className="ds-hero__card framed">
             <p className="tape-note">same colours, new look</p>
-            <p>The foundations for SOLAE's store. The client's three main references set the look, and the site should read like them: <b>★ the Seaborn Co. swimwear thank-you card</b> (cabana stripes, a framed butter card, typewriter caps, a script note on tape), <b>★ the "what's trending" interiors site</b> (colour fields, roman + italic serif, a cutout hanging from the top edge, lace-edged frames, checker ribbons, tinted cutouts in white cards) and <b>★ the Kava beauty site</b> (a strip and benefits row under the hero, a product feature card with a half-circle badge, a wave ribbon across a seam, a split story, an oval sticker). Her wider boards add tickers, hand-drawn stickers on torn paper and collage cutouts. The colours and the three logo options still come from the Brand Starter (28 October 2026).</p>
+            <p>The foundations for SOLAE's store. The client's three main references set the look, and the site should read like them: <b>★ the Seaborn Co. swimwear thank-you card</b> (cabana stripes, a framed sun wash card, typewriter caps, a script note on tape), <b>★ the "what's trending" interiors site</b> (colour fields, roman + italic serif, a cutout hanging from the top edge, lace-edged frames, checker ribbons, tinted cutouts in white cards) and <b>★ the Kava beauty site</b> (a strip and benefits row under the hero, a product feature card with a half-circle badge, a wave ribbon across a seam, a split story, an oval sticker). Her wider boards add tickers, hand-drawn stickers on torn paper and collage cutouts. The colours and the three logo options still come from the Brand Starter (28 October 2026).</p>
             <Link className="btn btn--sm" to="/">view the mock store</Link>
           </div>
         </div>
@@ -200,19 +200,19 @@ export function DesignSystemPage() {
           <div className="logo-opts">
             <LogoOption n={1} name="ghalia's sun"
               light={<img className="logo-sun" src="/img/logo-sun.svg" alt="option 1, ghalia's sun, on white" />}
-              dark={<img className="logo-sun" src="/img/logo-sun.svg" alt="option 1 on navy" />}>
+              dark={<img className="logo-sun" src="/img/logo-sun.svg" alt="option 1 on Deep Teal" />}>
               <p>Her original drawing, cleaned up: the half sun, the name running up its edge in her colours, and brush-stroke beams. Playful, warm and personal.</p>
               <p><Link className="link-u" to="/?logo=1">see the site with option 1</Link> · it turns upright in the header and on the hero's striped card, a sunrise sitting on the edge, and rises out of the window's right edge in the footer.</p>
             </LogoOption>
             <LogoOption n={2} name="minimal wordmark"
               light={<Word label="option 2, minimal wordmark, on white" />}
-              dark={<Word label="option 2 on navy" dark />}>
+              dark={<Word label="option 2 on Deep Teal" dark />}>
               <p>The name in clean, widely spaced capitals, with the O swapped for a soft sun. Clean, modern and the most premium of the three: the closest to the new boards.</p>
               <p><Link className="link-u" to="/?logo=2">see the site with option 2</Link> · its soft sun rises half out of the striped card; the wordmark sits in the header, the story card and the footer.</p>
             </LogoOption>
             <LogoOption n={3} name="sun symbol + name"
               light={<Mark label="option 3, sun symbol and name, on white" />}
-              dark={<Mark label="option 3 on navy" dark />}>
+              dark={<Mark label="option 3 on Deep Teal" dark />}>
               <p>Ghalia's sun as a symbol of its own, with the name underneath. Friendly and balanced, between playful and premium. The symbol can go on the suit itself.</p>
               <p><Link className="link-u" to="/?logo=3">see the site with option 3</Link> · half the symbol rises out of the striped card; symbol and name sit in the header, the story card and the footer.</p>
             </LogoOption>
@@ -224,12 +224,12 @@ export function DesignSystemPage() {
             <div><div className="mock"><div className="fabric"><img src="/img/logo-mark.svg" alt="the sun symbol printed on tropical teal swim fabric" /></div></div><p className="note"><b>on the suit</b> · option 3's symbol, the way the Nike tick sits on a shoe</p></div>
             <div><div className="mock"><div className="pfp"><span><img src="/img/logo-mark.svg" alt="the sun symbol as a round profile picture" /></span><b>@solae.swim</b></div></div><p className="note"><b>profile picture</b> · option 3</p></div>
             <div><div className="mock"><div className="box"><p>made for<br /><em>the sun</em></p><img className="logo-sun" src="/img/logo-sun.svg" alt="ghalia's sun on the end of a white mailer box" /></div></div><p className="note"><b>mailer box</b> · option 1, the sun rising out of the edge</p></div>
-            <div><div className="mock"><div className="post-sq"><img className="logo-sun" src="/img/logo-sun.svg" alt="" /><p>drop 01<br /><em>is live</em></p><small>swim sets for teen girls</small></div></div><p className="note"><b>social post</b> · option 1 on navy</p></div>
+            <div><div className="mock"><div className="post-sq"><img className="logo-sun" src="/img/logo-sun.svg" alt="" /><p>drop 01<br /><em>is live</em></p><small>swim sets for teen girls</small></div></div><p className="note"><b>social post</b> · option 1 on Deep Teal</p></div>
           </div>
 
           <p className="ds-sub t-label">rules</p>
           <table className="tok"><tbody>
-            <tr><td><b>colour</b></td><td>Options 1 and 3 always keep their own colours, on white, butter or navy. Option 2's letters are navy on light and white on navy; its sun is always yellow.</td></tr>
+            <tr><td><b>colour</b></td><td>Options 1 and 3 always keep their own colours, on white, sun wash or Deep Teal. Option 2's letters are Deep Teal on light and white on Deep Teal; its sun is always yellow.</td></tr>
             <tr><td><b>size</b></td><td>Option 1 needs room: below about 8rem wide the letters get hard to read, so in the header it's at its limit. Option 2 works from 1rem caps. Option 3's symbol works down to 16px, which is why it's the tab icon.</td></tr>
             <tr><td><b>space</b></td><td>Leave at least one sun's width of empty space around every logo. Option 1's flat edge can sit right on the edge of a page, card or box: the sun is rising out of it.</td></tr>
             <tr><td><b>tagline</b></td><td>"made for <i>the sun</i>", in the headline serif with the last words in italic.</td></tr>
@@ -237,7 +237,7 @@ export function DesignSystemPage() {
           </tbody></table>
         </Section>
 
-        <Section id="colour" num="02" title={<>colour, <em>in fields</em></>} intro="Three colours and white: blue, yellow and pink, after her three main references. Each has a deep and a soft step; nothing else reaches the UI (the logo artwork and the swimsuit swatches keep their own). Yellow is the Brand Starter's Sunshine. What's new is how they're used: each section is one flat field of a single colour, stacked down the page like the boards, with no grain, gradients or paper texture. Two tints (soft blue and butter) soften the brights into the powder blue and butter of the boards. The collection colours are for the swimsuits only. Contrast labels are worked out live.">
+        <Section id="colour" num="02" title={<>colour, <em>in fields</em></>} intro="Three brand colours and white, every hex from the Brand Starter: blue (Deep Teal for ink, Lagoon and its mist), yellow (Sunshine and its wash) and coral (Coral). Olive and Sand stay off the site. The swimsuit swatches keep the collection colours. What's new is how they're used: each section is one flat field of a single colour, stacked down the page like the boards, with no grain, gradients or paper texture. Two tints (lagoon mist and sun wash) soften the brights into the powder blue and sun wash of the boards. The collection colours are for the swimsuits only. Contrast labels are worked out live.">
           <div>
             {Object.entries(PALETTE).map(([group, list]) => (
               <Fragment key={group}>
@@ -262,7 +262,7 @@ export function DesignSystemPage() {
               </div>
             ))}
           </div>
-          <p className="note">One field per section. Pink and soft blue never touch: a navy and pink checker ribbon goes between them. Navy comes last on every page.</p>
+          <p className="note">One field per section. Coral and lagoon mist never touch: a Deep Teal and coral checker ribbon goes between them. Deep Teal comes last on every page.</p>
 
           <p className="ds-sub t-label">semantic tokens</p>
           <div className="scroll-x"><table className="tok">
@@ -323,21 +323,21 @@ export function DesignSystemPage() {
           <div className="ds-grid ds-grid--wide">
             <div className="demo"><h4 className="t-label">cabana stripes · thank-you card</h4>
               <div className="cabana motif-box"><p className="trio t-label"><span>modest</span><span>modern</span><span>swim</span></p></div>
-              <p className="note"><code className="inline">.cabana</code> · wide soft blue and white bars. The hero card, and this page's header.</p></div>
+              <p className="note"><code className="inline">.cabana</code> · wide lagoon mist and white bars. The hero card, and this page's header.</p></div>
             <div className="demo"><h4 className="t-label">framed card · thank-you card</h4>
               <div className="framed motif-box motif-box--framed"><p className="t-label">@solae.swim</p><p className="tape-note">swim with a purpose</p></div>
-              <p className="note"><code className="inline">.framed</code> · a thick navy border round butter, everything centred. <code className="inline">.tape-note</code> · a script phrase on a strip of soft blue tape.</p></div>
+              <p className="note"><code className="inline">.framed</code> · a thick Deep Teal border round sun wash, everything centred. <code className="inline">.tape-note</code> · a script phrase on a strip of lagoon mist tape.</p></div>
             <div className="demo"><h4 className="t-label">checker ribbon · interiors board</h4>
-              <div className="motif-ribbons"><div className="field field--blue" /><div className="ribbon" /><div className="field field--pink" /></div>
+              <div className="motif-ribbons"><div className="field field--mist" /><div className="ribbon" /><div className="field field--coral" /></div>
               <p className="note"><code className="inline">.ribbon</code> · a checker row, upright bars, a checker row. Set <code className="inline">--ra</code> / <code className="inline">--rb</code> for its colours.</p></div>
             <div className="demo"><h4 className="t-label">tickers · beach bar, sunseeker</h4>
               <Ticker className="announce" label="demo" items={["drop 01 is live", "free shipping over SAR 300"]} />
-              <Ticker className="ticker--lg field field--blue" label="demo" items={["removable pads", <em key="d">double-lined</em>]} />
-              <p className="note"><code className="inline">&lt;Ticker&gt;</code> · tiny caps on navy, or <code className="inline">.ticker--lg</code> in the serif.</p></div>
+              <Ticker className="ticker--lg field field--mist" label="demo" items={["removable pads", <em key="d">double-lined</em>]} />
+              <p className="note"><code className="inline">&lt;Ticker&gt;</code> · tiny caps on Deep Teal, or <code className="inline">.ticker--lg</code> in the serif.</p></div>
           </div>
 
           <p className="ds-sub t-label">photo frames · a photo, a gap, a hairline</p>
-          <div className="frames-demo field field--blue">
+          <div className="frames-demo field field--mist">
             <figure><div className="frame-oval"><img src={px("28681540", 600)} alt="off-shoulder swimsuit in the sea" style={{ objectPosition: "50% 25%" }} /></div><figcaption><b>oval</b><code className="inline">.frame-oval</code></figcaption></figure>
             <figure><div className="frame-scallop"><img src={px("4271771", 600)} alt="flounce swimsuit flat lay" /></div><figcaption><b>scalloped</b><code className="inline">.frame-scallop</code></figcaption></figure>
             <figure><div className="frame-arch"><img src={px("15560782", 600)} alt="white cover-up on a misty beach" /></div><figcaption><b>arch</b><code className="inline">.frame-arch</code></figcaption></figure>
@@ -348,7 +348,7 @@ export function DesignSystemPage() {
           <p className="ds-sub t-label">line drawings + stickers · interiors board, motel stickers</p>
           <div className="ds-grid ds-grid--wide">
             <div className="demo"><div className="drawings">{DRAWINGS.map(id => <Sprite key={id} id={id} className="ill" />)}</div>
-              <p className="note"><code className="inline">&lt;Sprite id="i-shell" className="ill" /&gt;</code> · thin one-colour strokes: pink on white, white on soft blue. One per card or section head.</p></div>
+              <p className="note"><code className="inline">&lt;Sprite id="i-shell" className="ill" /&gt;</code> · thin one-colour strokes: coral on white, white on lagoon mist. One per card or section head.</p></div>
             <div className="demo" style={{ placeItems: "center" }}>
               <div className="row" style={{ gap: "2rem" }}>
                 <Sprite id="s-parasol" className="sticker" style={{ width: "5.5rem", height: "5.5rem", rotate: "-12deg" }} />
@@ -358,11 +358,11 @@ export function DesignSystemPage() {
           </div>
         </Section>
 
-        <Section id="cutouts" num="05b" title={<>cut<em>outs</em></>} intro="Her main references lean on cutouts: real objects with the background removed, laid over edges. A chandelier hangs from the top of the interiors site, engravings sit in its cards, a chair rises out of the bottom of a field. Ours are our own pieces, cut from the stand-in photos (public/img/cutouts). Use them full colour for collage, or tinted pink (the -pink files) the way the board tints in pink.">
+        <Section id="cutouts" num="05b" title={<>cut<em>outs</em></>} intro="Her main references lean on cutouts: real objects with the background removed, laid over edges. A chandelier hangs from the top of the interiors site, engravings sit in its cards, a chair rises out of the bottom of a field. Ours are our own pieces, cut from the stand-in photos (public/img/cutouts). Use them full colour for collage, or tinted coral (the -coral files) the way the board tints in pink.">
           <div className="ds-grid ds-grid--wide">
-            <div className="demo field field--blue" style={{ placeItems: "center" }}><img src="/img/cutouts/suit-flounce-pink.webp" alt="" style={{ height: "11rem", width: "auto" }} /><p className="note" style={{ color: "var(--white)" }}>hanging · the signatures headline</p></div>
-            <div className="demo"><div className="row" style={{ justifyContent: "center" }}>{["suit-lace", "shorts", "sunglasses"].map(c => <img key={c} src={`/img/cutouts/${c}-pink.webp`} alt="" style={{ height: "5rem", width: "auto" }} />)}</div><p className="note">tinted pink · on white cards</p></div>
-            <div className="demo field field--blue" style={{ placeItems: "center" }}><div className="row" style={{ justifyContent: "center", alignItems: "end" }}><img src="/img/cutouts/suit-flounce.webp" alt="" style={{ height: "10rem", width: "auto" }} /><img src="/img/cutouts/shorts.webp" alt="" style={{ height: "6.5rem", width: "auto" }} /></div><p className="note">full colour · the set, the hero's sunglasses</p></div>
+            <div className="demo field field--mist" style={{ placeItems: "center" }}><img src="/img/cutouts/suit-flounce-coral.webp" alt="" style={{ height: "11rem", width: "auto" }} /><p className="note" style={{ color: "var(--white)" }}>hanging · the signatures headline</p></div>
+            <div className="demo"><div className="row" style={{ justifyContent: "center" }}>{["suit-lace", "shorts", "sunglasses"].map(c => <img key={c} src={`/img/cutouts/${c}-coral.webp`} alt="" style={{ height: "5rem", width: "auto" }} />)}</div><p className="note">tinted coral · on white cards</p></div>
+            <div className="demo field field--mist" style={{ placeItems: "center" }}><div className="row" style={{ justifyContent: "center", alignItems: "end" }}><img src="/img/cutouts/suit-flounce.webp" alt="" style={{ height: "10rem", width: "auto" }} /><img src="/img/cutouts/shorts.webp" alt="" style={{ height: "6.5rem", width: "auto" }} /></div><p className="note">full colour · the set, the hero's sunglasses</p></div>
           </div>
           <p className="ds-sub t-label">and the pieces around them</p>
           <div className="ds-grid ds-grid--wide">
@@ -373,7 +373,7 @@ export function DesignSystemPage() {
           <div className="ds-wave"><WaveTicker label="demo" items={["made to match", "double-lined", "knee-length shorts"]} /></div>
           <p className="note"><code className="inline">&lt;WaveTicker&gt;</code> · Kava's ribbon: phrases run along a wave across the seam between two sections. One per page.</p>
           <Perks items={[["i-shell", "double-lined"], ["i-sun-line", "removable pads"], ["i-wave", "knee-length shorts"], ["i-palm", "designed in saudi arabia"]]} />
-          <p className="note"><code className="inline">&lt;Perks&gt;</code> · Kava's benefits row: round pink line drawings, a serif word or two under each.</p>
+          <p className="note"><code className="inline">&lt;Perks&gt;</code> · Kava's benefits row: round coral line drawings, a serif word or two under each.</p>
         </Section>
 
         <Section id="components" num="06" title={<>the <em>components</em></>} intro="Controls are rectangles with tiny typewriter caps. Every interactive element has a 44px minimum touch target and a visible blue focus ring. Press Tab to check.">
@@ -382,8 +382,8 @@ export function DesignSystemPage() {
               <div className="row"><button className="btn" type="button">shop drop 01</button><button className="btn btn--ghost" type="button">our story</button></div>
               <div className="row"><button className="btn btn--sun" type="button">sign up</button><button className="btn btn--sm" type="button">small</button></div>
               <Link className="link-line" to="/shop/signatures">view <em>the signatures</em></Link>
-              <p className="note">deep = do · ghost = see more · sun = on navy · the long italic link closes a section</p></div>
-            <div className="demo field field--navy"><h4 className="t-label" style={{ color: "var(--yellow)" }}>on navy</h4>
+              <p className="note">deep = do · ghost = see more · sun = on Deep Teal · the long italic link closes a section</p></div>
+            <div className="demo field field--deep"><h4 className="t-label" style={{ color: "var(--sunshine)" }}>on Deep Teal</h4>
               <div className="row"><button className="btn btn--sun" type="button">shop drop 01</button><button className="btn btn--ghost-light" type="button">write a review</button></div>
               <div className="row"><span className="badge badge--sun">new</span><span className="badge badge--mist">signature</span><span className="badge">matches every suit</span></div></div>
             <div className="demo"><h4 className="t-label">tabs</h4>
@@ -404,7 +404,7 @@ export function DesignSystemPage() {
             <div className="demo"><h4 className="t-label">product card</h4><div><ProductCard product={byId("tidepool")} /></div></div>
             <div className="demo"><h4 className="t-label">accordion</h4>
               <div className="acc"><details open><summary>fit &amp; pads</summary><div>small removable pads, held in by a second layer of fabric.</div></details><details><summary>care</summary><div>rinse in cool fresh water after every swim.</div></details></div></div>
-            <div className="demo field field--pink"><h4 className="t-label">difference card</h4>
+            <div className="demo field field--coral"><h4 className="t-label">difference card</h4>
               <div className="diff__card"><Sprite id="i-shell" className="diff__icon ill" /><h3>double-lined, every time…</h3><p>every suit is double-lined, so it stays fully opaque when it's wet.</p></div></div>
           </div>
         </Section>
@@ -428,7 +428,7 @@ export function DesignSystemPage() {
         </Section>
       </main>
 
-      <footer className="ds-foot field field--navy">
+      <footer className="ds-foot field field--deep">
         <p className="t-label">© 2026 SOLAE · <Link className="link-u" to="/">back to the store</Link></p>
       </footer>
 

@@ -6,18 +6,18 @@ Mock portfolio + store for SOLAE: modest, modern swim sets for teen girls (a one
 
 Re-set after the client's second round of boards, which asked for something more elegant and simple. **Her three main references set the look, and she expects the site to read like them:**
 
-1. **The Seaborn Co. swimwear thank-you card**: cabana stripes, a thick-framed butter card, typewriter caps, a script note on tape (the hero).
+1. **The Seaborn Co. swimwear thank-you card**: cabana stripes, a thick-framed sun wash card, typewriter caps, a script note on tape (the hero).
 2. **The "what's trending" interiors site**: colour fields, roman + italic serif headlines, a cutout hanging from a section's top edge, lace-edged oval and scalloped frames, checker ribbons, tinted cutouts in white cards, "customization? it's our whole vibe…" (signatures, how we're different, the set).
 3. **The Kava beauty site**: a thin strip and a round-icon benefits row under the hero, a product feature card with a half-circle badge, a wave ribbon across a section seam, a colour block beside a big photo, an oval sticker on the newsletter.
 
-**Three colours and white** (30 Oct 2026): blue (navy for text, buttons and the footer, soft blue for fields and stripes), yellow (Sunshine, and butter for cards and blocks) and pink (the "different" field, the strip, the wave ribbon, the tinted cutouts). The Brand Starter's teal, olive, coral and sand no longer reach the UI; the logo artwork and the swimsuit swatches keep their own colours.
+**Three brand colours and white** (30 Oct 2026), every hex from the Brand Starter: blue (Deep Teal for text, buttons and the footer; Lagoon and lagoon mist for fields and stripes), yellow (Sunshine, and sun wash for cards and blocks) and pink (Coral: the "different" field, the strip, the wave ribbon, the tinted cutouts). Olive and Sand stay off the site; the swimsuit swatches keep the collection colours.
 
 The rest of the system:
 
-- **Colour fields:** each section is one flat colour (white, soft blue, pink, butter, navy), with navy and pink checker ribbons round the pink one. No grain or paper texture.
+- **Colour fields:** each section is one flat colour (white, lagoon mist, coral, sun wash, Deep Teal), with Deep Teal and coral checker ribbons round the coral one. No grain or paper texture.
 - **Type:** Playfair Display for headlines, lowercase with a word or two in italic ("how we're *different*"); DM Mono for tiny tracked caps (labels, nav, buttons, tickers); Jost for body; Pinyon Script as one accent per view.
-- **Motifs:** cabana stripes and a thick-framed butter card, tickers and a wave ribbon, oval / scalloped / arch photo frames with a hairline, checker ribbons, thin line drawings (also on torn-paper stickers), a half-sun arc badge and die-cut stickers.
-- **Cutouts:** our own pieces with the background removed (`public/img/cutouts`), cut from the Pexels stand-ins: the flounce and lace one-pieces, the shorts and the sunglasses. Full colour for collage, or tinted pink (`-pink` files) like the board's pink chandelier. Re-cut them from the real shoot before launch.
+- **Motifs:** cabana stripes and a thick-framed sun wash card, tickers and a wave ribbon, oval / scalloped / arch photo frames with a hairline, checker ribbons, thin line drawings (also on torn-paper stickers), a half-sun arc badge and die-cut stickers.
+- **Cutouts:** our own pieces with the background removed (`public/img/cutouts`), cut from the Pexels stand-ins: the flounce and lace one-pieces, the shorts and the sunglasses. Full colour for collage, or tinted coral (`-coral` files) like the board's pink chandelier. Re-cut them from the real shoot before launch.
 - **Controls:** rectangles with tiny caps instead of pills.
 
 Everything is documented, with live demos, on the private `/design-system` page.
@@ -39,7 +39,7 @@ Then open http://localhost:5173.
 
 ## Pages
 
-- `/`: homepage: the hero (a cabana-striped card and a framed butter card over a beach photo, the chosen logo's sun rising out of the striped card), a pink strip, the catalog, the signatures on soft blue (the flounce suit hanging from a washing line), "how we're different" on pink, "a matching set? it's our whole vibe…" on soft blue, a wave ribbon, then "our story" as a butter block beside a photo, with the vision and the mission
+- `/`: homepage: the hero (a cabana-striped card and a framed sun wash card over a beach photo, the chosen logo's sun rising out of the striped card), a coral strip, the catalog, the signatures on lagoon mist (the flounce suit hanging from a washing line), "how we're different" on coral, "a matching set? it's our whole vibe…" on lagoon mist, a wave ribbon, then "our story" as a sun wash block beside a photo, with the vision and the mission
 - `/shop`: the shop, as a wide sea chart under the header that works as the category nav. The sea lane writes "Solae" in one dotted line of flowing calligraphy; each category is a small island in and around its loops. Hover an island for what's there, click and the boat sails along the writing. Deep links: `/shop/swimsuits`, `/shop/signatures`, `/shop/shorts`, `/shop/cover-ups`
 - `/product/<id>`: product page: the swipeable postcard stack beside a minimal panel after k2o (colour and size, the set or just the suit, a facts strip), then reviews and pairs well with (ids: `tidepool`, `cabana`, `shallows`, `off-shoulder`, `flounce`, `boardwalk`, `drift`, `white-one`)
 - `/design-system` (private: not linked from the store, and `vercel.json` sends it to the homepage on the live site, so open it locally): the three logo options with mock-ups, colour and the six fields, type, space and shape, motifs, components and which board each section comes from

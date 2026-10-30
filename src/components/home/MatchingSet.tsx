@@ -9,10 +9,10 @@ import { ArcBadge } from "../ArcBadge";
 export function MatchingSet() {
   const suit = byId("flounce"), shorts = byId("boardwalk");
   return (
-    <section className="set section field field--blue" aria-labelledby="set-title">
+    <section className="set section field field--mist" aria-labelledby="set-title">
       <div className="wrap set__grid">
         <div className="set__card">
-          <img className="set__suit" src="/img/cutouts/suit-flounce.webp" alt="the flounce one-piece, with pink ruffles on the straps" loading="lazy" />
+          <img className="set__suit" src="/img/cutouts/suit-flounce.webp" alt="the flounce one-piece, with coral ruffles on the straps" loading="lazy" />
           <span className="set__plus" aria-hidden="true">+</span>
           <img className="set__shorts" src="/img/cutouts/shorts.webp" alt="knee-length swim shorts with a drawstring" loading="lazy" />
           <p className="set__tag t-label">the set · {sar(suit.price + shorts.price)}</p>

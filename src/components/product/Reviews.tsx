@@ -4,13 +4,13 @@ import { useToast } from "../../context/toast";
 // reviews are dated by day, so read them in UTC and the day never shifts with the viewer's time zone
 const day = (date: string) => new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 
-/* reviews: a navy field with the average, then the list */
+/* reviews: a Deep Teal field with the average, then the list */
 export function Reviews({ reviews, rating }: { reviews: Review[]; rating: number }) {
   const toast = useToast();
   const count = `${reviews.length} ${reviews.length === 1 ? "review" : "reviews"}`;
   return (
     <section id="reviews" className="reviews" aria-labelledby="reviews-title">
-      <div className="reviews__band field field--navy"><div className="wrap reviews__head">
+      <div className="reviews__band field field--deep"><div className="wrap reviews__head">
         <h2 id="reviews-title" className="t-headline">what girls <em>are saying</em></h2>
         {reviews.length
           ? <><p className="reviews__avg">{rating.toFixed(1)}</p><p className="t-label">average rating</p><p className="reviews__count">based on {count}</p></>
