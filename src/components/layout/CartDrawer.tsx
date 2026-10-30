@@ -23,7 +23,7 @@ export function CartDrawer() {
       <div className={`scrim${isOpen ? " is-open" : ""}`} onClick={close} />
       <aside className={`drawer${isOpen ? " is-open" : ""}`} aria-label="your bag">
         <div className="drawer__head">
-          <h2>your bag</h2>
+          <h2>your <em>bag</em></h2>
           <button ref={closeBtn} className="icon-btn" type="button" aria-label="close bag" onClick={close}><CloseIcon /></button>
         </div>
         <div className="drawer__ship">
@@ -33,9 +33,9 @@ export function CartDrawer() {
         <div className="drawer__items">
           {count === 0 ? (
             <div className="drawer__empty">
-              <p className="t-hand">nothing yet</p>
+              <p className="t-script">nothing yet</p>
               <p>the sun is out though.</p>
-              <Link className="btn btn--ink btn--sm" to="/shop" onClick={close}>shop drop 01</Link>
+              <Link className="btn btn--sm" to="/shop" onClick={close}>shop drop 01</Link>
             </div>
           ) : lines.map(l => {
             const p = byId(l.id);
@@ -57,7 +57,7 @@ export function CartDrawer() {
           })}
         </div>
         <div className="drawer__foot" hidden={count === 0}>
-          <div className="drawer__total"><span>subtotal</span><span>{sar(total)}</span></div>
+          <div className="drawer__total"><span className="t-label">subtotal</span><span>{sar(total)}</span></div>
           <button className="btn btn--block checkout" type="button" onClick={() => toast("this is a mock store — checkout comes next ☀")}>checkout</button>
           <p className="t-small t-mute" style={{ textAlign: "center" }}>taxes included · shipping calculated at checkout</p>
         </div>

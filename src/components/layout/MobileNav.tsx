@@ -11,14 +11,14 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
 
   return (
     <div className={`mobile-nav${open ? " is-open" : ""}`} aria-label="menu">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div className="mobile-nav__top">
         <span className="mobile-nav__brand" aria-hidden="true"><Logo slot="bar" /></span>
         <button ref={closeBtn} className="icon-btn" type="button" aria-label="close menu" onClick={onClose}><CloseIcon /></button>
       </div>
       <nav aria-label="mobile">
         {LINKS.map(([to, label]) => <Link key={to} to={to} onClick={onClose}>{label}</Link>)}
       </nav>
-      <p className="t-hand">bright, free &amp; all your own</p>
+      <p className="t-script">bright, free &amp; all your own</p>
     </div>
   );
 }

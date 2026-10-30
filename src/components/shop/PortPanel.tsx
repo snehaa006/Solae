@@ -16,7 +16,7 @@ export function PortPanel({ id, onSail }: { id: PortId; onSail: (id: PortId) => 
         {items.map(p => <ProductCard key={p.id} product={p} />)}
       </div>
       <div className="port-next">
-        <button className="btn btn--ink" type="button" onClick={() => onSail(next.id)}>
+        <button className="btn" type="button" onClick={() => onSail(next.id)}>
           <Sprite id="i-boat" className="port-next__boat" />sail to {next.place}
         </button>
       </div>

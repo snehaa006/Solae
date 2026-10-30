@@ -7,13 +7,14 @@ import { Postcards } from "../components/product/Postcards";
 import { ProductInfo } from "../components/product/ProductInfo";
 import { Reviews } from "../components/product/Reviews";
 import { ProductCard } from "../components/ProductCard";
+import { SectionHead } from "../components/SectionHead";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 const pairsFor = (p: Product): ProductId[] => p.cat === "swimsuits"
   ? ["boardwalk", "drift", "white-one", p.sig ? "tidepool" : "off-shoulder"]
   : ["tidepool", "cabana", "off-shoulder", "flounce"];
 
-/* /product/<id> (ref: k2o): the postcard stack beside a minimal panel, then a facts strip,
+/* /product/<id>: the postcard stack beside a minimal panel, then a facts strip,
    the reviews and "pairs well with". /product/<id>?reviews=sample previews the reviews layout. */
 export function ProductPage() {
   const { id } = useParams();
@@ -31,12 +32,12 @@ export function ProductPage() {
         <Postcards product={p} port={port} />
         <ProductInfo product={p} reviewCount={reviews.length} rating={rating} />
       </section>
-      <div className="pdp-strip wrap">
+      <div className="pdp-strip t-label wrap">
         {FACTS[p.cat].map((f, i) => <Fragment key={f}>{i > 0 && <Sprite id="i-sun-solo" />}<span>{f}</span></Fragment>)}
       </div>
       <Reviews reviews={reviews} rating={rating} />
       <section className="section wrap" aria-labelledby="pair-title">
-        <h2 id="pair-title" className="t-h2 catalog__title">pairs well with</h2>
+        <SectionHead id="pair-title" label="complete the set" icon="i-shell">pairs <em>well with</em></SectionHead>
         <div className="grid-products">
           {pairsFor(p).map(pid => <ProductCard key={pid} product={byId(pid)} />)}
         </div>

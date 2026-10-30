@@ -2,6 +2,17 @@
 
 Mock portfolio + store for SOLAE: modest, modern swim sets for teen girls (a one-piece and matching shorts), designed in Saudi Arabia. Colours, logos, story, vision and mission come from the Brand Starter (28 Oct 2026).
 
+## The look (design system v2, "riviera", 30 Oct 2026)
+
+Re-set after the client's second round of boards, which asked for something more elegant and simple. The brand colours are unchanged; how they're used changed:
+
+- **Colour fields:** each section is one flat colour (cream, lagoon mist, olive, coral, sun wash, deep teal), with checker ribbons between olive, coral and mist. No grain or paper texture.
+- **Type:** Playfair Display for headlines, lowercase with a word or two in italic ("how we're *different*"); DM Mono for tiny tracked caps (labels, nav, buttons, tickers); Jost for body; Pinyon Script as one accent per view.
+- **Motifs:** cabana stripes and a thick-framed butter card (the swimwear thank-you card), tickers, oval / scalloped / arch photo frames with a hairline, thin line drawings and one die-cut sticker.
+- **Controls:** rectangles with tiny caps instead of pills.
+
+Everything is documented, with live demos, on the private `/design-system` page.
+
 Built with React 19, TypeScript, Vite and React Router.
 
 ## Run it
@@ -19,10 +30,10 @@ Then open http://localhost:5173.
 
 ## Pages
 
-- `/`: homepage: hero, catalog, signatures, and "our story" with her story, the vision and the mission. The hero ends where the chosen logo's sun rises out of the window's edge
+- `/`: homepage: the hero (a cabana-striped card and a framed butter card over a beach photo, the chosen logo's sun rising out of the striped card), a big serif ticker, the catalog, the signatures on olive, "how we're different" on coral, and "our story" on lagoon mist with her story, the vision and the mission
 - `/shop`: the shop, as a wide sea chart under the header that works as the category nav. The sea lane writes "Solae" in one dotted line of flowing calligraphy; each category is a small island in and around its loops. Hover an island for what's there, click and the boat sails along the writing. Deep links: `/shop/swimsuits`, `/shop/signatures`, `/shop/shorts`, `/shop/cover-ups`
 - `/product/<id>`: product page: the swipeable postcard stack beside a minimal panel after k2o (colour and size, the set or just the suit, a facts strip), then reviews and pairs well with (ids: `tidepool`, `cabana`, `shallows`, `off-shoulder`, `flounce`, `boardwalk`, `drift`, `white-one`)
-- `/design-system` (private: not linked from the store, and `vercel.json` sends it to the homepage on the live site, so open it locally): the three logo options with mock-ups, colour, type, frames, components and where each section comes from
+- `/design-system` (private: not linked from the store, and `vercel.json` sends it to the homepage on the live site, so open it locally): the three logo options with mock-ups, colour and the six fields, type, space and shape, motifs, components and which board each section comes from
 
 ## Where things live
 
@@ -32,11 +43,13 @@ Then open http://localhost:5173.
 - `src/context/`: the bag (saved to localStorage) and the toast
 - `src/components/layout/`: announcement bar, header, mobile menu, footer, bag drawer
 - `src/components/home/`: homepage sections
+- `src/components/Ticker.tsx`, `SectionHead.tsx`: the scrolling strip and the centred section head, shared across pages
 - `src/components/shop/`: the sea chart (`chart.ts` holds its geometry, `SeaChart.tsx` the boat and hover cards) and the port panel
 - `src/components/product/`: postcards, the info panel and reviews
 - `src/pages/`: one component per route
-- `src/styles/tokens.css`: colours, fluid type and spacing, frame masks
-- `src/styles/solae.css`: base, logos, frames, components, sections
+- `src/styles/tokens.css`: colours and tints, fonts, fluid type and spacing, radii
+- `src/styles/solae.css`: base, fields, type, logos, motifs, frames, components, sections
+- `src/components/IconSprite.tsx`: the shared SVG symbols, including the line drawings and the parasol sticker
 - `src/styles/design-system.css`: design-system page only, scoped under `.ds-page`
 - `public/img/logo-sun.svg`, `logo-sun-up.svg`, `logo-mark.svg`, `logo-soft-sun.svg`: logo option 1 (Ghalia's sun, and turned upright as a sunrise for the header), option 3's sun symbol and option 2's soft sun. Option 2's wordmark is live text (`.logo-word`)
 
@@ -58,4 +71,4 @@ The app uses browser routing, so the host has to serve `index.html` for every pa
 
 The CSS ships unminified on purpose: Vite's default CSS minifier (Lightning CSS) drops or reorders `translate` when a rule also sets `transform`, which moves the postcard titles, the toast and the map's hover card. See `vite.config.ts`.
 
-Photos are free-licence stand-ins from Pexels and Unsplash, loaded from their CDNs. Swap them for your own shoot before launch. Poppins (the wordmark's caps), Gloock, Instrument Serif, Inter, Mrs Saint Delafield and Sour Gummy all load free from Google Fonts, plus a few faces only the product postcards use. The fluid display face is Sour Gummy melted by an SVG filter, our stand-in for the SKIMS / "your hair is thirsty" look.
+Photos are free-licence stand-ins from Pexels and Unsplash, loaded from their CDNs. Swap them for your own shoot before launch. Playfair Display, DM Mono, Jost, Pinyon Script and Poppins (the option 2 and 3 wordmark) all load free from Google Fonts, plus a few faces only the product postcards use. 

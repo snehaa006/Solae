@@ -1,16 +1,7 @@
-import { SunMark } from "../icons";
+import { Ticker } from "../Ticker";
 
-const Phrases = () => (
-  <>drop 01 is live <SunMark /> free shipping across saudi arabia over SAR 300 <SunMark /> modest, modern swim sets <SunMark /></>
-);
+const NEWS = ["drop 01 is live", "free shipping across saudi arabia over SAR 300", "modest, modern swim sets"];
 
 export function AnnounceBar() {
-  return (
-    <div className="announce" aria-label="announcements">
-      <div className="announce__track t-label">
-        <span><Phrases /></span>
-        <span aria-hidden="true"><Phrases /></span>
-      </div>
-    </div>
-  );
+  return <Ticker className="announce" label="announcements" items={NEWS} />;
 }

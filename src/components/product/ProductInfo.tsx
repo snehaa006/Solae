@@ -36,14 +36,14 @@ export function ProductInfo({ product: p, reviewCount, rating }: ProductInfoProp
       {reviewCount > 0 && (
         <a className="pdp__stars" href="#reviews"><span aria-hidden="true">{starRow(rating)}</span> {reviewCount} {reviewCount === 1 ? "review" : "reviews"}</a>
       )}
+      <p className="pdp__type t-label">{p.type}</p>
       <h1 className="pdp__name">{p.name}</h1>
-      <p className="pdp__type">{p.type}</p>
       <p className="pdp__price">{sar(p.price)}</p>
       <p className="pdp__blurb">{p.blurb}</p>
 
       {p.colors.length > 1 && (
         <div className="opt">
-          <div className="opt__label"><span>colour: <b>{COLORS[color].name}</b></span></div>
+          <div className="opt__label t-label"><span>colour: <b>{COLORS[color].name}</b></span></div>
           <div className="swatches" role="radiogroup" aria-label="colour">
             {p.colors.map(k => (
               <button key={k} type="button" className="swatch swatch--lg" role="radio" aria-checked={k === color} aria-label={COLORS[k].name}
@@ -54,7 +54,7 @@ export function ProductInfo({ product: p, reviewCount, rating }: ProductInfoProp
       )}
 
       <div className="opt">
-        <div className="opt__label">
+        <div className="opt__label t-label">
           <span>size: <b>{size.toUpperCase()}</b></span>
           <button type="button" onClick={() => toast("size guide coming soon — we're measuring everything twice")}>size guide</button>
         </div>
@@ -67,7 +67,7 @@ export function ProductInfo({ product: p, reviewCount, rating }: ProductInfoProp
 
       {p.stitch && (
         <div className="opt">
-          <div className="opt__label"><span>down the middle: <b>{stitch}</b></span></div>
+          <div className="opt__label t-label"><span>down the middle: <b>{stitch}</b></span></div>
           <div className="sizes" role="radiogroup" aria-label="centre seam">
             {p.stitch.map(o => (
               <button key={o} type="button" className="size" role="radio" aria-checked={o === stitch} onClick={() => setStitch(o)}>{o}</button>

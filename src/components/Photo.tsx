@@ -3,7 +3,7 @@ import { px } from "../lib/format";
 
 interface PhotoProps {
   product: Product;
-  /** frame class: frame, frame-wavy, frame-soft, … */
+  /** frame class: frame, frame-oval, frame-scallop, frame-arch */
   className?: string;
   w?: number;
   id?: string;
