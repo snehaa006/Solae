@@ -94,7 +94,7 @@ const PATTERNS = [
   ["announcement", "sunseeker", "a slim deep teal ticker of tiny typewriter caps between little suns"],
   ["header", "sunseeker", "cream with one hairline under it; tiny caps nav either side, the chosen logo centred"],
   ["hero", "★ swimwear thank-you card", "two cards over a beach photo: cabana stripes with three tiny caps along the top and \"made for the sun\" along the bottom, the logo's sun rising out of its edge and a \"drop 01\" sticker; then a framed butter card with the handle, a script note on tape, one short paragraph, the buttons and three facts; a sunglasses cutout tossed on its corner"],
-  ["strip + benefits", "★ beauty site", "a thin coral ticker under the hero, then four round coral line drawings with a serif word or two under each, on lagoon mist (the product page has the same row on butter)"],
+  ["strip", "★ beauty site", "a thin coral ticker under the hero (the benefits row lives on the product page only, on butter)"],
   ["catalog", "sunseeker", "section head (line sun, label, headline), four framed product cards, one ghost button"],
   ["signatures", "★ interiors \"what's trending\"", "an olive field with big faint waves; the headline split by a cutout hanging from a washing line at the top edge (their chandelier, our flounce suit in coral); the two signatures in a lace-edged oval and a scalloped frame; \"view the signatures ———\""],
   ["checker ribbon", "★ interiors board", "between the olive, coral and mist fields"],
