@@ -3,7 +3,11 @@ import { Link } from "react-router";
 import { byId } from "../data/catalog";
 import { NextIcon, PrevIcon, Sprite } from "../components/icons";
 import { ProductCard } from "../components/ProductCard";
+import { ArcBadge } from "../components/ArcBadge";
+import { PaperSticker } from "../components/PaperSticker";
+import { Perks } from "../components/Perks";
 import { Ticker } from "../components/Ticker";
+import { WaveTicker } from "../components/WaveTicker";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { px } from "../lib/format";
 import "../styles/design-system.css";
@@ -89,19 +93,21 @@ function useMeasured() {
 const PATTERNS = [
   ["announcement", "sunseeker", "a slim deep teal ticker of tiny typewriter caps between little suns"],
   ["header", "sunseeker", "cream with one hairline under it; tiny caps nav either side, the chosen logo centred"],
-  ["hero", "swimwear thank-you card", "two cards over a beach photo: cabana stripes with three tiny caps along the top and \"made for the sun\" along the bottom, the logo's sun rising out of its edge and a \"drop 01\" sticker; then a framed butter card with the handle, a script note on tape, one short paragraph, the buttons and three facts. Desktop: the cards stand left so the girls show on the right"],
-  ["big ticker", "beach bar", "a lagoon-mist band of serif phrases, alternating roman and italic, scrolling between coral suns"],
+  ["hero", "★ swimwear thank-you card", "two cards over a beach photo: cabana stripes with three tiny caps along the top and \"made for the sun\" along the bottom, the logo's sun rising out of its edge and a \"drop 01\" sticker; then a framed butter card with the handle, a script note on tape, one short paragraph, the buttons and three facts; a sunglasses cutout tossed on its corner"],
+  ["strip + benefits", "★ beauty site", "a thin coral ticker under the hero, then four round coral line drawings with a serif word or two under each, on lagoon mist (the product page has the same row on butter)"],
   ["catalog", "sunseeker", "section head (line sun, label, headline), four framed product cards, one ghost button"],
-  ["signatures", "interiors \"what's trending\"", "an olive field; the headline split by a line drawing; the two signatures in an oval and a scalloped frame with a sand hairline; \"view the signatures ———\""],
-  ["checker ribbon", "interiors board", "between the olive, coral and mist fields"],
-  ["how we're different", "interiors board", "a coral field, four cream cards, each with a coral line drawing, an italic title that trails off and one line"],
-  ["our story", "sunseeker + thank-you card", "a lagoon-mist field; the logo on a hairline card with a parasol sticker; \"hi, i'm ghalia\" in script; then vision and mission inside the framed butter card"],
+  ["signatures", "★ interiors \"what's trending\"", "an olive field with big faint waves; the headline split by a cutout hanging from a washing line at the top edge (their chandelier, our flounce suit in coral); the two signatures in a lace-edged oval and a scalloped frame; \"view the signatures ———\""],
+  ["checker ribbon", "★ interiors board", "between the olive, coral and mist fields"],
+  ["how we're different", "★ interiors board", "a coral field, four cream cards, each with a coral-tinted cutout (their pink engravings), an italic title that trails off and one line"],
+  ["the set", "★ interiors + beauty site", "\"a matching set? it's our whole vibe…\" on lagoon mist (their \"customization?\" field): the suit and shorts cutouts standing on a butter card with a hairline and rising out of its top, a half-sun \"made to match\" badge"],
+  ["wave ribbon", "★ beauty site", "a coral band of serif phrases running along a wave, laid across the seam between the set and the story"],
+  ["our story", "★ beauty site split + sunseeker", "a butter block (their orange) with \"hi, i'm ghalia\" beside a big photo of two girls; her sketch on a small card at the photo's foot with hand-drawn stickers on torn paper; then vision and mission in the framed butter card"],
   ["shop · sea chart", "hand-drawn \"solae\" chart", "unchanged: the dotted lane writes \"Solae\", islands are the categories, the boat sails between them"],
-  ["product page", "postcards + sunseeker", "the postcard stack beside a quiet panel (tiny caps type, serif name and price, square size chips, a ruled box), a facts strip, a deep teal reviews field, pairs well with"],
-  ["footer", "beach bar's maroon band", "a full-width deep teal field: link columns, the newsletter as one input + sun button, a script sign-off and the logo rising out of the window's edge"],
+  ["product page", "postcards + beauty site", "the postcard stack beside a quiet panel, the benefits row on butter, a deep teal reviews field, pairs well with"],
+  ["footer", "beach bar + beauty site", "a full-width deep teal field: link columns, the newsletter with a tilted coral oval sticker, a script sign-off and the logo rising out of the window's edge"],
 ];
 
-const NAV = [["brand", "01 logos"], ["colour", "02 colour"], ["type", "03 type"], ["space", "04 space & shape"], ["motifs", "05 motifs"], ["components", "06 components"], ["sections", "07 section patterns"], ["voice", "08 voice"]];
+const NAV = [["brand", "01 logos"], ["colour", "02 colour"], ["type", "03 type"], ["space", "04 space & shape"], ["motifs", "05 motifs"], ["cutouts", "05b cutouts"], ["components", "06 components"], ["sections", "07 section patterns"], ["voice", "08 voice"]];
 const TABS = ["the suit", "the short", "the cover-up"];
 const DRAWINGS = ["i-sun-line", "i-parasol", "i-shell", "i-palm", "i-wave", "i-star"];
 
@@ -177,7 +183,7 @@ export function DesignSystemPage() {
           <h1 className="t-headline">elegant, simple <em>&amp; sunny</em></h1>
           <div className="ds-hero__card framed">
             <p className="tape-note">same colours, new look</p>
-            <p>The foundations for SOLAE's store, re-set after the client's second round of boards: a swimwear thank-you card (cabana stripes, a framed butter card, typewriter caps, a script note on tape), an interiors site (colour fields, roman + italic serif headlines, checker ribbons, thin-lined oval and scalloped frames, line drawings), a beach-house template and a beach bar (tickers, centred section heads, a deep band at the foot) and a sheet of retro motel stickers. The colours and the three logo options still come from the Brand Starter (28 October 2026).</p>
+            <p>The foundations for SOLAE's store. The client's three main references set the look, and the site should read like them: <b>★ the Seaborn Co. swimwear thank-you card</b> (cabana stripes, a framed butter card, typewriter caps, a script note on tape), <b>★ the "what's trending" interiors site</b> (colour fields, roman + italic serif, a cutout hanging from the top edge, lace-edged frames, checker ribbons, tinted cutouts in cream cards) and <b>★ the Kava beauty site</b> (a strip and benefits row under the hero, a product feature card with a half-circle badge, a wave ribbon across a seam, a split story, an oval sticker). Her wider boards add tickers, hand-drawn stickers on torn paper and collage cutouts. The colours and the three logo options still come from the Brand Starter (28 October 2026).</p>
             <Link className="btn btn--sm" to="/">view the mock store</Link>
           </div>
         </div>
@@ -353,6 +359,24 @@ export function DesignSystemPage() {
           </div>
         </Section>
 
+        <Section id="cutouts" num="05b" title={<>cut<em>outs</em></>} intro="Her main references lean on cutouts: real objects with the background removed, laid over edges. A chandelier hangs from the top of the interiors site, engravings sit in its cards, a chair rises out of the bottom of a field. Ours are our own pieces, cut from the stand-in photos (public/img/cutouts). Use them full colour for collage, or tinted coral (the -coral files) the way the board tints in pink.">
+          <div className="ds-grid ds-grid--wide">
+            <div className="demo field field--olive" style={{ placeItems: "center" }}><img src="/img/cutouts/suit-flounce-coral.webp" alt="" style={{ height: "11rem", width: "auto" }} /><p className="note" style={{ color: "var(--sand)" }}>hanging · the signatures headline</p></div>
+            <div className="demo"><div className="row" style={{ justifyContent: "center" }}>{["suit-lace", "shorts", "sunglasses"].map(c => <img key={c} src={`/img/cutouts/${c}-coral.webp`} alt="" style={{ height: "5rem", width: "auto" }} />)}</div><p className="note">tinted coral · on cream cards</p></div>
+            <div className="demo field field--mist" style={{ placeItems: "center" }}><div className="row" style={{ justifyContent: "center", alignItems: "end" }}><img src="/img/cutouts/suit-flounce.webp" alt="" style={{ height: "10rem", width: "auto" }} /><img src="/img/cutouts/shorts.webp" alt="" style={{ height: "6.5rem", width: "auto" }} /></div><p className="note">full colour · the set, the hero's sunglasses</p></div>
+          </div>
+          <p className="ds-sub t-label">and the pieces around them</p>
+          <div className="ds-grid ds-grid--wide">
+            <div className="demo" style={{ placeItems: "center" }}><div className="row" style={{ gap: "1.5rem" }}><PaperSticker id="i-shell" style={{ width: "4.5rem", rotate: "-8deg" }} /><PaperSticker id="i-palm" style={{ width: "4.5rem", rotate: "10deg" }} /><PaperSticker id="i-star" style={{ width: "4rem", rotate: "-4deg" }} /></div><p className="note"><code className="inline">&lt;PaperSticker&gt;</code> · a line drawing on torn paper</p></div>
+            <div className="demo" style={{ placeItems: "center" }}><ArcBadge text="MADE TO MATCH" /><p className="note"><code className="inline">&lt;ArcBadge&gt;</code> · words round a half sun (Kava's "vegan")</p></div>
+            <div className="demo" style={{ placeItems: "center" }}><span className="footer__oval sticker" style={{ position: "static" }}>no spam,<br />just sun</span><p className="note">oval sticker · the newsletter (Kava's "non-gmo")</p></div>
+          </div>
+          <div className="ds-wave"><WaveTicker label="demo" items={["made to match", "double-lined", "knee-length shorts"]} /></div>
+          <p className="note"><code className="inline">&lt;WaveTicker&gt;</code> · Kava's ribbon: phrases run along a wave across the seam between two sections. One per page.</p>
+          <Perks items={[["i-shell", "double-lined"], ["i-sun-line", "removable pads"], ["i-wave", "knee-length shorts"], ["i-palm", "designed in saudi arabia"]]} />
+          <p className="note"><code className="inline">&lt;Perks&gt;</code> · Kava's benefits row: round coral line drawings, a serif word or two under each.</p>
+        </Section>
+
         <Section id="components" num="06" title={<>the <em>components</em></>} intro="Controls are rectangles with tiny typewriter caps. Every interactive element has a 44px minimum touch target and a visible Lagoon focus ring. Press Tab to check.">
           <div className="ds-grid ds-grid--wide">
             <div className="demo"><h4 className="t-label">buttons</h4>
@@ -386,7 +410,7 @@ export function DesignSystemPage() {
           </div>
         </Section>
 
-        <Section id="sections" num="07" title={<>section <em>patterns</em></>} intro="Where each part of the store comes from on the client's boards.">
+        <Section id="sections" num="07" title={<>section <em>patterns</em></>} intro="Where each part of the store comes from on the client's boards. ★ marks her three main references: when in doubt, follow them.">
           <div className="scroll-x"><table className="tok map">
             <thead><tr><th>section</th><th>board</th><th>what we took</th></tr></thead>
             <tbody>

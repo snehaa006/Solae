@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import { useReveal } from "../../hooks/useReveal";
-import { Sprite } from "../icons";
+import { px } from "../../lib/format";
 import { Logo } from "../Logo";
+import { PaperSticker } from "../PaperSticker";
 
 /** a block that fades up the first time it scrolls into view */
 function Reveal({ className, children }: { className: string; children: ReactNode }) {
@@ -9,20 +10,15 @@ function Reveal({ className, children }: { className: string; children: ReactNod
   return <div ref={ref} className={`${className} ${reveal}`}>{children}</div>;
 }
 
-/* the Brand Starter's story, vision and mission (ref: sunseeker's "hi, i'm name" on powder blue,
-   then the thank-you card's framed butter panel) */
+/* the Brand Starter's story, vision and mission. refs: the beauty site's split (a colour block
+   beside a big photo), sunseeker's "hi, i'm name", hand-drawn stickers on torn paper, then the
+   thank-you card's framed butter panel */
 export function OurStory() {
-  const [sketch, sketchIn] = useReveal<HTMLElement>();
   return (
-    <section id="about" className="about field field--mist" aria-labelledby="about-title">
-      <div className="wrap">
-        <div className="story">
-          <figure ref={sketch} className={`story__sketch ${sketchIn}`}>
-            <Sprite id="s-parasol" className="story__sticker sticker" />
-            <div className="story__card"><Logo slot="story" /></div>
-            <figcaption className="t-label">where it all began · 2024</figcaption>
-          </figure>
-          <Reveal className="story__text">
+    <section id="about" className="about" aria-labelledby="about-title">
+      <div className="story">
+        <div className="story__text field field--sun">
+          <Reveal className="story__inner">
             <p className="t-label">our story</p>
             <h2 id="about-title" className="story__hi">hi, i'm ghalia</h2>
             <p className="story__lede">solae began with a sketch of the sun i drew in 2024, long before i knew how to make a swimsuit.</p>
@@ -32,6 +28,18 @@ export function OurStory() {
             <p className="t-script" aria-hidden="true">ghalia x</p>
           </Reveal>
         </div>
+        <figure className="story__photo">
+          <img src={px("8926075", 1400)} alt="two smiling girls hugging on the beach" loading="lazy" />
+          <div className="story__sketch">
+            <PaperSticker id="i-shell" className="story__paper story__paper--a" />
+            <PaperSticker id="i-palm" className="story__paper story__paper--b" />
+            <PaperSticker id="i-star" className="story__paper story__paper--c" />
+            <div className="story__card"><Logo slot="story" /></div>
+            <figcaption className="t-label">where it all began · 2024</figcaption>
+          </div>
+        </figure>
+      </div>
+      <div className="wrap">
         <Reveal className="vm framed">
           <p className="trio t-label"><span>coverage</span><span>comfort</span><span>confidence</span></p>
           <span className="vm__mark" aria-hidden="true"><Logo slot="mark" /></span>

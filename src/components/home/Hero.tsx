@@ -17,6 +17,7 @@ export function Hero() {
           <p className="hero__sticker sticker" aria-hidden="true"><span className="badge-sun"><span>summer 26</span><b>drop 01</b><span>is live</span></span></p>
         </div>
         <div className="hero__card framed">
+          <img className="hero__shades" src="/img/cutouts/sunglasses.webp" alt="" aria-hidden="true" />
           <p className="hero__handle t-label"><span>@solae.swim</span><span>designed in saudi arabia</span></p>
           <p className="tape-note">the suit you forget you're wearing</p>
           <p className="hero__lede">a double-lined one-piece and knee-length shorts that match, for teen girls who want coverage, comfort and confidence without giving up on style.</p>

@@ -113,3 +113,6 @@
 .ds-page .post-sq .logo-sun { position: absolute; right: 0; top: 8%; width: 82%; }
 .ds-page .post-sq p { position: relative; font-family: var(--font-headline); font-size: 1.25rem; line-height: .95; }
 .ds-page .post-sq small { position: relative; font-family: var(--font-mono); font-size: .55rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sunshine); margin-top: .35rem; }
+.ds-page .ds-wave { position: relative; height: 12rem; margin-block: var(--space-l) .6rem; overflow: hidden; background: linear-gradient(var(--lagoon-mist) 50%, var(--sun-wash) 50%); border-radius: var(--r-sm); }
+.ds-page .ds-wave .wave-sep { position: absolute; left: 0; right: 0; top: 50%; }
+.ds-page .perks { margin-top: var(--space-l); border-radius: var(--r-sm); }

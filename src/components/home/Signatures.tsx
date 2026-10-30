@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import type { ProductId } from "../../data/catalog";
 import { useReveal } from "../../hooks/useReveal";
 import { px } from "../../lib/format";
-import { Sprite } from "../icons";
 
 interface Signature {
   id: ProductId;
@@ -35,13 +34,18 @@ function SignatureItem({ s }: { s: Signature }) {
   );
 }
 
-/* ref: the interiors board's "what's trending": an olive field, the headline split by a
-   line drawing, two photos in thin-lined oval and scalloped frames, then a long italic link */
+/* ref: the interiors board's "what's trending": an olive field, the headline split by a cutout
+   hanging from the top edge (their chandelier, our flounce suit pegged to a washing line), two
+   photos in a lace-edged oval and a scalloped frame, then a long italic link */
 export function Signatures() {
   return (
     <section id="signatures" className="sig field field--olive" aria-labelledby="sig-title">
       <div className="wrap">
-        <h2 id="sig-title" className="sig__title t-headline"><em>our</em><Sprite id="i-sun-line" className="ill" /><em>signatures</em></h2>
+        <h2 id="sig-title" className="sig__title t-headline">
+          <em>our</em>
+          <span className="sig__hang" aria-hidden="true"><img src="/img/cutouts/suit-flounce-coral.webp" alt="" /></span>
+          <em>signatures</em>
+        </h2>
         <div className="sig__grid">
           {SIGNATURES.map(s => <SignatureItem key={s.id} s={s} />)}
         </div>

@@ -133,6 +133,27 @@ ul[role="list"], ol[role="list"] { list-style: none; padding: 0; margin: 0; }
 .badge-sun b { font-family: var(--font-headline); font-style: italic; font-weight: 600; font-size: 2.1em; text-transform: lowercase; }
 .badge-sun span { font-family: var(--font-mono); font-size: .62em; letter-spacing: .14em; text-transform: uppercase; }
 
+/* cutouts: real objects with their background removed, laid over edges like collage
+   (interiors board's chandelier, collage pins). Full colour, or tinted coral (-coral files) */
+.cutout { display: block; height: auto; pointer-events: none; filter: drop-shadow(0 10px 14px rgba(7, 73, 74, .22)); }
+
+/* a line drawing on a scrap of torn white paper (hand-drawn beach stickers) */
+.paper { display: inline-block; filter: drop-shadow(0 4px 6px rgba(7, 73, 74, .22)); }
+.paper__cut { display: grid; place-items: center; width: 100%; aspect-ratio: 1; padding: 18%; background: var(--white); color: var(--stormy);
+  clip-path: polygon(89.7% 50.0%, 90.2% 55.8%, 91.9% 62.3%, 88.1% 67.4%, 87.0% 73.8%, 85.7% 80.9%, 79.2% 83.7%, 73.8% 87.1%, 67.9% 89.1%, 62.1% 91.1%, 55.4% 87.2%, 50.0% 88.7%, 44.6% 87.2%, 37.9% 91.2%, 32.0% 89.5%, 27.8% 84.5%, 17.4% 87.6%, 12.5% 82.5%, 12.2% 74.3%, 11.0% 67.8%, 12.8% 60.9%, 13.3% 55.3%, 9.8% 50.0%, 13.0% 44.7%, 12.6% 39.0%, 13.2% 33.2%, 15.5% 27.8%, 14.9% 19.6%, 19.7% 15.0%, 25.0% 11.1%, 32.4% 11.6%, 38.2% 9.9%, 44.3% 10.2%, 50.0% 9.0%, 55.7% 10.5%, 61.1% 12.1%, 68.8% 8.8%, 75.5% 10.3%, 82.0% 13.1%, 86.3% 18.6%, 86.0% 26.9%, 86.8% 33.2%, 88.0% 38.9%, 87.1% 44.7%); }
+.paper__cut svg { width: 100%; height: 100%; stroke-width: 2.6; }
+
+/* half-sun badge with its words round the arc (beauty site's "vegan") */
+.arc-badge { display: block; width: 7.5rem; overflow: visible; }
+.arc-badge__sun { fill: var(--coral); }
+.arc-badge__text { font-family: var(--font-headline); font-style: italic; font-weight: 600; font-size: 13px; letter-spacing: 1.5px; fill: var(--cream); }
+
+/* the wave ribbon: a band with phrases running along it, laid across the seam between two sections (beauty site) */
+.wave-sep { position: relative; z-index: 5; height: 0; }
+.wave-tick { position: absolute; left: 50%; top: 0; width: max(100%, 1100px); max-width: none; height: auto; translate: -50% -50%; overflow: visible; pointer-events: none; }
+.wave-tick__band { fill: none; stroke: var(--coral); stroke-width: 50; }
+.wave-tick__text { font-family: var(--font-headline); font-style: italic; font-size: 24px; fill: var(--deep); }
+
 /* ---- Photo frames: a photo, a gap, a hairline (interiors board) ------- */
 /* plain: soft corners and a hairline just inside the edge */
 .frame { position: relative; overflow: hidden; border-radius: var(--r-md); background: var(--surface-sunk); }
@@ -145,6 +166,8 @@ a:hover > .frame > img { transform: scale(1.03); }
 :is(.frame-oval, .frame-scallop, .frame-arch)::before { content: ""; position: absolute; inset: 1px; background: var(--gap-c); }
 :is(.frame-oval, .frame-scallop, .frame-arch) > img { position: absolute; inset: var(--frame-gap); width: calc(100% - var(--frame-gap) * 2); height: calc(100% - var(--frame-gap) * 2); object-fit: cover; }
 .frame-oval, .frame-oval::before, .frame-oval > img { border-radius: 50%; }
+/* a lace edge round the oval: a ring of dots just outside the hairline */
+.frame-oval::after { content: ""; position: absolute; inset: -8px; border: 3px dotted var(--line); border-radius: 50%; opacity: .8; pointer-events: none; }
 .frame-arch, .frame-arch::before, .frame-arch > img { border-radius: 999px 999px 0 0; }
 /* scalloped corners: each layer cuts a quarter circle round the outer corner, so the hairline stays even */
 .frame-scallop { --cut: clamp(1.4rem, .9rem + 2.2vw, 3rem); --d: 0px; }
@@ -244,6 +267,10 @@ a:hover > .frame > img { transform: scale(1.03); }
 /* ---- Announcement + header ------------------------------------------- */
 .announce { background: var(--deep); color: var(--sand); }
 .announce .ticker__track { padding-block: .6rem; }
+/* the thin coral strip under the hero (beauty site) */
+.strip { background: var(--coral); color: var(--deep); }
+.strip .ticker__track { padding-block: .45rem; }
+.strip .sunmark { color: var(--cream); }
 
 .header { position: sticky; top: 0; z-index: 40; background: var(--bg); border-bottom: 1px solid var(--line); }
 .header__bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: var(--header-h); gap: 1rem; }
@@ -296,6 +323,8 @@ a:hover > .frame > img { transform: scale(1.03); }
 /* the framed butter card: a handle, a note on tape, a short paragraph, the buttons, three facts */
 .hero__card { display: grid; justify-items: center; gap: var(--space-m); padding: clamp(1.1rem, .7rem + 1.4vw, 2rem) clamp(1rem, .6rem + 2vw, 2.5rem); text-align: center; }
 .hero__card .trio { width: 100%; }
+/* sunglasses tossed onto the card's corner, collage-style */
+.hero__shades { position: absolute; left: clamp(-3.5rem, -3vw, -1rem); top: clamp(-3.2rem, -3vw, -1.6rem); width: clamp(6.5rem, 4rem + 6vw, 11rem); rotate: -16deg; pointer-events: none; filter: drop-shadow(0 12px 12px rgba(7, 73, 74, .3)); }
 .hero__handle { display: flex; flex-wrap: wrap; justify-content: center; gap: .2rem 1.6em; }
 .hero__handle span + span { position: relative; }
 .hero__handle span + span::before { content: "|"; position: absolute; left: -1.2em; }
@@ -303,6 +332,8 @@ a:hover > .frame > img { transform: scale(1.03); }
 .hero__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
 @media (max-width: 560px) {
   .hero__cabana { min-height: 24rem; }
+  .hero__handle { flex-direction: column; align-items: center; }
+  .hero__handle span + span::before { display: none; }
   .hero__card .trio { font-size: .6rem; letter-spacing: .1em; }
   .hero__sticker { top: auto; bottom: 46%; }
 }
@@ -329,14 +360,23 @@ a:hover > .frame > img { transform: scale(1.03); }
 @media (hover: hover) { .card__link:hover .card__hover { opacity: 1; } }
 .card__link:focus-visible .card__hover { opacity: 1; }
 
-/* ---- Ticker band ------------------------------------------------------- */
-.band { color: var(--deep); border-block: 1px solid var(--line); }
-
 /* ---- Signatures: olive field, shaped frames (interiors "what's trending") */
-.sig { padding-block: var(--space-2xl); }
-/* the headline is split by a line drawing: "our ☼ signatures" */
-.sig__title { display: flex; align-items: center; justify-content: center; gap: clamp(.75rem, .4rem + 2vw, 2.5rem); margin-bottom: var(--space-xl); color: var(--sunshine); font-size: var(--fs-display); }
-.sig__title svg { width: clamp(3.5rem, 2.4rem + 4vw, 6.5rem); height: auto; aspect-ratio: 1; color: var(--sand); }
+/* big tone-on-tone waves in the olive, like the board's soft pattern */
+.sig { --rope-y: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); position: relative; padding: var(--rope-y) 0 var(--space-2xl);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='420' viewBox='0 0 560 280'%3E%3Cpath d='M-20 70C60 10 160 10 240 70S420 130 580 70M-20 210C60 150 160 150 240 210S420 270 580 210' fill='none' stroke='%23FFECD1' stroke-opacity='.035' stroke-width='60' stroke-linecap='round'/%3E%3C/svg%3E") center top / 900px 420px, var(--field); }
+/* the washing line across the top; the cutout hangs from it */
+.sig::before { content: ""; position: absolute; left: 0; right: 0; top: calc(var(--rope-y) + 4px); height: 1.5px; background: var(--sand); opacity: .55; }
+.sig__title { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: clamp(.75rem, .4rem + 2vw, 2.5rem); margin-bottom: var(--space-xl); color: var(--sunshine); font-size: var(--fs-display); }
+.sig__title > em:first-child { justify-self: end; }
+.sig__title > em:last-child { justify-self: start; }
+.sig__hang { position: relative; align-self: start; width: clamp(5.5rem, 3.5rem + 7vw, 10.5rem); }
+.sig__hang img { width: 100%; height: auto; filter: drop-shadow(0 14px 14px rgba(0, 0, 0, .25)); transform-origin: 50% 0; animation: sway 6s var(--ease-swell) infinite; }
+/* two clothes pegs on the straps */
+.sig__hang::before, .sig__hang::after { content: ""; position: absolute; z-index: 1; top: -2px; width: 8px; height: 22px; border-radius: 2px; background: var(--sand); box-shadow: inset 0 0 0 1px rgba(84, 86, 36, .5); }
+.sig__hang::before { left: 9%; rotate: -6deg; }
+.sig__hang::after { right: 9%; rotate: 6deg; }
+@keyframes sway { 50% { rotate: 2.5deg; } }
+@media (prefers-reduced-motion: reduce) { .sig__hang img { animation: none; } }
 .sig__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 1rem + 4vw, 6rem); max-width: 58rem; margin-inline: auto; }
 .sig__item { display: grid; align-content: start; justify-items: center; gap: var(--space-2xs); text-align: center; }
 .sig__item :is(.frame-oval, .frame-scallop) { width: 100%; aspect-ratio: 3 / 4; margin-bottom: var(--space-xs); }
@@ -346,7 +386,7 @@ a:hover > .frame > img { transform: scale(1.03); }
 .sig__item img { transition: transform var(--dur-slow) var(--ease-out); }
 .sig__item:hover img { transform: scale(1.03); }
 .sig .link-line { max-width: 58rem; margin: var(--space-xl) auto 0; color: var(--sand); }
-@media (max-width: 700px) { .sig__grid { grid-template-columns: 1fr; max-width: 22rem; } .sig__item:nth-child(2) { margin-top: 0; } }
+@media (max-width: 700px) { .sig__grid { grid-template-columns: 1fr; max-width: 22rem; } .sig__item:nth-child(2) { margin-top: 0; } .sig__title { font-size: clamp(2rem, 1rem + 6vw, 3rem); } }
 
 /* ---- How we're different: coral field, cream cards (interiors board) --- */
 .diff { padding-block: var(--space-2xl); }
@@ -354,30 +394,56 @@ a:hover > .frame > img { transform: scale(1.03); }
 .diff__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.75rem, .4rem + 1.2vw, 1.5rem); }
 .diff__card { display: grid; align-content: start; gap: .6rem; padding: clamp(1.25rem, 1rem + 1vw, 2rem); border-radius: var(--r-md); background: var(--cream); color: var(--deep); box-shadow: 0 10px 24px -18px rgba(7, 73, 74, .6); }
 .diff__icon { width: 3.6rem; height: 3.6rem; color: var(--coral); margin-bottom: .4rem; }
+.diff__cut { height: clamp(6.5rem, 5rem + 3vw, 8.5rem); width: 100%; object-fit: contain; object-position: left bottom; margin-bottom: .6rem; filter: drop-shadow(0 6px 8px rgba(158, 58, 51, .2)); }
 .diff__card h3 { font-family: var(--font-headline); font-style: italic; font-weight: 500; font-size: var(--fs-h3); line-height: 1.15; text-transform: lowercase; }
 .diff__card p { font-size: var(--fs-small); color: var(--ink-soft); }
 .diff__more { display: grid; justify-items: center; margin-top: var(--space-xl); }
 @media (max-width: 1000px) { .diff__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 520px) { .diff__grid { grid-template-columns: 1fr; } }
 
-/* ---- Our story: mist field, "hi, i'm ghalia", then the framed card (sunseeker) */
-.about { padding-block: var(--space-2xl); }
-.story { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 1rem + 4vw, 6rem); align-items: center; max-width: 72rem; margin-inline: auto; }
-.story__sketch { position: relative; display: grid; gap: .8rem; }
-.story__card { display: grid; place-items: center; overflow: hidden; aspect-ratio: 4 / 5; padding: clamp(1.25rem, .8rem + 2.4vw, 3rem) 0 clamp(1.25rem, .8rem + 2.4vw, 3rem) clamp(1rem, .5rem + 2vw, 2.5rem); background: var(--cream); outline: 1px solid var(--deep); outline-offset: calc(var(--frame-gap) * -1); }
-.story__card .logo-sun { width: 100%; justify-self: end; }
-/* options 2 and 3 sit centred on the card */
-:root:not([data-logo="1"]) .story__card { padding-right: clamp(1rem, .5rem + 2vw, 2.5rem); }
-.story__card .logo-word { font-size: clamp(1.2rem, .8rem + 1.5vw, 2.2rem); }
-.story__card .logo-mark { font-size: clamp(.9rem, .7rem + .8vw, 1.4rem); }
-.story__sketch figcaption { text-align: center; color: var(--ink-soft); }
-.story__sticker { position: absolute; left: -1.25rem; top: -1.5rem; z-index: 1; width: clamp(4rem, 3rem + 3vw, 6.5rem); height: auto; aspect-ratio: 1; rotate: -14deg; }
-.story__text { display: grid; gap: var(--space-s); }
-.story__text .t-label { color: var(--ink-soft); }
+/* ---- The set: a colour-block card with the cutouts (interiors + beauty site) */
+.set__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 1rem + 5vw, 7rem); align-items: center; max-width: 72rem; }
+/* the card is sunshine with a hairline; the suit and shorts stand on it and rise out of its top */
+.set { padding-bottom: calc(var(--space-2xl) + 3rem); }
+.set__card { position: relative; display: flex; align-items: flex-end; justify-content: center; gap: 2%; aspect-ratio: 5 / 4; margin-top: var(--space-xl); padding: 0 6% 12%; border: 1px solid var(--deep); border-radius: var(--r-lg); background: var(--sun-wash); }
+.set__card img { height: auto; filter: drop-shadow(0 16px 16px rgba(7, 73, 74, .25)); }
+.set__suit { width: 42%; margin-top: -28%; rotate: -4deg; }
+.set__shorts { width: 38%; rotate: 5deg; }
+.set__plus { align-self: center; font-family: var(--font-headline); font-size: clamp(2rem, 1.5rem + 2vw, 3.5rem); line-height: 1; color: var(--deep); }
+.set__tag { position: absolute; left: 50%; bottom: 4%; translate: -50% 0; white-space: nowrap; padding: .4rem .8rem; background: var(--deep); color: var(--sand); border-radius: var(--r-xs); }
+.set__text { position: relative; display: grid; gap: var(--space-s); align-content: center; }
+.set__text .t-label { color: var(--ink-soft); }
+.set__text h2 { font-size: var(--fs-h1); max-width: 14ch; }
+.set__text h2 em { display: block; }
+.set__text > p:not(.t-label) { max-width: 30rem; color: var(--ink-soft); }
+.set__ctas { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .4rem; }
+.set__badge { position: absolute; right: 0; top: -3rem; rotate: 18deg; }
+@media (max-width: 800px) { .set__grid { grid-template-columns: 1fr; } .set__badge { top: -1rem; width: 6rem; } }
+
+/* ---- Our story: a mist block beside a big photo (beauty site), then the framed card */
+.about { padding-bottom: var(--space-2xl); }
+.story { display: grid; grid-template-columns: 1fr 1fr; }
+.story__text { display: grid; align-items: center; padding: calc(var(--space-2xl) + 3rem) clamp(1.25rem, 1rem + 4vw, 6rem) var(--space-2xl); }
+.story__inner { display: grid; gap: var(--space-s); max-width: 34rem; justify-self: end; }
+.story__inner .t-label { color: var(--ink-soft); }
 .story__hi { font-family: var(--font-script); font-weight: 400; font-size: clamp(3rem, 2rem + 4vw, 5.5rem); line-height: .9; margin-block: -.1em .1em; }
-.story__lede { font-family: var(--font-headline); font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2.2rem); line-height: 1.2; text-transform: lowercase; }
-.story__text p:not(.story__lede, .t-label, .t-script) { color: var(--ink-soft); max-width: 34rem; }
-.story__text .t-script { font-size: clamp(2rem, 1.6rem + 1.4vw, 3rem); }
+.story__lede { font-family: var(--font-headline); font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2.1rem); line-height: 1.2; text-transform: lowercase; }
+.story__inner p:not(.story__lede, .t-label, .t-script) { color: var(--ink-soft); }
+.story__inner .t-script { font-size: clamp(2rem, 1.6rem + 1.4vw, 3rem); }
+.story__photo { position: relative; min-height: 34rem; }
+.story__photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+/* her sketch on a small card at the photo's foot, with paper stickers round it */
+.story__sketch { position: absolute; left: clamp(1rem, 4%, 3rem); bottom: clamp(1rem, 4%, 3rem); width: clamp(11rem, 8rem + 9vw, 17rem); display: grid; gap: .5rem; rotate: -3deg; }
+.story__card { display: grid; place-items: center; overflow: hidden; aspect-ratio: 1; padding: 12% 0 12% 10%; background: var(--cream); outline: 1px solid var(--deep); outline-offset: calc(var(--frame-gap) * -1); box-shadow: var(--shadow-lift); }
+.story__card .logo-sun { width: 100%; justify-self: end; }
+:root:not([data-logo="1"]) .story__card { padding-right: 10%; }
+.story__card .logo-word { font-size: clamp(1rem, .8rem + .8vw, 1.5rem); }
+.story__card .logo-mark { font-size: clamp(.7rem, .6rem + .4vw, 1rem); }
+.story__sketch figcaption { justify-self: start; padding: .3rem .6rem; background: var(--cream); color: var(--deep); }
+.story__paper { position: absolute; z-index: 1; width: clamp(3.4rem, 2.6rem + 2.4vw, 5rem); }
+.story__paper--a { right: -1.6rem; top: -1.8rem; rotate: 12deg; }
+.story__paper--b { right: -2.4rem; bottom: 3.2rem; rotate: -8deg; }
+.story__paper--c { left: -1.4rem; top: -1.6rem; rotate: -16deg; width: clamp(2.8rem, 2.2rem + 2vw, 4rem); }
 .vm { max-width: 60rem; margin: var(--space-2xl) auto 0; display: grid; gap: var(--space-m); padding: clamp(1.1rem, .7rem + 1.4vw, 2rem) clamp(1rem, .6rem + 2vw, 2.5rem); text-align: center; }
 .vm__mark { justify-self: center; width: clamp(3rem, 2.4rem + 2vw, 4.5rem); }
 .vm__mark > * { width: 100%; }
@@ -386,10 +452,14 @@ a:hover > .frame > img { transform: scale(1.03); }
 .vm__grid > div { display: grid; gap: var(--space-2xs); align-content: start; }
 .vm__grid > div + div { border-left: 1px solid var(--line-strong); padding-left: var(--space-l); }
 .vm__grid p { font-family: var(--font-headline); font-size: clamp(1.2rem, 1rem + .8vw, 1.7rem); line-height: 1.25; text-transform: lowercase; }
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .story { grid-template-columns: 1fr; }
-  .story__sketch { max-width: 22rem; margin-inline: auto; width: 100%; }
-  .story__sticker { left: -.5rem; }
+  .story__inner { justify-self: start; }
+  .story__photo { min-height: 32rem; }
+  .story__photo > img { object-position: 50% 12%; }
+  .story__sketch { left: 1.6rem; width: 9.5rem; }
+}
+@media (max-width: 760px) {
   .vm__grid { grid-template-columns: 1fr; }
   .vm__grid > div + div { border-left: 0; padding-left: 0; border-top: 1px solid var(--line-strong); padding-top: var(--space-m); }
 }
@@ -401,6 +471,9 @@ a:hover > .frame > img { transform: scale(1.03); }
 .footer__links .t-label { color: var(--sunshine); margin-bottom: .3rem; }
 .footer__links a { text-transform: lowercase; opacity: .86; }
 .footer__links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: .25em; }
+.footer__news { position: relative; }
+/* a tilted oval sticker on the newsletter (beauty site's "non-gmo") */
+.footer__oval { position: absolute; right: 0; top: -1.5rem; display: grid; place-items: center; width: 7.5rem; height: 4.2rem; border-radius: 50%; background: var(--coral); color: var(--deep); rotate: 12deg; font-family: var(--font-headline); font-style: italic; font-weight: 600; font-size: .95rem; line-height: 1.05; text-align: center; }
 .footer__news h3 { font-family: var(--font-headline); font-weight: 400; font-size: var(--fs-h2); line-height: 1.05; text-transform: lowercase; color: var(--sunshine); }
 .footer__news h3 em { font-style: italic; font-weight: 500; }
 .footer__news p { opacity: .8; margin-top: .5rem; }
@@ -477,9 +550,15 @@ a:hover > .frame > img { transform: scale(1.03); }
 .pdp__box .acc details { padding-inline: 1.25rem; }
 .pdp__box .acc details:last-child { border-bottom: 0; }
 @media (max-width: 900px) { .pdp { grid-template-columns: 1fr; } }
-/* a slim ticker-style strip of facts under the product */
-.pdp-strip { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .6rem clamp(1rem, .5rem + 2vw, 2.5rem); margin-top: var(--space-xl); padding-block: var(--space-s); border-block: 1px solid var(--line); color: var(--ink-soft); }
-.pdp-strip svg { width: .5rem; height: .5rem; color: var(--coral); }
+/* the facts as round line drawings on a butter strip (beauty site's benefits row) */
+.perks { padding-block: var(--space-l); }
+.pdp-perks { margin-top: var(--space-xl); }
+.perks__label { font-family: var(--font-headline); font-size: var(--fs-lead); line-height: 1.2; text-transform: lowercase; }
+.perks__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-m); margin-block: 0; text-align: center; }
+.perks__list li { display: grid; justify-items: center; gap: .7rem; }
+.perks__icon { display: grid; place-items: center; width: clamp(3.6rem, 3rem + 2vw, 4.8rem); aspect-ratio: 1; border: 1.5px solid var(--coral); border-radius: 50%; color: var(--coral); }
+.perks__icon svg { width: 62%; height: 62%; }
+@media (max-width: 600px) { .perks__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 /* reviews: a deep teal field with the average, then a plain list */
 .reviews { margin-top: var(--space-2xl); }

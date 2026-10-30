@@ -1,13 +1,12 @@
-import { Sprite } from "../icons";
-
 const POINTS = [
-  { icon: "i-shell", title: "double-lined, every time…", text: "every suit is double-lined, so it stays fully opaque when it's wet." },
-  { icon: "i-sun-line", title: "pads that stay put…", text: "small removable pads, held in by a second layer of fabric." },
-  { icon: "i-parasol", title: "shorts that match…", text: "knee-length shorts in every suit colour, plus white and black." },
-  { icon: "i-palm", title: "made for the gulf…", text: "designed in saudi arabia, for long, bright summers by the sea." },
+  { cut: "suit-lace-coral", title: "double-lined, every time…", text: "every suit is double-lined, so it stays fully opaque when it's wet." },
+  { cut: "suit-flounce-coral", title: "pads that stay put…", text: "small removable pads, held in by a second layer of fabric." },
+  { cut: "shorts-coral", title: "shorts that match…", text: "knee-length shorts in every suit colour, plus white and black." },
+  { cut: "sunglasses-coral", title: "made for the gulf…", text: "designed in saudi arabia, for long, bright summers by the sea." },
 ];
 
-/* ref: the interiors board's "how we're different": a coral field, cream cards with line drawings */
+/* ref: the interiors board's "how we're different": a coral field, cream cards, each with a
+   cutout tinted in one colour (their pink engravings, our pieces in coral) */
 export function Different() {
   return (
     <section className="diff field field--coral" aria-labelledby="diff-title">
@@ -15,8 +14,8 @@ export function Different() {
         <h2 id="diff-title" className="diff__title t-headline">how we're <em>different</em></h2>
         <ul className="diff__grid" role="list">
           {POINTS.map(p => (
-            <li className="diff__card" key={p.icon}>
-              <Sprite id={p.icon} className="diff__icon ill" />
+            <li className="diff__card" key={p.cut}>
+              <img className="diff__cut" src={`/img/cutouts/${p.cut}.webp`} alt="" loading="lazy" />
               <h3>{p.title}</h3>
               <p>{p.text}</p>
             </li>

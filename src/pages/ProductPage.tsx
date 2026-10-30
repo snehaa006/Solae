@@ -1,14 +1,15 @@
-import { Fragment } from "react";
 import { useParams, useSearchParams } from "react-router";
 import { byId, FACTS, portById, portOf, PRODUCTS, type Product, type ProductId } from "../data/catalog";
 import { REVIEWS, SAMPLE_REVIEWS } from "../data/reviews";
-import { Sprite } from "../components/icons";
+import { Perks } from "../components/Perks";
 import { Postcards } from "../components/product/Postcards";
 import { ProductInfo } from "../components/product/ProductInfo";
 import { Reviews } from "../components/product/Reviews";
 import { ProductCard } from "../components/ProductCard";
 import { SectionHead } from "../components/SectionHead";
 import { usePageMeta } from "../hooks/usePageMeta";
+
+const PERK_ICONS = ["i-shell", "i-sun-line", "i-wave", "i-star"];
 
 const pairsFor = (p: Product): ProductId[] => p.cat === "swimsuits"
   ? ["boardwalk", "drift", "white-one", p.sig ? "tidepool" : "off-shoulder"]
@@ -32,9 +33,7 @@ export function ProductPage() {
         <Postcards product={p} port={port} />
         <ProductInfo product={p} reviewCount={reviews.length} rating={rating} />
       </section>
-      <div className="pdp-strip t-label wrap">
-        {FACTS[p.cat].map((f, i) => <Fragment key={f}>{i > 0 && <Sprite id="i-sun-solo" />}<span>{f}</span></Fragment>)}
-      </div>
+      <Perks className="field--sun pdp-perks" items={FACTS[p.cat].map((f, i) => [PERK_ICONS[i], f])} />
       <Reviews reviews={reviews} rating={rating} />
       <section className="section wrap" aria-labelledby="pair-title">
         <SectionHead id="pair-title" label="complete the set" icon="i-shell">pairs <em>well with</em></SectionHead>

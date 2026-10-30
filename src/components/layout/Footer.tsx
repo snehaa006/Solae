@@ -26,6 +26,7 @@ export function Footer() {
           <p className="t-label">help</p><a href="#">size guide</a><a href="#">shipping</a><a href="#">exchanges</a><a href="#">contact</a>
         </nav>
         <div className="footer__news">
+          <span className="footer__oval sticker" aria-hidden="true">no spam,<br />just sun</span>
           <h3>letters from <em>the shore</em></h3>
           <p>new drops and restocks, first.</p>
           <form className="field-row" onSubmit={subscribe}>
