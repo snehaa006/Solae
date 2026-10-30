@@ -6,7 +6,7 @@ import { Logo } from "../Logo";
 
 const SHOP_LINKS = [["swimsuits", "swimsuits"], ["signatures", "signatures"], ["shorts", "matching shorts"], ["cover-ups", "cover-ups"]] as const;
 
-/* the deep teal field at the foot of every page (ref: the beach bar's maroon band) */
+/* the navy field at the foot of every page (ref: the beach bar's maroon band) */
 export function Footer() {
   const toast = useToast();
   const subscribe = (e: FormEvent<HTMLFormElement>) => {
@@ -16,7 +16,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="footer field field--deep">
+    <footer className="footer field field--navy">
       <div className="wrap footer__grid">
         <nav className="footer__links" aria-label="shop">
           <p className="t-label">shop</p>

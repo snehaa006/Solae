@@ -17,7 +17,7 @@ export function OurStory() {
   return (
     <section id="about" className="about" aria-labelledby="about-title">
       <div className="story">
-        <div className="story__text field field--sun">
+        <div className="story__text field field--yellow">
           <Reveal className="story__inner">
             <p className="t-label">our story</p>
             <h2 id="about-title" className="story__hi">hi, i'm ghalia</h2>

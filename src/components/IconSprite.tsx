@@ -36,13 +36,13 @@ export function IconSprite() {
         <circle cx="32" cy="22" r="1" /><circle cx="44" cy="31" r="1" /><circle cx="39" cy="45" r="1" /><circle cx="25" cy="45" r="1" /><circle cx="20" cy="31" r="1" />
       </symbol>
 
-      {/* the parasol as a flat sticker: lagoon and cream panels, a sand pole (retro motel stickers) */}
+      {/* the parasol as a flat sticker: blue and white panels, a white pole (retro motel stickers) */}
       <symbol id="s-parasol" viewBox="0 0 64 64">
-        <path fill="#FFECD1" stroke="#07494A" strokeWidth="1.5" d="M30.5 28H33.5V60H30.5Z" />
-        <path fill="#B8DDD8" stroke="#07494A" strokeWidth="1.5" strokeLinejoin="round" d="M4 30Q32 0 60 30Q53 25 46 30Q39 25 32 30Q25 25 18 30Q11 25 4 30Z" />
-        <path fill="#FFF8EE" d="M32 4.8Q25 15 18 30Q25 25 32 30Z M32 4.8Q39 15 46 30Q39 25 32 30Z" opacity=".9" />
-        <path fill="none" stroke="#07494A" strokeWidth="1.5" strokeLinejoin="round" d="M4 30Q32 0 60 30Q53 25 46 30Q39 25 32 30Q25 25 18 30Q11 25 4 30Z" />
-        <circle cx="32" cy="4" r="2" fill="#F8E077" stroke="#07494A" strokeWidth="1.2" />
+        <path fill="#FFFFFF" stroke="#1F3B6F" strokeWidth="1.5" d="M30.5 28H33.5V60H30.5Z" />
+        <path fill="#A8CAEC" stroke="#1F3B6F" strokeWidth="1.5" strokeLinejoin="round" d="M4 30Q32 0 60 30Q53 25 46 30Q39 25 32 30Q25 25 18 30Q11 25 4 30Z" />
+        <path fill="#FFFFFF" d="M32 4.8Q25 15 18 30Q25 25 32 30Z M32 4.8Q39 15 46 30Q39 25 32 30Z" opacity=".9" />
+        <path fill="none" stroke="#1F3B6F" strokeWidth="1.5" strokeLinejoin="round" d="M4 30Q32 0 60 30Q53 25 46 30Q39 25 32 30Q25 25 18 30Q11 25 4 30Z" />
+        <circle cx="32" cy="4" r="2" fill="#F8E077" stroke="#1F3B6F" strokeWidth="1.2" />
       </symbol>
     </svg>
   );
